@@ -1,0 +1,16 @@
+[applet-window-appmenu]
+src.github = "psifidotos/applet-window-appmenu"
+fetch.github = "psifidotos/applet-window-appmenu"
+
+[baidupcs-go]
+src.github = "qjfoidnh/BaiduPCS-Go"
+fetch.github = "qjfoidnh/BaiduPCS-Go"
+
+[fcitx5-pinyin-zhwiki]
+src.archpkg = "fcitx5-pinyin-zhwiki"
+src.prefix = "0.2.4."
+fetch.url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-$ver.dict"
+
+[yet-another-spotify-tray]
+src.git = "https://github.com/macdems/yet-another-spotify-tray"
+fetch.git = "https://github.com/macdems/yet-another-spotify-tray"

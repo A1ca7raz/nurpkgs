@@ -1,0 +1,76 @@
+{
+    "applet-window-appmenu": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "applet-window-appmenu",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "psifidotos",
+            "repo": "applet-window-appmenu",
+            "rev": "v0.8.0",
+            "sha256": "sha256-ckbrSmZowy1+rp17C8OBnpX8wHRSmDRcdYjOhj4JunQ=",
+            "type": "github"
+        },
+        "version": "v0.8.0"
+    },
+    "baidupcs-go": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "baidupcs-go",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "qjfoidnh",
+            "repo": "BaiduPCS-Go",
+            "rev": "v3.9.0",
+            "sha256": "sha256-vUrCyUG4Dmt6vy/GZR/5UtFfMhYW0HoAEHgZ7tIVIW4=",
+            "type": "github"
+        },
+        "version": "v3.9.0"
+    },
+    "fcitx5-pinyin-zhwiki": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "fcitx5-pinyin-zhwiki",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-SFSNwsyE9W9pCIKlu+8pGVVNdNn6MITA4x7meicbUyQ=",
+            "type": "url",
+            "url": "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20230128.dict"
+        },
+        "version": "20230128"
+    },
+    "yet-another-spotify-tray": {
+        "cargoLocks": null,
+        "date": "2022-12-20",
+        "extract": null,
+        "name": "yet-another-spotify-tray",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "b6219acf8e4e4857c5c2d384a88d5fa47d80e2e8",
+            "sha256": "sha256-14iArMwLQC8Mls8eUQJeR5lC+xN9uB61uS7psaLQV2s=",
+            "type": "git",
+            "url": "https://github.com/macdems/yet-another-spotify-tray"
+        },
+        "version": "b6219acf8e4e4857c5c2d384a88d5fa47d80e2e8"
+    }
+}

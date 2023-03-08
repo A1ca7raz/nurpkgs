@@ -1,0 +1,57 @@
+name: "Build and populate cache"
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron:  '19 3 * * *'
+  repository_dispatch:
+  workflow_dispatch:
+jobs:
+  CI:
+    strategy:
+      matrix:
+        cachixName:
+          - a1ca7raz
+        nixPath:
+          - nixpkgs=channel:nixos-unstable
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Install nix
+      uses: cachix/install-nix-action@v20
+      with:
+        nix_path: "${{ matrix.nixPath }}"
+        extra_nix_config: |
+          experimental-features = nix-command flakes
+          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+    - name: Setup cachix
+      uses: cachix/cachix-action@v12
+      if: ${{ matrix.cachixName != '<YOUR_CACHIX_NAME>' }}
+      with:
+        name: ${{ matrix.cachixName }}
+        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    - name: Setup Auto Commit
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "Update Nurpkgs"
+        file_pattern: "pkgs/_sources"
+    - name: Update package sources
+      run: |
+        nix flake update
+        nix run .#update
+    - name: Show flake metadata
+      run: nix flake metadata
+    - name: Show flake information
+      run: nix flake show
+    - name: Check evaluation
+      run: nix flake check --no-build --no-allow-import-from-derivation
+    - name: Build nix packages
+      run: nix flake check --no-allow-import-from-derivation -v
