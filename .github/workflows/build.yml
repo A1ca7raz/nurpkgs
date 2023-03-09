@@ -17,6 +17,8 @@ jobs:
         nixPath:
           - nixpkgs=channel:nixos-unstable
     runs-on: ubuntu-latest
+    env:
+      NIXPKGS_ALLOW_UNFREE: 1
     permissions:
       # Give the default GITHUB_TOKEN write permission to commit and push the
       # added or changed files to the repository.
@@ -45,13 +47,13 @@ jobs:
         file_pattern: "pkgs/_sources"
     - name: Update package sources
       run: |
-        nix flake update
-        nix run .#update
+        nix flake update --impure
+        nix run .#update --impure
     - name: Show flake metadata
-      run: nix flake metadata
+      run: nix flake metadata --impure
     - name: Show flake information
-      run: nix flake show
+      run: nix flake show --impure
     - name: Check evaluation
-      run: nix flake check --no-build --no-allow-import-from-derivation
+      run: nix flake check --no-build --no-allow-import-from-derivation --impure
     - name: Build nix packages
-      run: nix flake check --no-allow-import-from-derivation -v
+      run: nix flake check --no-allow-import-from-derivation --impure -v
