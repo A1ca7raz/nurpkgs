@@ -21,7 +21,9 @@
         };
         inherit (pkgs) mkShell;
       in rec {
-        packages = flake-utils.lib.filterPackages pkgs.system (nur.packages pkgs);
+        packages = (flake-utils.lib.filterPackages pkgs.system (nur.packages pkgs)) // {
+          inherit (pkgs) wpsoffice;
+        };
         checks = packages;
         formatter = pkgs.nixpkgs-fmt;
         devShells.default = mkShell { nativeBuildInputs = with pkgs; [ nvfetcher ]; };
