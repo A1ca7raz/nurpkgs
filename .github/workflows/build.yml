@@ -10,12 +10,6 @@ on:
   workflow_dispatch:
 jobs:
   CI:
-    strategy:
-      matrix:
-        cachixName:
-          - a1ca7raz
-        nixPath:
-          - nixpkgs=channel:nixos-unstable
     runs-on: ubuntu-latest
     env:
       NIXPKGS_ALLOW_UNFREE: 1
@@ -37,17 +31,17 @@ jobs:
     - name: Install nix
       uses: cachix/install-nix-action@v20
       with:
-        nix_path: "${{ matrix.nixPath }}"
+        nix_path: nixpkgs=channel:nixos-unstable
         extra_nix_config: |
           experimental-features = nix-command flakes
           access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
     - name: Setup cachix
       uses: cachix/cachix-action@v12
-      if: ${{ matrix.cachixName != '<YOUR_CACHIX_NAME>' }}
       with:
-        name: ${{ matrix.cachixName }}
+        name: a1ca7raz
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+        skipPush: true
     - name: Update package sources
       run: |
         nix flake update --impure
@@ -65,3 +59,8 @@ jobs:
       with:
         commit_message: "Update Nurpkgs"
         file_pattern: "pkgs/_sources flake.lock"
+    - name: Upload Cachix
+      run: |
+        nix eval .#checks.x86_64-linux --apply 'x: with builtins; map (x: x.outPath) (attrValues x)' --impure > ./pkglist
+        sed -i -e 's/"//g' -e 's/ /\n/g' ./pkglist
+        sed -e '1d' -e '$d' ./pkglist | cachix push -j8 a1ca7raz
