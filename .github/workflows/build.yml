@@ -48,11 +48,6 @@ jobs:
         name: ${{ matrix.cachixName }}
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - name: Setup Auto Commit
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: "Update Nurpkgs"
-        file_pattern: "pkgs/_sources flake.lock"
     - name: Update package sources
       run: |
         nix flake update --impure
@@ -65,3 +60,8 @@ jobs:
       run: nix flake check --no-build --no-allow-import-from-derivation --impure
     - name: Build nix packages
       run: nix flake check --no-allow-import-from-derivation --impure -v
+    - name: Upload lock file
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "Update Nurpkgs"
+        file_pattern: "pkgs/_sources flake.lock"
