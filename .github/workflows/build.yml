@@ -49,7 +49,6 @@ jobs:
         # https://github.com/zhaofengli/attic/blob/main/.github/workflows/build.yml#L30
         export PATH=$HOME/.nix-profile/bin:$PATH
         attic login --set-default ci "$ATTIC_SERVER" "$ATTIC_ACCESS_TOKEN"
-        attic use "$ATTIC_CACHE"
 
     - name: Update package sources
       run: |
@@ -78,5 +77,8 @@ jobs:
       run: |
         nix eval .#checks.x86_64-linux --apply 'x: with builtins; map (x: x.outPath) (attrValues x)' --impure > ./pkglist
         sed -i -e 's/"//g' -e 's/ /\n/g' ./pkglist
-        sed -e '1d' -e '$d' ./pkglist
+        sed -i -e '1d' -e '$d' ./pkglist
+        echo '>>>>>>>>>> Upload store >>>>>>>>>>'
+        cat ./pkglist
+        echo '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'
         for i in `cat ./pkglist`; do attic push -j8 "$ATTIC_CACHE" $i; done
