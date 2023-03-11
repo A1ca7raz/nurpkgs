@@ -6,7 +6,7 @@ on:
     branches:
       - main
   schedule:
-    - cron:  '19 3 * * *'
+    - cron:  '19 18 * * *'
   repository_dispatch:
   workflow_dispatch:
 
@@ -75,10 +75,4 @@ jobs:
 
     - name: Upload Attic
       run: |
-        nix eval .#checks.x86_64-linux --apply 'x: with builtins; map (x: x.outPath) (attrValues x)' --impure > ./pkglist
-        sed -i -e 's/"//g' -e 's/ /\n/g' ./pkglist
-        sed -i -e '1d' -e '$d' ./pkglist
-        echo '>>>>>>>>>> Upload store >>>>>>>>>>'
-        cat ./pkglist
-        echo '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'
-        for i in `cat ./pkglist`; do attic push -j8 "$ATTIC_CACHE" $i; done
+        bash ./.github/push_cache.sh
