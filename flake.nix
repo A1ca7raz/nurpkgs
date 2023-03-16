@@ -9,8 +9,9 @@
   outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
     let
       lib = nixpkgs.lib;
-      nur = import ./pkgs;
       meta = import ./meta.nix;
+      nur = import ./pkgs;
+      utils = import ./lib lib;
       system = [ "x86_64-linux" ];
     in
     flake-utils.lib.eachSystem system (system:
@@ -37,13 +38,9 @@
       overlay = self.overlays.default;
       overlays.default = nur.overlay;
 
-      nixosModule = self.nixosModules.register;
-      nixosModules.register = { ... }: {
-        nixpkgs.overlays = [ self.overlay ];
-        nix.settings = {
-          substituters = [ meta.cache ];
-          trusted-public-keys = [ meta.pubkey ];
-        };
+      nixosModule = self.nixosModules.default;
+      nixosModules.default = { ... }: {
+        imports = utils.importsDirs ./modules;
       };
     };
 }

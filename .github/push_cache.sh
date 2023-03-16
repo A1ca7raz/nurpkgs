@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 extra_args=${ATTIC_PUSH_ARGS:--j8}
 cache=${ATTIC_CACHE:-test}
@@ -12,7 +11,7 @@ push_with_retry() {
   false
 }
 
-pkglist=($(nix eval .#checks.x86_64-linux --apply 'x: with builtins; map (x: x.outPath) (attrValues x)' --impure | sed -e 's/"//g' -e 's/ /\n/g' | sed -e '1d' -e '$d'))
+[[ $1 ]] && pkglist=($1) || pkglist=($(nix eval .#checks.x86_64-linux --apply 'x: with builtins; map (x: x.outPath) (attrValues x)' --impure | sed -e 's/"//g' -e 's/ /\n/g' | sed -e '1d' -e '$d'))
 
 echo '>>>>>>>>>> Package Store >>>>>>>>>>'
 for i in ${pkglist[*]}; do echo ${i}; done

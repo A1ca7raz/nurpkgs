@@ -6,10 +6,36 @@ fetch.github = "psifidotos/applet-window-appmenu"
 src.github = "qjfoidnh/BaiduPCS-Go"
 fetch.github = "qjfoidnh/BaiduPCS-Go"
 
+# [clash-meta-country]
+# src.cmd = "date +%Y%m%d"
+# fetch.url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
+#
+# [clash-meta-geoip]
+# src.cmd = "date +%Y%m%d"
+# fetch.url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
+#
+# [clash-meta-geosite]
+# src.cmd = "date +%Y%m%d"
+# fetch.url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+#
+# [clash-webui-dashboard]
+# src.git = "https://github.com/Dreamacro/clash-dashboard"
+# src.branch = "gh-pages"
+# fetch.url = "https://github.com/Dreamacro/clash-dashboard/archive/refs/heads/gh-pages.zip"
+#
+# [clash-webui-yacd]
+# src.git = "https://github.com/haishanh/yacd"
+# src.branch = "gh-pages"
+# fetch.url = "https://github.com/haishanh/yacd/archive/refs/heads/gh-pages.zip"
+
 [fcitx5-pinyin-zhwiki]
 src.archpkg = "fcitx5-pinyin-zhwiki"
 src.prefix = "0.2.4."
 fetch.url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-$ver.dict"
+
+[wemeet]
+src.manual = "3.14.0.401"
+fetch.url = "https://updatecdn.meeting.qq.com/cos/1b001ef75914a1d6948decb8c2550b47/TencentMeeting_0300000000_3.14.0.401_x86_64_default.publish.deb"
 
 [yet-another-spotify-tray]
 src.git = "https://github.com/macdems/yet-another-spotify-tray"

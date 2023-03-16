@@ -1,18 +1,19 @@
-name: "Build and populate cache"
+name: "Manaully build and populate cache"
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'pkgs/'
-  schedule:
-    - cron:  '19 18 * * *'
-  repository_dispatch:
   workflow_dispatch:
+    inputs:
+      package:
+        description: 'Package to build'
+        required: true
+      is_push:
+        description: 'Push cache'
+        required: true
+        type: boolean
+        default: true
 
 jobs:
-  CI:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -65,15 +66,12 @@ jobs:
     - name: Check evaluation
       run: nix flake check --no-build --no-allow-import-from-derivation --impure
 
-    - name: Build nix packages
-      run: nix flake check --no-allow-import-from-derivation --impure -v
-
-    - name: Upload lock file
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: "Update Nurpkgs"
-        file_pattern: "pkgs/_sources flake.lock"
+    - name: Build nix package
+      env:
+        PKGNAME: ${{ inputs.package }}
+      run: nix-build .#$PKGNAME --impure -v
 
     - name: Upload Attic
+      if: ${{ inputs.is_push == true }}
       run: |
-        bash ./.github/push_cache.sh
+        bash ./.github/push_cache.sh $PKGNAME
