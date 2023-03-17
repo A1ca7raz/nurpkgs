@@ -54,6 +54,21 @@
         },
         "version": "20230128"
     },
+    "wemeet": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "wemeet",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-ioBlxrdTboLSRXO9BhmdPFl5M0chaEoPgVLsami1Gy8=",
+            "type": "url",
+            "url": "https://updatecdn.meeting.qq.com/cos/1b001ef75914a1d6948decb8c2550b47/TencentMeeting_0300000000_3.14.0.401_x86_64_default.publish.deb"
+        },
+        "version": "3.14.0.401"
+    },
     "yet-another-spotify-tray": {
         "cargoLocks": null,
         "date": "2022-12-20",

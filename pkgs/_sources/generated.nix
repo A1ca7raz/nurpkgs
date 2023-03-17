@@ -31,6 +31,14 @@
       sha256 = "sha256-SFSNwsyE9W9pCIKlu+8pGVVNdNn6MITA4x7meicbUyQ=";
     };
   };
+  wemeet = {
+    pname = "wemeet";
+    version = "3.14.0.401";
+    src = fetchurl {
+      url = "https://updatecdn.meeting.qq.com/cos/1b001ef75914a1d6948decb8c2550b47/TencentMeeting_0300000000_3.14.0.401_x86_64_default.publish.deb";
+      sha256 = "sha256-ioBlxrdTboLSRXO9BhmdPFl5M0chaEoPgVLsami1Gy8=";
+    };
+  };
   yet-another-spotify-tray = {
     pname = "yet-another-spotify-tray";
     version = "b6219acf8e4e4857c5c2d384a88d5fa47d80e2e8";
