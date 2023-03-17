@@ -41,6 +41,11 @@
       nixosModule = self.nixosModules.default;
       nixosModules.default = { ... }: {
         imports = utils.importsDirs ./modules;
+        nixpkgs.overlays = [ self.overlay ];
+        nix.settings = {
+          substituters = [ meta.cache ];
+          trusted-public-keys = [ meta.pubkey ];
+        };
       };
     };
 }
