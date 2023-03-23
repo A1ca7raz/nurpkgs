@@ -6,8 +6,10 @@ on:
       - main
     paths:
       - 'pkgs/'
-  schedule:
-    - cron:  '19 18 * * *'
+  workflow_run:
+    workflows: [ "Update flake.lock" ]
+    types:
+      - completed
   repository_dispatch:
   workflow_dispatch:
 
@@ -53,7 +55,6 @@ jobs:
 
     - name: Update package sources
       run: |
-        nix flake update --impure
         nix run .#update --impure
 
     - name: Show flake metadata
@@ -71,8 +72,8 @@ jobs:
     - name: Upload lock file
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        commit_message: "Update Nurpkgs"
-        file_pattern: "pkgs/_sources flake.lock"
+        commit_message: "Update: sources"
+        file_pattern: "pkgs/_sources"
 
     - name: Upload Attic
       run: |
