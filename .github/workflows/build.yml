@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'pkgs/'
+      - 'pkgs/**'
   workflow_run:
     workflows: [ "Update flake.lock" ]
     types:
@@ -76,5 +76,7 @@ jobs:
         file_pattern: "pkgs/_sources"
 
     - name: Upload Attic
+      env:
+        CI_MODE: 1
       run: |
         bash ./.github/push_cache.sh

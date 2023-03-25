@@ -22,6 +22,7 @@ jobs:
       ATTIC_SERVER: ${{ secrets.ATTIC_SERVER }}
       ATTIC_CACHE: ${{ secrets.ATTIC_CACHE }}
       ATTIC_ACCESS_TOKEN: ${{ secrets.ATTIC_ACCESS_TOKEN }}
+      PKGNAME: ${{ inputs.package }}
 
     steps:
     - name: Maximize space
@@ -67,11 +68,11 @@ jobs:
       run: nix flake check --no-build --no-allow-import-from-derivation --impure
 
     - name: Build nix package
-      env:
-        PKGNAME: ${{ inputs.package }}
-      run: nix-build .#$PKGNAME --impure -v
+      run: nix build .#$PKGNAME --impure -v
 
     - name: Upload Attic
       if: ${{ inputs.is_push == true }}
+      env:
+        CI_MODE: 1
       run: |
         bash ./.github/push_cache.sh $PKGNAME
