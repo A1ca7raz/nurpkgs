@@ -44,9 +44,9 @@ in
     #   source = "${getExe cfg.package}";
     # };
 
-    systemd.service.clash = {
+    systemd.services.clash = {
       wantedBy = [ "multi-user.target" ];
-      after = [ "network.target" ];
+      wants = [ "network-online.target" ];
 
       serviceConfig = {
         Type = "simple";
