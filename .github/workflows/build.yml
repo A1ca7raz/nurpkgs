@@ -42,7 +42,7 @@ jobs:
       with:
         nix_path: nixpkgs=channel:nixos-unstable
         extra_nix_config: |
-          experimental-features = nix-command flakes
+          experimental-features = nix-command flakes repl-flake
           access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
     - name: Setup Attic
@@ -52,6 +52,7 @@ jobs:
         # https://github.com/zhaofengli/attic/blob/main/.github/workflows/build.yml#L30
         export PATH=$HOME/.nix-profile/bin:$PATH
         attic login --set-default ci "$ATTIC_SERVER" "$ATTIC_ACCESS_TOKEN"
+        attic use "$ATTIC_CACHE"
 
     - name: Update package sources
       run: |
