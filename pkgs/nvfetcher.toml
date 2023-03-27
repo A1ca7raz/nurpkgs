@@ -6,27 +6,27 @@ fetch.github = "psifidotos/applet-window-appmenu"
 src.github = "qjfoidnh/BaiduPCS-Go"
 fetch.github = "qjfoidnh/BaiduPCS-Go"
 
-# [clash-meta-country]
-# src.cmd = "date +%Y%m%d"
-# fetch.url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
-#
-# [clash-meta-geoip]
-# src.cmd = "date +%Y%m%d"
-# fetch.url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
-#
-# [clash-meta-geosite]
-# src.cmd = "date +%Y%m%d"
-# fetch.url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
-#
-# [clash-webui-dashboard]
-# src.git = "https://github.com/Dreamacro/clash-dashboard"
-# src.branch = "gh-pages"
-# fetch.url = "https://github.com/Dreamacro/clash-dashboard/archive/refs/heads/gh-pages.zip"
-#
-# [clash-webui-yacd]
-# src.git = "https://github.com/haishanh/yacd"
-# src.branch = "gh-pages"
-# fetch.url = "https://github.com/haishanh/yacd/archive/refs/heads/gh-pages.zip"
+[clash-rules-dat-country]
+src.cmd = "date +%Y%m%d"
+fetch.url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
+
+[clash-rules-dat-geoip]
+src.cmd = "date +%Y%m%d"
+fetch.url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
+
+[clash-rules-dat-geosite]
+src.cmd = "date +%Y%m%d"
+fetch.url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+
+[clash-webui-dashboard]
+src.git = "https://github.com/Dreamacro/clash-dashboard"
+src.branch = "gh-pages"
+fetch.tarball = "https://github.com/Dreamacro/clash-dashboard/archive/refs/heads/gh-pages.zip"
+
+[clash-webui-yacd]
+src.git = "https://github.com/haishanh/yacd"
+src.branch = "gh-pages"
+fetch.tarball = "https://github.com/haishanh/yacd/archive/refs/heads/gh-pages.zip"
 
 [fcitx5-pinyin-zhwiki]
 src.archpkg = "fcitx5-pinyin-zhwiki"
