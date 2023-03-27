@@ -14,14 +14,56 @@
   };
   baidupcs-go = {
     pname = "baidupcs-go";
-    version = "v3.9.0";
+    version = "v3.9.1";
     src = fetchFromGitHub ({
       owner = "qjfoidnh";
       repo = "BaiduPCS-Go";
-      rev = "v3.9.0";
+      rev = "v3.9.1";
       fetchSubmodules = false;
-      sha256 = "sha256-vUrCyUG4Dmt6vy/GZR/5UtFfMhYW0HoAEHgZ7tIVIW4=";
+      sha256 = "sha256-8vK7yjiuY6X0mnAUnq+SwFESC30XZo4ykkm3y2Gt0o0=";
     });
+  };
+  clash-rules-dat-country = {
+    pname = "clash-rules-dat-country";
+    version = "20230327";
+    src = fetchurl {
+      url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb";
+      sha256 = "sha256-Ux/IlDwnpGM6XaBxIukp+eyBxKJ9EnQrXxHph+qtzsg=";
+    };
+  };
+  clash-rules-dat-geoip = {
+    pname = "clash-rules-dat-geoip";
+    version = "20230327";
+    src = fetchurl {
+      url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat";
+      sha256 = "sha256-SMxLYqZ2KX+VKqbMSDZcFsv60kQtqOuhUDqXPtTbWo4=";
+    };
+  };
+  clash-rules-dat-geosite = {
+    pname = "clash-rules-dat-geosite";
+    version = "20230327";
+    src = fetchurl {
+      url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat";
+      sha256 = "sha256-8v7HYCjr7CJzje5QMnEJSi9XRdxB+ZyJn8XY9Gb4yJo=";
+    };
+  };
+  clash-webui-dashboard = {
+    pname = "clash-webui-dashboard";
+    version = "5c86e9de19f730293117da967fa6c5431ae8a1bf";
+    src = fetchTarball {
+      url = "https://github.com/Dreamacro/clash-dashboard/archive/refs/heads/gh-pages.zip";
+      sha256 = "08n5mayg173x3hbkg8qmav0p9jjjyq9c9h3qflx8ikgf1ayizqlr";
+    };
+    date = "2023-03-18";
+  };
+  clash-webui-yacd = {
+    pname = "clash-webui-yacd";
+    version = "41eb20c50fbc685b8ed4b37548434991e4ed6ca3";
+    src = fetchTarball {
+      url = "https://github.com/haishanh/yacd/archive/refs/heads/gh-pages.zip";
+      sha256 = "0wmxa3d3ail0afq2c0rb2z50j7b78yppqzd1f0jmjkz6gycjblnl";
+    };
+    date = "2023-02-12";
   };
   fcitx5-pinyin-zhwiki = {
     pname = "fcitx5-pinyin-zhwiki";
