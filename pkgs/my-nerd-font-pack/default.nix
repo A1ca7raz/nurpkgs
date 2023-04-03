@@ -1,5 +1,4 @@
 {
-  lib,
   nerdfonts
 }:
 nerdfonts.override {
