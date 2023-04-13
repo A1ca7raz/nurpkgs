@@ -48,11 +48,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-1zBbJkIfcMNp/bCRcavF3f0c/3VhKEGrTY13wnXMuuQ=",
+            "sha256": "sha256-S02xTmaUm0dSnduYcjMWsZwmkTHBORfU0q+g54vBaYU=",
             "type": "url",
             "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
         },
-        "version": "20230403"
+        "version": "20230413"
     },
     "clash-rules-dat-geoip": {
         "cargoLocks": null,
@@ -63,11 +63,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-LOTwXYGcc9KOP58DWhcILbT38U1Dcq5SKtXMjplVAB8=",
+            "sha256": "sha256-O3xU3XJ5Nn/rf69aEFidZyS56/kYTPVcAx7HocQ/lgg=",
             "type": "url",
             "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
         },
-        "version": "20230403"
+        "version": "20230413"
     },
     "clash-rules-dat-geosite": {
         "cargoLocks": null,
@@ -78,11 +78,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-nfxHlve6uErL/2uae1u4eSzJbwV278GNbyBi/WNXLGs=",
+            "sha256": "sha256-ToBPMz9IMvQ7q+rnB8utKhWDqtUs7Imkaxh5D+7qd4I=",
             "type": "url",
             "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
         },
-        "version": "20230403"
+        "version": "20230413"
     },
     "clash-webui-dashboard": {
         "cargoLocks": null,
