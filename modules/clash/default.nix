@@ -1,9 +1,8 @@
-{ options, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 with lib; let
-  cfg = config.services.clash;
-in
-{
-  options.services.clash = {
+  cfg = config.modules.clash;
+in {
+  options.modules.clash = {
     enable = mkEnableOption "Enable Clash Service";
     package = mkOption {
       type = types.package;
@@ -12,31 +11,30 @@ in
     };
 
     configFile = mkOption {
-      type = types.string;
+      type = types.str;
       description = "Clash config file";
     };
 
-    enableWebUi = mkEnableOption "Enable Clash WebUI";
-    webUiListen = mkOption {
-      type = with types; nullOr string;
-      default = "127.0.0.1:2023";
+    enableUI = mkEnableOption "Enable Clash WebUI";
+    uiListen = mkOption {
+      type = types.str;
+      default = "127.0.0.1:9090";
       description = "Override external controller address";
     };
-    webUiPackage = mkOption {
+    uiPackage = mkOption {
       type = types.package;
       default = pkgs.clash-webui-yacd;
       description = "Clash WebUI package to use. Default to clash-webui-yacd";
     };
+
+    extraArgs = mkOption {
+      type = types.str;
+      default = "";
+      description = "Extra arguments";
+    };
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      cfg.package
-      clash-rules-dat-country
-      clash-rules-dat-geoip
-      clash-rules-dat-geosite
-    ];
-
     # security.wrappers.clash = {
     #   owner = "root";
     #   group = "root";
@@ -44,16 +42,30 @@ in
     #   source = "${getExe cfg.package}";
     # };
 
-    systemd.services.clash = {
+    systemd.services.clash =
+    let
+      uiScript = optionalString (cfg.enableUI)
+        "-ext-ctl ${cfg.uiListen} -ext-ui $CONF_DIR/ui";
+
+      serviceScript = pkgs.writeShellScriptBin "clash-service" ''
+        CONF_DIR=/var/lib/clash
+        CONF=$1
+        ${pkgs.coreutils}/bin/mkdir -p $CONF_DIR
+        ln -sf ${cfg.uiPackage}/share/clash/ui $CONF_DIR/ui
+        ln -sf ${pkgs.clash-rules-dat-geoip}/share/clash/GeoIP.dat $CONF_DIR/GeoIP.dat
+        ln -sf ${pkgs.clash-rules-dat-geosite}/share/clash/GeoSite.dat $CONF_DIR/GeoSite.dat
+        ln -sf ${pkgs.clash-rules-dat-country}/share/clash/Country.mmdb $CONF_DIR/Country.mmdb
+
+        ${getExe cfg.package} -d $CONF_DIR -f $CONF ${uiScript} ${cfg.extraArgs}
+      '';
+    in {
       wantedBy = [ "multi-user.target" ];
       wants = [ "network-online.target" ];
 
       serviceConfig = {
         Type = "simple";
         LoadCredential = "config:${cfg.configFile}";
-        ExecStart = "${getExe cfg.package} -d /etc/clash/ -f %d/config"
-          + optionalString (cfg.enableWebUi && ! isNull cfg.webUiListen)
-            " -ext-ctl ${cfg.webUiListen} -ext-ui ${cfg.webUiPackage}/share/clash-webui";
+        ExecStart = "${getExe serviceScript} %d/config";
         Restart = "on-failure";
       };
     };

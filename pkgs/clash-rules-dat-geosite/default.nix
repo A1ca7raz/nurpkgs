@@ -7,7 +7,7 @@ stdenv.mkDerivation {
   inherit (source) pname version src;
   dontUnpack = true;
   installPhase = ''
-    install -Dm644 $src $out/etc/clash/GeoSite.dat
+    install -Dm644 $src $out/share/clash/GeoSite.dat
   '';
 
   meta = with lib; {

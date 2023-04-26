@@ -7,8 +7,8 @@ stdenv.mkDerivation {
   inherit (source) pname version src;
 
   installPhase = ''
-    mkdir -p $out/share/clash-webui
-    cp -r $src $out/share/clash-webui
+    mkdir -p $out/share/clash/ui
+    cp -r $src $out/share/clash/ui
   '';
 
   meta = with lib; {

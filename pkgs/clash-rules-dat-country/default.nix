@@ -7,7 +7,7 @@ stdenv.mkDerivation {
   inherit (source) pname version src;
   dontUnpack = true;
   installPhase = ''
-    install -Dm644 $src $out/etc/clash/Country.mmdb
+    install -Dm644 $src $out/share/clash/Country.mmdb
   '';
 
   meta = with lib; {
