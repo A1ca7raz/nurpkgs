@@ -54,9 +54,7 @@ jobs:
         attic login --set-default ci "$ATTIC_SERVER" "$ATTIC_ACCESS_TOKEN"
 
     - name: Update package sources
-      run: |
-        nix flake update --impure
-        nix run .#update --impure
+      run: nix run .#update --impure
 
     - name: Show flake metadata
       run: nix flake metadata --impure
@@ -76,6 +74,12 @@ jobs:
           [[ $? == 0 ]] && echo -en " \e[32m" || echo -en " \e[31m"
           echo -e "<<=====\e[0m"
         done
+
+    - name: Upload lock file
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "Update: sources"
+        file_pattern: "pkgs/_sources"
 
     - name: Upload Attic
       if: ${{ inputs.is_push == true }}

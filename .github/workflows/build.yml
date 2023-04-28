@@ -55,8 +55,7 @@ jobs:
         attic use "$ATTIC_CACHE"
 
     - name: Update package sources
-      run: |
-        nix run .#update --impure
+      run: nix run .#update --impure
 
     - name: Show flake metadata
       run: nix flake metadata --impure
