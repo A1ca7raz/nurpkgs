@@ -35,6 +35,10 @@ in {
   };
 
   config = mkIf cfg.enable {
+    assertions = [{
+      assertion = with builtins; pathExists (toPath cfg.configFile);
+      message = "Config file does not exist.";
+    }];
     # security.wrappers.clash = {
     #   owner = "root";
     #   group = "root";
@@ -47,9 +51,11 @@ in {
       uiScript = optionalString (cfg.enableUI)
         "-ext-ctl ${cfg.uiListen} -ext-ui $CONF_DIR/ui";
 
+      # pkgs.runCommand
       serviceScript = pkgs.writeShellScriptBin "clash-service" ''
         CONF_DIR=/var/lib/clash
         CONF=$1
+        echo "Config Path: $CONF"
         ${pkgs.coreutils}/bin/mkdir -p $CONF_DIR
         ln -sf ${cfg.uiPackage}/share/clash/ui $CONF_DIR/ui
         ln -sf ${pkgs.clash-rules-dat-geoip}/share/clash/GeoIP.dat $CONF_DIR/GeoIP.dat
