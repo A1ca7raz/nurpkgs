@@ -35,10 +35,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    assertions = [{
-      assertion = with builtins; pathExists (toPath cfg.configFile);
-      message = "Config file does not exist.";
-    }];
+    warnings =
+      if with builtins; pathExists (toPath cfg.configFile)
+      then []
+      else [''
+              Clash: Config file does not exist. Clash service may fail to start.
+                Please check the path and restart the service.
+              - Path: ${cfg.configFile}
+            '' ];
     # security.wrappers.clash = {
     #   owner = "root";
     #   group = "root";
