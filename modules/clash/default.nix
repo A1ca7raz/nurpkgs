@@ -1,4 +1,6 @@
 { config, lib, pkgs, ... }:
+# https://github.com/LEXUGE/flake/blob/main/modules/clash/default.nix
+# https://github.com/oluceps/nixos-config/blob/main/modules/clash-m/default.nix
 with lib; let
   cfg = config.modules.clash;
 in {
@@ -10,21 +12,15 @@ in {
       description = "Clash package to use. Default to clash-meta";
     };
 
+    listen = mkOption {
+      type = with types; nullOr str;
+      default = null;
+      description = "Override clash external controller address";
+    };
+
     configFile = mkOption {
       type = types.str;
       description = "Clash config file";
-    };
-
-    enableUI = mkEnableOption "Enable Clash WebUI";
-    uiListen = mkOption {
-      type = types.str;
-      default = "127.0.0.1:9090";
-      description = "Override external controller address";
-    };
-    uiPackage = mkOption {
-      type = types.package;
-      default = pkgs.clash-webui-yacd;
-      description = "Clash WebUI package to use. Default to clash-webui-yacd";
     };
 
     extraArgs = mkOption {
@@ -32,52 +28,83 @@ in {
       default = "";
       description = "Extra arguments";
     };
-  };
 
-  config = mkIf cfg.enable {
-    warnings =
-      if with builtins; pathExists (toPath cfg.configFile)
-      then []
-      else [''
-              Clash: Config file does not exist. Clash service may fail to start.
-                Please check the path and restart the service.
-              - Path: ${cfg.configFile}
-            '' ];
-    # security.wrappers.clash = {
-    #   owner = "root";
-    #   group = "root";
-    #   capabilities = "cap_net_bind_service,cap_net_admin=+ep";
-    #   source = "${getExe cfg.package}";
-    # };
-
-    systemd.services.clash =
-    let
-      uiScript = optionalString (cfg.enableUI)
-        "-ext-ctl ${cfg.uiListen} -ext-ui $CONF_DIR/ui";
-
-      # pkgs.runCommand
-      serviceScript = pkgs.writeShellScriptBin "clash-service" ''
-        CONF_DIR=/var/lib/clash
-        CONF=$1
-        echo "Config Path: $CONF"
-        ${pkgs.coreutils}/bin/mkdir -p $CONF_DIR
-        ln -sf ${cfg.uiPackage}/share/clash/ui $CONF_DIR/ui
-        ln -sf ${pkgs.clash-rules-dat-geoip}/share/clash/GeoIP.dat $CONF_DIR/GeoIP.dat
-        ln -sf ${pkgs.clash-rules-dat-geosite}/share/clash/GeoSite.dat $CONF_DIR/GeoSite.dat
-        ln -sf ${pkgs.clash-rules-dat-country}/share/clash/Country.mmdb $CONF_DIR/Country.mmdb
-
-        ${getExe cfg.package} -d $CONF_DIR -f $CONF ${uiScript} ${cfg.extraArgs}
-      '';
-    in {
-      wantedBy = [ "multi-user.target" ];
-      wants = [ "network-online.target" ];
-
-      serviceConfig = {
-        Type = "simple";
-        LoadCredential = "config:${cfg.configFile}";
-        ExecStart = "${getExe serviceScript} %d/config";
-        Restart = "on-failure";
+    webUI = {
+      enable = mkEnableOption "Enable Clash WebUI";
+      port = mkOption {
+        type = types.int;
+        default = 6789;
+        description = "Clash WebUI Listen Port.";
+      };
+      package = mkOption {
+        type = types.package;
+        default = pkgs.clash-webui-yacd;
+        description = "Clash WebUI package to use. Default to clash-webui-yacd";
       };
     };
   };
+
+  config = mkMerge [
+    (mkIf cfg.enable {
+      users.users.clash = {
+        description = "Clash deamon user";
+        isSystemUser = true;
+        group = "clash";
+      };
+      users.groups.clash = {};
+
+      systemd.services.clash =
+      let
+        listenArg = optionalString (builtins.isString cfg.listen) "-ext-ctl ${cfg.listen}";
+
+        startScript = pkgs.writeShellScriptBin "clash-service-start" ''
+          CONF_DIR=${"\$\{STATE_DIRECTORY:-/var/lib/clash}"}
+          CONF=$1
+          echo "Config Path: $CONF"
+          mkdir -p $CONF_DIR
+          ln -sf ${pkgs.clash-rules-dat-geoip}/share/clash/GeoIP.dat $CONF_DIR/GeoIP.dat
+          ln -sf ${pkgs.clash-rules-dat-geosite}/share/clash/GeoSite.dat $CONF_DIR/GeoSite.dat
+          ln -sf ${pkgs.clash-rules-dat-country}/share/clash/Country.mmdb $CONF_DIR/Country.mmdb
+
+          ${getExe cfg.package} -d $CONF_DIR -f $CONF ${listenArg} ${cfg.extraArgs}
+        '';
+
+        caps = [
+          "CAP_NET_RAW"
+          "CAP_NET_ADMIN"
+          "CAP_NET_BIND_SERVICE"
+        ];
+      in {
+        description = "Clash networking service";
+        path = with pkgs; [ coreutils ];
+        # Don't start if the config file doesn't exist.
+        unitConfig = {
+          # NOTE: configPath is for the original config which is linked to the following path.
+          ConditionPathExists = cfg.configFile;
+        };
+
+        wantedBy = [ "multi-user.target" ];
+        after = [ "network-online.target" ];
+
+        serviceConfig = {
+          Type = "simple";
+          LoadCredential = "config:${cfg.configFile}";
+          ExecStart = "${getExe startScript} %d/config";
+          Restart = "on-failure";
+          StateDirectory = "clash";
+          CapabilityBoundingSet = caps;
+          AmbientCapabilities = caps;
+          User = "clash";
+        };
+      };
+    })
+    (mkIf cfg.webUI.enable {
+      # WebUI
+      services.lighttpd = {
+        enable = true;
+        port = cfg.webUI.port;
+        document-root = "${cfg.webUI.package}/share/clash/ui";
+      };
+    })
+  ];
 }
