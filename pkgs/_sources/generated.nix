@@ -25,43 +25,43 @@
   };
   clash-rules-dat-country = {
     pname = "clash-rules-dat-country";
-    version = "20230426";
+    version = "20230428";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb";
-      sha256 = "sha256-pJm5fMsLePutzUIDcjbQ+uKYXlLh2T0/Mfz1118Vqyo=";
+      sha256 = "sha256-rgv90O/Bq8l/7ppxJurXPDJsGRu7mbsXH6+cT/3hTdo=";
     };
   };
   clash-rules-dat-geoip = {
     pname = "clash-rules-dat-geoip";
-    version = "20230426";
+    version = "20230428";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat";
-      sha256 = "sha256-dCuAa7KCKKRj7iC2IunwTW/6sCl93SlVnXtjWElBb4E=";
+      sha256 = "sha256-ENgbrYkidr6wY2yuIRtckHj4weVW6/LhLOV+9GHwrFw=";
     };
   };
   clash-rules-dat-geosite = {
     pname = "clash-rules-dat-geosite";
-    version = "20230426";
+    version = "20230428";
     src = fetchurl {
       url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat";
-      sha256 = "sha256-hrTykUzrY9AWV4KSqdIN9FSeT+D9Af2m3qyHk6fdSvY=";
+      sha256 = "sha256-KedNXOFmmE71GvKp7iTXHdd9pTqzZ81o1YeHtx3OBLc=";
     };
   };
   clash-webui-dashboard = {
     pname = "clash-webui-dashboard";
     version = "a71356276ed55660f9c71e5866f1fcbb3c5641d5";
-    src = fetchTarball {
+    src = fetchurl {
       url = "https://github.com/Dreamacro/clash-dashboard/archive/refs/heads/gh-pages.zip";
-      sha256 = "1pi9jvmmi5vznq05z1xk3mfkriixhs30lkx3ffwfnvscxdhbgfkf";
+      sha256 = "sha256-cOuN/PHpOMPmxiN551gbOBbyTOPO2OolIpRJuORb4Bw=";
     };
     date = "2023-04-18";
   };
   clash-webui-yacd = {
     pname = "clash-webui-yacd";
     version = "41eb20c50fbc685b8ed4b37548434991e4ed6ca3";
-    src = fetchTarball {
+    src = fetchurl {
       url = "https://github.com/haishanh/yacd/archive/refs/heads/gh-pages.zip";
-      sha256 = "0wmxa3d3ail0afq2c0rb2z50j7b78yppqzd1f0jmjkz6gycjblnl";
+      sha256 = "sha256-ZYyWdxnpd5JtLAo6wuzz5C2kAwammuw5ILnLF7PPLIk=";
     };
     date = "2023-02-12";
   };
