@@ -21,12 +21,12 @@ fetch.url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/dow
 [clash-webui-dashboard]
 src.git = "https://github.com/Dreamacro/clash-dashboard"
 src.branch = "gh-pages"
-fetch.tarball = "https://github.com/Dreamacro/clash-dashboard/archive/refs/heads/gh-pages.zip"
+fetch.url = "https://github.com/Dreamacro/clash-dashboard/archive/refs/heads/gh-pages.zip"
 
 [clash-webui-yacd]
 src.git = "https://github.com/haishanh/yacd"
 src.branch = "gh-pages"
-fetch.tarball = "https://github.com/haishanh/yacd/archive/refs/heads/gh-pages.zip"
+fetch.url = "https://github.com/haishanh/yacd/archive/refs/heads/gh-pages.zip"
 
 [fcitx5-pinyin-zhwiki]
 src.archpkg = "fcitx5-pinyin-zhwiki"
