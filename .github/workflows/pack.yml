@@ -68,7 +68,14 @@ jobs:
       run: nix flake check --no-build --no-allow-import-from-derivation --impure
 
     - name: Build nix package
-      run: nix build .#$PKGNAME --impure -v
+      run: |
+        PKGS=($PKGNAME)
+        for pkg in ${PKGS[*]}; do
+          echo -e " \e[32m=====>> $pkg\e[0m"
+          nix build .#$pkg --impure -v
+          [[ $? == 0 ]] && echo -en " \e[32m" || echo -en " \e[31m"
+          echo -e "<<=====\e[0m"
+        done
 
     - name: Upload Attic
       if: ${{ inputs.is_push == true }}
