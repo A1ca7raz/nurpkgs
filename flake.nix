@@ -4,6 +4,12 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+
+    # Packages from other flakes
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
@@ -24,7 +30,7 @@
       in rec {
         packages = (flake-utils.lib.filterPackages pkgs.system (nur.packages pkgs)) // {
           inherit (pkgs) wpsoffice;
-        };
+        } // inputs.sops-nix.packages.${system};
         checks = packages;
         formatter = pkgs.nixpkgs-fmt;
         devShells.default = mkShell { nativeBuildInputs = with pkgs; [ nvfetcher ]; };
