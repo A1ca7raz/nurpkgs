@@ -39,4 +39,4 @@ fetch.url = "https://updatecdn.meeting.qq.com/cos/1b001ef75914a1d6948decb8c2550b
 
 [yet-another-spotify-tray]
 src.git = "https://github.com/macdems/yet-another-spotify-tray"
-fetch.git = "https://github.com/macdems/yet-another-spotify-tray"
+fetch.url = "https://github.com/macdems/yet-another-spotify-tray/archive/refs/heads/main.zip"
