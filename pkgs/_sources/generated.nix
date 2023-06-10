@@ -4,47 +4,47 @@
   applet-window-appmenu = {
     pname = "applet-window-appmenu";
     version = "v0.8.0";
-    src = fetchFromGitHub ({
+    src = fetchFromGitHub {
       owner = "psifidotos";
       repo = "applet-window-appmenu";
       rev = "v0.8.0";
       fetchSubmodules = false;
       sha256 = "sha256-ckbrSmZowy1+rp17C8OBnpX8wHRSmDRcdYjOhj4JunQ=";
-    });
+    };
   };
   baidupcs-go = {
     pname = "baidupcs-go";
-    version = "v3.9.1";
-    src = fetchFromGitHub ({
+    version = "v3.9.2";
+    src = fetchFromGitHub {
       owner = "qjfoidnh";
       repo = "BaiduPCS-Go";
-      rev = "v3.9.1";
+      rev = "v3.9.2";
       fetchSubmodules = false;
-      sha256 = "sha256-8vK7yjiuY6X0mnAUnq+SwFESC30XZo4ykkm3y2Gt0o0=";
-    });
+      sha256 = "sha256-rN5c0m12Y20d+mbVI0BDvzx3lvRiknxESZ7n16z18Ik=";
+    };
   };
   clash-rules-dat-country = {
     pname = "clash-rules-dat-country";
-    version = "20230513";
+    version = "20230610";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb";
-      sha256 = "sha256-gIHh590OQVU8lHGkt/nUWVNo+/Aq+hba5yLFYOJnIII=";
+      sha256 = "sha256-6T30hkJGThvmt9u6hdlLueja/C+1h5ZQvG4ZZe5haB8=";
     };
   };
   clash-rules-dat-geoip = {
     pname = "clash-rules-dat-geoip";
-    version = "20230513";
+    version = "20230610";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat";
-      sha256 = "sha256-fjNTgg+7K9iucwA7+I4aOCXGaMKexGpRpXLGXO9fJhM=";
+      sha256 = "sha256-T5AItJvzECMD+4ZHhH/IVPbNj9b+SVZUaYzmSb88thg=";
     };
   };
   clash-rules-dat-geosite = {
     pname = "clash-rules-dat-geosite";
-    version = "20230513";
+    version = "20230610";
     src = fetchurl {
       url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat";
-      sha256 = "sha256-31/hbU6RLbF25d4/HFbga5gQfwEt5c8LkgGBY1Ir3Yg=";
+      sha256 = "sha256-wV7d4T1jYKskMiodRTeyWbzh3uh/OeD8kdc8qO2uRTo=";
     };
   };
   clash-webui-dashboard = {
@@ -67,10 +67,10 @@
   };
   fcitx5-pinyin-zhwiki = {
     pname = "fcitx5-pinyin-zhwiki";
-    version = "20230507";
+    version = "20230605";
     src = fetchurl {
-      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20230507.dict";
-      sha256 = "sha256-p4JdQMIBfg9QuRu6vT+eCLqXGyTvAUz2V5wJOSAbv7c=";
+      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20230605.dict";
+      sha256 = "sha256-G44bgOWpnQEbP78idcOobEUm2m+7cYM+UCqyJu+D+9E=";
     };
   };
   wemeet = {
@@ -84,13 +84,9 @@
   yet-another-spotify-tray = {
     pname = "yet-another-spotify-tray";
     version = "b6219acf8e4e4857c5c2d384a88d5fa47d80e2e8";
-    src = fetchgit {
-      url = "https://github.com/macdems/yet-another-spotify-tray";
-      rev = "b6219acf8e4e4857c5c2d384a88d5fa47d80e2e8";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sha256 = "sha256-14iArMwLQC8Mls8eUQJeR5lC+xN9uB61uS7psaLQV2s=";
+    src = fetchurl {
+      url = "https://github.com/macdems/yet-another-spotify-tray/archive/refs/heads/main.zip";
+      sha256 = "sha256-sN65a9Y4m5f4VYmY0cadUBi14KD4s+asjW+MIaCa5rc=";
     };
     date = "2022-12-20";
   };
