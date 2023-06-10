@@ -4,6 +4,7 @@
   lib,
   fetchFromGitHub,
   cmake,
+  unzip,
   dbus,
   libsForQt5,
   xorg
@@ -12,8 +13,12 @@ stdenv.mkDerivation rec {
   inherit (source) pname version src;
 
   nativeBuildInputs = [
-    cmake
+    cmake unzip
   ];
+  unpackPhase = ''
+    unzip $src
+  '';
+  sourceRoot = "yet-another-spotify-tray-main";
 
   buildInputs = with libsForQt5; [
     dbus
