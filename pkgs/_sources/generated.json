@@ -52,7 +52,7 @@
             "type": "url",
             "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
         },
-        "version": "20230610"
+        "version": "20230613"
     },
     "clash-rules-dat-geoip": {
         "cargoLocks": null,
@@ -67,7 +67,7 @@
             "type": "url",
             "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
         },
-        "version": "20230610"
+        "version": "20230613"
     },
     "clash-rules-dat-geosite": {
         "cargoLocks": null,
@@ -78,26 +78,26 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-wV7d4T1jYKskMiodRTeyWbzh3uh/OeD8kdc8qO2uRTo=",
+            "sha256": "sha256-7Et8/sHqUyPMRinsUvSk7V7A3NCZPDcAfeXrkU4FRjU=",
             "type": "url",
             "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
         },
-        "version": "20230610"
+        "version": "20230613"
     },
     "clash-webui-dashboard": {
         "cargoLocks": null,
-        "date": "2023-04-29",
+        "date": "2023-06-13",
         "extract": null,
         "name": "clash-webui-dashboard",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-FAKQqW+lz90IWShVZvSCpNt551zVSgx+CAuJg2Ja8go=",
+            "sha256": "sha256-mOB++VhgcaCboNUu/j+My0T5OmYGiy0KTXyEJwEIRF0=",
             "type": "url",
             "url": "https://github.com/Dreamacro/clash-dashboard/archive/refs/heads/gh-pages.zip"
         },
-        "version": "bd9971a0aad807cf121c29bf20c55f7a82d02043"
+        "version": "6a4630dd3de968ef04a027e6b59826fc4c3267b1"
     },
     "clash-webui-yacd": {
         "cargoLocks": null,
