@@ -47,8 +47,10 @@ jobs:
 
     - name: Setup Attic
       run: |
-        curl -L https://raw.githubusercontent.com/zhaofengli/attic/main/.github/install-attic-ci.sh -O
+        # curl -L https://raw.githubusercontent.com/zhaofengli/attic/main/.github/install-attic-ci.sh -O
+        curl -LO https://raw.githubusercontent.com/icewind1991/attic-action/master/dist/main/install-attic-ci.sh
         bash install-attic-ci.sh
+
         # https://github.com/zhaofengli/attic/blob/main/.github/workflows/build.yml#L30
         export PATH=$HOME/.nix-profile/bin:$PATH
         attic login --set-default ci "$ATTIC_SERVER" "$ATTIC_ACCESS_TOKEN"

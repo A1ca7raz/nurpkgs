@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'pkgs/**'
+      - '.github/workflows/build.yml'
   workflow_run:
     workflows: [ "Update flake.lock" ]
     types:

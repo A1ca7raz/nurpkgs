@@ -1,6 +1,9 @@
 name: "Update flake.lock"
 
 on:
+  push:
+    paths:
+    - '.github/workflows/update.yml'
   schedule:
     - cron:  '19 18 1,13 * *'
   repository_dispatch:
