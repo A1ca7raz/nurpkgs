@@ -47,8 +47,10 @@ jobs:
 
     - name: Setup Attic
       run: |
-        curl -L https://raw.githubusercontent.com/zhaofengli/attic/main/.github/install-attic-ci.sh -O
+        # curl -L https://raw.githubusercontent.com/zhaofengli/attic/main/.github/install-attic-ci.sh -O
+        curl -LO https://raw.githubusercontent.com/icewind1991/attic-action/master/dist/main/install-attic-ci.sh
         bash install-attic-ci.sh
+
         # https://github.com/zhaofengli/attic/blob/main/.github/workflows/build.yml#L30
         export PATH=$HOME/.nix-profile/bin:$PATH
         attic login --set-default ci "$ATTIC_SERVER" "$ATTIC_ACCESS_TOKEN"
@@ -80,3 +82,10 @@ jobs:
         CI_MODE: 1
       run: |
         bash ./.github/push_cache.sh
+
+    # - name: Setup Attic and push cache
+    #   uses: icewind1991/attic-action@v1.1.1
+    #   with:
+    #     name: ${{ secrets.ATTIC_CACHE }}
+    #     instance: ${{ secrets.ATTIC_SERVER }}
+    #     authToken: ${{ secrets.ATTIC_ACCESS_TOKEN }}
