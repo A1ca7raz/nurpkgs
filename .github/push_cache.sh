@@ -2,7 +2,7 @@
 
 extra_args=${ATTIC_PUSH_ARGS:--j8}
 cache=${ATTIC_CACHE:-test}
-retry_times=${ATTIC_PUSH_RETRY:-3}
+retry_times=${ATTIC_PUSH_RETRY:-5}
 [[ $CI_MODE ]] && dryrun_cmd="" || dryrun_cmd=echo
 
 push_with_retry() {
