@@ -25,7 +25,7 @@
   };
   clash-rules-dat-country = {
     pname = "clash-rules-dat-country";
-    version = "20230706";
+    version = "20230707";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb";
       sha256 = "sha256-ce7QhrGYRslpIvRJNVAup6zm1idqC/ZjWEv1vqZPpeQ=";
@@ -33,7 +33,7 @@
   };
   clash-rules-dat-geoip = {
     pname = "clash-rules-dat-geoip";
-    version = "20230706";
+    version = "20230707";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat";
       sha256 = "sha256-Y7O+BI2x8aZgfpbV1uC/3AMdL5HlJUrTB3km9IVv+KQ=";
@@ -41,10 +41,10 @@
   };
   clash-rules-dat-geosite = {
     pname = "clash-rules-dat-geosite";
-    version = "20230706";
+    version = "20230707";
     src = fetchurl {
       url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat";
-      sha256 = "sha256-wUmGkRSbZ38EddxDJNdv5mebhe8UZjuaCwWML3ni9Fk=";
+      sha256 = "sha256-CYKCrstkJePMqoLBkyu4R2RZrC9ToPo/0s6KrTlTMTI=";
     };
   };
   clash-webui-dashboard = {
