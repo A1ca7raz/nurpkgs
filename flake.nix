@@ -29,7 +29,7 @@
         inherit (pkgs) mkShell;
       in rec {
         packages = (flake-utils.lib.filterPackages pkgs.system (nur.packages pkgs)) // {
-          inherit (pkgs) wpsoffice cloudflare-warp spotify;
+          inherit (pkgs) steam steam-run wpsoffice cloudflare-warp spotify;
         } // inputs.sops-nix.packages.${system};
         checks = packages;
         formatter = pkgs.nixpkgs-fmt;
