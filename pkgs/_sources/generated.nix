@@ -25,7 +25,7 @@
   };
   clash-rules-dat-country = {
     pname = "clash-rules-dat-country";
-    version = "20230707";
+    version = "20230710";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb";
       sha256 = "sha256-ce7QhrGYRslpIvRJNVAup6zm1idqC/ZjWEv1vqZPpeQ=";
@@ -33,7 +33,7 @@
   };
   clash-rules-dat-geoip = {
     pname = "clash-rules-dat-geoip";
-    version = "20230707";
+    version = "20230710";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat";
       sha256 = "sha256-Y7O+BI2x8aZgfpbV1uC/3AMdL5HlJUrTB3km9IVv+KQ=";
@@ -41,10 +41,10 @@
   };
   clash-rules-dat-geosite = {
     pname = "clash-rules-dat-geosite";
-    version = "20230707";
+    version = "20230710";
     src = fetchurl {
       url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat";
-      sha256 = "sha256-CYKCrstkJePMqoLBkyu4R2RZrC9ToPo/0s6KrTlTMTI=";
+      sha256 = "sha256-Y/ToqbJAFjrfJWtcpJZGO/4Vv71ZbNQIVQ9+VjiACQc=";
     };
   };
   clash-webui-dashboard = {
@@ -64,6 +64,23 @@
       sha256 = "sha256-ZYyWdxnpd5JtLAo6wuzz5C2kAwammuw5ILnLF7PPLIk=";
     };
     date = "2023-02-12";
+  };
+  clash-webui-yacd-meta = {
+    pname = "clash-webui-yacd-meta";
+    version = "2d0c52cecf9ee7ed8446d2fa240291ef83facbde";
+    src = fetchurl {
+      url = "https://github.com/MetaCubeX/Yacd-meta/archive/refs/heads/gh-pages.zip";
+      sha256 = "sha256-bj0cHesZ6+5Azs8QNTcO6YRBUxN0IQMvdT3KnBkoLDs=";
+    };
+    date = "2023-06-29";
+  };
+  fcitx5-pinyin-moegirl = {
+    pname = "fcitx5-pinyin-moegirl";
+    version = "20230617";
+    src = fetchurl {
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20230617/moegirl.dict";
+      sha256 = "sha256-eUn/2YYHeRb1g2ObywckmNx+8AB1I34nYhTYPpZMRfo=";
+    };
   };
   fcitx5-pinyin-zhwiki = {
     pname = "fcitx5-pinyin-zhwiki";
