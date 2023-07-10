@@ -28,6 +28,11 @@ src.git = "https://github.com/haishanh/yacd"
 src.branch = "gh-pages"
 fetch.url = "https://github.com/haishanh/yacd/archive/refs/heads/gh-pages.zip"
 
+[clash-webui-yacd-meta]
+src.git = "https://github.com/MetaCubeX/Yacd-meta"
+src.branch = "gh-pages"
+fetch.url = "https://github.com/MetaCubeX/Yacd-meta/archive/refs/heads/gh-pages.zip"
+
 [fcitx5-pinyin-zhwiki]
 src.archpkg = "fcitx5-pinyin-zhwiki"
 src.prefix = "0.2.4."
