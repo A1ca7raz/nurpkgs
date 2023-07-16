@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - 'extra.nix'
       - 'pkgs/**'
       - '.github/workflows/build.yml'
   workflow_run:
@@ -83,10 +84,3 @@ jobs:
         CI_MODE: 1
       run: |
         bash ./.github/push_cache.sh
-
-    # - name: Setup Attic and push cache
-    #   uses: icewind1991/attic-action@v1.1.1
-    #   with:
-    #     name: ${{ secrets.ATTIC_CACHE }}
-    #     instance: ${{ secrets.ATTIC_SERVER }}
-    #     authToken: ${{ secrets.ATTIC_ACCESS_TOKEN }}

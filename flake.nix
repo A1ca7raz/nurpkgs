@@ -27,10 +27,11 @@
           overlays = [ self.overlays.default ];
         };
         inherit (pkgs) mkShell;
+        unfreePkgs = (import ./extra.nix) pkgs;
       in rec {
-        packages = (flake-utils.lib.filterPackages pkgs.system (nur.packages pkgs)) // {
-          inherit (pkgs) steam steam-run wpsoffice cloudflare-warp spotify;
-        } // inputs.sops-nix.packages.${system};
+        packages = (flake-utils.lib.filterPackages pkgs.system (nur.packages pkgs))
+          // unfreePkgs
+          // inputs.sops-nix.packages.${system};
         checks = packages;
         formatter = pkgs.nixpkgs-fmt;
         devShells.default = mkShell { nativeBuildInputs = with pkgs; [ nvfetcher ]; };
