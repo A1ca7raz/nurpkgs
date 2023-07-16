@@ -25,7 +25,7 @@
   };
   clash-rules-dat-country = {
     pname = "clash-rules-dat-country";
-    version = "20230713";
+    version = "20230716";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb";
       sha256 = "sha256-PmBwLliutZnK/2andX+TH544q35vZwbNU+86Jt735u8=";
@@ -33,7 +33,7 @@
   };
   clash-rules-dat-geoip = {
     pname = "clash-rules-dat-geoip";
-    version = "20230713";
+    version = "20230716";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat";
       sha256 = "sha256-SgXUvOTMfpq3pFOt2dROgeYjE+OgVabbTQ/15zREilw=";
@@ -41,10 +41,10 @@
   };
   clash-rules-dat-geosite = {
     pname = "clash-rules-dat-geosite";
-    version = "20230713";
+    version = "20230716";
     src = fetchurl {
       url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat";
-      sha256 = "sha256-aEN8xjuaoEfd+I1VC5X3ls5yhoJ2JFX4Z3NlpA5393o=";
+      sha256 = "sha256-GtfTpfYVJ2vAlu7FvHAc9Exw0WigwEPQ10+JqzVFqEE=";
     };
   };
   clash-webui-dashboard = {
@@ -67,19 +67,19 @@
   };
   clash-webui-yacd-meta = {
     pname = "clash-webui-yacd-meta";
-    version = "2d0c52cecf9ee7ed8446d2fa240291ef83facbde";
+    version = "fa8f6c1a27b37c17cd89b9255a584d21f6ddb7bd";
     src = fetchurl {
       url = "https://github.com/MetaCubeX/Yacd-meta/archive/refs/heads/gh-pages.zip";
-      sha256 = "sha256-bj0cHesZ6+5Azs8QNTcO6YRBUxN0IQMvdT3KnBkoLDs=";
+      sha256 = "sha256-UzHTKdqqytLQtm+eB1VhfhZGP16YI9jSOwgCvaC/Q7M=";
     };
-    date = "2023-06-29";
+    date = "2023-07-15";
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20230617";
+    version = "20230714";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20230617/moegirl.dict";
-      sha256 = "sha256-eUn/2YYHeRb1g2ObywckmNx+8AB1I34nYhTYPpZMRfo=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20230714/moegirl.dict";
+      sha256 = "sha256-E8K25uRIwZEN8iX8o7Sy9lNBm8WfqJYYSs50ReeiMFk=";
     };
   };
   fcitx5-pinyin-zhwiki = {
