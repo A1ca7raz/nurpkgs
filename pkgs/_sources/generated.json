@@ -48,11 +48,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-PmBwLliutZnK/2andX+TH544q35vZwbNU+86Jt735u8=",
+            "sha256": "sha256-64o6cjLrijlCOT9hQ5O5OJOLMJ/v1YD2+qMdXAsDYZA=",
             "type": "url",
             "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
         },
-        "version": "20230718"
+        "version": "20230721"
     },
     "clash-rules-dat-geoip": {
         "cargoLocks": null,
@@ -63,11 +63,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-SgXUvOTMfpq3pFOt2dROgeYjE+OgVabbTQ/15zREilw=",
+            "sha256": "sha256-sBOSWDT2nbz/pKGMYV7pCc9sOVZK3jgIHUtVi8kY6vA=",
             "type": "url",
             "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
         },
-        "version": "20230718"
+        "version": "20230721"
     },
     "clash-rules-dat-geosite": {
         "cargoLocks": null,
@@ -78,11 +78,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-Vn8/c5Ti274YKuj6pnccEte3V3Usr8MJxKUC1t/Vnjo=",
+            "sha256": "sha256-GBLHGZPb9dX1G/nKK1AssZflABmwgFn4v5Cmv1ZtOh0=",
             "type": "url",
             "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
         },
-        "version": "20230718"
+        "version": "20230721"
     },
     "clash-webui-dashboard": {
         "cargoLocks": null,
@@ -158,6 +158,26 @@
             "url": "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20230605.dict"
         },
         "version": "20230605"
+    },
+    "miraclecast-my": {
+        "cargoLocks": null,
+        "date": "2023-07-14",
+        "extract": null,
+        "name": "miraclecast-my",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "albfan",
+            "repo": "miraclecast",
+            "rev": "fdb8671c4087826541c4ffc14df5716c28acd62a",
+            "sha256": "sha256-5/zETPAW2OEOBOjm/DCyp00KOpIwt00IEA92Ow14XL8=",
+            "type": "github"
+        },
+        "version": "fdb8671c4087826541c4ffc14df5716c28acd62a"
     },
     "wemeet": {
         "cargoLocks": null,
