@@ -25,26 +25,26 @@
   };
   clash-rules-dat-country = {
     pname = "clash-rules-dat-country";
-    version = "20230721";
+    version = "20230801";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb";
-      sha256 = "sha256-64o6cjLrijlCOT9hQ5O5OJOLMJ/v1YD2+qMdXAsDYZA=";
+      sha256 = "sha256-qODAlcKCL+B4sKE3o4vzVdZJ9SSS8lzv8T+H6YjXdm4=";
     };
   };
   clash-rules-dat-geoip = {
     pname = "clash-rules-dat-geoip";
-    version = "20230721";
+    version = "20230801";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat";
-      sha256 = "sha256-sBOSWDT2nbz/pKGMYV7pCc9sOVZK3jgIHUtVi8kY6vA=";
+      sha256 = "sha256-CHrhKb2wgum0zLhTQfVzxQc96W9+T85IrCN0p8iJyww=";
     };
   };
   clash-rules-dat-geosite = {
     pname = "clash-rules-dat-geosite";
-    version = "20230721";
+    version = "20230801";
     src = fetchurl {
       url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat";
-      sha256 = "sha256-GBLHGZPb9dX1G/nKK1AssZflABmwgFn4v5Cmv1ZtOh0=";
+      sha256 = "sha256-i/hWhlD9Zfk6I6m8wHp7lbnJA+Sh1AnaZxTyt+rF3RE=";
     };
   };
   clash-webui-dashboard = {
@@ -58,12 +58,12 @@
   };
   clash-webui-yacd = {
     pname = "clash-webui-yacd";
-    version = "41eb20c50fbc685b8ed4b37548434991e4ed6ca3";
+    version = "1cc15568c4136fa1dc4452eb77d8855e20f809cf";
     src = fetchurl {
       url = "https://github.com/haishanh/yacd/archive/refs/heads/gh-pages.zip";
-      sha256 = "sha256-ZYyWdxnpd5JtLAo6wuzz5C2kAwammuw5ILnLF7PPLIk=";
+      sha256 = "sha256-NCZabHe154uUjeLJKoXpGwE2aS4ukhrHgFv40nuRT50=";
     };
-    date = "2023-02-12";
+    date = "2023-07-30";
   };
   clash-webui-yacd-meta = {
     pname = "clash-webui-yacd-meta";
@@ -84,10 +84,10 @@
   };
   fcitx5-pinyin-zhwiki = {
     pname = "fcitx5-pinyin-zhwiki";
-    version = "20230605";
+    version = "20230728";
     src = fetchurl {
-      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20230605.dict";
-      sha256 = "sha256-G44bgOWpnQEbP78idcOobEUm2m+7cYM+UCqyJu+D+9E=";
+      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20230728.dict";
+      sha256 = "sha256-m7bmyvdgUrBR+1uCRmWDc5LAiVbrnqc//Hl4iNbTkGk=";
     };
   };
   miraclecast-my = {
