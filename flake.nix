@@ -14,8 +14,8 @@
 
   outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
     with builtins; let
+      inherit (import ./config.nix) meta extraPackages;
       lib = nixpkgs.lib;
-      meta = import ./meta.nix;
       utils = import ./lib lib;
       system = [ "x86_64-linux" ];
       overlay = import ./overlay.nix;
@@ -24,11 +24,11 @@
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ overlay];
+          overlays = [ overlay ];
         };
         nurpkgs = import ./. { inherit pkgs; };
         inherit (pkgs) mkShell;
-        unfreePkgs = import ./extra.nix pkgs;
+        unfreePkgs = extraPackages pkgs;
       in rec {
         legacyPackages = (flake-utils.lib.filterPackages pkgs.system (nurpkgs))
           // unfreePkgs
