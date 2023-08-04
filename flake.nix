@@ -13,26 +13,28 @@
   };
 
   outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
-    let
+    with builtins; let
       lib = nixpkgs.lib;
       meta = import ./meta.nix;
-      nur = import ./pkgs;
       utils = import ./lib lib;
       system = [ "x86_64-linux" ];
+      overlay = import ./overlay.nix;
     in
     flake-utils.lib.eachSystem system (system:
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ self.overlays.default ];
+          overlays = [ overlay];
         };
+        nurpkgs = import ./. { inherit pkgs; };
         inherit (pkgs) mkShell;
-        unfreePkgs = (import ./extra.nix) pkgs;
+        unfreePkgs = import ./extra.nix pkgs;
       in rec {
-        packages = (flake-utils.lib.filterPackages pkgs.system (nur.packages pkgs))
+        legacyPackages = (flake-utils.lib.filterPackages pkgs.system (nurpkgs))
           // unfreePkgs
           // inputs.sops-nix.packages.${system};
-        checks = packages;
+        packages = legacyPackages;
+        checks = legacyPackages;
         formatter = pkgs.nixpkgs-fmt;
         devShells.default = mkShell { nativeBuildInputs = with pkgs; [ nvfetcher ]; };
         apps.update = {
@@ -43,7 +45,7 @@
         };
     }) // {
       overlay = self.overlays.default;
-      overlays.default = nur.overlay;
+      overlays.default = overlay;
 
       nixosModule = self.nixosModules.default;
       nixosModules.default = { ... }: {
