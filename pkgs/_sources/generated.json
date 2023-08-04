@@ -48,11 +48,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-qODAlcKCL+B4sKE3o4vzVdZJ9SSS8lzv8T+H6YjXdm4=",
+            "sha256": "sha256-ev0d0/X9l+raZAwcrt2nL3+9hTAh/gNdw37EC4JsiSo=",
             "type": "url",
             "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
         },
-        "version": "20230802"
+        "version": "20230804"
     },
     "clash-rules-dat-geoip": {
         "cargoLocks": null,
@@ -63,11 +63,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-CHrhKb2wgum0zLhTQfVzxQc96W9+T85IrCN0p8iJyww=",
+            "sha256": "sha256-eAAbMFMkED8BLixzFAhLLlCfsiWhc5wowXcueMvola4=",
             "type": "url",
             "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
         },
-        "version": "20230802"
+        "version": "20230804"
     },
     "clash-rules-dat-geosite": {
         "cargoLocks": null,
@@ -78,11 +78,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-WnLNlhFnG3JDLLoBDGR7finLQen+Pj5LLAvfbyk+9v8=",
+            "sha256": "sha256-t3xU2gt+6TpjCvqg49GX/78ACoVtiYGD84pzH33MxXg=",
             "type": "url",
             "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
         },
-        "version": "20230802"
+        "version": "20230804"
     },
     "clash-webui-dashboard": {
         "cargoLocks": null,
@@ -129,6 +129,26 @@
         },
         "version": "fa8f6c1a27b37c17cd89b9255a584d21f6ddb7bd"
     },
+    "double-entry-generator": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "double-entry-generator",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "deb-sig",
+            "repo": "double-entry-generator",
+            "rev": "v2.5.0",
+            "sha256": "sha256-YyrnBCPWTWMEj8YMCJ+yqefwBZ1Wkx7vrZYlNxtaHT0=",
+            "type": "github"
+        },
+        "version": "v2.5.0"
+    },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,
         "date": null,
@@ -158,26 +178,6 @@
             "url": "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20230728.dict"
         },
         "version": "20230728"
-    },
-    "miraclecast-my": {
-        "cargoLocks": null,
-        "date": "2023-07-14",
-        "extract": null,
-        "name": "miraclecast-my",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "albfan",
-            "repo": "miraclecast",
-            "rev": "fdb8671c4087826541c4ffc14df5716c28acd62a",
-            "sha256": "sha256-5/zETPAW2OEOBOjm/DCyp00KOpIwt00IEA92Ow14XL8=",
-            "type": "github"
-        },
-        "version": "fdb8671c4087826541c4ffc14df5716c28acd62a"
     },
     "wemeet": {
         "cargoLocks": null,

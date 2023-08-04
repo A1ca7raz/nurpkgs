@@ -25,26 +25,26 @@
   };
   clash-rules-dat-country = {
     pname = "clash-rules-dat-country";
-    version = "20230802";
+    version = "20230804";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb";
-      sha256 = "sha256-qODAlcKCL+B4sKE3o4vzVdZJ9SSS8lzv8T+H6YjXdm4=";
+      sha256 = "sha256-ev0d0/X9l+raZAwcrt2nL3+9hTAh/gNdw37EC4JsiSo=";
     };
   };
   clash-rules-dat-geoip = {
     pname = "clash-rules-dat-geoip";
-    version = "20230802";
+    version = "20230804";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat";
-      sha256 = "sha256-CHrhKb2wgum0zLhTQfVzxQc96W9+T85IrCN0p8iJyww=";
+      sha256 = "sha256-eAAbMFMkED8BLixzFAhLLlCfsiWhc5wowXcueMvola4=";
     };
   };
   clash-rules-dat-geosite = {
     pname = "clash-rules-dat-geosite";
-    version = "20230802";
+    version = "20230804";
     src = fetchurl {
       url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat";
-      sha256 = "sha256-WnLNlhFnG3JDLLoBDGR7finLQen+Pj5LLAvfbyk+9v8=";
+      sha256 = "sha256-t3xU2gt+6TpjCvqg49GX/78ACoVtiYGD84pzH33MxXg=";
     };
   };
   clash-webui-dashboard = {
@@ -74,6 +74,17 @@
     };
     date = "2023-07-15";
   };
+  double-entry-generator = {
+    pname = "double-entry-generator";
+    version = "v2.5.0";
+    src = fetchFromGitHub {
+      owner = "deb-sig";
+      repo = "double-entry-generator";
+      rev = "v2.5.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-YyrnBCPWTWMEj8YMCJ+yqefwBZ1Wkx7vrZYlNxtaHT0=";
+    };
+  };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
     version = "20230714";
@@ -89,18 +100,6 @@
       url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20230728.dict";
       sha256 = "sha256-m7bmyvdgUrBR+1uCRmWDc5LAiVbrnqc//Hl4iNbTkGk=";
     };
-  };
-  miraclecast-my = {
-    pname = "miraclecast-my";
-    version = "fdb8671c4087826541c4ffc14df5716c28acd62a";
-    src = fetchFromGitHub {
-      owner = "albfan";
-      repo = "miraclecast";
-      rev = "fdb8671c4087826541c4ffc14df5716c28acd62a";
-      fetchSubmodules = false;
-      sha256 = "sha256-5/zETPAW2OEOBOjm/DCyp00KOpIwt00IEA92Ow14XL8=";
-    };
-    date = "2023-07-14";
   };
   wemeet = {
     pname = "wemeet";
