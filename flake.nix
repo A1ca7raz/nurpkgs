@@ -40,7 +40,7 @@
         apps.update = {
           type = "app";
           program = (pkgs.writeShellScript "script" ''
-            ${pkgs.nvfetcher}/bin/nvfetcher -c pkgs/nvfetcher.toml -o pkgs/_sources "$@"
+            ${pkgs.nvfetcher}/bin/nvfetcher -o pkgs/_sources "$@"
           '').outPath;
         };
     }) // {
