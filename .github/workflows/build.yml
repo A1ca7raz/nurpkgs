@@ -132,6 +132,7 @@ jobs:
       run: nix flake check --no-allow-import-from-derivation --impure -v
 
     - name: 3-1. Upload package sources
+      if: ${{ inputs.is_update_source == true }}
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: "Update: sources"

@@ -41,6 +41,7 @@
         };
         nurpkgs = import ./. { inherit pkgs; };
         inherit (pkgs) mkShell;
+        mkPackageBundles = utils.mkPackageBundles pkgs.stdenv;
 
         # Groups of nur packages
         customPackages = flake-utils.lib.filterPackages pkgs.system (nurpkgs);
@@ -53,7 +54,7 @@
           sopsPackages //
           nvfetcherPackages;
         packages = legacyPackages;
-        packageBundles = {
+        packageBundles = mkPackageBundles {
           inherit
             unfreePackages
             customPackages
