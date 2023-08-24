@@ -46,7 +46,7 @@ if [[ $groups ]]; then
   pkglist+=($(nix eval .#packageBundles.${arch} --apply "$apply_expr" --impure | sed -e 's/"//g' -e 's/\[//g' -e 's/\]//g' -e 's/ /\n/g'))
 fi
 
-[[ $pkgs ]] && filter_expr="{ inherit (x) ${pkgs[@]}; }" || filter_expr="x"
+[[ $pkgs || $groups ]] && filter_expr="{ inherit (x) ${pkgs[@]}; }" || filter_expr="x"
 apply_expr="x: with builtins; let pkglist = ${filter_expr}; in map (x: x.outPath) (attrValues pkglist)"
 pkglist+=($(nix eval .#packages.${arch} --apply "$apply_expr" --impure | sed -e 's/"//g' -e 's/ /\n/g' | sed -e '1d' -e '$d'))
 

@@ -1,7 +1,7 @@
 { lib, ... }:
 with builtins; rec {
-  mkBundle = stdenv: name: pkgs:
-  stdenv.mkDerivation {
+  mkBundle = nixpkgs: name: pkgs:
+  nixpkgs.stdenv.mkDerivation {
     inherit name;
     nativeBuildInputs =
       if isAttrs pkgs
@@ -9,9 +9,10 @@ with builtins; rec {
       else if isList pkgs
       then pkgs
       else throw "A list or a package set is required.";
+    text = "";
   };
 
-  mkPackageBundles = stdenv: mapAttrs (name: pkgs:
-    mkBundle stdenv name pkgs
+  mkPackageBundles = nixpkgs: mapAttrs (name: pkgs:
+    mkBundle nixpkgs name pkgs
   );
 }

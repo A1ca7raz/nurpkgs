@@ -8,11 +8,12 @@ on:
     - cron:  '19 18 * * 2'
   repository_dispatch:
   workflow_dispatch:
-    disable_update_source:
-      description: Disable source update
-      required: true
-      default: false
-      type: boolean
+    inputs:
+      disable_update_source:
+        description: Disable source update
+        required: true
+        default: false
+        type: boolean
 
 jobs:
   update_lock:

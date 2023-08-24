@@ -117,15 +117,9 @@ jobs:
     - name: 2-2. Build nix check groups
       if: ${{ inputs.groups != 0 }}
       env:
-        GROUPS_NAMES: ${{ inputs.groups }}
+        GROUP_NAMES: ${{ inputs.groups }}
       run: |
-        GRPS=($GROUPS_NAMES)
-        for grp in ${GPRS[*]}; do
-          echo -e " \e[32m== Group ==>> $grp\e[0m"
-          nix build .#packageBundles.x86_64-linux.$grp --impure -v
-          [[ $? == 0 ]] && echo -en " \e[32m" || echo -en " \e[31m"
-          echo -e "<<=== Group ===\e[0m"
-        done
+        bash ./.github/build_bundle.sh
 
     - name: 2-3. Build entire nurpkgs
       if: ${{ inputs.groups == 0 && inputs.packages == 0 }}
