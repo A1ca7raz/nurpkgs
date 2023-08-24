@@ -48,11 +48,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-H2okkkCEjoWugymTcJz1Z2NolJs0592QLRk2xU/kpnE=",
+            "sha256": "sha256-3oe6zN6sbZ4sMRz8gRbIBQSGUtFWda7waaBmtDHZJe8=",
             "type": "url",
             "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
         },
-        "version": "20230813"
+        "version": "20230824"
     },
     "clash-rules-dat-geoip": {
         "cargoLocks": null,
@@ -63,11 +63,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-vKh54Iwub3F+OTPp6Pmc0fUzO3jutFwNm1zb3sBcZnM=",
+            "sha256": "sha256-wLEWLWThs4v6Y0RXmKh28WzEFeP9/g8JLpl4Ls0DiPk=",
             "type": "url",
             "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
         },
-        "version": "20230813"
+        "version": "20230824"
     },
     "clash-rules-dat-geosite": {
         "cargoLocks": null,
@@ -78,26 +78,26 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-x1VTa0fdL+GecEHErhAYguwVwy5mUHEMNU2gTCjhhlY=",
+            "sha256": "sha256-X9lsPkmsZFpH1jP5EEfxOfSPBADsO3ldHB4Y844VQM8=",
             "type": "url",
             "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
         },
-        "version": "20230813"
+        "version": "20230824"
     },
     "clash-webui-dashboard": {
         "cargoLocks": null,
-        "date": "2023-06-30",
+        "date": "2023-08-21",
         "extract": null,
         "name": "clash-webui-dashboard",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-PxliE4pSsKw6WScrFrTSIAU+LvvOerroyQn2jAEJdmM=",
+            "sha256": "sha256-782gN4cakHdku5T5P0uhM0iy7ecIy3iPvQB5CXT3MB8=",
             "type": "url",
             "url": "https://github.com/Dreamacro/clash-dashboard/archive/refs/heads/gh-pages.zip"
         },
-        "version": "1d2eaf0b1da975294461195c90a8279badad3d3c"
+        "version": "56503093e473410bf135abcd556cb8f081b7eefa"
     },
     "clash-webui-yacd": {
         "cargoLocks": null,
@@ -158,11 +158,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-E8K25uRIwZEN8iX8o7Sy9lNBm8WfqJYYSs50ReeiMFk=",
+            "sha256": "sha256-MUaLkjRGEF7HYRMBZ+ff93g8JCDcf+SJg+6xfF4ezlQ=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20230714/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20230814/moegirl.dict"
         },
-        "version": "20230714"
+        "version": "20230814"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLocks": null,
@@ -173,11 +173,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-m7bmyvdgUrBR+1uCRmWDc5LAiVbrnqc//Hl4iNbTkGk=",
+            "sha256": "sha256-aPJN8NWxTTVol85pAqx2O6JFwtJaOSiBZ8DRWsPzCm8=",
             "type": "url",
-            "url": "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20230728.dict"
+            "url": "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20230823.dict"
         },
-        "version": "20230728"
+        "version": "20230823"
     },
     "wemeet": {
         "cargoLocks": null,
