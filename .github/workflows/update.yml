@@ -5,7 +5,7 @@ on:
     paths:
     - '.github/workflows/update.yml'
   schedule:
-    - cron:  '19 18 1,13 * *'
+    - cron:  '19 18 * * 2'
   repository_dispatch:
   workflow_dispatch:
 
