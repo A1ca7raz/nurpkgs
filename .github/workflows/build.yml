@@ -1,22 +1,47 @@
-name: "Build and populate cache"
+name: "Build nur packages"
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'extra.nix'
-      - 'pkgs/**'
-      - '.github/workflows/build.yml'
-  workflow_run:
-    workflows: [ "Update flake.lock" ]
-    types:
-      - completed
-  repository_dispatch:
   workflow_dispatch:
+    inputs:
+      groups:
+        description: Check groups to build
+        required: false
+        type: string
+      packages:
+        description: Packages to build
+        required: false
+        type: string
+      is_push:
+        description: Whether to Push cache
+        required: true
+        default: true
+        type: boolean
+      is_update_source:
+        description: Whether to update sources
+        required: true
+        default: true
+        type: boolean
+  workflow_call:
+    inputs:
+      groups:
+        description: Check groups to build
+        required: false
+        type: string
+      packages:
+        description: Packages to build
+        required: false
+        type: string
+      is_push:
+        description: Whether to Push cache
+        default: true
+        type: boolean
+      is_update_source:
+        description: Whether to update sources
+        default: false
+        type: boolean
 
 jobs:
-  CI:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -27,7 +52,7 @@ jobs:
       ATTIC_ACCESS_TOKEN: ${{ secrets.ATTIC_ACCESS_TOKEN }}
 
     steps:
-    - name: Maximize space
+    - name: 0-1. Maximize space
       # https://github.com/Ninlives/emerge/blob/master/.github/workflows/os.yml#L15
       run: |
         sudo rm -rf /usr/share/dotnet
@@ -38,10 +63,10 @@ jobs:
         echo "Available space:"
         df -h
 
-    - name: Checkout repository
+    - name: 0-2. Checkout repository
       uses: actions/checkout@v3
 
-    - name: Install nix
+    - name: 0-3. Install nix
       uses: cachix/install-nix-action@v22
       with:
         nix_path: nixpkgs=channel:nixos-unstable
@@ -49,9 +74,9 @@ jobs:
           experimental-features = nix-command flakes repl-flake
           access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
-    - name: Setup Attic
+    - name: 0-4. Setup Attic
       run: |
-        # curl -L https://raw.githubusercontent.com/zhaofengli/attic/main/.github/install-attic-ci.sh -O
+        # curl -LO https://raw.githubusercontent.com/zhaofengli/attic/main/.github/install-attic-ci.sh
         curl -LO https://raw.githubusercontent.com/icewind1991/attic-action/master/dist/main/install-attic-ci.sh
         bash install-attic-ci.sh
 
@@ -60,31 +85,61 @@ jobs:
         attic login --set-default ci "$ATTIC_SERVER" "$ATTIC_ACCESS_TOKEN"
         attic use "$ATTIC_CACHE"
 
-    - name: Update package sources
-      run: |
-        nix run .#update --impure
-        nix-collect-garbage -d
+    - name: 1-1. Update package sources
+      if: ${{ inputs.is_update_source == true }}
+      run: nix run .#update --impure
 
-    - name: Show flake metadata
+    - name: 1-2. Show flake metadata
+      if: ${{ always() }}
       run: nix flake metadata --impure
 
-    - name: Show flake information
+    - name: 1-3. Show flake information
+      if: ${{ always() }}
       run: nix flake show --impure
 
-    - name: Check evaluation
+    - name: 1-4. Check evaluation
+      if: ${{ always() }}
       run: nix flake check --no-build --no-allow-import-from-derivation --impure
 
-    - name: Build nix packages
+    - name: 2-1. Build nix packages
+      if: ${{ inputs.packages != 0 }}
+      env:
+        PACKAGE_NAMES: ${{ inputs.packages }}
+      run: |
+        PKGS=($PACKAGE_NAMES)
+        for pkg in ${PKGS[*]}; do
+          echo -e " \e[32m== Package ==>> $pkg\e[0m"
+          nix build .#$pkg --impure -v
+          [[ $? == 0 ]] && echo -en " \e[32m" || echo -en " \e[31m"
+          echo -e "<<== Package ==\e[0m"
+        done
+
+    - name: 2-2. Build nix check groups
+      if: ${{ inputs.groups != 0 }}
+      env:
+        GROUPS_NAMES: ${{ inputs.groups }}
+      run: |
+        GRPS=($GROUPS_NAMES)
+        for grp in ${GPRS[*]}; do
+          echo -e " \e[32m== Group ==>> $grp\e[0m"
+          nix build .#packageBundles.x86_64-linux.$grp --impure -v
+          [[ $? == 0 ]] && echo -en " \e[32m" || echo -en " \e[31m"
+          echo -e "<<=== Group ===\e[0m"
+        done
+
+    - name: 2-3. Build entire nurpkgs
+      if: ${{ inputs.groups == 0 && inputs.packages == 0 }}
       run: nix flake check --no-allow-import-from-derivation --impure -v
 
-    - name: Upload lock file
+    - name: 3-1. Upload package sources
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: "Update: sources"
         file_pattern: "pkgs/_sources"
 
-    - name: Upload Attic
+    - name: 3-2. Push cache to Attic
+      if: ${{ inputs.is_push == true }}
       env:
         CI_MODE: 1
       run: |
-        bash ./.github/push_cache.sh
+        bash ./.github/push_cache.sh -g ${{ inputs.groups }} -p ${{ inputs.packages }}

@@ -22,7 +22,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, nvfetcher, ... }:
     with builtins; let
       inherit (import ./config.nix) meta extraPackages;
       lib = nixpkgs.lib;
@@ -36,33 +36,45 @@
           inherit system;
           overlays = [
             overlay
-            inputs.nvfetcher.overlays.default
+            nvfetcher.overlays.default
           ];
         };
         nurpkgs = import ./. { inherit pkgs; };
         inherit (pkgs) mkShell;
-        unfreePkgs = extraPackages pkgs;
 
-        nvfetcher = inputs.nvfetcher.packages.${system}.default;
+        # Groups of nur packages
+        customPackages = flake-utils.lib.filterPackages pkgs.system (nurpkgs);
+        unfreePackages = extraPackages pkgs;
+        nvfetcherPackages = nvfetcher.packages.${system};
+        sopsPackages = inputs.sops-nix.packages.${system};
       in rec {
-        legacyPackages = (flake-utils.lib.filterPackages pkgs.system (nurpkgs))
-          // unfreePkgs
-          // inputs.sops-nix.packages.${system}
-          // inputs.nvfetcher.packages.${system};
+        legacyPackages = customPackages //
+          unfreePackages //
+          sopsPackages //
+          nvfetcherPackages;
         packages = legacyPackages;
+        packageBundles = {
+          inherit
+            unfreePackages
+            customPackages
+            nvfetcherPackages
+            sopsPackages;
+          ciPackages = nvfetcherPackages // sopsPackages;
+        };
         checks = legacyPackages;
         formatter = pkgs.nixpkgs-fmt;
-        devShells.default = mkShell { nativeBuildInputs = [ nvfetcher ]; };
+        devShells.default = mkShell { nativeBuildInputs = [ nvfetcherPackages.default ]; };
         apps.update = {
           type = "app";
           program = (pkgs.writeShellScript "script" ''
-            ${nvfetcher}/bin/nvfetcher -o pkgs/_sources "$@"
+            ${nvfetcherPackages.default}/bin/nvfetcher -o pkgs/_sources "$@"
           '').outPath;
         };
-    }) // {
+      }
+    ) // {
       overlay = self.overlays.default;
       overlays.default = overlay;
-      overlays.nvfetcher = inputs.nvfetcher.overlays.default;
+      overlays.nvfetcher = nvfetcher.overlays.default;
 
       nixosModule = self.nixosModules.default;
       nixosModules.default = { ... }: {

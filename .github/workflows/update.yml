@@ -1,27 +1,35 @@
-name: "Update flake.lock"
+name: "Update packages weekly"
 
 on:
   push:
     paths:
-    - '.github/workflows/update.yml'
+      - '.github/workflows/update.yml'
   schedule:
     - cron:  '19 18 * * 2'
   repository_dispatch:
   workflow_dispatch:
+    disable_update_source:
+      description: Disable source update
+      required: true
+      default: false
+      type: boolean
 
 jobs:
-  CI:
+  update_lock:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     env:
       NIXPKGS_ALLOW_UNFREE: 1
+      ATTIC_SERVER: ${{ secrets.ATTIC_SERVER }}
+      ATTIC_CACHE: ${{ secrets.ATTIC_CACHE }}
+      ATTIC_ACCESS_TOKEN: ${{ secrets.ATTIC_ACCESS_TOKEN }}
 
     steps:
-    - name: Checkout repository
+    - name: 0-1. Checkout repository
       uses: actions/checkout@v3
 
-    - name: Install nix
+    - name: 0-2. Install nix
       uses: cachix/install-nix-action@v22
       with:
         nix_path: nixpkgs=channel:nixos-unstable
@@ -29,15 +37,66 @@ jobs:
           experimental-features = nix-command flakes
           access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
-    - name: Update package sources
-      run: |
-        nix flake update --impure
+    - name: 1-1. Update flake.lock
+      run: nix flake update --impure
 
-    - name: Show flake metadata
+    - name: 1-2. Show flake metadata
+      if: ${{ always() }}
       run: nix flake metadata --impure
 
-    - name: Push flake.lock
+    - name: 1-3. Push flake.lock
+      if: ${{ inputs.disable_update_source == true }}
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: "Update: flake.lock"
         file_pattern: "flake.lock"
+
+    - name: 2-1. Setup Attic
+      if: ${{ inputs.disable_update_source != true }}
+      run: |
+        # curl -LO https://raw.githubusercontent.com/zhaofengli/attic/main/.github/install-attic-ci.sh
+        curl -LO https://raw.githubusercontent.com/icewind1991/attic-action/master/dist/main/install-attic-ci.sh
+        bash install-attic-ci.sh
+
+        # https://github.com/zhaofengli/attic/blob/main/.github/workflows/build.yml#L30
+        export PATH=$HOME/.nix-profile/bin:$PATH
+        attic login --set-default ci "$ATTIC_SERVER" "$ATTIC_ACCESS_TOKEN"
+        attic use "$ATTIC_CACHE"
+
+    - name: 2-2. Update package sources
+      if: ${{ inputs.disable_update_source != true }}
+      run: nix run .#update --impure
+
+    - name: 2-3. Push package sources
+      if: ${{ inputs.disable_update_source != true }}
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "Update: flake.lock&sources"
+        file_pattern: "flake.lock pkgs/_sources"
+
+  update_ci_packages:
+    needs: update_lock
+    permissions:
+      contents: write
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+    with:
+      groups: ciPackages
+
+  update_unfree_packages:
+    needs: update_lock
+    permissions:
+      contents: write
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+    with:
+      groups: unfreePackages
+
+  update_custom_packages:
+    needs: update_lock
+    permissions:
+      contents: write
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+    with:
+      groups: customPackages
