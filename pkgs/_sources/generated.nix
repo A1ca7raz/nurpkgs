@@ -14,18 +14,18 @@
   };
   baidupcs-go = {
     pname = "baidupcs-go";
-    version = "v3.9.2";
+    version = "v3.9.3";
     src = fetchFromGitHub {
       owner = "qjfoidnh";
       repo = "BaiduPCS-Go";
-      rev = "v3.9.2";
+      rev = "v3.9.3";
       fetchSubmodules = false;
-      sha256 = "sha256-rN5c0m12Y20d+mbVI0BDvzx3lvRiknxESZ7n16z18Ik=";
+      sha256 = "sha256-dnSonEQSmVmpJzdvvl4wPA66vsCEnImOhEHECM7M724=";
     };
   };
   clash-rules-dat-country = {
     pname = "clash-rules-dat-country";
-    version = "20230824";
+    version = "20230828";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb";
       sha256 = "sha256-3oe6zN6sbZ4sMRz8gRbIBQSGUtFWda7waaBmtDHZJe8=";
@@ -33,7 +33,7 @@
   };
   clash-rules-dat-geoip = {
     pname = "clash-rules-dat-geoip";
-    version = "20230824";
+    version = "20230828";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat";
       sha256 = "sha256-wLEWLWThs4v6Y0RXmKh28WzEFeP9/g8JLpl4Ls0DiPk=";
@@ -41,10 +41,10 @@
   };
   clash-rules-dat-geosite = {
     pname = "clash-rules-dat-geosite";
-    version = "20230824";
+    version = "20230828";
     src = fetchurl {
       url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat";
-      sha256 = "sha256-X9lsPkmsZFpH1jP5EEfxOfSPBADsO3ldHB4Y844VQM8=";
+      sha256 = "sha256-shAIatez/KXbP95jpLrpx2rJY7uIeBUsmLt28wcgey4=";
     };
   };
   clash-webui-dashboard = {
