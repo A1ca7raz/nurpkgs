@@ -33,11 +33,11 @@
             "name": null,
             "owner": "qjfoidnh",
             "repo": "BaiduPCS-Go",
-            "rev": "v3.9.3",
-            "sha256": "sha256-dnSonEQSmVmpJzdvvl4wPA66vsCEnImOhEHECM7M724=",
+            "rev": "v3.9.4",
+            "sha256": "sha256-7kjMCoT6r7AgqWtjqfEJnQCpo6CNDK8a3NvSdrMI12E=",
             "type": "github"
         },
-        "version": "v3.9.3"
+        "version": "v3.9.4"
     },
     "clash-rules-dat-country": {
         "cargoLocks": null,
@@ -52,7 +52,7 @@
             "type": "url",
             "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
         },
-        "version": "20230831"
+        "version": "20230905"
     },
     "clash-rules-dat-geoip": {
         "cargoLocks": null,
@@ -67,7 +67,7 @@
             "type": "url",
             "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
         },
-        "version": "20230831"
+        "version": "20230905"
     },
     "clash-rules-dat-geosite": {
         "cargoLocks": null,
@@ -78,11 +78,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-RN6WQWd2/T/nVk7HZHr2iRPT+Gs42uqPtIu2qDnh0gA=",
+            "sha256": "sha256-2+QGyUVWF8umbby7hrUfmMAvNptAU/AmLzPbUM7vDps=",
             "type": "url",
             "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
         },
-        "version": "20230831"
+        "version": "20230905"
     },
     "clash-webui-dashboard": {
         "cargoLocks": null,
