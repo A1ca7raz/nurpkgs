@@ -69,7 +69,7 @@ jobs:
         ref: 'main'
 
     - name: 0-3. Install nix
-      uses: cachix/install-nix-action@v22
+      uses: cachix/install-nix-action@v23
       with:
         nix_path: nixpkgs=channel:nixos-unstable
         extra_nix_config: |
