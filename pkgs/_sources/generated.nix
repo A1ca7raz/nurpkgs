@@ -49,12 +49,12 @@
   };
   clash-webui-dashboard = {
     pname = "clash-webui-dashboard";
-    version = "56503093e473410bf135abcd556cb8f081b7eefa";
+    version = "713be1ed2fe55a1e3f0a63d80a41b62f1d8933c4";
     src = fetchurl {
-      url = "https://github.com/Dreamacro/clash-dashboard/archive/56503093e473410bf135abcd556cb8f081b7eefa.zip";
-      sha256 = "sha256-aXtmtqtSjEVcHO8Gfls5QkrqfEiUn/ODBHMVKYs+Ndk=";
+      url = "https://github.com/Dreamacro/clash-dashboard/archive/713be1ed2fe55a1e3f0a63d80a41b62f1d8933c4.zip";
+      sha256 = "sha256-1M/AOsQDW/F8b/yIWOVtWKJM2LNHG69s9EXFgQ3j2XA=";
     };
-    date = "2023-08-21";
+    date = "2023-09-12";
   };
   clash-webui-yacd = {
     pname = "clash-webui-yacd";
