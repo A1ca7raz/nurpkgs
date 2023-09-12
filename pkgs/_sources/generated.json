@@ -52,7 +52,7 @@
             "type": "url",
             "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
         },
-        "version": "20230908"
+        "version": "20230912"
     },
     "clash-rules-dat-geoip": {
         "cargoLocks": null,
@@ -67,7 +67,7 @@
             "type": "url",
             "url": "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
         },
-        "version": "20230908"
+        "version": "20230912"
     },
     "clash-rules-dat-geosite": {
         "cargoLocks": null,
@@ -78,11 +78,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-f3arHGZ66+J47WW9hhzicg4AqUO1CpzuBTNKmLVBxvI=",
+            "sha256": "sha256-GKZqtB8eMNC9TORxd4KRgv5WoAGuKKLHyz4invIbs+4=",
             "type": "url",
             "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
         },
-        "version": "20230908"
+        "version": "20230912"
     },
     "clash-webui-dashboard": {
         "cargoLocks": null,
@@ -143,11 +143,11 @@
             "name": null,
             "owner": "deb-sig",
             "repo": "double-entry-generator",
-            "rev": "v2.5.0",
-            "sha256": "sha256-YyrnBCPWTWMEj8YMCJ+yqefwBZ1Wkx7vrZYlNxtaHT0=",
+            "rev": "v2.5.0-homebrew",
+            "sha256": "sha256-TiXTRgbwElTptx5QhmgIfd8pirWTv5EHgO5RxYWeTtU=",
             "type": "github"
         },
-        "version": "v2.5.0"
+        "version": "v2.5.0-homebrew"
     },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,

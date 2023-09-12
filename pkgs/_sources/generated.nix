@@ -25,7 +25,7 @@
   };
   clash-rules-dat-country = {
     pname = "clash-rules-dat-country";
-    version = "20230908";
+    version = "20230912";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb";
       sha256 = "sha256-WbhQpzcamw7ETelO0sOUcKI3ETCDHnumCvE2J396Bwk=";
@@ -33,7 +33,7 @@
   };
   clash-rules-dat-geoip = {
     pname = "clash-rules-dat-geoip";
-    version = "20230908";
+    version = "20230912";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat";
       sha256 = "sha256-WUFSeDxE7f1xmFfJfOjZHhB/p65200L2FPGyX7ujwW0=";
@@ -41,10 +41,10 @@
   };
   clash-rules-dat-geosite = {
     pname = "clash-rules-dat-geosite";
-    version = "20230908";
+    version = "20230912";
     src = fetchurl {
       url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat";
-      sha256 = "sha256-f3arHGZ66+J47WW9hhzicg4AqUO1CpzuBTNKmLVBxvI=";
+      sha256 = "sha256-GKZqtB8eMNC9TORxd4KRgv5WoAGuKKLHyz4invIbs+4=";
     };
   };
   clash-webui-dashboard = {
@@ -76,13 +76,13 @@
   };
   double-entry-generator = {
     pname = "double-entry-generator";
-    version = "v2.5.0";
+    version = "v2.5.0-homebrew";
     src = fetchFromGitHub {
       owner = "deb-sig";
       repo = "double-entry-generator";
-      rev = "v2.5.0";
+      rev = "v2.5.0-homebrew";
       fetchSubmodules = false;
-      sha256 = "sha256-YyrnBCPWTWMEj8YMCJ+yqefwBZ1Wkx7vrZYlNxtaHT0=";
+      sha256 = "sha256-TiXTRgbwElTptx5QhmgIfd8pirWTv5EHgO5RxYWeTtU=";
     };
   };
   fcitx5-pinyin-moegirl = {
