@@ -4,14 +4,14 @@
   unzip,
   stdenv
 }:
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   inherit (source) pname version src;
 
   nativeBuildInputs = [ unzip ];
   unpackPhase = ''
     unzip $src
   '';
-  sourceRoot = "yacd-gh-pages";
+  sourceRoot = "yacd-${version}";
 
   installPhase = ''
     mkdir -p $out/share/clash/ui
