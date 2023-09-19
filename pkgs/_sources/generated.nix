@@ -25,26 +25,26 @@
   };
   clash-rules-dat-country = {
     pname = "clash-rules-dat-country";
-    version = "202309070542";
+    version = "202309140054";
     src = fetchurl {
-      url = "https://github.com/Loyalsoldier/geoip/releases/download/202309070542/Country.mmdb";
-      sha256 = "sha256-WbhQpzcamw7ETelO0sOUcKI3ETCDHnumCvE2J396Bwk=";
+      url = "https://github.com/Loyalsoldier/geoip/releases/download/202309140054/Country.mmdb";
+      sha256 = "sha256-lDglAE+bXRZkhDVVW+73wm+IATbELdkd4ojzbvW7H3s=";
     };
   };
   clash-rules-dat-geoip = {
     pname = "clash-rules-dat-geoip";
-    version = "202309070542";
+    version = "202309140054";
     src = fetchurl {
-      url = "https://github.com/Loyalsoldier/geoip/releases/download/202309070542/geoip.dat";
-      sha256 = "sha256-WUFSeDxE7f1xmFfJfOjZHhB/p65200L2FPGyX7ujwW0=";
+      url = "https://github.com/Loyalsoldier/geoip/releases/download/202309140054/geoip.dat";
+      sha256 = "sha256-TRp9AxsAaPFJMN+wEc+8qnWHlbPDao/HF22IIH4VFx8=";
     };
   };
   clash-rules-dat-geosite = {
     pname = "clash-rules-dat-geosite";
-    version = "202309112208";
+    version = "202309182208";
     src = fetchurl {
-      url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202309112208/geosite.dat";
-      sha256 = "sha256-GKZqtB8eMNC9TORxd4KRgv5WoAGuKKLHyz4invIbs+4=";
+      url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202309182208/geosite.dat";
+      sha256 = "sha256-thAnNYpIi9eD1x6VVF/TzS9c5gnSYg+ZwaPAO0rMN9w=";
     };
   };
   clash-webui-dashboard = {
@@ -87,10 +87,10 @@
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20230814";
+    version = "20230914";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20230814/moegirl.dict";
-      sha256 = "sha256-MUaLkjRGEF7HYRMBZ+ff93g8JCDcf+SJg+6xfF4ezlQ=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20230914/moegirl.dict";
+      sha256 = "sha256-5IiZwZsGERYMrnMwf9znYAtYSiWaMNFxyAB6c727NY8=";
     };
   };
   fcitx5-pinyin-zhwiki = {

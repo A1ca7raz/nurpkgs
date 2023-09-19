@@ -48,11 +48,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-WbhQpzcamw7ETelO0sOUcKI3ETCDHnumCvE2J396Bwk=",
+            "sha256": "sha256-lDglAE+bXRZkhDVVW+73wm+IATbELdkd4ojzbvW7H3s=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202309070542/Country.mmdb"
+            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202309140054/Country.mmdb"
         },
-        "version": "202309070542"
+        "version": "202309140054"
     },
     "clash-rules-dat-geoip": {
         "cargoLocks": null,
@@ -63,11 +63,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-WUFSeDxE7f1xmFfJfOjZHhB/p65200L2FPGyX7ujwW0=",
+            "sha256": "sha256-TRp9AxsAaPFJMN+wEc+8qnWHlbPDao/HF22IIH4VFx8=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202309070542/geoip.dat"
+            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202309140054/geoip.dat"
         },
-        "version": "202309070542"
+        "version": "202309140054"
     },
     "clash-rules-dat-geosite": {
         "cargoLocks": null,
@@ -78,11 +78,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-GKZqtB8eMNC9TORxd4KRgv5WoAGuKKLHyz4invIbs+4=",
+            "sha256": "sha256-thAnNYpIi9eD1x6VVF/TzS9c5gnSYg+ZwaPAO0rMN9w=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202309112208/geosite.dat"
+            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202309182208/geosite.dat"
         },
-        "version": "202309112208"
+        "version": "202309182208"
     },
     "clash-webui-dashboard": {
         "cargoLocks": null,
@@ -158,11 +158,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-MUaLkjRGEF7HYRMBZ+ff93g8JCDcf+SJg+6xfF4ezlQ=",
+            "sha256": "sha256-5IiZwZsGERYMrnMwf9znYAtYSiWaMNFxyAB6c727NY8=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20230814/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20230914/moegirl.dict"
         },
-        "version": "20230814"
+        "version": "20230914"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLocks": null,
