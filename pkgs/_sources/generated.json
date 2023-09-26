@@ -48,11 +48,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-lDglAE+bXRZkhDVVW+73wm+IATbELdkd4ojzbvW7H3s=",
+            "sha256": "sha256-DS0lYHf0UpuoVwSDAgVBfiI9uBS7BbIlZTq5nxRnfbs=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202309140054/Country.mmdb"
+            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202309210055/Country.mmdb"
         },
-        "version": "202309140054"
+        "version": "202309210055"
     },
     "clash-rules-dat-geoip": {
         "cargoLocks": null,
@@ -63,11 +63,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-TRp9AxsAaPFJMN+wEc+8qnWHlbPDao/HF22IIH4VFx8=",
+            "sha256": "sha256-NJjkuLm2DhAZ38Yt9s+jqq7wEHEqSlbXiMDxHtpBd5E=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202309140054/geoip.dat"
+            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202309210055/geoip.dat"
         },
-        "version": "202309140054"
+        "version": "202309210055"
     },
     "clash-rules-dat-geosite": {
         "cargoLocks": null,
@@ -78,26 +78,26 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-thAnNYpIi9eD1x6VVF/TzS9c5gnSYg+ZwaPAO0rMN9w=",
+            "sha256": "sha256-L2GwgePpkAzz+qZql3Rzk6WgmmOe+9aMqH63ekFMfWc=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202309182208/geosite.dat"
+            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202309252208/geosite.dat"
         },
-        "version": "202309182208"
+        "version": "202309252208"
     },
     "clash-webui-dashboard": {
         "cargoLocks": null,
-        "date": "2023-09-12",
+        "date": "2023-09-26",
         "extract": null,
         "name": "clash-webui-dashboard",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-1M/AOsQDW/F8b/yIWOVtWKJM2LNHG69s9EXFgQ3j2XA=",
+            "sha256": "sha256-dZ6QBRG6T4tvWc4S/9w2tRkEI/IKvMH6I6ixJEZDFQk=",
             "type": "url",
-            "url": "https://github.com/Dreamacro/clash-dashboard/archive/713be1ed2fe55a1e3f0a63d80a41b62f1d8933c4.zip"
+            "url": "https://github.com/Dreamacro/clash-dashboard/archive/95c702cd94b3f4f354b69def5a84d1f798b8667a.zip"
         },
-        "version": "713be1ed2fe55a1e3f0a63d80a41b62f1d8933c4"
+        "version": "95c702cd94b3f4f354b69def5a84d1f798b8667a"
     },
     "clash-webui-yacd": {
         "cargoLocks": null,
