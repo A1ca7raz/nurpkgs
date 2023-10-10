@@ -48,11 +48,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-2SRhZKJ7poQEhQFYvyB5QUryIH9fc3eapuTmTxtT+OA=",
+            "sha256": "sha256-xqT5Pir9U+g0uTpGPlKwv5QgXHbvaLltpQ078dcZR64=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202309280056/Country.mmdb"
+            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202310050056/Country.mmdb"
         },
-        "version": "202309280056"
+        "version": "202310050056"
     },
     "clash-rules-dat-geoip": {
         "cargoLocks": null,
@@ -63,11 +63,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-qGtey8APd57PcjbXJUUVLxMC99lNxdeG5VNW2D8CXt8=",
+            "sha256": "sha256-Jqz+Jmv3y3OICN/CCHoIWMcSu1iuJ3bgas/P9uhx2Ds=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202309280056/geoip.dat"
+            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202310050056/geoip.dat"
         },
-        "version": "202309280056"
+        "version": "202310050056"
     },
     "clash-rules-dat-geosite": {
         "cargoLocks": null,
@@ -78,11 +78,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-3MxnwxGVNImUPXibON0Lo3PxUST4CAkYrx8BqlGAxZQ=",
+            "sha256": "sha256-kqid2h8qCaQADdJxcM071VGJCR2f8g05CTRUsN93HpA=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202310022208/geosite.dat"
+            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202310092208/geosite.dat"
         },
-        "version": "202310022208"
+        "version": "202310092208"
     },
     "clash-webui-dashboard": {
         "cargoLocks": null,
