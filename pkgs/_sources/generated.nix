@@ -25,26 +25,26 @@
   };
   clash-rules-dat-country = {
     pname = "clash-rules-dat-country";
-    version = "202310141311";
+    version = "202310190056";
     src = fetchurl {
-      url = "https://github.com/Loyalsoldier/geoip/releases/download/202310141311/Country.mmdb";
-      sha256 = "sha256-atNs/123jdMGCFsKiGpsCq0IXuOzLgYGbegb3PMYJU0=";
+      url = "https://github.com/Loyalsoldier/geoip/releases/download/202310190056/Country.mmdb";
+      sha256 = "sha256-c9pfvZN82HEOqT9Qj1+WVtTCJ6D/jYM2ih/kPmqqfI4=";
     };
   };
   clash-rules-dat-geoip = {
     pname = "clash-rules-dat-geoip";
-    version = "202310141311";
+    version = "202310190056";
     src = fetchurl {
-      url = "https://github.com/Loyalsoldier/geoip/releases/download/202310141311/geoip.dat";
-      sha256 = "sha256-yWvAlChQEk4CqWOMLtib4n6RgE0bla3ceaXZ0Jq28Tk=";
+      url = "https://github.com/Loyalsoldier/geoip/releases/download/202310190056/geoip.dat";
+      sha256 = "sha256-SRSiVZHy09kDiLaKduo7904RpiKzKzGRpdAelctVhP4=";
     };
   };
   clash-rules-dat-geosite = {
     pname = "clash-rules-dat-geosite";
-    version = "202310162208";
+    version = "202310232208";
     src = fetchurl {
-      url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202310162208/geosite.dat";
-      sha256 = "sha256-3mu1nKM00IUowbqd4EO45iDMfKScnjClIqZE6JvDboE=";
+      url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202310232208/geosite.dat";
+      sha256 = "sha256-H5ewo3yvmDaDQETxlGk7UmcZw70dhTDZDyNIdS7mOQ4=";
     };
   };
   clash-webui-dashboard = {
@@ -67,12 +67,12 @@
   };
   clash-webui-yacd-meta = {
     pname = "clash-webui-yacd-meta";
-    version = "fa8f6c1a27b37c17cd89b9255a584d21f6ddb7bd";
+    version = "d94b9c7283dcc41b7ab0a19c3c39d6f1846526d8";
     src = fetchurl {
-      url = "https://github.com/MetaCubeX/Yacd-meta/archive/fa8f6c1a27b37c17cd89b9255a584d21f6ddb7bd.zip";
-      sha256 = "sha256-VgaQN+OhR4j657mb6O1i6440PNE58xDNlrloA+haMWk=";
+      url = "https://github.com/MetaCubeX/Yacd-meta/archive/d94b9c7283dcc41b7ab0a19c3c39d6f1846526d8.zip";
+      sha256 = "sha256-1cShsI2wfDb6dNhMmak2dcHUevj6p3g52orEHNka1GM=";
     };
-    date = "2023-07-15";
+    date = "2023-10-24";
   };
   double-entry-generator = {
     pname = "double-entry-generator";

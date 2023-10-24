@@ -48,11 +48,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-atNs/123jdMGCFsKiGpsCq0IXuOzLgYGbegb3PMYJU0=",
+            "sha256": "sha256-c9pfvZN82HEOqT9Qj1+WVtTCJ6D/jYM2ih/kPmqqfI4=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202310141311/Country.mmdb"
+            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202310190056/Country.mmdb"
         },
-        "version": "202310141311"
+        "version": "202310190056"
     },
     "clash-rules-dat-geoip": {
         "cargoLocks": null,
@@ -63,11 +63,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-yWvAlChQEk4CqWOMLtib4n6RgE0bla3ceaXZ0Jq28Tk=",
+            "sha256": "sha256-SRSiVZHy09kDiLaKduo7904RpiKzKzGRpdAelctVhP4=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202310141311/geoip.dat"
+            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202310190056/geoip.dat"
         },
-        "version": "202310141311"
+        "version": "202310190056"
     },
     "clash-rules-dat-geosite": {
         "cargoLocks": null,
@@ -78,11 +78,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-3mu1nKM00IUowbqd4EO45iDMfKScnjClIqZE6JvDboE=",
+            "sha256": "sha256-H5ewo3yvmDaDQETxlGk7UmcZw70dhTDZDyNIdS7mOQ4=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202310162208/geosite.dat"
+            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202310232208/geosite.dat"
         },
-        "version": "202310162208"
+        "version": "202310232208"
     },
     "clash-webui-dashboard": {
         "cargoLocks": null,
@@ -116,18 +116,18 @@
     },
     "clash-webui-yacd-meta": {
         "cargoLocks": null,
-        "date": "2023-07-15",
+        "date": "2023-10-24",
         "extract": null,
         "name": "clash-webui-yacd-meta",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-VgaQN+OhR4j657mb6O1i6440PNE58xDNlrloA+haMWk=",
+            "sha256": "sha256-1cShsI2wfDb6dNhMmak2dcHUevj6p3g52orEHNka1GM=",
             "type": "url",
-            "url": "https://github.com/MetaCubeX/Yacd-meta/archive/fa8f6c1a27b37c17cd89b9255a584d21f6ddb7bd.zip"
+            "url": "https://github.com/MetaCubeX/Yacd-meta/archive/d94b9c7283dcc41b7ab0a19c3c39d6f1846526d8.zip"
         },
-        "version": "fa8f6c1a27b37c17cd89b9255a584d21f6ddb7bd"
+        "version": "d94b9c7283dcc41b7ab0a19c3c39d6f1846526d8"
     },
     "double-entry-generator": {
         "cargoLocks": null,
