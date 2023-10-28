@@ -14,6 +14,11 @@ on:
         required: true
         default: false
         type: boolean
+      disable_update_lock:
+        description: Disable flake.lock update
+        required: true
+        default: false
+        type: boolean
 
 jobs:
   update_lock:
@@ -39,6 +44,7 @@ jobs:
           access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
     - name: 1-1. Update flake.lock
+      if: ${{ inputs.disable_update_lock == false }}
       run: nix flake update --impure
 
     - name: 1-2. Show flake metadata
@@ -46,14 +52,14 @@ jobs:
       run: nix flake metadata --impure
 
     - name: 1-3. Push flake.lock
-      if: ${{ inputs.disable_update_source == true }}
+      if: ${{ inputs.disable_update_source == true && inputs.disable_update_lock == false }}
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: "Update: flake.lock"
         file_pattern: "flake.lock"
 
     - name: 2-1. Setup Attic
-      if: ${{ inputs.disable_update_source != true }}
+      if: ${{ inputs.disable_update_source == false }}
       run: |
         # curl -LO https://raw.githubusercontent.com/zhaofengli/attic/main/.github/install-attic-ci.sh
         curl -LO https://raw.githubusercontent.com/icewind1991/attic-action/master/dist/main/install-attic-ci.sh
@@ -65,11 +71,11 @@ jobs:
         attic use "$ATTIC_CACHE"
 
     - name: 2-2. Update package sources
-      if: ${{ inputs.disable_update_source != true }}
+      if: ${{ inputs.disable_update_source == false }}
       run: nix run .#update --impure
 
     - name: 2-3. Push package sources
-      if: ${{ inputs.disable_update_source != true }}
+      if: ${{ inputs.disable_update_source == false }}
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: "Update: flake.lock&sources"
