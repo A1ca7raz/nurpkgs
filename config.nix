@@ -11,6 +11,6 @@
 
   meta = {
     cache = "https://cache.wtm.moe/test";
-    pubkey = "test:eT4GHqLAtlnpFdngFYpI9i06OrlPjZDyHQ7wdoyEorw=";
+    pubkey = "test:k65B9/sD+gF6JX+Ug8ZSzcIbJ/pwD6JpUS/c9sx0SWI=";
   };
 }
