@@ -25,26 +25,26 @@
   };
   clash-rules-dat-country = {
     pname = "clash-rules-dat-country";
-    version = "202310190056";
+    version = "202310290911";
     src = fetchurl {
-      url = "https://github.com/Loyalsoldier/geoip/releases/download/202310190056/Country.mmdb";
-      sha256 = "sha256-c9pfvZN82HEOqT9Qj1+WVtTCJ6D/jYM2ih/kPmqqfI4=";
+      url = "https://github.com/Loyalsoldier/geoip/releases/download/202310290911/Country.mmdb";
+      sha256 = "sha256-YiUKVhphBzjinaq+SYaupsJ4W3HR9orrh+2DW02OxVI=";
     };
   };
   clash-rules-dat-geoip = {
     pname = "clash-rules-dat-geoip";
-    version = "202310190056";
+    version = "202310290911";
     src = fetchurl {
-      url = "https://github.com/Loyalsoldier/geoip/releases/download/202310190056/geoip.dat";
-      sha256 = "sha256-SRSiVZHy09kDiLaKduo7904RpiKzKzGRpdAelctVhP4=";
+      url = "https://github.com/Loyalsoldier/geoip/releases/download/202310290911/geoip.dat";
+      sha256 = "sha256-8xDQodReOKIUqNaaTUIhZbBOztz6p7zGLNG86VUSCF4=";
     };
   };
   clash-rules-dat-geosite = {
     pname = "clash-rules-dat-geosite";
-    version = "202310232208";
+    version = "202310302208";
     src = fetchurl {
-      url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202310232208/geosite.dat";
-      sha256 = "sha256-H5ewo3yvmDaDQETxlGk7UmcZw70dhTDZDyNIdS7mOQ4=";
+      url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202310302208/geosite.dat";
+      sha256 = "sha256-r7ZMOik1XWugkG+htvt98dSeOcPGUQ0ayNvWK0cwvoY=";
     };
   };
   clash-webui-dashboard = {
@@ -58,12 +58,12 @@
   };
   clash-webui-yacd = {
     pname = "clash-webui-yacd";
-    version = "1cc15568c4136fa1dc4452eb77d8855e20f809cf";
+    version = "09eb9389a7109eafd35118cbf7c2ac0860190b01";
     src = fetchurl {
-      url = "https://github.com/haishanh/yacd/archive/1cc15568c4136fa1dc4452eb77d8855e20f809cf.zip";
-      sha256 = "sha256-YR1VTZPbv0YW5DNHkbxi5wjfxTXmDuHDW4t0BCB7PvE=";
+      url = "https://github.com/haishanh/yacd/archive/09eb9389a7109eafd35118cbf7c2ac0860190b01.zip";
+      sha256 = "sha256-983O0cNc+30y4/GO/yTRlWLTAFt+pB5Z90jA3b7en0Q=";
     };
-    date = "2023-07-30";
+    date = "2023-10-30";
   };
   clash-webui-yacd-meta = {
     pname = "clash-webui-yacd-meta";
