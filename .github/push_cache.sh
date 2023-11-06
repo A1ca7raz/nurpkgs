@@ -3,7 +3,7 @@
 # Variables
 extra_args=${ATTIC_PUSH_ARGS:--j8}
 cache=${ATTIC_CACHE:-test}
-retry_times=${ATTIC_PUSH_RETRY:-5}
+retry_times=${ATTIC_PUSH_RETRY:-10}
 arch=${ARCH:-x86_64-linux}
 [[ $CI_MODE ]] && dryrun="" || dryrun=echo
 
