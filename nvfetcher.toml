@@ -18,11 +18,6 @@ fetch.url = "https://github.com/Loyalsoldier/geoip/releases/download/$ver/geoip.
 src.github = "Loyalsoldier/v2ray-rules-dat"
 fetch.url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/$ver/geosite.dat"
 
-[clash-webui-dashboard]
-src.git = "https://github.com/Dreamacro/clash-dashboard"
-src.branch = "gh-pages"
-fetch.url = "https://github.com/Dreamacro/clash-dashboard/archive/$ver.zip"
-
 [clash-webui-yacd]
 src.git = "https://github.com/haishanh/yacd"
 src.branch = "gh-pages"
