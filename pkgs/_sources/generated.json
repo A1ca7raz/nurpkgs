@@ -48,11 +48,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-YiUKVhphBzjinaq+SYaupsJ4W3HR9orrh+2DW02OxVI=",
+            "sha256": "sha256-v4eBSKAisHOoeATFpHc/AmylNtTHISyMJC1xFKbb2g8=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202310290911/Country.mmdb"
+            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202311020056/Country.mmdb"
         },
-        "version": "202310290911"
+        "version": "202311020056"
     },
     "clash-rules-dat-geoip": {
         "cargoLocks": null,
@@ -63,11 +63,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-8xDQodReOKIUqNaaTUIhZbBOztz6p7zGLNG86VUSCF4=",
+            "sha256": "sha256-Yv8JiWkDBF31/f8tNs74O3jKpDh5yzfHBzF8USiS+g4=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202310290911/geoip.dat"
+            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202311020056/geoip.dat"
         },
-        "version": "202310290911"
+        "version": "202311020056"
     },
     "clash-rules-dat-geosite": {
         "cargoLocks": null,
@@ -78,26 +78,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-r7ZMOik1XWugkG+htvt98dSeOcPGUQ0ayNvWK0cwvoY=",
+            "sha256": "sha256-EH+bMae5EEtz7uRqqW1ULF2o4qBEKiKjG7z1TUrLuIY=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202310302208/geosite.dat"
+            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202311062208/geosite.dat"
         },
-        "version": "202310302208"
-    },
-    "clash-webui-dashboard": {
-        "cargoLocks": null,
-        "date": "2023-10-16",
-        "extract": null,
-        "name": "clash-webui-dashboard",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-zc0+mMtSerw/z0auC2SmZiDjeHmVUv6mL7sVhtY+rtg=",
-            "type": "url",
-            "url": "https://github.com/Dreamacro/clash-dashboard/archive/690d6546e8b453bd541a05d9926d680734b67e49.zip"
-        },
-        "version": "690d6546e8b453bd541a05d9926d680734b67e49"
+        "version": "202311062208"
     },
     "clash-webui-yacd": {
         "cargoLocks": null,
