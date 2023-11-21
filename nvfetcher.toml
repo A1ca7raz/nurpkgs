@@ -44,7 +44,3 @@ fetch.url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/downlo
 [wemeet]
 src.manual = "3.14.0.401"
 fetch.url = "https://updatecdn.meeting.qq.com/cos/1b001ef75914a1d6948decb8c2550b47/TencentMeeting_0300000000_3.14.0.401_x86_64_default.publish.deb"
-
-[yet-another-spotify-tray]
-src.git = "https://github.com/macdems/yet-another-spotify-tray"
-fetch.url = "https://github.com/macdems/yet-another-spotify-tray/archive/refs/heads/main.zip"
