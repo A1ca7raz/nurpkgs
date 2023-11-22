@@ -48,11 +48,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-4lmRT8/GeNqoj4b1SUExOcpbUVkUZzqLnrpQpEygsco=",
+            "sha256": "sha256-BzpONDeWrKTxbq3DNRInwi0mWcsBOqmitgH/xnakxFo=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202311090057/Country.mmdb"
+            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202311160059/Country.mmdb"
         },
-        "version": "202311090057"
+        "version": "202311160059"
     },
     "clash-rules-dat-geoip": {
         "cargoLocks": null,
@@ -63,11 +63,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-sMc6zIi2v+JfVIjfjXJhABUGQugIFKeDyonVWs7b5co=",
+            "sha256": "sha256-sLvadfG6wTE6MGabW3Il6uSS2/lWLcu0Jgd8j0U7dnM=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202311090057/geoip.dat"
+            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202311160059/geoip.dat"
         },
-        "version": "202311090057"
+        "version": "202311160059"
     },
     "clash-rules-dat-geosite": {
         "cargoLocks": null,
@@ -78,11 +78,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-RrP/ZDPNQ6MIQWkqI78P1mFY7Tli+dbJTO3skf/RK7k=",
+            "sha256": "sha256-JlVAlpCL2/hR0jojhw0S1mb4B1M5xJlj2QYeel/OBCo=",
             "type": "url",
-            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202311132208/geosite.dat"
+            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202311212209/geosite.dat"
         },
-        "version": "202311132208"
+        "version": "202311212209"
     },
     "clash-webui-yacd": {
         "cargoLocks": null,
@@ -143,11 +143,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-NJB8YnoX28ONolrFXqUxn8jEIRo5VwEUyFJVbahMqGY=",
+            "sha256": "sha256-x+XkATiNMNbcSiN87MkRRvKiNuzvpmkDrtGkwdnIsYM=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20231014/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20231114/moegirl.dict"
         },
-        "version": "20231014"
+        "version": "20231114"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLocks": null,
@@ -178,20 +178,5 @@
             "url": "https://updatecdn.meeting.qq.com/cos/1b001ef75914a1d6948decb8c2550b47/TencentMeeting_0300000000_3.14.0.401_x86_64_default.publish.deb"
         },
         "version": "3.14.0.401"
-    },
-    "yet-another-spotify-tray": {
-        "cargoLocks": null,
-        "date": "2022-12-20",
-        "extract": null,
-        "name": "yet-another-spotify-tray",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-sN65a9Y4m5f4VYmY0cadUBi14KD4s+asjW+MIaCa5rc=",
-            "type": "url",
-            "url": "https://github.com/macdems/yet-another-spotify-tray/archive/refs/heads/main.zip"
-        },
-        "version": "b6219acf8e4e4857c5c2d384a88d5fa47d80e2e8"
     }
 }

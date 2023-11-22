@@ -25,26 +25,26 @@
   };
   clash-rules-dat-country = {
     pname = "clash-rules-dat-country";
-    version = "202311090057";
+    version = "202311160059";
     src = fetchurl {
-      url = "https://github.com/Loyalsoldier/geoip/releases/download/202311090057/Country.mmdb";
-      sha256 = "sha256-4lmRT8/GeNqoj4b1SUExOcpbUVkUZzqLnrpQpEygsco=";
+      url = "https://github.com/Loyalsoldier/geoip/releases/download/202311160059/Country.mmdb";
+      sha256 = "sha256-BzpONDeWrKTxbq3DNRInwi0mWcsBOqmitgH/xnakxFo=";
     };
   };
   clash-rules-dat-geoip = {
     pname = "clash-rules-dat-geoip";
-    version = "202311090057";
+    version = "202311160059";
     src = fetchurl {
-      url = "https://github.com/Loyalsoldier/geoip/releases/download/202311090057/geoip.dat";
-      sha256 = "sha256-sMc6zIi2v+JfVIjfjXJhABUGQugIFKeDyonVWs7b5co=";
+      url = "https://github.com/Loyalsoldier/geoip/releases/download/202311160059/geoip.dat";
+      sha256 = "sha256-sLvadfG6wTE6MGabW3Il6uSS2/lWLcu0Jgd8j0U7dnM=";
     };
   };
   clash-rules-dat-geosite = {
     pname = "clash-rules-dat-geosite";
-    version = "202311132208";
+    version = "202311212209";
     src = fetchurl {
-      url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202311132208/geosite.dat";
-      sha256 = "sha256-RrP/ZDPNQ6MIQWkqI78P1mFY7Tli+dbJTO3skf/RK7k=";
+      url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202311212209/geosite.dat";
+      sha256 = "sha256-JlVAlpCL2/hR0jojhw0S1mb4B1M5xJlj2QYeel/OBCo=";
     };
   };
   clash-webui-yacd = {
@@ -78,10 +78,10 @@
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20231014";
+    version = "20231114";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20231014/moegirl.dict";
-      sha256 = "sha256-NJB8YnoX28ONolrFXqUxn8jEIRo5VwEUyFJVbahMqGY=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20231114/moegirl.dict";
+      sha256 = "sha256-x+XkATiNMNbcSiN87MkRRvKiNuzvpmkDrtGkwdnIsYM=";
     };
   };
   fcitx5-pinyin-zhwiki = {
@@ -99,14 +99,5 @@
       url = "https://updatecdn.meeting.qq.com/cos/1b001ef75914a1d6948decb8c2550b47/TencentMeeting_0300000000_3.14.0.401_x86_64_default.publish.deb";
       sha256 = "sha256-ioBlxrdTboLSRXO9BhmdPFl5M0chaEoPgVLsami1Gy8=";
     };
-  };
-  yet-another-spotify-tray = {
-    pname = "yet-another-spotify-tray";
-    version = "b6219acf8e4e4857c5c2d384a88d5fa47d80e2e8";
-    src = fetchurl {
-      url = "https://github.com/macdems/yet-another-spotify-tray/archive/refs/heads/main.zip";
-      sha256 = "sha256-sN65a9Y4m5f4VYmY0cadUBi14KD4s+asjW+MIaCa5rc=";
-    };
-    date = "2022-12-20";
   };
 }
