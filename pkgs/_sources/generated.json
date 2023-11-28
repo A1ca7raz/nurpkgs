@@ -39,51 +39,6 @@
         },
         "version": "v3.9.5"
     },
-    "clash-rules-dat-country": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "clash-rules-dat-country",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-BzpONDeWrKTxbq3DNRInwi0mWcsBOqmitgH/xnakxFo=",
-            "type": "url",
-            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202311160059/Country.mmdb"
-        },
-        "version": "202311160059"
-    },
-    "clash-rules-dat-geoip": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "clash-rules-dat-geoip",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-sLvadfG6wTE6MGabW3Il6uSS2/lWLcu0Jgd8j0U7dnM=",
-            "type": "url",
-            "url": "https://github.com/Loyalsoldier/geoip/releases/download/202311160059/geoip.dat"
-        },
-        "version": "202311160059"
-    },
-    "clash-rules-dat-geosite": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "clash-rules-dat-geosite",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-JlVAlpCL2/hR0jojhw0S1mb4B1M5xJlj2QYeel/OBCo=",
-            "type": "url",
-            "url": "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202311212209/geosite.dat"
-        },
-        "version": "202311212209"
-    },
     "clash-webui-yacd": {
         "cargoLocks": null,
         "date": "2023-10-30",
