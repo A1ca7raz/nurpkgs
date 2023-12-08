@@ -33,6 +33,7 @@
     flake-utils.lib.eachSystem system (system:
       let
         pkgs = import nixpkgs {
+          config.allowUnfree = true;
           inherit system;
           overlays = [
             overlay
