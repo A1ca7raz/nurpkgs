@@ -24,7 +24,7 @@
 
   outputs = inputs@{ self, nixpkgs, flake-utils, nvfetcher, ... }:
     with builtins; let
-      inherit (import ./config.nix) meta extraPackages;
+      inherit (import ./config.nix) substituters trusted-public-keys extraPackages;
       lib = nixpkgs.lib;
       utils = import ./lib lib;
       system = [ "x86_64-linux" ];
@@ -85,8 +85,7 @@
           self.overlays.nvfetcher
         ];
         nix.settings = {
-          substituters = [ meta.cache ];
-          trusted-public-keys = [ meta.pubkey ];
+          inherit substituters trusted-public-keys;
         };
       };
     };
