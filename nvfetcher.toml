@@ -1,7 +1,6 @@
 [64gram]
 src.github = "TDesktop-x64/tdesktop"
-src.prefix = "v"
-fetch.url = "TDesktop-x64/tdesktop"
+fetch.github = "TDesktop-x64/tdesktop"
 git.fetchSubmodules = true
 
 [applet-window-appmenu]

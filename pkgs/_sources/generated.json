@@ -7,12 +7,17 @@
         "passthru": null,
         "pinned": false,
         "src": {
+            "deepClone": false,
+            "fetchSubmodules": true,
+            "leaveDotGit": false,
             "name": null,
-            "sha256": "sha256-rdl3rlH75JIJtbc8+36tg1tsl70y2MyppB+xBM3iXsI=",
-            "type": "url",
-            "url": "https://github.com/TDesktop-x64/tdesktop/releases/download/v1.1.5/64Gram_1.1.5_linux.zip"
+            "owner": "TDesktop-x64",
+            "repo": "tdesktop",
+            "rev": "v1.1.5",
+            "sha256": "sha256-/DNz4Rnzds7zHyLcIksxhYOkpMSNCleuEcPtVtcMBrY=",
+            "type": "github"
         },
-        "version": "1.1.5"
+        "version": "v1.1.5"
     },
     "applet-window-appmenu": {
         "cargoLocks": null,

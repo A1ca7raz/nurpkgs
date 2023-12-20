@@ -3,10 +3,13 @@
 {
   "64gram" = {
     pname = "64gram";
-    version = "1.1.5";
-    src = fetchurl {
-      url = "https://github.com/TDesktop-x64/tdesktop/releases/download/v1.1.5/64Gram_1.1.5_linux.zip";
-      sha256 = "sha256-rdl3rlH75JIJtbc8+36tg1tsl70y2MyppB+xBM3iXsI=";
+    version = "v1.1.5";
+    src = fetchFromGitHub {
+      owner = "TDesktop-x64";
+      repo = "tdesktop";
+      rev = "v1.1.5";
+      fetchSubmodules = true;
+      sha256 = "sha256-/DNz4Rnzds7zHyLcIksxhYOkpMSNCleuEcPtVtcMBrY=";
     };
   };
   applet-window-appmenu = {
