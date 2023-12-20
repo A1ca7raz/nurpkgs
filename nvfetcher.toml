@@ -1,7 +1,8 @@
 [64gram]
 src.github = "TDesktop-x64/tdesktop"
 src.prefix = "v"
-fetch.url = "https://github.com/TDesktop-x64/tdesktop/releases/download/v$ver/64Gram_$ver_linux.zip"
+fetch.url = "TDesktop-x64/tdesktop"
+git.fetchSubmodules = true
 
 [applet-window-appmenu]
 src.github = "psifidotos/applet-window-appmenu"
