@@ -54,12 +54,12 @@ let
 
   desktop = fetchurl {
     url = "${url_git}/raw/dev/lib/xdg/io.github.tdesktop_x64.TDesktop.desktop";
-    sha256 = "";
+    sha256 = "sha256-wXpY19P3MMPKeSS0e7jQqIUXE1f7XN3DWVufaPQpoBg=";
   };
 
   icon = fetchurl {
     url = "${url_git}/raw/dev/Telegram/Resources/art/icon256.png";
-    sha256 = "";
+    sha256 = "sha256-P7FADH3Ju8O1yz/+3L9KmwnFPii1en/zOoprkEiGQJA=";
   };
 
   app = source.src;
