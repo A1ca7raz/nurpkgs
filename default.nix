@@ -3,6 +3,6 @@
     overlays = [ (import ./overlay.nix) ];
   }
 }:
-(import ./lib/map_packages.nix {}).mapPackages
+(import ./lib/map_packages.nix { inherit (pkgs) lib; }).mapPackages
   (name: pkgs.${name})
   ./pkgs

@@ -28,7 +28,7 @@
       lib = nixpkgs.lib;
       utils = import ./lib lib;
       system = [ "x86_64-linux" ];
-      overlay = import ./overlay.nix;
+      overlay = import ./overlay.nix lib;
     in
     flake-utils.lib.eachSystem system (system:
       let

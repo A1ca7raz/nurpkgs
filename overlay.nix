@@ -1,8 +1,8 @@
-final: prev:
+lib: final: prev:
 with builtins; let
   path = ./pkgs;
 in
-(import ./lib/map_packages.nix {}).mapPackages (name:
+(import ./lib/map_packages.nix { inherit lib; }).mapPackages (name:
   let
     sources = final.callPackage /${path}/_sources/generated.nix {};
     package = import /${path}/${name};
