@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 with builtins; {
   mapPackages = f: path:
     listToAttrs (map
@@ -6,7 +6,7 @@ with builtins; {
       (filter
         (v: v != null)
         (attrValues (mapAttrs
-          (k: v: if v == "directory" && k != "_sources" then k else null)
+          (k: v: if v == "directory" && ! lib.hasPrefix "_" k then k else null)
           (readDir path)
         ))
       )
