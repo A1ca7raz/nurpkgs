@@ -54,49 +54,49 @@ in {
       users.groups.clash = {};
 
       systemd.services.clash =
-      let
-        listenArg = optionalString (builtins.isString cfg.listen) "-ext-ctl ${cfg.listen}";
+        let
+          listenArg = optionalString (builtins.isString cfg.listen) "-ext-ctl ${cfg.listen}";
 
-        startScript = pkgs.writeShellScriptBin "clash-service-start" ''
-          CONF_DIR=${"\$\{STATE_DIRECTORY:-/var/lib/clash}"}
-          CONF=$1
-          echo "Config Path: $CONF"
-          mkdir -p $CONF_DIR
-          ln -sf ${pkgs.clash-rules-dat-geoip}/share/clash/GeoIP.dat $CONF_DIR/GeoIP.dat
-          ln -sf ${pkgs.clash-rules-dat-geosite}/share/clash/GeoSite.dat $CONF_DIR/GeoSite.dat
-          ln -sf ${pkgs.clash-rules-dat-country}/share/clash/Country.mmdb $CONF_DIR/Country.mmdb
+          startScript = pkgs.writeShellScriptBin "clash-service-start" ''
+            CONF_DIR=${"\$\{STATE_DIRECTORY:-/var/lib/clash}"}
+            CONF=$1
+            echo "Config Path: $CONF"
+            mkdir -p $CONF_DIR
+            ln -sf ${pkgs.clash-rules-dat-geoip}/share/clash/GeoIP.dat $CONF_DIR/GeoIP.dat
+            ln -sf ${pkgs.clash-rules-dat-geosite}/share/clash/GeoSite.dat $CONF_DIR/GeoSite.dat
+            ln -sf ${pkgs.clash-rules-dat-country}/share/clash/Country.mmdb $CONF_DIR/Country.mmdb
 
-          ${getExe cfg.package} -d $CONF_DIR -f $CONF ${listenArg} ${cfg.extraArgs}
-        '';
+            ${getExe cfg.package} -d $CONF_DIR -f $CONF ${listenArg} ${cfg.extraArgs}
+          '';
 
-        caps = [
-          "CAP_NET_RAW"
-          "CAP_NET_ADMIN"
-          "CAP_NET_BIND_SERVICE"
-        ];
-      in {
-        description = "Clash networking service";
-        path = with pkgs; [ coreutils ];
-        # Don't start if the config file doesn't exist.
-        unitConfig = {
-          # NOTE: configPath is for the original config which is linked to the following path.
-          ConditionPathExists = cfg.configFile;
+          caps = [
+            "CAP_NET_RAW"
+            "CAP_NET_ADMIN"
+            "CAP_NET_BIND_SERVICE"
+          ];
+        in {
+          description = "Clash networking service";
+          path = with pkgs; [ coreutils ];
+          # Don't start if the config file doesn't exist.
+          unitConfig = {
+            # NOTE: configPath is for the original config which is linked to the following path.
+            ConditionPathExists = cfg.configFile;
+          };
+
+          wantedBy = [ "multi-user.target" ];
+          after = [ "network-online.target" ];
+
+          serviceConfig = {
+            Type = "simple";
+            LoadCredential = "config:${cfg.configFile}";
+            ExecStart = "${getExe startScript} %d/config";
+            Restart = "on-failure";
+            StateDirectory = "clash";
+            CapabilityBoundingSet = caps;
+            AmbientCapabilities = caps;
+            User = "clash";
+          };
         };
-
-        wantedBy = [ "multi-user.target" ];
-        after = [ "network-online.target" ];
-
-        serviceConfig = {
-          Type = "simple";
-          LoadCredential = "config:${cfg.configFile}";
-          ExecStart = "${getExe startScript} %d/config";
-          Restart = "on-failure";
-          StateDirectory = "clash";
-          CapabilityBoundingSet = caps;
-          AmbientCapabilities = caps;
-          User = "clash";
-        };
-      };
     })
     (mkIf cfg.webUI.enable {
       # WebUI

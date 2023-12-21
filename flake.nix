@@ -23,7 +23,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, flake-utils, nvfetcher, ... }:
-    with builtins; let
+    let
       inherit (import ./config.nix) substituters trusted-public-keys extraPackages;
       lib = nixpkgs.lib;
       utils = import ./lib lib;

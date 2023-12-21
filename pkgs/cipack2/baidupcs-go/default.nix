@@ -3,7 +3,7 @@
   lib,
   buildGoModule
 }:
-buildGoModule rec {
+buildGoModule {
   inherit (source) pname version src;
   vendorHash = "sha256-msTlXtidxLTe3xjxTOWCqx/epFT0XPdwGPantDJUGpc=";
   doCheck = false;

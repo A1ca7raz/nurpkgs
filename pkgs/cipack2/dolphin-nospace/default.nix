@@ -1,5 +1,4 @@
 {
-  lib,
   dolphin,
 }:
 dolphin.overrideAttrs (p: {

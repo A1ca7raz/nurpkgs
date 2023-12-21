@@ -1,5 +1,4 @@
 {
-  lib,
   jetbrains,
   jb-jdk-fixed
 }:

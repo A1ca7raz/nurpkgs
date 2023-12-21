@@ -3,8 +3,7 @@
   qt5,
   dpkg,
   autoPatchelfHook,
-  libbsd,
-  makeWrapper
+  libbsd
 }:
 qt5.mkDerivation {
   inherit (source) pname version src;

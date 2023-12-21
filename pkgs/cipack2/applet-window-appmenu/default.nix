@@ -2,7 +2,6 @@
   source,
   lib,
   stdenv,
-  fetchFromGitHub,
   cmake,
   extra-cmake-modules,
   libsForQt5,
@@ -10,7 +9,7 @@
   libdbusmenu-gtk3,
   xorg
 }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   inherit (source) pname version src;
 
   nativeBuildInputs = [
