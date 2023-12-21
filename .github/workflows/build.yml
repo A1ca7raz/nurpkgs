@@ -3,40 +3,32 @@ name: "Build nur packages"
 on:
   workflow_dispatch:
     inputs:
-      groups:
-        description: Check groups to build
-        required: false
-        type: string
       packages:
-        description: Packages to build
+        description: Package bundles or packages to build
         required: false
         type: string
-      is_push:
-        description: Whether to Push cache
+      push_cache:
+        description: Push cache
         required: true
         default: true
         type: boolean
-      is_update_source:
-        description: Whether to update sources
+      update_source:
+        description: Update sources
         required: true
         default: true
         type: boolean
   workflow_call:
     inputs:
-      groups:
-        description: Check groups to build
-        required: false
-        type: string
       packages:
-        description: Packages to build
+        description: Package bundles or packages to build
         required: false
         type: string
-      is_push:
-        description: Whether to Push cache
+      push_cache:
+        description: Push cache
         default: true
         type: boolean
-      is_update_source:
-        description: Whether to update sources
+      update_source:
+        description: Update sources
         default: false
         type: boolean
 
@@ -46,6 +38,7 @@ jobs:
     permissions:
       contents: write
     env:
+      CI_MODE: 1
       NIXPKGS_ALLOW_UNFREE: 1
       ATTIC_SERVER: ${{ secrets.ATTIC_SERVER }}
       ATTIC_CACHE: ${{ secrets.ATTIC_CACHE }}
@@ -88,7 +81,7 @@ jobs:
         attic use "$ATTIC_CACHE"
 
     - name: 1-1. Update package sources
-      if: ${{ inputs.is_update_source == true }}
+      if: ${{ inputs.update_source == true }}
       run: nix run .#update --impure
 
     - name: 1-2. Show flake metadata
@@ -103,40 +96,24 @@ jobs:
       if: ${{ always() }}
       run: nix flake check --no-build --no-allow-import-from-derivation --impure
 
-    - name: 2-1. Build nix packages
+    - name: 2-1. Build Nix packages bundles
       if: ${{ inputs.packages != 0 }}
       env:
-        PACKAGE_NAMES: ${{ inputs.packages }}
-      run: |
-        PKGS=($PACKAGE_NAMES)
-        for pkg in ${PKGS[*]}; do
-          echo -e " \e[32m== Package ==>> $pkg\e[0m"
-          nix build .#$pkg --impure -v
-          [[ $? == 0 ]] && echo -en " \e[32m" || echo -en " \e[31m"
-          echo -e "<<== Package ==\e[0m"
-        done
-
-    - name: 2-2. Build nix check groups
-      if: ${{ inputs.groups != 0 }}
-      env:
-        GROUP_NAMES: ${{ inputs.groups }}
+        GROUP_NAMES: ${{ inputs.packages }}
       run: |
         bash ./.github/build_bundle.sh
 
-    - name: 2-3. Build entire nurpkgs
-      if: ${{ inputs.groups == 0 && inputs.packages == 0 }}
+    - name: 2-2. Build entire nurpkgs
+      if: ${{ inputs.packages == 0 }}
       run: nix flake check --no-allow-import-from-derivation --impure -v
 
     - name: 3-1. Upload package sources
-      if: ${{ inputs.is_update_source == true }}
+      if: ${{ inputs.update_source == true }}
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "Update: sources"
         file_pattern: "pkgs/_sources"
 
     - name: 3-2. Push cache to Attic
-      if: ${{ inputs.is_push == true }}
-      env:
-        CI_MODE: 1
-      run: |
-        bash ./.github/push_cache.sh -g ${{ inputs.groups }} -p ${{ inputs.packages }}
+      if: ${{ inputs.push_cache == true }}
+      run: bash ./.github/push_cache.sh ${{ inputs.packages }}

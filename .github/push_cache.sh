@@ -18,24 +18,12 @@ push_with_retry() {
 # Parse opts
 pkgs=()
 groups=()
-flag=
-while true; do
-  [[ $1 ]] || break
-  case "$1" in
-  -g)
-    shift
-    flag=g
-  ;;
-  -p)
-    shift
-    flag=p
-  ;;
-  *)
-    [[ $flag = 'p' ]] && pkgs+=($1)
-    [[ $flag = 'g' ]] && groups+=($1)
-    shift
-  ;;
-  esac
+for i in $*; do
+  if [[ $(nix eval --raw .#packageBundles.${arch}.${i}.type --impure 2> /dev/null) = "derivation" ]]; then
+    pkgs+=(${i})
+  else
+    groups+=(${i})
+  fi
 done
 
 # Calc store
