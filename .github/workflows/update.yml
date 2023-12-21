@@ -98,7 +98,10 @@ jobs:
         bundles:
           - ciPackages
           - unfreePackages
-          - customPackages
+          - JetBrainsPackages
+          - cipack1
+          - cipack2
+          - uncategorized
     uses: ./.github/workflows/build.yml
     with:
       packages: ${{ matrix.bundles }}
