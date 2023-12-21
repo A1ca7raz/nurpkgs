@@ -77,7 +77,7 @@ let
       cxxStandard = "20";
     };
   };
-  mainProgram = if stdenv.isLinux then "64gram-desktop" else "64gram";
+  mainProgram = if stdenv.isLinux then "telegram-desktop" else "Telegram";
 in
 stdenv.mkDerivation rec {
   inherit (source) pname version src;
