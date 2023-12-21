@@ -54,7 +54,7 @@
           sopsPackages //
           nvfetcherPackages;
         packages = legacyPackages;
-        packageBundles = {
+        packageBundles = utils.mkPackageBundles pkgs ./pkgs // {
           inherit
             unfreePackages
             customPackages
