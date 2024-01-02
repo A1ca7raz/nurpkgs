@@ -13,11 +13,11 @@
             "name": null,
             "owner": "TDesktop-x64",
             "repo": "tdesktop",
-            "rev": "v1.1.5",
-            "sha256": "sha256-/DNz4Rnzds7zHyLcIksxhYOkpMSNCleuEcPtVtcMBrY=",
+            "rev": "v1.1.8",
+            "sha256": "sha256-Nq+G7L8hC10xuozv/fQ+Lb1gsp7mAT3WwDh8pfXwgfU=",
             "type": "github"
         },
-        "version": "v1.1.5"
+        "version": "v1.1.8"
     },
     "applet-window-appmenu": {
         "cargoLocks": null,
@@ -76,18 +76,18 @@
     },
     "clash-webui-yacd-meta": {
         "cargoLocks": null,
-        "date": "2023-10-24",
+        "date": "2023-12-29",
         "extract": null,
         "name": "clash-webui-yacd-meta",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-1cShsI2wfDb6dNhMmak2dcHUevj6p3g52orEHNka1GM=",
+            "sha256": "sha256-S6gLic5TeCkYDQsKmasr4/H5+ca8hP5qTzpVDXZHzdY=",
             "type": "url",
-            "url": "https://github.com/MetaCubeX/Yacd-meta/archive/d94b9c7283dcc41b7ab0a19c3c39d6f1846526d8.zip"
+            "url": "https://github.com/MetaCubeX/Yacd-meta/archive/b66b1d0393bd284b7a40329f95eae3746bb102be.zip"
         },
-        "version": "d94b9c7283dcc41b7ab0a19c3c39d6f1846526d8"
+        "version": "b66b1d0393bd284b7a40329f95eae3746bb102be"
     },
     "double-entry-generator": {
         "cargoLocks": null,

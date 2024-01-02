@@ -3,13 +3,13 @@
 {
   "64gram" = {
     pname = "64gram";
-    version = "v1.1.5";
+    version = "v1.1.8";
     src = fetchFromGitHub {
       owner = "TDesktop-x64";
       repo = "tdesktop";
-      rev = "v1.1.5";
+      rev = "v1.1.8";
       fetchSubmodules = true;
-      sha256 = "sha256-/DNz4Rnzds7zHyLcIksxhYOkpMSNCleuEcPtVtcMBrY=";
+      sha256 = "sha256-Nq+G7L8hC10xuozv/fQ+Lb1gsp7mAT3WwDh8pfXwgfU=";
     };
   };
   applet-window-appmenu = {
@@ -45,12 +45,12 @@
   };
   clash-webui-yacd-meta = {
     pname = "clash-webui-yacd-meta";
-    version = "d94b9c7283dcc41b7ab0a19c3c39d6f1846526d8";
+    version = "b66b1d0393bd284b7a40329f95eae3746bb102be";
     src = fetchurl {
-      url = "https://github.com/MetaCubeX/Yacd-meta/archive/d94b9c7283dcc41b7ab0a19c3c39d6f1846526d8.zip";
-      sha256 = "sha256-1cShsI2wfDb6dNhMmak2dcHUevj6p3g52orEHNka1GM=";
+      url = "https://github.com/MetaCubeX/Yacd-meta/archive/b66b1d0393bd284b7a40329f95eae3746bb102be.zip";
+      sha256 = "sha256-S6gLic5TeCkYDQsKmasr4/H5+ca8hP5qTzpVDXZHzdY=";
     };
-    date = "2023-10-24";
+    date = "2023-12-29";
   };
   double-entry-generator = {
     pname = "double-entry-generator";
