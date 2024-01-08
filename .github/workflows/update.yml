@@ -99,8 +99,6 @@ jobs:
           - ciPackages
           - unfreePackages
           - JetBrainsPackages
-          - cipack1
-          - cipack2
           - uncategorized
     uses: ./.github/workflows/build.yml
     with:
