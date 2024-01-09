@@ -9,7 +9,7 @@
       repo = "tdesktop";
       rev = "v1.1.8";
       fetchSubmodules = true;
-      sha256 = "sha256-5DOVB0y1fh3AwPkL4YfmPOUH322VVi6bISaAcOiT6VI=";
+      sha256 = "sha256-Nq+G7L8hC10xuozv/fQ+Lb1gsp7mAT3WwDh8pfXwgfU=";
     };
   };
   applet-window-appmenu = {
