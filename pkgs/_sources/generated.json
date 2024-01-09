@@ -14,7 +14,7 @@
             "owner": "TDesktop-x64",
             "repo": "tdesktop",
             "rev": "v1.1.8",
-            "sha256": "sha256-Nq+G7L8hC10xuozv/fQ+Lb1gsp7mAT3WwDh8pfXwgfU=",
+            "sha256": "sha256-5DOVB0y1fh3AwPkL4YfmPOUH322VVi6bISaAcOiT6VI=",
             "type": "github"
         },
         "version": "v1.1.8"
@@ -138,6 +138,26 @@
             "url": "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20231205.dict"
         },
         "version": "20231205"
+    },
+    "kes": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "kes",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "minio",
+            "repo": "kes",
+            "rev": "2023-11-10T10-44-28Z",
+            "sha256": "sha256-mv9M+5Qc6ESMa8HL8WV/aaIHMJ8WbY5BXGcmnrluRlI=",
+            "type": "github"
+        },
+        "version": "2023-11-10T10-44-28Z"
     },
     "wemeet": {
         "cargoLocks": null,

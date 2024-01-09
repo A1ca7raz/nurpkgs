@@ -9,7 +9,7 @@
       repo = "tdesktop";
       rev = "v1.1.8";
       fetchSubmodules = true;
-      sha256 = "sha256-Nq+G7L8hC10xuozv/fQ+Lb1gsp7mAT3WwDh8pfXwgfU=";
+      sha256 = "sha256-5DOVB0y1fh3AwPkL4YfmPOUH322VVi6bISaAcOiT6VI=";
     };
   };
   applet-window-appmenu = {
@@ -77,6 +77,17 @@
     src = fetchurl {
       url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20231205.dict";
       sha256 = "sha256-crMmSqQ7QgmjgEG8QpvBgQYfvttCUsKYo8gHZGXIZmc=";
+    };
+  };
+  kes = {
+    pname = "kes";
+    version = "2023-11-10T10-44-28Z";
+    src = fetchFromGitHub {
+      owner = "minio";
+      repo = "kes";
+      rev = "2023-11-10T10-44-28Z";
+      fetchSubmodules = false;
+      sha256 = "sha256-mv9M+5Qc6ESMa8HL8WV/aaIHMJ8WbY5BXGcmnrluRlI=";
     };
   };
   wemeet = {
