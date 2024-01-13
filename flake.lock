@@ -284,7 +284,8 @@
         "nixpkgs-lib": "nixpkgs-lib",
         "nvfetcher": "nvfetcher",
         "poetry2nix": "poetry2nix",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "spicetify-nix": "spicetify-nix"
       }
     },
     "sops-nix": {
@@ -305,6 +306,29 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "spicetify-nix": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1705126254,
+        "narHash": "sha256-brg3y/TE7t4SR8soVIF1TD5g78CTYZzWiW09pW1vn1U=",
+        "owner": "A1ca7raz",
+        "repo": "spicetify-nix",
+        "rev": "bf051246cc905c77368662c5e6d0c98b78eee2b3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "A1ca7raz",
+        "repo": "spicetify-nix",
         "type": "github"
       }
     },

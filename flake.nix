@@ -39,6 +39,11 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.flake-compat.follows = "flake-compat";
     };
+    spicetify-nix = {
+      url = "github:A1ca7raz/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     authentik-nix = {
       url = "github:nix-community/authentik-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -78,12 +83,17 @@
         nvfetcherPackages = nvfetcher.packages.${system};
         sopsPackages = inputs.sops-nix.packages.${system};
         authentikPackages = inputs.authentik-nix.packages.${system};
+        spicetifyPackages = {
+          spicetifyAll = inputs.spicetify-nix.checks.${system}.all-tests;
+          spicetifyApps = inputs.spicetify-nix.checks.${system}.apps;
+        };
       in rec {
         legacyPackages = customPackages //
           unfreePackages //
           sopsPackages //
           nvfetcherPackages //
-          authentikPackages;
+          authentikPackages //
+          spicetifyPackages;
         packages = legacyPackages;
         packageBundles = utils.mkPackageBundles pkgs ./pkgs // {
           inherit
@@ -91,7 +101,8 @@
             customPackages
             nvfetcherPackages
             sopsPackages
-            authentikPackages;
+            authentikPackages
+            spicetifyPackages;
           ciPackages = nvfetcherPackages // sopsPackages;
         };
         checks = legacyPackages;
