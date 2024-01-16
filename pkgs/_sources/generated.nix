@@ -3,13 +3,13 @@
 {
   "64gram" = {
     pname = "64gram";
-    version = "v1.1.8";
+    version = "v1.1.9";
     src = fetchFromGitHub {
       owner = "TDesktop-x64";
       repo = "tdesktop";
-      rev = "v1.1.8";
+      rev = "v1.1.9";
       fetchSubmodules = true;
-      sha256 = "sha256-Nq+G7L8hC10xuozv/fQ+Lb1gsp7mAT3WwDh8pfXwgfU=";
+      sha256 = "sha256-26pjijU8rS4hIrlmFrY3NuB420Q+LvHVERr7pn5kHlc=";
     };
   };
   applet-window-appmenu = {
@@ -81,13 +81,13 @@
   };
   kes = {
     pname = "kes";
-    version = "2023-11-10T10-44-28Z";
+    version = "2024-01-11T13-09-29Z";
     src = fetchFromGitHub {
       owner = "minio";
       repo = "kes";
-      rev = "2023-11-10T10-44-28Z";
+      rev = "2024-01-11T13-09-29Z";
       fetchSubmodules = false;
-      sha256 = "sha256-mv9M+5Qc6ESMa8HL8WV/aaIHMJ8WbY5BXGcmnrluRlI=";
+      sha256 = "sha256-nxYfLFmv5tgN8nZ9tVvEpsMrrBx9pLZigezl6CWBG1o=";
     };
   };
   wemeet = {
