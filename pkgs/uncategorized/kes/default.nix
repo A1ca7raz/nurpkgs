@@ -5,13 +5,13 @@
 }:
 buildGoModule {
   inherit (source) pname version src;
-  vendorHash = "sha256-QtZrpqzDoMEydrLV7NIArA8tziogUd+JoIerKMvCHto=";
+  vendorHash = "sha256-VC1bNS+NUyiqvdb0OK1RoIrEjPqMpdhw2lPL3GKaN8A=";
   doCheck = true;
 
   CGO_ENABLED = 0;
 
   tags = [ "kqueue" ];
-  
+
   ldflags = [
     "-s"
     "-w"
