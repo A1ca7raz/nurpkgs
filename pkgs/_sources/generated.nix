@@ -3,13 +3,13 @@
 {
   "64gram" = {
     pname = "64gram";
-    version = "v1.1.9";
+    version = "v1.1.11";
     src = fetchFromGitHub {
       owner = "TDesktop-x64";
       repo = "tdesktop";
-      rev = "v1.1.9";
+      rev = "v1.1.11";
       fetchSubmodules = true;
-      sha256 = "sha256-26pjijU8rS4hIrlmFrY3NuB420Q+LvHVERr7pn5kHlc=";
+      sha256 = "sha256-LBiOt/g9OyHnmiypA8D+LDm4khyYhT4Lw5U1/ovrJ78=";
     };
   };
   applet-window-appmenu = {
