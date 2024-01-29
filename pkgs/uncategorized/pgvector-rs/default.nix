@@ -9,7 +9,8 @@
   lib,
   stdenv,
   fetchurl,
-  dpkg
+  dpkg,
+  postgresql_16
 }:
 let
   versionHashes = {
@@ -17,7 +18,7 @@ let
     "16" = "sha256-L+57VRFv4rIEjvqExFvU5C9XI7l0zWj9pkKvNE5DP+k=";
   };
   major = "16";
-in stdenv.mkDerivation rec {
+in postgresql_16.stdenv.mkDerivation rec {
   pname = "pgvecto-rs";
   version = "0.1.11";
 
