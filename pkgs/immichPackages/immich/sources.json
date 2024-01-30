@@ -1,0 +1,15 @@
+{
+  "version": "1.93.3",
+  "hash": "sha256-OD5t2J0ybs399dW90T+lIjc2Gczz0NUInU+rL7mlGpo=",
+  "components": {
+    "cli": {
+      "npmDepsHash": "sha256-PVK3V+4CHGXw2q+OpCU+CFV7bMS+kZLz7slWy32vRZc="
+    },
+    "server": {
+      "npmDepsHash": "sha256-7oCwpo7gbhvSoNqH+DiGWcUH/mdwcSUeAmrqYots2Cg="
+    },
+    "web": {
+      "npmDepsHash": "sha256-FEmqKWy9SX8p+eWkcor2FFQnbpKu+hNe2epLBmofbIY="
+    }
+  }
+}

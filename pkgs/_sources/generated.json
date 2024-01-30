@@ -139,6 +139,51 @@
         },
         "version": "20231205"
     },
+    "geonames-admin1Codes": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "geonames-admin1Codes",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-1ZSL1L4pfwCtAk2SAHVKuCmgGSnHYqmWD43kByGUtuk=",
+            "type": "url",
+            "url": "https://download.geonames.org/export/dump/admin1CodesASCII.txt"
+        },
+        "version": "2024-01-30T15:19:40+08:00"
+    },
+    "geonames-admin2Codes": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "geonames-admin2Codes",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-DNyNV5QV2DEqZkwAr5Ht7BRobM1jBjGPGcKrKp6yIfA=",
+            "type": "url",
+            "url": "https://download.geonames.org/export/dump/admin2Codes.txt"
+        },
+        "version": "2024-01-30T15:19:40+08:00"
+    },
+    "geonames-cities500": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "geonames-cities500",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-SIJBzYecTH5/YShBec/vYcKBnDtsFUY8djbIvXna/ps=",
+            "type": "url",
+            "url": "https://download.geonames.org/export/dump/cities500.zip"
+        },
+        "version": "2024-01-30T15:19:40+08:00"
+    },
     "kes": {
         "cargoLocks": null,
         "date": null,
