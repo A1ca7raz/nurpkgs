@@ -88,19 +88,19 @@ jobs:
         commit_message: "Update: flake.lock&sources"
         file_pattern: "flake.lock pkgs/_sources"
 
-  build_bundles:
-    needs: bump_lock
-    secrets: inherit
-    permissions:
-      contents: write
-    strategy:
-      matrix:
-        bundles:
-          - ciPackages
-          - unfreePackages
-          - JetBrainsPackages
-          - uncategorized
-          - authentikPackages
-    uses: ./.github/workflows/build.yml
-    with:
-      packages: ${{ matrix.bundles }}
+  # build_bundles:
+  #   needs: bump_lock
+  #   secrets: inherit
+  #   permissions:
+  #     contents: write
+  #   strategy:
+  #     matrix:
+  #       bundles:
+  #         - ciPackages
+  #         - unfreePackages
+  #         - JetBrainsPackages
+  #         - uncategorized
+  #         - authentikPackages
+  #   uses: ./.github/workflows/build.yml
+  #   with:
+  #     packages: ${{ matrix.bundles }}
