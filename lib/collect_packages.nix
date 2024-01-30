@@ -15,10 +15,10 @@ in rec {
           then { name = n; value = _getter n realpath;}
           else if v == "regular" && ! hasPrefix "_" n  && isNix realpath
           then { name = removeNix n; value = _getter n realpath;}
-          else if v == "directory" && ! hasPrefix "_" n 
+          else if v == "directory" && ! hasPrefix "_" n
           then { name = n; value = _scan realpath; }
           else { name = removeNix n; value = null; };
-    in 
+    in
       filterAttrsRecursive (n: v: v != null) _scan_first;
 
   mkPackageTree = type:
@@ -43,10 +43,10 @@ in rec {
           then { name = n; value = _getter n realpath;}
           else if v == "regular" && ! hasPrefix "_" n  && isNix realpath
           then { name = removeNix n; value = _getter n realpath;}
-          else if v == "directory" && ! hasPrefix "_" n 
+          else if v == "directory" && ! hasPrefix "_" n
           then _scan realpath
           else [];
-    in 
+    in
       listToAttrs (flatten _scan_first);
 
   flatPackages = type:
@@ -64,7 +64,10 @@ in rec {
       package = if isFunction value then value else import value;
       args = intersectAttrs
         (functionArgs package)
-        { source = sources.${name}; };
+        {
+          source = sources.${name};
+          inherit sources;
+        };
     in
       pkgs.callPackage package args;
 }
