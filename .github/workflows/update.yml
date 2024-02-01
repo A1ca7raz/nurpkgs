@@ -27,9 +27,9 @@ jobs:
       contents: write
     env:
       NIXPKGS_ALLOW_UNFREE: 1
-      ATTIC_SERVER: ${{ secrets.ATTIC_SERVER }}
-      ATTIC_CACHE: ${{ secrets.ATTIC_CACHE }}
-      ATTIC_ACCESS_TOKEN: ${{ secrets.ATTIC_ACCESS_TOKEN }}
+      # ATTIC_SERVER: ${{ secrets.ATTIC_SERVER }}
+      # ATTIC_CACHE: ${{ secrets.ATTIC_CACHE }}
+      # ATTIC_ACCESS_TOKEN: ${{ secrets.ATTIC_ACCESS_TOKEN }}
 
     steps:
     - name: 0-1. Checkout repository
@@ -47,17 +47,17 @@ jobs:
       if: ${{ inputs.update_lock == true || github.event_name != 'workflow_dispatch' }}
       run: nix flake update --impure
 
-    - name: 2-1. Setup Attic
-      if: ${{ inputs.update_source == true || github.event_name != 'workflow_dispatch' }}
-      run: |
-        # curl -LO https://raw.githubusercontent.com/zhaofengli/attic/main/.github/install-attic-ci.sh
-        curl -LO https://raw.githubusercontent.com/icewind1991/attic-action/master/dist/main/install-attic-ci.sh
-        bash install-attic-ci.sh
-
-        # https://github.com/zhaofengli/attic/blob/main/.github/workflows/build.yml#L30
-        export PATH=$HOME/.nix-profile/bin:$PATH
-        attic login --set-default ci "$ATTIC_SERVER" "$ATTIC_ACCESS_TOKEN"
-        attic use "$ATTIC_CACHE"
+    # - name: 2-1. Setup Attic
+    #   if: ${{ inputs.update_source == true || github.event_name != 'workflow_dispatch' }}
+    #   run: |
+    #     # curl -LO https://raw.githubusercontent.com/zhaofengli/attic/main/.github/install-attic-ci.sh
+    #     curl -LO https://raw.githubusercontent.com/icewind1991/attic-action/master/dist/main/install-attic-ci.sh
+    #     bash install-attic-ci.sh
+    #
+    #     # https://github.com/zhaofengli/attic/blob/main/.github/workflows/build.yml#L30
+    #     export PATH=$HOME/.nix-profile/bin:$PATH
+    #     attic login --set-default ci "$ATTIC_SERVER" "$ATTIC_ACCESS_TOKEN"
+    #     attic use "$ATTIC_CACHE"
 
     - name: 2-2. Update package sources
       if: ${{ inputs.update_source == true || github.event_name != 'workflow_dispatch' }}
