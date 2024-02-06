@@ -1,31 +1,28 @@
 # https://github.com/nix-community/home-manager/blob/master/modules/files.nix
 { config, lib, pkgs, ... }:
 with lib; let
-  _cfg = config.environment.overlay;
-  cfg = _cfg.users;
-  storePath = _cfg.tempStorePath;
+  cfg_ = config.environment.overlay;
+  cfg = cfg_.users;
 
-  fileType = (import ./file-type.nix { inherit lib pkgs; });
-  inherit (import ./lib.nix { inherit lib; }) storeFileName;
-  sourceStorePath = file:
-    let
-      sourcePath = toString file.source;
-      sourceName = storeFileName (baseNameOf sourcePath);
-    in
-      if builtins.hasContext sourcePath
-      then file.source
-      else builtins.path { path = file.source; name = sourceName; };
+  storePath = cfg_.tempStorePath;
+  inherit (import ./lib.nix { inherit lib; }) sourceStorePath;
+
+  fileType = types.submoduleWith {
+    modules = [ (import ./file-type.nix) ];
+    shorthandOnlyDefinesConfig = true;
+    specialArgs = { inherit pkgs; };
+  };
 in {
   options.environment.overlay = {
     users = mkOption {
-      type = types.attrsOf fileType;
+      type = with types; attrsOf (attrsOf fileType);
       default = {};
       description = "Attribute set of files to link into the user home.";
     };
 
     tempStorePath = mkOption {
-      type = types.nullOr types.str;
-      default = null;
+      type = types.str;
+      default = "";
       description = "A path to store overlay files which is out of Nix store";
     };
 
@@ -42,9 +39,9 @@ in {
     in {
       assertions = [
         {
-          assertion = _cfg != null;
+          assertion = cfg_ != "";
           message = ''
-            tempStorePath should not be Null when overlay files is enabled.
+            environment.overlay.tempStorePath should be set when overlay files is enabled.
           '';
         }
         (let
@@ -92,9 +89,9 @@ in {
 
       systemd.services = (folder (sum: user: files:
         let
-          next = "overlayfile-${user}-pre-mount.service";
-          overlayPkg = pkgs.runCommand "overlay-packfile-${user}"
-            { nativeBuildInputs = with pkgs; [ coreutils ]; }
+          group = config.users.users.${user}.group;
+
+          overlayPkg = pkgs.runCommand "overlay-packfile-${user}" {}
             (
               (builtins.readFile ./scripts/insert_file.sh) +
               (traceVal (concatStrings (
@@ -107,114 +104,112 @@ in {
               )))
             );
         in {
+          # 1. Remove old files and copy new files' symlinks
           "overlayfile-${user}-copy-check" =
             let
               _store = "${storePath}/${user}";
               storeHash = baseNameOf overlayPkg;
               storeLock = "${_store}-lock-${storeHash}";
 
-              copyScript = pkgs.writeShellScriptBin "overlay-${user}-copy" ''
-                out="${_store}"
-                sou="$(realpath -m "${overlayPkg}")"
-                owner="${toString user}"
-                group="${toString config.users.users.${user}.group}"
-
-                mkdir -p "$out"
-                rm -vf "$out-lock-"*
-                rm -vrf "$out"/*
-                rm -vrf "$out"/.*
-
-                cp -vrfHL "$sou"/. "$out"
-                echo "$sou" > "${storeLock}"
-                chown -cR $owner:$group "$out"
-                chmod -cR 1700 "$out"
-              '';
-
-              rmFlagScript = pkgs.writeShellScriptBin "overlay-${user}-rm-flag" ''
-                rm -r "${storeLock}"
-              '';
+              next = "overlayfile-${user}-pre-mount.service";
             in {
-              path = with pkgs; [ coreutils ];
+              description = "Check availablity of overlay files for ${user} and copy them";
+              before = [ next ];
+              requiredBy = [ next ];
+              wantedBy = [ "local-fs.target" ];
+              # bindsTo = "overlayfile-${user}-pre-mount.service";
+
+              environment = {
+                OUT = _store;
+              };
+
               unitConfig = {
-                Description = "Check availablity of overlay files for ${user} and copy them";
                 DefaultDependencies = "no";
-                Before = next;
-                # BindsTo = "overlayfile-${user}-pre-mount.service";
                 ConditionPathExists = "!${storeLock}";
               };
 
               serviceConfig = {
                 Type = "oneshot";
                 RemainAfterExit = "yes";
-                ExecStart = "${getExe copyScript}";
-                ExecStop = "${getExe rmFlagScript}";
               };
 
-              wantedBy = [ next "local-fs.target" ];
+              script = ''
+                sou="$(realpath -m "${overlayPkg}")"
+
+                mkdir -p "$OUT"
+                rm -vf "$OUT-lock-"*
+                rm -vrf "$OUT"/*
+                rm -vrf "$OUT"/.*
+
+                cp -vrfHL "$sou"/. "$OUT"
+                echo "$sou" > "${storeLock}"
+                chown -cR ${user}:${group} "$OUT"
+                chmod -cR 1700 "$OUT"
+              '';
+
+              preStop = ''
+                rm -r "${storeLock}"
+              '';
             };
 
+          # 2. Prepare for mounting overlayfs
           "overlayfile-${user}-pre-mount" =
             let
               prev = "overlayfile-${user}-copy-check.service";
               next = "run-overlay_files-${strings.escapeC ["-"] user}.mount";
-              preMountScript = pkgs.writeShellScriptBin "overlay-${user}-pre-mount" ''
+            in {
+              description = "Create Upperdir and Workdir for overlay files of ${user}";
+              before = [ next ];
+              requiredBy = [ next ];
+              after = [ prev ];
+              bindsTo = [ prev ];
+              partOf = [ prev ];
+              wantedBy = [ "local-fs.target" ];
+
+              unitConfig.DefaultDependencies = "no";
+              
+              serviceConfig = {
+                Type = "oneshot";
+                RemainAfterExit = "yes";
+              };
+
+              script = ''
                 mkdir -p ${upper_dir}/${user}
                 mkdir -p ${work_dir}/${user}
-                chown ${user}:users ${upper_dir}/${user}
+                chown ${user}:${group} ${upper_dir}/${user}
               '';
 
-              reMountScript = pkgs.writeShellScriptBin "overlay-${user}-pre-mount" ''
+              preStop = ''
                 rm -rf ${upper_dir}/${user}/*
                 rm -rf ${upper_dir}/${user}/.*
                 rm -rf ${work_dir}/${user}/*
                 rm -rf ${work_dir}/${user}/.*
               '';
-            in {
-              path = with pkgs; [ coreutils ];
-              unitConfig = {
-                Description = "Create Upperdir and Workdir for overlay files of ${user}";
-                DefaultDependencies = "no";
-                Before = next;
-                ConsistsOf= next;
-                Requires = prev;
-                After = prev;
-                PartOf = prev;
-              };
-              
-              serviceConfig = {
-                Type = "oneshot";
-                RemainAfterExit = "yes";
-                ExecStart = "${getExe preMountScript}";
-                ExecStop = "${getExe reMountScript}";
-              };
-
-              requiredBy = [ next ];
-              wantedBy = [ next "local-fs.target" ];
             };
 
+          # 3. Mount overlayfs
+
+          # 4. Make symlink to HOME
           "overlayfile-${user}-link-file" =
             let
               prev = "run-overlay_files-${strings.escapeC ["-"] user}.mount";
-              linkScript = pkgs.writeShellScriptBin "overlay-${user}-link" ''
-                cp -vsrfp "/run/overlay_files/${user}"/. "${config.users.users.${user}.home}"
-              '';
             in {
-              path = with pkgs; [ coreutils ];
-              unitConfig = {
-                Description = "Link overlay files for ${user}";
-                DefaultDependencies = "no";
-                After = prev;
-                PartOf = prev;
-                Requires = prev;
-              };
+              description = "Link overlay files for ${user}";
+              after = [ prev ];
+              partOf = [ prev ];
+              bindsTo = [ prev ];
+              wantedBy = [ "local-fs.target" ];
+
+              unitConfig.DefaultDependencies = "no";
 
               serviceConfig = {
                 Type = "oneshot";
                 RemainAfterExit = "yes";
-                ExecStart = "${getExe linkScript}";
               };
 
-              wantedBy = [ "local-fs.target" ];
+              script = ''
+                cp -vsrfp "/run/overlay_files/${user}"/. "${config.users.users.${user}.home}"
+              '';
             };
         } // sum
       ));
