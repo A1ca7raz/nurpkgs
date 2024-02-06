@@ -91,18 +91,18 @@ in {
         let
           group = config.users.users.${user}.group;
 
-          overlayPkg = pkgs.runCommand "overlay-packfile-${user}" {}
-            (
-              (builtins.readFile ./scripts/insert_file.sh) +
-              (traceVal (concatStrings (
-                mapAttrsToList (n: v: ''
-                  insertFile ${escapeShellArgs [
-                    (sourceStorePath v)           # Source
-                    v.target                      # relTarget
-                  ]}
-                '') files
-              )))
-            );
+          overlayPkg = pkgs.runCommand "overlay-packfile-${user}" {} (
+            let
+              scripts = concatStrings (mapAttrsToList (n: v: ''
+                insertFile ${escapeShellArgs [
+                  (sourceStorePath v)           # Source
+                  v.target                      # relTarget
+                ]}
+              '') files );
+            in 
+            (builtins.readFile ./scripts/insert_file.sh) +
+            (if cfg_.debug then traceVal scripts else scripts)
+          );
         in {
           # 1. Remove old files and copy new files' symlinks
           "overlayfile-${user}-copy-check" =
