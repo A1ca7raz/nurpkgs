@@ -125,7 +125,7 @@ in {
 
               unitConfig = {
                 DefaultDependencies = "no";
-                ConditionPathExists = "!${storeLock}";
+                # ConditionPathExists = "!${storeLock}";
               };
 
               serviceConfig = {
@@ -134,6 +134,7 @@ in {
               };
 
               script = ''
+                [[ -f ${storeLock} ]] && exit 0
                 sou="$(realpath -m "${overlayPkg}")"
 
                 mkdir -p "$OUT"
