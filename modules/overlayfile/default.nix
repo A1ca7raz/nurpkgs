@@ -162,8 +162,9 @@ in {
               description = "Create Upperdir and Workdir for overlay files of ${user}";
               before = [ next ];
               requiredBy = [ next ];
-              after = [ prev ];
+              after = [ prev "tmp.mount" ];
               bindsTo = [ prev ];
+              requires = [ "tmp.mount" ];
               partOf = [ prev ];
               wantedBy = [ "local-fs.target" ];
 
