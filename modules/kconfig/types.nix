@@ -71,9 +71,23 @@ rec {
           description = "extra script run after kwriteconfig";
         };
 
+        extraScriptPre = mkOption {
+          type = types.str;
+          default = "";
+          description = "extra script run before kwriteconfig";
+        };
+
+        extraScriptPost = mkOption {
+          type = types.str;
+          default = config.extraScript;
+          description = "extra script run after kwriteconfig";
+        };
+
         script = mkOption {
           type = types.str;
-          default = (concatMapStrings mkScript config.items) + "\n" + config.extraScript;
+          default = config.extraScriptPre
+            + "\n" + (concatMapStrings mkScript config.items)
+            + "\n" + config.extraScriptPost;
           visible = false;
           readOnly = true;
         };
