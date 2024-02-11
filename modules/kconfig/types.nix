@@ -1,9 +1,9 @@
 rec {
   itemModule = { config, lib, ... }:
     let
-      inherit (lib) mkOption types fold concatStringsSep;
+      inherit (lib) mkOption types fold concatStringsSep escapeShellArg;
 
-      groupstr = concatStringsSep " " (fold (x: y: [''--group "${x}"''] ++ y) [] config.groups);
+      groupstr = concatStringsSep " " (fold (x: y: [''--group ${escapeShellArg x}''] ++ y) [] config.groups);
     in {
       options = {
         groups = mkOption {
@@ -43,7 +43,7 @@ rec {
         args = mkOption {
           type = types.str;
           # NOTE: need to escape '\'
-          default = "${groupstr} --key '${config.key}' '${config.value}'";
+          default = "${groupstr} --key ${escapeShellArg config.key} ${escapeShellArg config.value}";
           visible = false;
           readOnly = true;
         };
