@@ -52,7 +52,7 @@ rec {
   
   fileModule = { name, config, lib, pkgs, ... }:
     let
-      inherit (lib) mkOption types concatMapStrings;
+      inherit (lib) mkEnableOption mkOption types concatMapStrings traceVal;
       cmd = args: ''kwriteconfig5 --file "$out" ${args}'';
       mkScript = x: (cmd x.args) + "\n";
 
@@ -97,12 +97,18 @@ rec {
           visible = false;
           readOnly = true;
         };
+
+        debug = mkEnableOption "enable debug for ${name}";
       };
 
       config = {
         path = pkgs.runCommand name {
           nativeBuildInputs = [ pkgs.libsForQt5.kconfig ];
-        } config.script;
+        } (
+          if config.debug
+          then traceVal config.script
+          else config.script
+        );
       };
     };
 
