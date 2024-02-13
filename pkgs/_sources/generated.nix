@@ -73,15 +73,15 @@
   };
   fcitx5-pinyin-zhwiki = {
     pname = "fcitx5-pinyin-zhwiki";
-    version = "20231205";
+    version = "20240210";
     src = fetchurl {
-      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20231205.dict";
-      sha256 = "sha256-crMmSqQ7QgmjgEG8QpvBgQYfvttCUsKYo8gHZGXIZmc=";
+      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20240210.dict";
+      sha256 = "sha256-vNHS5n3TqSwpUx2wG26w7rK6jSqrvLANeG2n0vA4iYk=";
     };
   };
   geonames-admin1Codes = {
     pname = "geonames-admin1Codes";
-    version = "2024-02-06T18:28:05+00:00";
+    version = "2024-02-13T18:32:15+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin1CodesASCII.txt";
       sha256 = "sha256-1ZSL1L4pfwCtAk2SAHVKuCmgGSnHYqmWD43kByGUtuk=";
@@ -89,18 +89,18 @@
   };
   geonames-admin2Codes = {
     pname = "geonames-admin2Codes";
-    version = "2024-02-06T18:28:05+00:00";
+    version = "2024-02-13T18:32:14+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin2Codes.txt";
-      sha256 = "sha256-YXAaVPGs564NOayzCSEsJ6FUxfMopVI9DUmMYB2ZmlY=";
+      sha256 = "sha256-AaU9VZ1N7zWAuOSrCLtnFmuWKupu0f7MrEAWboY8Vf0=";
     };
   };
   geonames-cities500 = {
     pname = "geonames-cities500";
-    version = "2024-02-06T18:28:03+00:00";
+    version = "2024-02-13T18:32:13+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/cities500.zip";
-      sha256 = "sha256-vKgGM8IpuGbZGl00Ja02HZE/rfiW4o/Eds1bz2mvGzY=";
+      sha256 = "sha256-J08EOQiAKKLJMP7H8hikNwOXa45qUul8i3m+u4If2Ds=";
     };
   };
   kes = {
@@ -116,10 +116,10 @@
   };
   ocis-bin = {
     pname = "ocis-bin";
-    version = "5.0.0-rc.3";
+    version = "5.0.0-rc.4";
     src = fetchurl {
-      url = "https://github.com/owncloud/ocis/releases/download/v5.0.0-rc.3/ocis-5.0.0-rc.3-linux-amd64";
-      sha256 = "sha256-gaJW9Ul/cJTgYv1pa0JoaHY5NIqDYWN2IxapfjDVAdw=";
+      url = "https://github.com/owncloud/ocis/releases/download/v5.0.0-rc.4/ocis-5.0.0-rc.4-linux-amd64";
+      sha256 = "sha256-eVsYiDPGItMkVqkAvFykRxJewlcomRBgL283Agid/ig=";
     };
   };
   wemeet = {
