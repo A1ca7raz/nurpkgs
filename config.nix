@@ -6,6 +6,7 @@
       wpsoffice
       cloudflare-warp
       spotify
+      tor-browser
       veracrypt;
   };
 
