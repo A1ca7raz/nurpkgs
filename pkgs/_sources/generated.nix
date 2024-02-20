@@ -3,13 +3,13 @@
 {
   "64gram" = {
     pname = "64gram";
-    version = "v1.1.13";
+    version = "v1.1.14";
     src = fetchFromGitHub {
       owner = "TDesktop-x64";
       repo = "tdesktop";
-      rev = "v1.1.13";
+      rev = "v1.1.14";
       fetchSubmodules = true;
-      sha256 = "sha256-JNvx0H8YieqM0pxA6bKcr7EYx8QYuXl9meUeUVmHnUM=";
+      sha256 = "sha256-+Cx4qh/zHyBYRBxeZLZATU2U/r8xF24R8AXnfFwl+Oo=";
     };
   };
   applet-window-appmenu = {
@@ -81,7 +81,7 @@
   };
   geonames-admin1Codes = {
     pname = "geonames-admin1Codes";
-    version = "2024-02-13T18:32:15+00:00";
+    version = "2024-02-20T18:31:36+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin1CodesASCII.txt";
       sha256 = "sha256-1ZSL1L4pfwCtAk2SAHVKuCmgGSnHYqmWD43kByGUtuk=";
@@ -89,7 +89,7 @@
   };
   geonames-admin2Codes = {
     pname = "geonames-admin2Codes";
-    version = "2024-02-13T18:32:14+00:00";
+    version = "2024-02-20T18:31:36+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin2Codes.txt";
       sha256 = "sha256-AaU9VZ1N7zWAuOSrCLtnFmuWKupu0f7MrEAWboY8Vf0=";
@@ -97,10 +97,10 @@
   };
   geonames-cities500 = {
     pname = "geonames-cities500";
-    version = "2024-02-13T18:32:13+00:00";
+    version = "2024-02-20T18:31:38+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/cities500.zip";
-      sha256 = "sha256-J08EOQiAKKLJMP7H8hikNwOXa45qUul8i3m+u4If2Ds=";
+      sha256 = "sha256-06UXRopobMLcXwQAq19tyIkDxUxSCWt+u+iOEENYhOY=";
     };
   };
   kes = {

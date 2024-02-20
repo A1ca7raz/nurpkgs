@@ -13,11 +13,11 @@
             "name": null,
             "owner": "TDesktop-x64",
             "repo": "tdesktop",
-            "rev": "v1.1.13",
-            "sha256": "sha256-JNvx0H8YieqM0pxA6bKcr7EYx8QYuXl9meUeUVmHnUM=",
+            "rev": "v1.1.14",
+            "sha256": "sha256-+Cx4qh/zHyBYRBxeZLZATU2U/r8xF24R8AXnfFwl+Oo=",
             "type": "github"
         },
-        "version": "v1.1.13"
+        "version": "v1.1.14"
     },
     "applet-window-appmenu": {
         "cargoLocks": null,
@@ -152,7 +152,7 @@
             "type": "url",
             "url": "https://download.geonames.org/export/dump/admin1CodesASCII.txt"
         },
-        "version": "2024-02-13T18:32:15+00:00"
+        "version": "2024-02-20T18:31:36+00:00"
     },
     "geonames-admin2Codes": {
         "cargoLocks": null,
@@ -167,7 +167,7 @@
             "type": "url",
             "url": "https://download.geonames.org/export/dump/admin2Codes.txt"
         },
-        "version": "2024-02-13T18:32:14+00:00"
+        "version": "2024-02-20T18:31:36+00:00"
     },
     "geonames-cities500": {
         "cargoLocks": null,
@@ -178,11 +178,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-J08EOQiAKKLJMP7H8hikNwOXa45qUul8i3m+u4If2Ds=",
+            "sha256": "sha256-06UXRopobMLcXwQAq19tyIkDxUxSCWt+u+iOEENYhOY=",
             "type": "url",
             "url": "https://download.geonames.org/export/dump/cities500.zip"
         },
-        "version": "2024-02-13T18:32:13+00:00"
+        "version": "2024-02-20T18:31:38+00:00"
     },
     "kes": {
         "cargoLocks": null,
