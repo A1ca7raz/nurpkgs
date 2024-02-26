@@ -16,7 +16,10 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs-lib";
     };
-
+    crane = {
+      url = "github:ipetkov/crane";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     poetry2nix = {
       url = "github:nix-community/poetry2nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,6 +27,11 @@
     };
     napalm = {
       url = "github:nix-community/napalm";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
@@ -53,6 +61,16 @@
       inputs.nixpkgs-23-05.follows = "nixpkgs-23-05";
       inputs.poetry2nix.follows = "poetry2nix";
       inputs.napalm.follows = "napalm";
+    };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.crane.follows = "crane";
+      inputs.rust-overlay.follows = "rust-overlay";
+      inputs.pre-commit-hooks-nix.follows = "";
     };
   };
 
@@ -87,13 +105,15 @@
           spicetifyAll = inputs.spicetify-nix.checks.${system}.all-tests;
           spicetifyApps = inputs.spicetify-nix.checks.${system}.apps;
         };
+        lanzabootePackages = inputs.lanzaboote.packages.${system};
       in rec {
         legacyPackages = customPackages //
           unfreePackages //
           sopsPackages //
           nvfetcherPackages //
           authentikPackages //
-          spicetifyPackages;
+          spicetifyPackages //
+          lanzabootePackages;
         packages = legacyPackages;
         packageBundles = utils.mkPackageBundles pkgs ./pkgs // {
           inherit
