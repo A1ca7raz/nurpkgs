@@ -152,7 +152,7 @@
             "type": "url",
             "url": "https://download.geonames.org/export/dump/admin1CodesASCII.txt"
         },
-        "version": "2024-02-28T05:04:41+00:00"
+        "version": "2024-02-28T10:19:27+00:00"
     },
     "geonames-admin2Codes": {
         "cargoLocks": null,
@@ -167,7 +167,7 @@
             "type": "url",
             "url": "https://download.geonames.org/export/dump/admin2Codes.txt"
         },
-        "version": "2024-02-28T05:04:38+00:00"
+        "version": "2024-02-28T10:19:28+00:00"
     },
     "geonames-cities500": {
         "cargoLocks": null,
@@ -182,7 +182,7 @@
             "type": "url",
             "url": "https://download.geonames.org/export/dump/cities500.zip"
         },
-        "version": "2024-02-28T05:04:42+00:00"
+        "version": "2024-02-28T10:19:25+00:00"
     },
     "kes": {
         "cargoLocks": null,

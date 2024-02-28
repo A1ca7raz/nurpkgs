@@ -81,7 +81,7 @@
   };
   geonames-admin1Codes = {
     pname = "geonames-admin1Codes";
-    version = "2024-02-28T05:04:41+00:00";
+    version = "2024-02-28T10:19:27+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin1CodesASCII.txt";
       sha256 = "sha256-WQIGVS9wB6o4tDHcbrP1qW1fr/KT3cRrJ3CCbKChkx0=";
@@ -89,7 +89,7 @@
   };
   geonames-admin2Codes = {
     pname = "geonames-admin2Codes";
-    version = "2024-02-28T05:04:38+00:00";
+    version = "2024-02-28T10:19:28+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin2Codes.txt";
       sha256 = "sha256-6Kx8uXdb5g2l2dWqeMz9G4o/nClFfffC3P9f/p7YhoE=";
@@ -97,7 +97,7 @@
   };
   geonames-cities500 = {
     pname = "geonames-cities500";
-    version = "2024-02-28T05:04:42+00:00";
+    version = "2024-02-28T10:19:25+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/cities500.zip";
       sha256 = "sha256-+iz4UX6a3V3BGKRTDgB0oYq4MobnBqlNYqSzE9Nm3kA=";
