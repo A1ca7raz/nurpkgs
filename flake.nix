@@ -41,12 +41,12 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvfetcher = {
-      url = "github:berberman/nvfetcher";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.flake-compat.follows = "flake-compat";
-    };
+#     nvfetcher = {
+#       url = "github:berberman/nvfetcher";
+#       inputs.nixpkgs.follows = "nixpkgs";
+#       inputs.flake-utils.follows = "flake-utils";
+#       inputs.flake-compat.follows = "flake-compat";
+#     };
     spicetify-nix = {
       url = "github:A1ca7raz/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,7 +74,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, nvfetcher, ... }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
     let
       inherit (import ./config.nix) substituters trusted-public-keys extraPackages;
       lib = nixpkgs.lib;
@@ -89,7 +89,7 @@
           inherit system;
           overlays = [
             overlay
-            nvfetcher.overlays.default
+#             nvfetcher.overlays.default
           ];
         };
         nurpkgs = import ./. { inherit pkgs; };
@@ -98,7 +98,7 @@
         # Groups of nur packages
         customPackages = flake-utils.lib.filterPackages pkgs.system (nurpkgs);
         unfreePackages = extraPackages pkgs;
-        nvfetcherPackages = nvfetcher.packages.${system};
+#         nvfetcherPackages = nvfetcher.packages.${system};
         sopsPackages = inputs.sops-nix.packages.${system};
         authentikPackages = inputs.authentik-nix.packages.${system};
         spicetifyPackages = {
@@ -110,7 +110,7 @@
         legacyPackages = customPackages //
           unfreePackages //
           sopsPackages //
-          nvfetcherPackages //
+#           nvfetcherPackages //
           authentikPackages //
           spicetifyPackages //
           lanzabootePackages;
@@ -119,33 +119,33 @@
           inherit
             unfreePackages
             customPackages
-            nvfetcherPackages
+#             nvfetcherPackages
             sopsPackages
             authentikPackages
             spicetifyPackages;
-          ciPackages = nvfetcherPackages // sopsPackages;
+          ciPackages = sopsPackages;
         };
         checks = legacyPackages;
         formatter = pkgs.nixpkgs-fmt;
-        devShells.default = mkShell { nativeBuildInputs = [ nvfetcherPackages.default ]; };
+        devShells.default = mkShell { nativeBuildInputs = [ pkgs.nvfetcher ]; };
         apps.update = {
           type = "app";
           program = (pkgs.writeShellScript "script" ''
-            ${nvfetcherPackages.default}/bin/nvfetcher -o pkgs/_sources "$@"
+            ${pkgs.nvfetcher}/bin/nvfetcher -o pkgs/_sources "$@"
           '').outPath;
         };
       }
     ) // {
       overlay = self.overlays.default;
       overlays.default = overlay;
-      overlays.nvfetcher = nvfetcher.overlays.default;
+#       overlays.nvfetcher = nvfetcher.overlays.default;
 
       nixosModule = self.nixosModules.default;
       nixosModules.default = { ... }: {
         imports = utils.importsDirs ./modules;
         nixpkgs.overlays = [
           self.overlays.default
-          self.overlays.nvfetcher
+#           self.overlays.nvfetcher
         ];
         nix.settings = {
           inherit substituters trusted-public-keys;

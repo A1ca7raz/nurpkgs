@@ -276,32 +276,6 @@
         "type": "github"
       }
     },
-    "nvfetcher": {
-      "inputs": {
-        "flake-compat": [
-          "flake-compat"
-        ],
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1705463871,
-        "narHash": "sha256-JiJTdrgmSJ8jLN3J1FOxXKHy3ANWhHXZnbVQydf/qAA=",
-        "owner": "berberman",
-        "repo": "nvfetcher",
-        "rev": "1dbe745f29efb93abce017ee175fd433cf8194df",
-        "type": "github"
-      },
-      "original": {
-        "owner": "berberman",
-        "repo": "nvfetcher",
-        "type": "github"
-      }
-    },
     "poetry2nix": {
       "inputs": {
         "flake-utils": [
@@ -340,7 +314,6 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-23-05": "nixpkgs-23-05",
         "nixpkgs-lib": "nixpkgs-lib",
-        "nvfetcher": "nvfetcher",
         "poetry2nix": "poetry2nix",
         "rust-overlay": "rust-overlay",
         "sops-nix": "sops-nix",
