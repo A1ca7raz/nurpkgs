@@ -81,26 +81,26 @@
   };
   geonames-admin1Codes = {
     pname = "geonames-admin1Codes";
-    version = "2024-02-20T18:31:36+00:00";
+    version = "2024-02-28T05:04:41+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin1CodesASCII.txt";
-      sha256 = "sha256-1ZSL1L4pfwCtAk2SAHVKuCmgGSnHYqmWD43kByGUtuk=";
+      sha256 = "sha256-WQIGVS9wB6o4tDHcbrP1qW1fr/KT3cRrJ3CCbKChkx0=";
     };
   };
   geonames-admin2Codes = {
     pname = "geonames-admin2Codes";
-    version = "2024-02-20T18:31:36+00:00";
+    version = "2024-02-28T05:04:38+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin2Codes.txt";
-      sha256 = "sha256-AaU9VZ1N7zWAuOSrCLtnFmuWKupu0f7MrEAWboY8Vf0=";
+      sha256 = "sha256-6Kx8uXdb5g2l2dWqeMz9G4o/nClFfffC3P9f/p7YhoE=";
     };
   };
   geonames-cities500 = {
     pname = "geonames-cities500";
-    version = "2024-02-20T18:31:38+00:00";
+    version = "2024-02-28T05:04:42+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/cities500.zip";
-      sha256 = "sha256-06UXRopobMLcXwQAq19tyIkDxUxSCWt+u+iOEENYhOY=";
+      sha256 = "sha256-+iz4UX6a3V3BGKRTDgB0oYq4MobnBqlNYqSzE9Nm3kA=";
     };
   };
   kes = {
@@ -116,10 +116,10 @@
   };
   ocis-bin = {
     pname = "ocis-bin";
-    version = "5.0.0-rc.4";
+    version = "5.0.0-rc.5";
     src = fetchurl {
-      url = "https://github.com/owncloud/ocis/releases/download/v5.0.0-rc.4/ocis-5.0.0-rc.4-linux-amd64";
-      sha256 = "sha256-eVsYiDPGItMkVqkAvFykRxJewlcomRBgL283Agid/ig=";
+      url = "https://github.com/owncloud/ocis/releases/download/v5.0.0-rc.5/ocis-5.0.0-rc.5-linux-amd64";
+      sha256 = "sha256-rdKCPlJb0BV9nBq0neoIFn9e97A5zL7il1v23I9Hqm0=";
     };
   };
   wemeet = {
