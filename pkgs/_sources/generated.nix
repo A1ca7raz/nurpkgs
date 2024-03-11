@@ -3,13 +3,13 @@
 {
   "64gram" = {
     pname = "64gram";
-    version = "v1.1.14";
+    version = "v1.1.15";
     src = fetchFromGitHub {
       owner = "TDesktop-x64";
       repo = "tdesktop";
-      rev = "v1.1.14";
+      rev = "v1.1.15";
       fetchSubmodules = true;
-      sha256 = "sha256-+Cx4qh/zHyBYRBxeZLZATU2U/r8xF24R8AXnfFwl+Oo=";
+      sha256 = "sha256-3HLRv8RTyyfnjMF7w+euSOj6SbxlxOuczap5Nlizsvg=";
     };
   };
   applet-window-appmenu = {
@@ -65,10 +65,10 @@
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20231114";
+    version = "20240309";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20231114/moegirl.dict";
-      sha256 = "sha256-x+XkATiNMNbcSiN87MkRRvKiNuzvpmkDrtGkwdnIsYM=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20240309/moegirl.dict";
+      sha256 = "sha256-ir9WQA2cz8VLL46/GaLTFAnL/H5vKWq3sbywHTcAKb8=";
     };
   };
   fcitx5-pinyin-zhwiki = {
@@ -81,7 +81,7 @@
   };
   geonames-admin1Codes = {
     pname = "geonames-admin1Codes";
-    version = "2024-03-05T18:29:10+00:00";
+    version = "2024-03-11T10:43:37+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin1CodesASCII.txt";
       sha256 = "sha256-WQIGVS9wB6o4tDHcbrP1qW1fr/KT3cRrJ3CCbKChkx0=";
@@ -89,18 +89,18 @@
   };
   geonames-admin2Codes = {
     pname = "geonames-admin2Codes";
-    version = "2024-03-05T18:29:12+00:00";
+    version = "2024-03-11T10:43:34+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin2Codes.txt";
-      sha256 = "sha256-0w1mMN1YaLPWKvIqJy9xbRBKeUC1bL1Z0TuSLGlpvF4=";
+      sha256 = "sha256-1e5pLAkjpl+D2qAmGaN/qxGurZrYHUkldHlOttuBBxw=";
     };
   };
   geonames-cities500 = {
     pname = "geonames-cities500";
-    version = "2024-03-05T18:29:14+00:00";
+    version = "2024-03-11T10:43:36+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/cities500.zip";
-      sha256 = "sha256-c7jq8E8OGPSTvvtsbiqJ2nUayUfB947vSHkl31NyJ5g=";
+      sha256 = "sha256-07ESqIuF5QurQ9ijXLTyO/dNGJgVbE+b9yYlqkW40tg=";
     };
   };
   kes = {

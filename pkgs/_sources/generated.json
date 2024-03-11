@@ -13,11 +13,11 @@
             "name": null,
             "owner": "TDesktop-x64",
             "repo": "tdesktop",
-            "rev": "v1.1.14",
-            "sha256": "sha256-+Cx4qh/zHyBYRBxeZLZATU2U/r8xF24R8AXnfFwl+Oo=",
+            "rev": "v1.1.15",
+            "sha256": "sha256-3HLRv8RTyyfnjMF7w+euSOj6SbxlxOuczap5Nlizsvg=",
             "type": "github"
         },
-        "version": "v1.1.14"
+        "version": "v1.1.15"
     },
     "applet-window-appmenu": {
         "cargoLocks": null,
@@ -118,11 +118,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-x+XkATiNMNbcSiN87MkRRvKiNuzvpmkDrtGkwdnIsYM=",
+            "sha256": "sha256-ir9WQA2cz8VLL46/GaLTFAnL/H5vKWq3sbywHTcAKb8=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20231114/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20240309/moegirl.dict"
         },
-        "version": "20231114"
+        "version": "20240309"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLocks": null,
@@ -152,7 +152,7 @@
             "type": "url",
             "url": "https://download.geonames.org/export/dump/admin1CodesASCII.txt"
         },
-        "version": "2024-03-05T18:29:10+00:00"
+        "version": "2024-03-11T10:43:37+00:00"
     },
     "geonames-admin2Codes": {
         "cargoLocks": null,
@@ -163,11 +163,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-0w1mMN1YaLPWKvIqJy9xbRBKeUC1bL1Z0TuSLGlpvF4=",
+            "sha256": "sha256-1e5pLAkjpl+D2qAmGaN/qxGurZrYHUkldHlOttuBBxw=",
             "type": "url",
             "url": "https://download.geonames.org/export/dump/admin2Codes.txt"
         },
-        "version": "2024-03-05T18:29:12+00:00"
+        "version": "2024-03-11T10:43:34+00:00"
     },
     "geonames-cities500": {
         "cargoLocks": null,
@@ -178,11 +178,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-c7jq8E8OGPSTvvtsbiqJ2nUayUfB947vSHkl31NyJ5g=",
+            "sha256": "sha256-07ESqIuF5QurQ9ijXLTyO/dNGJgVbE+b9yYlqkW40tg=",
             "type": "url",
             "url": "https://download.geonames.org/export/dump/cities500.zip"
         },
-        "version": "2024-03-05T18:29:14+00:00"
+        "version": "2024-03-11T10:43:36+00:00"
     },
     "kes": {
         "cargoLocks": null,
