@@ -81,7 +81,7 @@
   };
   geonames-admin1Codes = {
     pname = "geonames-admin1Codes";
-    version = "2024-03-12T18:28:54+00:00";
+    version = "2024-03-19T18:28:51+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin1CodesASCII.txt";
       sha256 = "sha256-WQIGVS9wB6o4tDHcbrP1qW1fr/KT3cRrJ3CCbKChkx0=";
@@ -89,37 +89,37 @@
   };
   geonames-admin2Codes = {
     pname = "geonames-admin2Codes";
-    version = "2024-03-12T18:28:51+00:00";
+    version = "2024-03-19T18:28:58+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin2Codes.txt";
-      sha256 = "sha256-1e5pLAkjpl+D2qAmGaN/qxGurZrYHUkldHlOttuBBxw=";
+      sha256 = "sha256-ole/DAcIUsVsmBKb1tSdPZyIBToKGDT4l/izf+z8Ihs=";
     };
   };
   geonames-cities500 = {
     pname = "geonames-cities500";
-    version = "2024-03-12T18:28:52+00:00";
+    version = "2024-03-19T18:28:52+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/cities500.zip";
-      sha256 = "sha256-rAej7TC0dC+3ekVG6t8jBfheToCS2SYQsGQhJ3yEOWo=";
+      sha256 = "sha256-D1m6I+3MTfegJQnCiv9zie4tAqXYqyXFHNfuLVSld6g=";
     };
   };
   kes = {
     pname = "kes";
-    version = "2024-03-01T18-06-46Z";
+    version = "2024-03-13T17-52-13Z";
     src = fetchFromGitHub {
       owner = "minio";
       repo = "kes";
-      rev = "2024-03-01T18-06-46Z";
+      rev = "2024-03-13T17-52-13Z";
       fetchSubmodules = false;
-      sha256 = "sha256-zyZtHXvd9HE7RASqesFnqoBJ3+Nfv18WlAiYhezp1v0=";
+      sha256 = "sha256-ilI2cuoFiuCaz/euTaMvE3I+A3se5B7zBKGUU4B8aPE=";
     };
   };
   ocis-bin = {
     pname = "ocis-bin";
-    version = "5.0.0-rc.5";
+    version = "5.0.0";
     src = fetchurl {
-      url = "https://github.com/owncloud/ocis/releases/download/v5.0.0-rc.5/ocis-5.0.0-rc.5-linux-amd64";
-      sha256 = "sha256-rdKCPlJb0BV9nBq0neoIFn9e97A5zL7il1v23I9Hqm0=";
+      url = "https://github.com/owncloud/ocis/releases/download/v5.0.0/ocis-5.0.0-linux-amd64";
+      sha256 = "sha256-0lgDIHldW67OwinfYPATXkWUZVnR3PoXC4XLM1KkKmY=";
     };
   };
   wemeet = {
