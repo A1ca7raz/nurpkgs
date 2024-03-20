@@ -18,6 +18,7 @@ stdenv.mkDerivation {
   buildInputs = with kdePackages; [
     libsForQt5.plasma-framework
     kdeplasma-addons
+    qtbase
   ];
 
   cmakeFlags = [
