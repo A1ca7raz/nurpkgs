@@ -3,21 +3,21 @@
   source,
   lib,
   kdePackages,
-  libsForQt5,
   cmake
 }:
 stdenv.mkDerivation rec {
   inherit (source) pname src version;
 
-  nativeBuildInputs = [
+  nativeBuildInputs = with kdePackages; [
     cmake
-    kdePackages.extra-cmake-modules
+    extra-cmake-modules
+    wrapQtAppsHook
   ];
 
   buildInputs = with kdePackages; [
     kcoreaddons
     kdeclarative
     kdecoration
-    libsForQt5.plasma-framework
+    libplasma
   ];
 }
