@@ -1,17 +1,16 @@
 {
   stdenv,
   source,
-  fetchFromGitHub,
   cmake,
   extra-cmake-modules,
-  wrapQtAppsHook,
+  kdePackages,
   kwin,
   lib
 }:
 stdenv.mkDerivation rec {
   inherit (source) pname src version;
 
-  nativeBuildInputs = [ cmake extra-cmake-modules wrapQtAppsHook ];
+  nativeBuildInputs = [ cmake extra-cmake-modules kdePackages.wrapQtAppsHook ];
   buildInputs = [ kwin ];
 
   cmakeFlags = [
