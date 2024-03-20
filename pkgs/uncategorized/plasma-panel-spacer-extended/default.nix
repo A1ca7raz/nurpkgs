@@ -4,6 +4,7 @@
   stdenv,
   cmake,
   extra-cmake-modules,
+  libsForQt5,
   kdePackages,
 }:
 stdenv.mkDerivation {
@@ -15,7 +16,7 @@ stdenv.mkDerivation {
   ];
 
   buildInputs = with kdePackages; [
-    plasma-framework
+    libsForQt5.plasma-framework
     kdeplasma-addons
   ];
 
