@@ -2,16 +2,14 @@
   stdenv,
   source,
   cmake,
-  extra-cmake-modules,
   kdePackages,
-  kwin,
   lib
 }:
 stdenv.mkDerivation rec {
   inherit (source) pname src version;
 
-  nativeBuildInputs = [ cmake extra-cmake-modules kdePackages.wrapQtAppsHook ];
-  buildInputs = [ kwin ];
+  nativeBuildInputs = with kdePackages; [ cmake extra-cmake-modules wrapQtAppsHook ];
+  buildInputs = [ kdePackages.kwin ];
 
   cmakeFlags = [
     "-DCMAKE_INSTALL_PREFIX=$out"
