@@ -10,6 +10,10 @@ fetch.git = "https://github.com/moodyhunter/applet-window-buttons6"
 src.github = "qjfoidnh/BaiduPCS-Go"
 fetch.github = "qjfoidnh/BaiduPCS-Go"
 
+[breeze-enhanced-kde6]
+src.git = "https://github.com/xynnylol/BreezeEnhanced-KDE6"
+fetch.git = "https://github.com/xynnylol/BreezeEnhanced-KDE6"
+
 [clash-webui-yacd]
 src.git = "https://github.com/haishanh/yacd"
 src.branch = "gh-pages"

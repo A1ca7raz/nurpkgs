@@ -58,6 +58,25 @@
         },
         "version": "v3.9.5"
     },
+    "breeze-enhanced-kde6": {
+        "cargoLocks": null,
+        "date": "2024-03-08",
+        "extract": null,
+        "name": "breeze-enhanced-kde6",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "af8c8bca7473d4710b7caf311783061d7c18bd7a",
+            "sha256": "sha256-9BIGz91l19mWeUxgC1jW8I97mKPGdJT0d65ael+Y9Pk=",
+            "type": "git",
+            "url": "https://github.com/xynnylol/BreezeEnhanced-KDE6"
+        },
+        "version": "af8c8bca7473d4710b7caf311783061d7c18bd7a"
+    },
     "clash-webui-yacd": {
         "cargoLocks": null,
         "date": "2023-10-30",
@@ -151,7 +170,7 @@
             "type": "url",
             "url": "https://download.geonames.org/export/dump/admin1CodesASCII.txt"
         },
-        "version": "2024-03-20T20:37:54+08:00"
+        "version": "2024-03-20T23:38:41+08:00"
     },
     "geonames-admin2Codes": {
         "cargoLocks": null,
@@ -166,7 +185,7 @@
             "type": "url",
             "url": "https://download.geonames.org/export/dump/admin2Codes.txt"
         },
-        "version": "2024-03-20T20:37:54+08:00"
+        "version": "2024-03-20T23:38:41+08:00"
     },
     "geonames-cities500": {
         "cargoLocks": null,
@@ -181,7 +200,7 @@
             "type": "url",
             "url": "https://download.geonames.org/export/dump/cities500.zip"
         },
-        "version": "2024-03-20T20:37:54+08:00"
+        "version": "2024-03-20T23:38:41+08:00"
     },
     "kes": {
         "cargoLocks": null,
