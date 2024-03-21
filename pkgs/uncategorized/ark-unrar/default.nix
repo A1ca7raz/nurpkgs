@@ -1,6 +1,6 @@
 {
-  ark
+  kdePackages
 }:
-ark.override {
+kdePackages.ark.override {
   unfreeEnableUnrar = true;
 }
