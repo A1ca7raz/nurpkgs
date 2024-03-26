@@ -20,6 +20,6 @@ buildGoModule {
   meta = with lib; {
     description = "Key Managament Server [not just] for Object Storage";
     homepage = "https://github.com/minio/kes";
-    license = licenses.agpl3;
+    license = licenses.agpl3Plus;
   };
 }
