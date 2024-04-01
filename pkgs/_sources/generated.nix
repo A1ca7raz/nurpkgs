@@ -38,16 +38,16 @@
   };
   breeze-enhanced-kde6 = {
     pname = "breeze-enhanced-kde6";
-    version = "af8c8bca7473d4710b7caf311783061d7c18bd7a";
+    version = "dd10d403aa40b05f4439d2c0cf727b4ad8c2a028";
     src = fetchgit {
       url = "https://github.com/xynnylol/BreezeEnhanced-KDE6";
-      rev = "af8c8bca7473d4710b7caf311783061d7c18bd7a";
+      rev = "dd10d403aa40b05f4439d2c0cf727b4ad8c2a028";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-9BIGz91l19mWeUxgC1jW8I97mKPGdJT0d65ael+Y9Pk=";
+      sha256 = "sha256-8+PKJ4LZT8Hgso7eaQtuCg3Z8MwRfHcNq7rZVeicjjY=";
     };
-    date = "2024-03-08";
+    date = "2024-03-27";
   };
   clash-webui-yacd = {
     pname = "clash-webui-yacd";
@@ -96,37 +96,37 @@
   };
   geonames-admin1Codes = {
     pname = "geonames-admin1Codes";
-    version = "2024-03-20T23:38:41+08:00";
+    version = "2024-04-01T12:19:23+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin1CodesASCII.txt";
-      sha256 = "sha256-WQIGVS9wB6o4tDHcbrP1qW1fr/KT3cRrJ3CCbKChkx0=";
+      sha256 = "sha256-bqzosmnNTJY12PhjGFfAviyz+2NiSV938X8mbvcyjxE=";
     };
   };
   geonames-admin2Codes = {
     pname = "geonames-admin2Codes";
-    version = "2024-03-20T23:38:41+08:00";
+    version = "2024-04-01T12:19:23+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin2Codes.txt";
-      sha256 = "sha256-ole/DAcIUsVsmBKb1tSdPZyIBToKGDT4l/izf+z8Ihs=";
+      sha256 = "sha256-3vvZkylTD6awbhVGYvsWpRoMEsr0Fja+F1l8WMU3Txw=";
     };
   };
   geonames-cities500 = {
     pname = "geonames-cities500";
-    version = "2024-03-20T23:38:41+08:00";
+    version = "2024-04-01T12:19:23+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/cities500.zip";
-      sha256 = "sha256-htsGpdTCJoIlq+h2wbOFQ0FaMpxTikRpwc1ulsnqDZY=";
+      sha256 = "sha256-vPMk48m/YbyHF9/Y5w2QeYcMzoFfr7sJZFM8OhiAIBA=";
     };
   };
   kes = {
     pname = "kes";
-    version = "2024-03-13T17-52-13Z";
+    version = "2024-03-28T12-56-37Z";
     src = fetchFromGitHub {
       owner = "minio";
       repo = "kes";
-      rev = "2024-03-13T17-52-13Z";
+      rev = "2024-03-28T12-56-37Z";
       fetchSubmodules = false;
-      sha256 = "sha256-ilI2cuoFiuCaz/euTaMvE3I+A3se5B7zBKGUU4B8aPE=";
+      sha256 = "sha256-iOdwMqhZEhYE6iEiDHKURpZ1hwqO6sjuYkqfD+DvkXI=";
     };
   };
   ocis-bin = {
@@ -150,16 +150,16 @@
   };
   sierra-breeze-enhanced-kde6 = {
     pname = "sierra-breeze-enhanced-kde6";
-    version = "0f2cb361c7a8b2d9c5285920a2214686bd7f6fee";
+    version = "3b224129e52fcf1998aa0312cb5f534a6d67b555";
     src = fetchgit {
       url = "https://github.com/chiyuki0325/SierraBreezeEnhanced6";
-      rev = "0f2cb361c7a8b2d9c5285920a2214686bd7f6fee";
+      rev = "3b224129e52fcf1998aa0312cb5f534a6d67b555";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-xE7pUtZjQ0mM3KVMXY0hDr7+hLymxE7urgs1ZXRuJHQ=";
+      sha256 = "sha256-cDoBIou9JsgcR+cKzTLvXZ+xIoZKvIuO3S0XsTVPvKE=";
     };
-    date = "2024-03-16";
+    date = "2024-03-29";
   };
   wemeet = {
     pname = "wemeet";
