@@ -11,7 +11,6 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = with kdePackages; [ cmake extra-cmake-modules wrapQtAppsHook ];
   buildInputs = with kdePackages; [
     kwin
-    kwindowsystem
   ];
 
   cmakeFlags = [
