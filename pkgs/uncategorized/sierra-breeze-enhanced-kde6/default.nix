@@ -19,6 +19,4 @@ stdenv.mkDerivation rec {
     "-DBUILD_TESTING=OFF"
     "-DKDE_INSTALL_USE_QT_SYS_PATHS=ON"
   ];
-
-  patches = [ ./fix-wayland.patch ];
 }
