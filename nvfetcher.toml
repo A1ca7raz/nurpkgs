@@ -1,15 +1,18 @@
-[64gram]
-src.github = "TDesktop-x64/tdesktop"
-fetch.github = "TDesktop-x64/tdesktop"
-git.fetchSubmodules = true
-
 [applet-window-appmenu]
 src.github = "psifidotos/applet-window-appmenu"
 fetch.github = "psifidotos/applet-window-appmenu"
 
+[applet-window-buttons6]
+src.git = "https://github.com/moodyhunter/applet-window-buttons6"
+fetch.git = "https://github.com/moodyhunter/applet-window-buttons6"
+
 [baidupcs-go]
 src.github = "qjfoidnh/BaiduPCS-Go"
 fetch.github = "qjfoidnh/BaiduPCS-Go"
+
+[breeze-enhanced-kde6]
+src.git = "https://github.com/xynnylol/BreezeEnhanced-KDE6"
+fetch.git = "https://github.com/xynnylol/BreezeEnhanced-KDE6"
 
 [clash-webui-yacd]
 src.git = "https://github.com/haishanh/yacd"
@@ -54,6 +57,14 @@ fetch.github = "minio/kes"
 src.github_tag = "owncloud/ocis"
 src.prefix = "v"
 fetch.url = "https://github.com/owncloud/ocis/releases/download/v$ver/ocis-$ver-linux-amd64"
+
+[plasma-panel-spacer-extended]
+src.github = "luisbocanegra/plasma-panel-spacer-extended"
+fetch.github = "luisbocanegra/plasma-panel-spacer-extended"
+
+[sierra-breeze-enhanced-kde6]
+src.git = "https://github.com/chiyuki0325/SierraBreezeEnhanced6"
+fetch.git = "https://github.com/chiyuki0325/SierraBreezeEnhanced6"
 
 [wemeet]
 src.manual = "3.14.0.401"

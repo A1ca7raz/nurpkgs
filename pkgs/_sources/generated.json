@@ -1,24 +1,4 @@
 {
-    "64gram": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "64gram",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": true,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "TDesktop-x64",
-            "repo": "tdesktop",
-            "rev": "v1.1.15",
-            "sha256": "sha256-3HLRv8RTyyfnjMF7w+euSOj6SbxlxOuczap5Nlizsvg=",
-            "type": "github"
-        },
-        "version": "v1.1.15"
-    },
     "applet-window-appmenu": {
         "cargoLocks": null,
         "date": null,
@@ -39,6 +19,25 @@
         },
         "version": "v0.8.0"
     },
+    "applet-window-buttons6": {
+        "cargoLocks": null,
+        "date": "2024-03-11",
+        "extract": null,
+        "name": "applet-window-buttons6",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "a7b95da32717b90a1d9478db429d6fa8a6c4605f",
+            "sha256": "sha256-S7JcDPo4QDqi/RtvreFNoPKwTg14bgaFGsuGSDxs5nM=",
+            "type": "git",
+            "url": "https://github.com/moodyhunter/applet-window-buttons6"
+        },
+        "version": "a7b95da32717b90a1d9478db429d6fa8a6c4605f"
+    },
     "baidupcs-go": {
         "cargoLocks": null,
         "date": null,
@@ -58,6 +57,25 @@
             "type": "github"
         },
         "version": "v3.9.5"
+    },
+    "breeze-enhanced-kde6": {
+        "cargoLocks": null,
+        "date": "2024-03-08",
+        "extract": null,
+        "name": "breeze-enhanced-kde6",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "af8c8bca7473d4710b7caf311783061d7c18bd7a",
+            "sha256": "sha256-9BIGz91l19mWeUxgC1jW8I97mKPGdJT0d65ael+Y9Pk=",
+            "type": "git",
+            "url": "https://github.com/xynnylol/BreezeEnhanced-KDE6"
+        },
+        "version": "af8c8bca7473d4710b7caf311783061d7c18bd7a"
     },
     "clash-webui-yacd": {
         "cargoLocks": null,
@@ -152,7 +170,7 @@
             "type": "url",
             "url": "https://download.geonames.org/export/dump/admin1CodesASCII.txt"
         },
-        "version": "2024-03-11T10:43:37+00:00"
+        "version": "2024-03-20T23:38:41+08:00"
     },
     "geonames-admin2Codes": {
         "cargoLocks": null,
@@ -163,11 +181,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-1e5pLAkjpl+D2qAmGaN/qxGurZrYHUkldHlOttuBBxw=",
+            "sha256": "sha256-ole/DAcIUsVsmBKb1tSdPZyIBToKGDT4l/izf+z8Ihs=",
             "type": "url",
             "url": "https://download.geonames.org/export/dump/admin2Codes.txt"
         },
-        "version": "2024-03-11T10:43:34+00:00"
+        "version": "2024-03-20T23:38:41+08:00"
     },
     "geonames-cities500": {
         "cargoLocks": null,
@@ -178,11 +196,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-07ESqIuF5QurQ9ijXLTyO/dNGJgVbE+b9yYlqkW40tg=",
+            "sha256": "sha256-htsGpdTCJoIlq+h2wbOFQ0FaMpxTikRpwc1ulsnqDZY=",
             "type": "url",
             "url": "https://download.geonames.org/export/dump/cities500.zip"
         },
-        "version": "2024-03-11T10:43:36+00:00"
+        "version": "2024-03-20T23:38:41+08:00"
     },
     "kes": {
         "cargoLocks": null,
@@ -198,11 +216,11 @@
             "name": null,
             "owner": "minio",
             "repo": "kes",
-            "rev": "2024-03-01T18-06-46Z",
-            "sha256": "sha256-zyZtHXvd9HE7RASqesFnqoBJ3+Nfv18WlAiYhezp1v0=",
+            "rev": "2024-03-13T17-52-13Z",
+            "sha256": "sha256-ilI2cuoFiuCaz/euTaMvE3I+A3se5B7zBKGUU4B8aPE=",
             "type": "github"
         },
-        "version": "2024-03-01T18-06-46Z"
+        "version": "2024-03-13T17-52-13Z"
     },
     "ocis-bin": {
         "cargoLocks": null,
@@ -213,11 +231,50 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-rdKCPlJb0BV9nBq0neoIFn9e97A5zL7il1v23I9Hqm0=",
+            "sha256": "sha256-0lgDIHldW67OwinfYPATXkWUZVnR3PoXC4XLM1KkKmY=",
             "type": "url",
-            "url": "https://github.com/owncloud/ocis/releases/download/v5.0.0-rc.5/ocis-5.0.0-rc.5-linux-amd64"
+            "url": "https://github.com/owncloud/ocis/releases/download/v5.0.0/ocis-5.0.0-linux-amd64"
         },
-        "version": "5.0.0-rc.5"
+        "version": "5.0.0"
+    },
+    "plasma-panel-spacer-extended": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "plasma-panel-spacer-extended",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "luisbocanegra",
+            "repo": "plasma-panel-spacer-extended",
+            "rev": "v1.5.4",
+            "sha256": "sha256-TZD+Tm6iBS6B3O2tu816PUSXbPH2W37ZZD9HDqHEGv8=",
+            "type": "github"
+        },
+        "version": "v1.5.4"
+    },
+    "sierra-breeze-enhanced-kde6": {
+        "cargoLocks": null,
+        "date": "2024-03-16",
+        "extract": null,
+        "name": "sierra-breeze-enhanced-kde6",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "0f2cb361c7a8b2d9c5285920a2214686bd7f6fee",
+            "sha256": "sha256-xE7pUtZjQ0mM3KVMXY0hDr7+hLymxE7urgs1ZXRuJHQ=",
+            "type": "git",
+            "url": "https://github.com/chiyuki0325/SierraBreezeEnhanced6"
+        },
+        "version": "0f2cb361c7a8b2d9c5285920a2214686bd7f6fee"
     },
     "wemeet": {
         "cargoLocks": null,

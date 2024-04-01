@@ -1,53 +1,18 @@
-From 4d90b9ecb4ab16672c8dfc82bca3dc6d33f9f8a5 Mon Sep 17 00:00:00 2001
-From: A1ca7raz <7345998+A1ca7raz@users.noreply.github.com>
-Date: Fri, 1 Sep 2023 13:41:32 +0800
-Subject: [PATCH 1/2] merge PR#269 from KDE to Make window-specific overrides
- work on Wayland
-
-merge PR#267 from KDE to Port to DecoratedClient::windowClass()
----
- CMakeLists.txt                   |   6 +-
- breezesettingsprovider.cpp       |  15 +--
- config/breezedetectwidget.cpp    | 161 +++++--------------------------
- config/breezedetectwidget.h      |  64 ++----------
- config/breezeexceptiondialog.cpp |  24 +----
- config/ui/breezedetectwidget.ui  | 146 ----------------------------
- 6 files changed, 44 insertions(+), 372 deletions(-)
- delete mode 100644 config/ui/breezedetectwidget.ui
-
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index dc347f0..92e169b 100644
+index 85e5521..396cd5e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -27,7 +27,7 @@ find_package(KDecoration2 REQUIRED)
- # old stuff
- add_definitions(-DTRANSLATION_DOMAIN="breeze_kwin_deco")
- 
--find_package(KF5 REQUIRED COMPONENTS CoreAddons GuiAddons ConfigWidgets WindowSystem I18n IconThemes)
-+find_package(KF5 REQUIRED COMPONENTS CoreAddons GuiAddons ConfigWidgets I18n IconThemes)
- find_package(Qt5 CONFIG REQUIRED COMPONENTS DBus)
- 
- ### XCB
-@@ -82,7 +82,6 @@ set(sierrabreezeenhanced_config_SRCS
+@@ -95,7 +95,7 @@ set(sierrabreezeenhanced_config_SRCS
+     config/breezeexceptionmodel.cpp config/breezeitemmodel.cpp)
  
  set(sierrabreezeenhanced_config_PART_FORMS
-    config/ui/breezeconfigurationui.ui
--   config/ui/breezedetectwidget.ui
-    config/ui/breezeexceptiondialog.ui
-    config/ui/breezeexceptionlistwidget.ui
- )
-@@ -108,8 +107,7 @@ target_link_libraries(sierrabreezeenhanced
-         KF5::ConfigWidgets
-         KF5::GuiAddons
-         KF5::I18n
--        KF5::IconThemes
--        KF5::WindowSystem)
-+        KF5::IconThemes)
+-    config/ui/breezeconfigurationui.ui config/ui/breezedetectwidget.ui
++    config/ui/breezeconfigurationui.ui
+     config/ui/breezeexceptiondialog.ui config/ui/breezeexceptionlistwidget.ui)
  
- if(BREEZE_HAVE_X11)
-   target_link_libraries(sierrabreezeenhanced
+ ki18n_wrap_ui(sierrabreezeenhanced_config_PART_FORMS_HEADERS
 diff --git a/breezesettingsprovider.cpp b/breezesettingsprovider.cpp
-index bd53d70..16d0243 100644
+index 89ac334..b4e7d53 100644
 --- a/breezesettingsprovider.cpp
 +++ b/breezesettingsprovider.cpp
 @@ -22,8 +22,6 @@
@@ -67,7 +32,28 @@ index bd53d70..16d0243 100644
 +        QString windowClass;
  
          // get the client
-         const auto client = decoration->client().toStrongRef();
+         const auto client = decoration->client();
+@@ -87,13 +85,13 @@ namespace Breeze
+             // discard exceptions with empty exception pattern
+             if( internalSettings->exceptionPattern().isEmpty() ) continue;
+ 
+-            if (internalSettings->isDialog())
+-            {
+-              KWindowInfo info(client->windowId(), NET::WMWindowType);
+-              if (info.valid() && info.windowType(NET::NormalMask | NET::DialogMask) != NET::Dialog) {
+-                continue;
+-              }
+-            }
++            // if (internalSettings->isDialog())
++            // {
++            //   KWindowInfo info(client->windowId(), NET::WMWindowType);
++            //   if (info.valid() && info.windowType(NET::NormalMask | NET::DialogMask) != NET::Dialog) {
++            //     continue;
++            //   }
++            // }
+ 
+             /*
+             decide which value is to be compared
 @@ -111,16 +109,7 @@ namespace Breeze
                  default:
                  case InternalSettings::ExceptionWindowClassName:
@@ -86,8 +72,22 @@ index bd53d70..16d0243 100644
                      break;
                  }
  
+diff --git a/config/CMakeLists.txt b/config/CMakeLists.txt
+index 4cdc29e..7bf6e4d 100644
+--- a/config/CMakeLists.txt
++++ b/config/CMakeLists.txt
+@@ -8,8 +8,7 @@ set(breezedecoration_config_SRCS
+     breezeitemmodel.cpp)
+ ki18n_wrap_ui(
+   breezedecoration_config_SRCS ui/breezeconfigurationui.ui
+-  ui/breezeexceptiondialog.ui ui/breezeexceptionlistwidget.ui
+-  ui/breezedetectwidget.ui)
++  ui/breezeexceptiondialog.ui ui/breezeexceptionlistwidget.ui)
+ 
+ kcoreaddons_add_plugin(
+   kcm_sierrabreezeenhanceddecoration SOURCES kcm_sierrabreezeenhanceddecoration
 diff --git a/config/breezedetectwidget.cpp b/config/breezedetectwidget.cpp
-index fff5b53..aba0e87 100644
+index a55b94e..b752aff 100644
 --- a/config/breezedetectwidget.cpp
 +++ b/config/breezedetectwidget.cpp
 @@ -29,154 +29,45 @@
@@ -102,7 +102,7 @@ index fff5b53..aba0e87 100644
 -#include <QMouseEvent>
 -#include <config-breeze.h>
 -#if BREEZE_HAVE_X11
--#include <QX11Info>
+-#include <QtGui/private/qtx11extras_p.h>
 -#include <xcb/xcb.h>
 -#endif
 +#include <QDBusConnection>
@@ -172,8 +172,8 @@ index fff5b53..aba0e87 100644
 -
 -    //_________________________________________________________
 -    void DetectDialog::selectWindow()
-+    DetectDialog::DetectDialog(QObject* parent):
-+        QObject(parent)
++    DetectDialog::DetectDialog( QObject* parent ):
++        QObject( parent )
      {
 -
 -        // use a dialog, so that all user input is blocked
@@ -272,10 +272,10 @@ index fff5b53..aba0e87 100644
 -
  }
 diff --git a/config/breezedetectwidget.h b/config/breezedetectwidget.h
-index 54e51da..b595e85 100644
+index b71fbc3..d0a9dbc 100644
 --- a/config/breezedetectwidget.h
 +++ b/config/breezedetectwidget.h
-@@ -30,21 +30,13 @@
+@@ -30,22 +30,13 @@
  // IN THE SOFTWARE.
  //////////////////////////////////////////////////////////////////////////////
  
@@ -288,6 +288,7 @@ index 54e51da..b595e85 100644
 -#include <QEvent>
 -#include <QLabel>
 -
+-#include <KWindowInfo>
 -#include <kwindowsystem.h>
 +#include <QObject>
 +#include <QVariantMap>
@@ -300,12 +301,12 @@ index 54e51da..b595e85 100644
      {
  
          Q_OBJECT
-@@ -52,60 +44,22 @@ namespace Breeze
+@@ -53,60 +44,22 @@ namespace Breeze
          public:
  
          //* constructor
 -        explicit DetectDialog( QWidget* );
-+        explicit DetectDialog(QObject *parent = nullptr);
++        explicit DetectDialog( QObject *parent = nullptr );
  
          //* read window properties or select one from mouse grab
 -        void detect( WId window );
@@ -325,7 +326,7 @@ index 54e51da..b595e85 100644
 -            else if( m_ui.windowTitleCheckBox->isChecked() ) return InternalSettings::ExceptionWindowTitle;
 -            else return InternalSettings::ExceptionWindowClassName;
 -        }
-+        ///* window properties
++        //* window properties
 +        QVariantMap properties() const;
  
          Q_SIGNALS:
@@ -368,7 +369,7 @@ index 54e51da..b595e85 100644
  
  } // namespace
 diff --git a/config/breezeexceptiondialog.cpp b/config/breezeexceptiondialog.cpp
-index 4590cd0..b91f44a 100644
+index aeabf1a..b91f44a 100644
 --- a/config/breezeexceptiondialog.cpp
 +++ b/config/breezeexceptiondialog.cpp
 @@ -27,10 +27,6 @@
@@ -376,7 +377,7 @@ index 4590cd0..b91f44a 100644
  #include "config-breeze.h"
  
 -#if BREEZE_HAVE_X11
--#include <QX11Info>
+-#include <QtGui/private/qtx11extras_p.h>
 -#endif
 -
  namespace Breeze
@@ -584,38 +585,3 @@ index 5db36c8..0000000
 -  </connection>
 - </connections>
 -</ui>
-
-From 3baa96c638dfdf44d3cf2d40fec9fabfc6031ed2 Mon Sep 17 00:00:00 2001
-From: A1ca7raz <7345998+A1ca7raz@users.noreply.github.com>
-Date: Fri, 1 Sep 2023 14:07:25 +0800
-Subject: [PATCH 2/2] test: remove dialog check with KWindowInfo
-
----
- breezesettingsprovider.cpp | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/breezesettingsprovider.cpp b/breezesettingsprovider.cpp
-index 16d0243..6ed1874 100644
---- a/breezesettingsprovider.cpp
-+++ b/breezesettingsprovider.cpp
-@@ -85,13 +85,13 @@ namespace Breeze
-             // discard exceptions with empty exception pattern
-             if( internalSettings->exceptionPattern().isEmpty() ) continue;
- 
--            if (internalSettings->isDialog())
--            {
--              KWindowInfo info(client->windowId(), NET::WMWindowType);
--              if (info.valid() && info.windowType(NET::NormalMask | NET::DialogMask) != NET::Dialog) {
--                continue;
--              }
--            }
-+            // if (internalSettings->isDialog())
-+            // {
-+            //   KWindowInfo info(client->windowId(), NET::WMWindowType);
-+            //   if (info.valid() && info.windowType(NET::NormalMask | NET::DialogMask) != NET::Dialog) {
-+            //     continue;
-+            //   }
-+            // }
- 
-             /*
-             decide which value is to be compared
