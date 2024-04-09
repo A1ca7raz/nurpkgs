@@ -14,16 +14,16 @@
   };
   applet-window-buttons6 = {
     pname = "applet-window-buttons6";
-    version = "a7b95da32717b90a1d9478db429d6fa8a6c4605f";
+    version = "326382805641d340c9902689b549e4488682f553";
     src = fetchgit {
       url = "https://github.com/moodyhunter/applet-window-buttons6";
-      rev = "a7b95da32717b90a1d9478db429d6fa8a6c4605f";
+      rev = "326382805641d340c9902689b549e4488682f553";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-S7JcDPo4QDqi/RtvreFNoPKwTg14bgaFGsuGSDxs5nM=";
+      sha256 = "sha256-POr56g3zqs10tmCbKN+QcF6P6OL84tQNkA+Jtk1LUfY=";
     };
-    date = "2024-03-11";
+    date = "2024-04-05";
   };
   baidupcs-go = {
     pname = "baidupcs-go";
@@ -35,19 +35,6 @@
       fetchSubmodules = false;
       sha256 = "sha256-zNodRQzflOOB3hAeq4KbjRFlHQwknVy+4ucipUcoufY=";
     };
-  };
-  breeze-enhanced-kde6 = {
-    pname = "breeze-enhanced-kde6";
-    version = "dd10d403aa40b05f4439d2c0cf727b4ad8c2a028";
-    src = fetchgit {
-      url = "https://github.com/xynnylol/BreezeEnhanced-KDE6";
-      rev = "dd10d403aa40b05f4439d2c0cf727b4ad8c2a028";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sha256 = "sha256-8+PKJ4LZT8Hgso7eaQtuCg3Z8MwRfHcNq7rZVeicjjY=";
-    };
-    date = "2024-03-27";
   };
   clash-webui-yacd = {
     pname = "clash-webui-yacd";
@@ -96,7 +83,7 @@
   };
   geonames-admin1Codes = {
     pname = "geonames-admin1Codes";
-    version = "2024-04-01T12:19:23+00:00";
+    version = "2024-04-09T18:26:02+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin1CodesASCII.txt";
       sha256 = "sha256-bqzosmnNTJY12PhjGFfAviyz+2NiSV938X8mbvcyjxE=";
@@ -104,18 +91,18 @@
   };
   geonames-admin2Codes = {
     pname = "geonames-admin2Codes";
-    version = "2024-04-01T12:19:23+00:00";
+    version = "2024-04-09T18:26:05+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin2Codes.txt";
-      sha256 = "sha256-3vvZkylTD6awbhVGYvsWpRoMEsr0Fja+F1l8WMU3Txw=";
+      sha256 = "sha256-Aqup2XMhQHCI/0nTkomktXGXZaH9gPAEFCmbN05qKrA=";
     };
   };
   geonames-cities500 = {
     pname = "geonames-cities500";
-    version = "2024-04-01T12:19:23+00:00";
+    version = "2024-04-09T18:26:02+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/cities500.zip";
-      sha256 = "sha256-vPMk48m/YbyHF9/Y5w2QeYcMzoFfr7sJZFM8OhiAIBA=";
+      sha256 = "sha256-NLdPuazrzwn13HFF7qaMaQuub2zQugGDU/ShRYV0aEo=";
     };
   };
   kes = {

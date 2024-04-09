@@ -21,7 +21,7 @@
     },
     "applet-window-buttons6": {
         "cargoLocks": null,
-        "date": "2024-03-11",
+        "date": "2024-04-05",
         "extract": null,
         "name": "applet-window-buttons6",
         "passthru": null,
@@ -31,12 +31,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "a7b95da32717b90a1d9478db429d6fa8a6c4605f",
-            "sha256": "sha256-S7JcDPo4QDqi/RtvreFNoPKwTg14bgaFGsuGSDxs5nM=",
+            "rev": "326382805641d340c9902689b549e4488682f553",
+            "sha256": "sha256-POr56g3zqs10tmCbKN+QcF6P6OL84tQNkA+Jtk1LUfY=",
             "type": "git",
             "url": "https://github.com/moodyhunter/applet-window-buttons6"
         },
-        "version": "a7b95da32717b90a1d9478db429d6fa8a6c4605f"
+        "version": "326382805641d340c9902689b549e4488682f553"
     },
     "baidupcs-go": {
         "cargoLocks": null,
@@ -57,25 +57,6 @@
             "type": "github"
         },
         "version": "v3.9.5"
-    },
-    "breeze-enhanced-kde6": {
-        "cargoLocks": null,
-        "date": "2024-03-27",
-        "extract": null,
-        "name": "breeze-enhanced-kde6",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "rev": "dd10d403aa40b05f4439d2c0cf727b4ad8c2a028",
-            "sha256": "sha256-8+PKJ4LZT8Hgso7eaQtuCg3Z8MwRfHcNq7rZVeicjjY=",
-            "type": "git",
-            "url": "https://github.com/xynnylol/BreezeEnhanced-KDE6"
-        },
-        "version": "dd10d403aa40b05f4439d2c0cf727b4ad8c2a028"
     },
     "clash-webui-yacd": {
         "cargoLocks": null,
@@ -170,7 +151,7 @@
             "type": "url",
             "url": "https://download.geonames.org/export/dump/admin1CodesASCII.txt"
         },
-        "version": "2024-04-01T12:19:23+00:00"
+        "version": "2024-04-09T18:26:02+00:00"
     },
     "geonames-admin2Codes": {
         "cargoLocks": null,
@@ -181,11 +162,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-3vvZkylTD6awbhVGYvsWpRoMEsr0Fja+F1l8WMU3Txw=",
+            "sha256": "sha256-Aqup2XMhQHCI/0nTkomktXGXZaH9gPAEFCmbN05qKrA=",
             "type": "url",
             "url": "https://download.geonames.org/export/dump/admin2Codes.txt"
         },
-        "version": "2024-04-01T12:19:23+00:00"
+        "version": "2024-04-09T18:26:05+00:00"
     },
     "geonames-cities500": {
         "cargoLocks": null,
@@ -196,11 +177,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-vPMk48m/YbyHF9/Y5w2QeYcMzoFfr7sJZFM8OhiAIBA=",
+            "sha256": "sha256-NLdPuazrzwn13HFF7qaMaQuub2zQugGDU/ShRYV0aEo=",
             "type": "url",
             "url": "https://download.geonames.org/export/dump/cities500.zip"
         },
-        "version": "2024-04-01T12:19:23+00:00"
+        "version": "2024-04-09T18:26:02+00:00"
     },
     "kes": {
         "cargoLocks": null,
