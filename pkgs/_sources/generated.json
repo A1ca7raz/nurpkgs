@@ -151,7 +151,7 @@
             "type": "url",
             "url": "https://download.geonames.org/export/dump/admin1CodesASCII.txt"
         },
-        "version": "2024-04-09T18:26:02+00:00"
+        "version": "2024-04-13T17:13:59+00:00"
     },
     "geonames-admin2Codes": {
         "cargoLocks": null,
@@ -166,7 +166,7 @@
             "type": "url",
             "url": "https://download.geonames.org/export/dump/admin2Codes.txt"
         },
-        "version": "2024-04-09T18:26:05+00:00"
+        "version": "2024-04-13T17:14:01+00:00"
     },
     "geonames-cities500": {
         "cargoLocks": null,
@@ -177,11 +177,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-NLdPuazrzwn13HFF7qaMaQuub2zQugGDU/ShRYV0aEo=",
+            "sha256": "sha256-ALxBsKpARX7bVM9CA+hTsq3Gtwy6YeC4gKT+eotYNhA=",
             "type": "url",
             "url": "https://download.geonames.org/export/dump/cities500.zip"
         },
-        "version": "2024-04-09T18:26:02+00:00"
+        "version": "2024-04-13T17:13:56+00:00"
     },
     "kes": {
         "cargoLocks": null,
@@ -212,11 +212,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-0lgDIHldW67OwinfYPATXkWUZVnR3PoXC4XLM1KkKmY=",
+            "sha256": "sha256-Fz0ee0Lu0CL3xJbsp1CCl0rsN/p48BdOj8oVOf0QSh4=",
             "type": "url",
-            "url": "https://github.com/owncloud/ocis/releases/download/v5.0.0/ocis-5.0.0-linux-amd64"
+            "url": "https://github.com/owncloud/ocis/releases/download/v5.0.1/ocis-5.0.1-linux-amd64"
         },
-        "version": "5.0.0"
+        "version": "5.0.1"
     },
     "plasma-panel-spacer-extended": {
         "cargoLocks": null,
