@@ -83,7 +83,7 @@
   };
   geonames-admin1Codes = {
     pname = "geonames-admin1Codes";
-    version = "2024-04-13T17:13:59+00:00";
+    version = "2024-04-16T18:26:44+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin1CodesASCII.txt";
       sha256 = "sha256-bqzosmnNTJY12PhjGFfAviyz+2NiSV938X8mbvcyjxE=";
@@ -91,29 +91,29 @@
   };
   geonames-admin2Codes = {
     pname = "geonames-admin2Codes";
-    version = "2024-04-13T17:14:01+00:00";
+    version = "2024-04-16T18:26:49+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin2Codes.txt";
-      sha256 = "sha256-Aqup2XMhQHCI/0nTkomktXGXZaH9gPAEFCmbN05qKrA=";
+      sha256 = "sha256-KnlPqjc4YAvl/w2J4bN4CGDMy4BhETMXDanh6TsRmIw=";
     };
   };
   geonames-cities500 = {
     pname = "geonames-cities500";
-    version = "2024-04-13T17:13:56+00:00";
+    version = "2024-04-16T18:26:48+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/cities500.zip";
-      sha256 = "sha256-ALxBsKpARX7bVM9CA+hTsq3Gtwy6YeC4gKT+eotYNhA=";
+      sha256 = "sha256-qAzOpqAeJoVw1a4e86tTVsrVbgPASMDA9PoG8E6oAEQ=";
     };
   };
   kes = {
     pname = "kes";
-    version = "2024-03-28T12-56-37Z";
+    version = "2024-04-12T13-50-00Z";
     src = fetchFromGitHub {
       owner = "minio";
       repo = "kes";
-      rev = "2024-03-28T12-56-37Z";
+      rev = "2024-04-12T13-50-00Z";
       fetchSubmodules = false;
-      sha256 = "sha256-iOdwMqhZEhYE6iEiDHKURpZ1hwqO6sjuYkqfD+DvkXI=";
+      sha256 = "sha256-rcuhsnjLt3DV0c13Uiy4Jb2uig+hVbpGk5nsXXFuKbg=";
     };
   };
   ocis-bin = {
