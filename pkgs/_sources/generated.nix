@@ -56,13 +56,13 @@
   };
   double-entry-generator = {
     pname = "double-entry-generator";
-    version = "v2.5.0-homebrew";
+    version = "v2.6.0";
     src = fetchFromGitHub {
       owner = "deb-sig";
       repo = "double-entry-generator";
-      rev = "v2.5.0-homebrew";
+      rev = "v2.6.0";
       fetchSubmodules = false;
-      sha256 = "sha256-TiXTRgbwElTptx5QhmgIfd8pirWTv5EHgO5RxYWeTtU=";
+      sha256 = "sha256-+VIfV6bJFlPxczx1g8keRXPmELPZzYeVErRlhIQwRwY=";
     };
   };
   fcitx5-pinyin-moegirl = {
@@ -83,26 +83,26 @@
   };
   geonames-admin1Codes = {
     pname = "geonames-admin1Codes";
-    version = "2024-04-16T18:26:44+00:00";
+    version = "2024-04-23T18:29:32+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin1CodesASCII.txt";
-      sha256 = "sha256-bqzosmnNTJY12PhjGFfAviyz+2NiSV938X8mbvcyjxE=";
+      sha256 = "sha256-UOkLvAN+Wr0XvYxtQfoOIe/bbngoGxQ6Tk7e7LlYj40=";
     };
   };
   geonames-admin2Codes = {
     pname = "geonames-admin2Codes";
-    version = "2024-04-16T18:26:49+00:00";
+    version = "2024-04-23T18:29:29+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/admin2Codes.txt";
-      sha256 = "sha256-KnlPqjc4YAvl/w2J4bN4CGDMy4BhETMXDanh6TsRmIw=";
+      sha256 = "sha256-Y/CchGye82wceXGNY8lFpaC2RzeIVAXHG59E8qpheJ0=";
     };
   };
   geonames-cities500 = {
     pname = "geonames-cities500";
-    version = "2024-04-16T18:26:48+00:00";
+    version = "2024-04-23T18:29:30+00:00";
     src = fetchurl {
       url = "https://download.geonames.org/export/dump/cities500.zip";
-      sha256 = "sha256-qAzOpqAeJoVw1a4e86tTVsrVbgPASMDA9PoG8E6oAEQ=";
+      sha256 = "sha256-UFfVlKmcx2l6yir3+Sm3llohKUiAmRkp9fYqWBevoVE=";
     };
   };
   kes = {
@@ -118,21 +118,21 @@
   };
   ocis-bin = {
     pname = "ocis-bin";
-    version = "5.0.1";
+    version = "5.0.2";
     src = fetchurl {
-      url = "https://github.com/owncloud/ocis/releases/download/v5.0.1/ocis-5.0.1-linux-amd64";
-      sha256 = "sha256-Fz0ee0Lu0CL3xJbsp1CCl0rsN/p48BdOj8oVOf0QSh4=";
+      url = "https://github.com/owncloud/ocis/releases/download/v5.0.2/ocis-5.0.2-linux-amd64";
+      sha256 = "sha256-ZMZ8YADdSfv1qutHsGW/CTye/Y3E65ynt5ZR2tpRLVg=";
     };
   };
   plasma-panel-spacer-extended = {
     pname = "plasma-panel-spacer-extended";
-    version = "v1.5.4";
+    version = "v1.6.0";
     src = fetchFromGitHub {
       owner = "luisbocanegra";
       repo = "plasma-panel-spacer-extended";
-      rev = "v1.5.4";
+      rev = "v1.6.0";
       fetchSubmodules = false;
-      sha256 = "sha256-TZD+Tm6iBS6B3O2tu816PUSXbPH2W37ZZD9HDqHEGv8=";
+      sha256 = "sha256-9a72QQYk4YRua2qPNj2N2gkC4WHoPeZFZ/znDcn4PP4=";
     };
   };
   sierra-breeze-enhanced-kde6 = {
