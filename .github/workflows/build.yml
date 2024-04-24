@@ -40,9 +40,11 @@ jobs:
     env:
       CI_MODE: 1
       NIXPKGS_ALLOW_UNFREE: 1
-      ATTIC_SERVER: ${{ secrets.ATTIC_SERVER }}
-      ATTIC_CACHE: ${{ secrets.ATTIC_CACHE }}
-      ATTIC_ACCESS_TOKEN: ${{ secrets.ATTIC_ACCESS_TOKEN }}
+      CACHIX_CACHE: ${{ secrets.CACHIX_CACHE }}
+      CACHIX_ACCESS_TOKEN: ${{ secrets.CACHIX_ACCESS_TOKEN }}
+      # ATTIC_SERVER: ${{ secrets.ATTIC_SERVER }}
+      # ATTIC_CACHE: ${{ secrets.ATTIC_CACHE }}
+      # ATTIC_ACCESS_TOKEN: ${{ secrets.ATTIC_ACCESS_TOKEN }}
 
     steps:
     - name: 0-1. Maximize space
@@ -68,17 +70,29 @@ jobs:
         extra_nix_config: |
           experimental-features = nix-command flakes repl-flake
           access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+          substituters = https://cache.nixos.org/ https://cache.garnix.io
+          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=
 
-    - name: 0-4. Setup Attic
-      run: |
-        # curl -LO https://raw.githubusercontent.com/zhaofengli/attic/main/.github/install-attic-ci.sh
-        curl -LO https://raw.githubusercontent.com/icewind1991/attic-action/master/dist/main/install-attic-ci.sh
-        bash install-attic-ci.sh
+    - name: 0.4. Setup Magic Nix cache
+      uses: DeterminateSystems/magic-nix-cache-action@v2
 
-        # https://github.com/zhaofengli/attic/blob/main/.github/workflows/build.yml#L30
-        export PATH=$HOME/.nix-profile/bin:$PATH
-        attic login --set-default ci "$ATTIC_SERVER" "$ATTIC_ACCESS_TOKEN"
-        attic use "$ATTIC_CACHE"
+    - name: 0-5. Setup Cachix
+      uses: cachix/cachix-action@v14
+      with:
+        name: '${{ secrets.CACHIX_CACHE }}'
+        authToken: '${{ secrets.CACHIX_ACCESS_TOKEN }}'
+        skipPush: true
+
+    # - name: 0-6. Setup Attic
+    #   run: |
+    #     # curl -LO https://raw.githubusercontent.com/zhaofengli/attic/main/.github/install-attic-ci.sh
+    #     curl -LO https://raw.githubusercontent.com/icewind1991/attic-action/master/dist/main/install-attic-ci.sh
+    #     bash install-attic-ci.sh
+    #
+    #     # https://github.com/zhaofengli/attic/blob/main/.github/workflows/build.yml#L30
+    #     export PATH=$HOME/.nix-profile/bin:$PATH
+    #     attic login --set-default ci "$ATTIC_SERVER" "$ATTIC_ACCESS_TOKEN"
+    #     attic use "$ATTIC_CACHE"
 
     - name: 1-1. Update package sources
       if: ${{ inputs.update_source == true }}
@@ -114,6 +128,6 @@ jobs:
         commit_message: "Update: sources"
         file_pattern: "pkgs/_sources"
 
-    - name: 3-2. Push cache to Attic
+    - name: 3-2. Push cache to Cachix
       if: ${{ inputs.push_cache == true }}
       run: bash ./.github/push_cache.sh ${{ inputs.packages }}

@@ -42,6 +42,8 @@ jobs:
         extra_nix_config: |
           experimental-features = nix-command flakes
           access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+          substituters = https://cache.nixos.org/ https://cache.garnix.io
+          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=
 
     - name: 1-1. Update flake.lock
       if: ${{ inputs.update_lock == true || github.event_name != 'workflow_dispatch' }}
@@ -88,19 +90,18 @@ jobs:
         commit_message: "Update: flake.lock&sources"
         file_pattern: "flake.lock pkgs/_sources"
 
-  # build_bundles:
-  #   needs: bump_lock
-  #   secrets: inherit
-  #   permissions:
-  #     contents: write
-  #   strategy:
-  #     matrix:
-  #       bundles:
-  #         - ciPackages
-  #         - unfreePackages
-  #         - JetBrainsPackages
-  #         - uncategorized
-  #         - authentikPackages
-  #   uses: ./.github/workflows/build.yml
-  #   with:
-  #     packages: ${{ matrix.bundles }}
+  build_bundles:
+    needs: bump_lock
+    secrets: inherit
+    permissions:
+      contents: write
+    strategy:
+      matrix:
+        bundles:
+          - ciPackages
+          - unfreePackages
+          # - JetBrainsPackages
+          - uncategorized
+    uses: ./.github/workflows/build.yml
+    with:
+      packages: ${{ matrix.bundles }}

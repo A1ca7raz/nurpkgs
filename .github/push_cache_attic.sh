@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # Variables
-cache=${CACHIX_CACHE:-test}
+extra_args=${ATTIC_PUSH_ARGS:--j8}
+cache=${ATTIC_CACHE:-test}
 retry_times=${ATTIC_PUSH_RETRY:-10}
 arch=${ARCH:-x86_64-linux}
 [[ $CI_MODE ]] && dryrun="" || dryrun=echo
@@ -9,8 +10,7 @@ arch=${ARCH:-x86_64-linux}
 # Functions
 push_with_retry() {
   for n in $(seq 1 ${retry_times}); do
-    echo $1 | $dryrun cachix push ${cache}
-    [[ $? == 0 ]] && return 0
+    $dryrun attic push ${extra_args} ${cache} $1 && return 0
   done
   false
 }
