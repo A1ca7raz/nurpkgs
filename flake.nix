@@ -20,16 +20,6 @@
       url = "github:ipetkov/crane";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    poetry2nix = {
-      url = "github:nix-community/poetry2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-    napalm = {
-      url = "github:nix-community/napalm";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,16 +41,6 @@
       url = "github:A1ca7raz/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
-    };
-    authentik-nix = {
-      url = "github:nix-community/authentik-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.nixpkgs-23-05.follows = "nixpkgs-23-05";
-      inputs.poetry2nix.follows = "poetry2nix";
-      inputs.napalm.follows = "napalm";
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
@@ -100,7 +80,6 @@
         unfreePackages = extraPackages pkgs;
 #         nvfetcherPackages = nvfetcher.packages.${system};
         sopsPackages = inputs.sops-nix.packages.${system};
-        authentikPackages = inputs.authentik-nix.packages.${system};
         spicetifyPackages = {
           spicetifyAll = inputs.spicetify-nix.checks.${system}.all-tests;
           spicetifyApps = inputs.spicetify-nix.checks.${system}.apps;
@@ -111,7 +90,6 @@
           unfreePackages //
           sopsPackages //
 #           nvfetcherPackages //
-          authentikPackages //
           spicetifyPackages //
           lanzabootePackages;
         packages = legacyPackages;
@@ -121,7 +99,6 @@
             customPackages
 #             nvfetcherPackages
             sopsPackages
-            authentikPackages
             spicetifyPackages;
           ciPackages = sopsPackages;
         };
