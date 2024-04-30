@@ -36,15 +36,6 @@
       sha256 = "sha256-zNodRQzflOOB3hAeq4KbjRFlHQwknVy+4ucipUcoufY=";
     };
   };
-  clash-webui-yacd = {
-    pname = "clash-webui-yacd";
-    version = "09eb9389a7109eafd35118cbf7c2ac0860190b01";
-    src = fetchurl {
-      url = "https://github.com/haishanh/yacd/archive/09eb9389a7109eafd35118cbf7c2ac0860190b01.zip";
-      sha256 = "sha256-983O0cNc+30y4/GO/yTRlWLTAFt+pB5Z90jA3b7en0Q=";
-    };
-    date = "2023-10-30";
-  };
   clash-webui-yacd-meta = {
     pname = "clash-webui-yacd-meta";
     version = "b66b1d0393bd284b7a40329f95eae3746bb102be";
@@ -75,45 +66,10 @@
   };
   fcitx5-pinyin-zhwiki = {
     pname = "fcitx5-pinyin-zhwiki";
-    version = "20240210";
+    version = "20240426";
     src = fetchurl {
-      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20240210.dict";
-      sha256 = "sha256-vNHS5n3TqSwpUx2wG26w7rK6jSqrvLANeG2n0vA4iYk=";
-    };
-  };
-  geonames-admin1Codes = {
-    pname = "geonames-admin1Codes";
-    version = "2024-04-23T18:29:32+00:00";
-    src = fetchurl {
-      url = "https://download.geonames.org/export/dump/admin1CodesASCII.txt";
-      sha256 = "sha256-UOkLvAN+Wr0XvYxtQfoOIe/bbngoGxQ6Tk7e7LlYj40=";
-    };
-  };
-  geonames-admin2Codes = {
-    pname = "geonames-admin2Codes";
-    version = "2024-04-23T18:29:29+00:00";
-    src = fetchurl {
-      url = "https://download.geonames.org/export/dump/admin2Codes.txt";
-      sha256 = "sha256-Y/CchGye82wceXGNY8lFpaC2RzeIVAXHG59E8qpheJ0=";
-    };
-  };
-  geonames-cities500 = {
-    pname = "geonames-cities500";
-    version = "2024-04-23T18:29:30+00:00";
-    src = fetchurl {
-      url = "https://download.geonames.org/export/dump/cities500.zip";
-      sha256 = "sha256-UFfVlKmcx2l6yir3+Sm3llohKUiAmRkp9fYqWBevoVE=";
-    };
-  };
-  kes = {
-    pname = "kes";
-    version = "2024-04-12T13-50-00Z";
-    src = fetchFromGitHub {
-      owner = "minio";
-      repo = "kes";
-      rev = "2024-04-12T13-50-00Z";
-      fetchSubmodules = false;
-      sha256 = "sha256-rcuhsnjLt3DV0c13Uiy4Jb2uig+hVbpGk5nsXXFuKbg=";
+      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20240426.dict";
+      sha256 = "sha256-SiiF4kvQpgjAFd3122WYy0ReJkVLUc93JVeFHIqc+jg=";
     };
   };
   ocis-bin = {
@@ -126,34 +82,13 @@
   };
   plasma-panel-spacer-extended = {
     pname = "plasma-panel-spacer-extended";
-    version = "v1.6.0";
+    version = "v1.6.1";
     src = fetchFromGitHub {
       owner = "luisbocanegra";
       repo = "plasma-panel-spacer-extended";
-      rev = "v1.6.0";
+      rev = "v1.6.1";
       fetchSubmodules = false;
-      sha256 = "sha256-9a72QQYk4YRua2qPNj2N2gkC4WHoPeZFZ/znDcn4PP4=";
-    };
-  };
-  sierra-breeze-enhanced-kde6 = {
-    pname = "sierra-breeze-enhanced-kde6";
-    version = "3b224129e52fcf1998aa0312cb5f534a6d67b555";
-    src = fetchgit {
-      url = "https://github.com/chiyuki0325/SierraBreezeEnhanced6";
-      rev = "3b224129e52fcf1998aa0312cb5f534a6d67b555";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sha256 = "sha256-cDoBIou9JsgcR+cKzTLvXZ+xIoZKvIuO3S0XsTVPvKE=";
-    };
-    date = "2024-03-29";
-  };
-  wemeet = {
-    pname = "wemeet";
-    version = "3.14.0.401";
-    src = fetchurl {
-      url = "https://updatecdn.meeting.qq.com/cos/1b001ef75914a1d6948decb8c2550b47/TencentMeeting_0300000000_3.14.0.401_x86_64_default.publish.deb";
-      sha256 = "sha256-ioBlxrdTboLSRXO9BhmdPFl5M0chaEoPgVLsami1Gy8=";
+      sha256 = "sha256-gffIUdj2Ry4iLzniP+Eu3VCQkncEnL1fBfQ0pLw1XQw=";
     };
   };
 }
