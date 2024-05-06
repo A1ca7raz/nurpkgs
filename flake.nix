@@ -52,6 +52,10 @@
       inputs.rust-overlay.follows = "rust-overlay";
       inputs.pre-commit-hooks-nix.follows = "";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
@@ -85,13 +89,15 @@
           spicetifyApps = inputs.spicetify-nix.checks.${system}.apps;
         };
         lanzabootePackages = inputs.lanzaboote.packages.${system};
+        nixIndexDbPackages = inputs.nix-index-database.packages.${system};
       in rec {
         legacyPackages = customPackages //
           unfreePackages //
           sopsPackages //
 #           nvfetcherPackages //
           spicetifyPackages //
-          lanzabootePackages;
+          lanzabootePackages //
+          nixIndexDbPackages;
         packages = legacyPackages;
         packageBundles = utils.mkPackageBundles pkgs ./pkgs // {
           inherit
@@ -99,8 +105,12 @@
             customPackages
 #             nvfetcherPackages
             sopsPackages
-            spicetifyPackages;
+            spicetifyPackages
+            nixIndexDbPackages;
           ciPackages = sopsPackages;
+          trivialPackages = spicetifyPackages //
+            lanzabootePackages //
+            nixIndexDbPackages;
         };
         checks = legacyPackages;
         formatter = pkgs.nixpkgs-fmt;

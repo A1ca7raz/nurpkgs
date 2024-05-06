@@ -102,6 +102,7 @@ jobs:
           - unfreePackages
           # - JetBrainsPackages
           - uncategorized
+          - trivialPackages
     uses: ./.github/workflows/build.yml
     with:
       packages: ${{ matrix.bundles }}
