@@ -74,7 +74,7 @@ jobs:
           trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=
 
     - name: 0.4. Setup Magic Nix cache
-      uses: DeterminateSystems/magic-nix-cache-action@v4
+      uses: DeterminateSystems/magic-nix-cache-action@v6
 
     - name: 0-5. Setup Cachix
       uses: cachix/cachix-action@v14
