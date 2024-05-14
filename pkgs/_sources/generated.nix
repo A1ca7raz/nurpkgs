@@ -58,26 +58,26 @@
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20240309";
+    version = "20240509";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20240309/moegirl.dict";
-      sha256 = "sha256-ir9WQA2cz8VLL46/GaLTFAnL/H5vKWq3sbywHTcAKb8=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20240509/moegirl.dict";
+      sha256 = "sha256-JIhIfH7QzF2v99aqW17wc/K+AcmujUejud8r694wNjc=";
     };
   };
   fcitx5-pinyin-zhwiki = {
     pname = "fcitx5-pinyin-zhwiki";
-    version = "20240426";
+    version = "20240509";
     src = fetchurl {
-      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.4/zhwiki-20240426.dict";
-      sha256 = "sha256-SiiF4kvQpgjAFd3122WYy0ReJkVLUc93JVeFHIqc+jg=";
+      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20240509.dict";
+      sha256 = "sha256-uRpKPq+/xJ8akKB8ol/JRF79VfDIQ8L4SxLDXzpfPxg=";
     };
   };
   ocis-bin = {
     pname = "ocis-bin";
-    version = "5.0.3";
+    version = "5.0.4";
     src = fetchurl {
-      url = "https://github.com/owncloud/ocis/releases/download/v5.0.3/ocis-5.0.3-linux-amd64";
-      sha256 = "sha256-YlfCzJWsUjYcP0mWjkWVH+fCjTqNGif1I0QTiTJrPME=";
+      url = "https://github.com/owncloud/ocis/releases/download/v5.0.4/ocis-5.0.4-linux-amd64";
+      sha256 = "sha256-U/i6D+zQ4vg9YsOmRH6tneNtshGm6jI2GPq2l5JRGB0=";
     };
   };
   plasma-panel-spacer-extended = {
