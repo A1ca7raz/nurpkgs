@@ -64,7 +64,7 @@
       lib = nixpkgs.lib;
       utils = import ./lib lib;
       system = [ "x86_64-linux" ];
-      overlay = import ./overlay.nix;
+      overlay = import ./overlay.nix lib;
     in
     flake-utils.lib.eachSystem system (system:
       let
@@ -76,7 +76,7 @@
 #             nvfetcher.overlays.default
           ];
         };
-        nurpkgs = import ./. { inherit pkgs; };
+        nurpkgs = import ./. { inherit pkgs lib; };
         inherit (pkgs) mkShell;
 
         # Groups of nur packages
