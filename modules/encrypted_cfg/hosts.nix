@@ -21,23 +21,26 @@ in {
     sops.templates.encrypted_hosts.content =
       let
         filterHosts = filterAttrs (_: v: v != []);
-        oldhosts = filterHosts config.networking.hosts;
-        hosts = filterHosts cfg;
-        mergedHosts = foldlAttrs
+        mergeHosts = foldlAttrs
           (acc: n: v:
             if acc ? "${n}"
             then acc // { "${n}" = unique (acc."${n}" ++ v); }
             else acc // { "${n}" = v; }
-          )
-          hosts
-          oldhosts;
+          );
+
+        localhost = {
+          "127.0.0.1" = [ "localhost" ];
+          "::1" = [ "localhost" ];
+        };
+        oldhosts = filterHosts config.networking.hosts;
+        hosts = filterHosts cfg;
+
+        mergedHosts = mergeHosts (mergeHosts hosts localhost) oldhosts;
 
         oneToString = set: ip: ip + " " + concatStringsSep " " set.${ip} + "\n";
         allToString = set: concatMapStrings (oneToString set) (attrNames set);
-      in ''
-        127.0.0.1 localhost
-        ::1 localhost
-      '' + (allToString mergedHosts) + config.networking.extraHosts;
+      in
+        (allToString mergedHosts) + config.networking.extraHosts;
 
     environment.etc."hosts".source = mkForce config.sops.templates.encrypted_hosts.path;
 
