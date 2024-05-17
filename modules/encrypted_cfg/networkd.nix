@@ -11,6 +11,19 @@ in {
   };
 
   config = mkIf (cfg != {}) {
+    assertions = foldlAttrs
+      (acc: n: v:
+        acc ++ [{
+          assertion = ! config.systemd.network.networks ? "${n}";
+          message = ''
+            Encrypted Networkd Module takes over the network configuration of ${n}.
+            Please check out `systemd.network.networks.${n}` and migrate it to Encrypted Networkd Module.
+          '';
+        }]
+      )
+      []
+      cfg;
+
     sops.templates = foldlAttrs
       (acc: n: v:
         recursiveUpdate acc (
