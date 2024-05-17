@@ -53,6 +53,8 @@ in {
       {}
       cfg;
 
+    utils.encrypted.enable = true;
+
     systemd.services.systemd-networkd.restartTriggers = mapAttrsToList
       (n: v: v.content)
       (filterAttrs
