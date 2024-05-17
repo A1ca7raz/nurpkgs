@@ -17,6 +17,7 @@ in {
   };
 
   config = mkIf (cfg != {}) {
+    sops.templates.encrypted_hosts.mode = "0444";
     sops.templates.encrypted_hosts.content =
       let
         filterHosts = filterAttrs (_: v: v != []);
