@@ -82,13 +82,13 @@
   };
   plasma-panel-spacer-extended = {
     pname = "plasma-panel-spacer-extended";
-    version = "v1.6.1";
+    version = "v1.7.0";
     src = fetchFromGitHub {
       owner = "luisbocanegra";
       repo = "plasma-panel-spacer-extended";
-      rev = "v1.6.1";
+      rev = "v1.7.0";
       fetchSubmodules = false;
-      sha256 = "sha256-gffIUdj2Ry4iLzniP+Eu3VCQkncEnL1fBfQ0pLw1XQw=";
+      sha256 = "sha256-Lx535EJZmYGHlMVaZC3q49QQVaohvIcP6pHNXdseQ2E=";
     };
   };
 }
