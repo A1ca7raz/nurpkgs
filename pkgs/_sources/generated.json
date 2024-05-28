@@ -132,11 +132,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-U/i6D+zQ4vg9YsOmRH6tneNtshGm6jI2GPq2l5JRGB0=",
+            "sha256": "sha256-YAIhtHv/cO4yFpkWoRNMf6t4+ifMtGPTcYu84ZMvfD4=",
             "type": "url",
-            "url": "https://github.com/owncloud/ocis/releases/download/v5.0.4/ocis-5.0.4-linux-amd64"
+            "url": "https://github.com/owncloud/ocis/releases/download/v5.0.5/ocis-5.0.5-linux-amd64"
         },
-        "version": "5.0.4"
+        "version": "5.0.5"
     },
     "plasma-panel-spacer-extended": {
         "cargoLocks": null,
@@ -152,10 +152,10 @@
             "name": null,
             "owner": "luisbocanegra",
             "repo": "plasma-panel-spacer-extended",
-            "rev": "v1.7.0",
-            "sha256": "sha256-Lx535EJZmYGHlMVaZC3q49QQVaohvIcP6pHNXdseQ2E=",
+            "rev": "v1.8.0",
+            "sha256": "sha256-2DWn+VP8h1nN3pfRdzl+mAFZPzE/LfeDdDi8qmXoCrE=",
             "type": "github"
         },
-        "version": "v1.7.0"
+        "version": "v1.8.0"
     }
 }
