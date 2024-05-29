@@ -114,7 +114,12 @@
         };
         checks = legacyPackages;
         formatter = pkgs.nixpkgs-fmt;
-        devShells.default = mkShell { nativeBuildInputs = [ pkgs.nvfetcher ]; };
+        devShells.default = mkShell {
+          nativeBuildInputs = with pkgs; [
+            nvfetcher
+            nix-init
+          ];
+        };
         apps.update = {
           type = "app";
           program = (pkgs.writeShellScript "script" ''
