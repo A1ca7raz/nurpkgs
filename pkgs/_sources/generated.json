@@ -152,10 +152,10 @@
             "name": null,
             "owner": "luisbocanegra",
             "repo": "plasma-panel-spacer-extended",
-            "rev": "v1.8.0",
-            "sha256": "sha256-2DWn+VP8h1nN3pfRdzl+mAFZPzE/LfeDdDi8qmXoCrE=",
+            "rev": "v1.8.2",
+            "sha256": "sha256-cZcEDcD+uTOTal6MoXARZ9wXlW7H+DfC3Nfy+5SR9hY=",
             "type": "github"
         },
-        "version": "v1.8.0"
+        "version": "v1.8.2"
     }
 }
