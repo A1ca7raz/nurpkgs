@@ -7,7 +7,17 @@
       cloudflare-warp
       spotify
       tor-browser
-      veracrypt;
+      veracrypt
+      unrar;
+  };
+
+  jetbrainsPackages = pkgs: {
+    inherit (pkgs.jetbrains)
+#       clion
+      datagrip
+#       idea-ultimate
+#       pycharm-professional
+    ;
   };
 
   substituters = [

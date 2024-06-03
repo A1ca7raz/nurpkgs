@@ -60,7 +60,11 @@
 
   outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
     let
-      inherit (import ./config.nix) substituters trusted-public-keys extraPackages;
+      inherit (import ./config.nix)
+        substituters
+        trusted-public-keys
+        extraPackages
+        jetbrainsPackages;
       lib = nixpkgs.lib;
       utils = import ./lib lib;
       system = [ "x86_64-linux" ];
@@ -90,6 +94,7 @@
         };
         lanzabootePackages = inputs.lanzaboote.packages.${system};
         nixIndexDbPackages = inputs.nix-index-database.packages.${system};
+        JetBrainsPackages = jetbrainsPackages pkgs;
       in rec {
         legacyPackages = customPackages //
           unfreePackages //
@@ -97,7 +102,8 @@
 #           nvfetcherPackages //
           spicetifyPackages //
           lanzabootePackages //
-          nixIndexDbPackages;
+          nixIndexDbPackages //
+          JetBrainsPackages;
         packages = legacyPackages;
         packageBundles = utils.mkPackageBundles pkgs ./pkgs // {
           inherit
@@ -106,7 +112,8 @@
 #             nvfetcherPackages
             sopsPackages
             spicetifyPackages
-            nixIndexDbPackages;
+            nixIndexDbPackages
+            JetBrainsPackages;
           ciPackages = sopsPackages;
           trivialPackages = spicetifyPackages //
             lanzabootePackages //
