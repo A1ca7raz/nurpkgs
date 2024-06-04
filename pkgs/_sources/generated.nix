@@ -72,14 +72,6 @@
       sha256 = "sha256-uRpKPq+/xJ8akKB8ol/JRF79VfDIQ8L4SxLDXzpfPxg=";
     };
   };
-  ocis-bin = {
-    pname = "ocis-bin";
-    version = "5.0.5";
-    src = fetchurl {
-      url = "https://github.com/owncloud/ocis/releases/download/v5.0.5/ocis-5.0.5-linux-amd64";
-      sha256 = "sha256-YAIhtHv/cO4yFpkWoRNMf6t4+ifMtGPTcYu84ZMvfD4=";
-    };
-  };
   plasma-panel-spacer-extended = {
     pname = "plasma-panel-spacer-extended";
     version = "v1.8.2";

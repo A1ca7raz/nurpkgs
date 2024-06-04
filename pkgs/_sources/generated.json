@@ -123,21 +123,6 @@
         },
         "version": "20240509"
     },
-    "ocis-bin": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "ocis-bin",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-YAIhtHv/cO4yFpkWoRNMf6t4+ifMtGPTcYu84ZMvfD4=",
-            "type": "url",
-            "url": "https://github.com/owncloud/ocis/releases/download/v5.0.5/ocis-5.0.5-linux-amd64"
-        },
-        "version": "5.0.5"
-    },
     "plasma-panel-spacer-extended": {
         "cargoLocks": null,
         "date": null,
