@@ -60,18 +60,18 @@
     },
     "clash-webui-yacd-meta": {
         "cargoLocks": null,
-        "date": "2024-06-23",
+        "date": "2024-06-27",
         "extract": null,
         "name": "clash-webui-yacd-meta",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-2kqXZ2WiIcMDDgsTzynXKOBzWgPlKLT20kBVWw54Zck=",
+            "sha256": "sha256-N+WDJGvtkyKHSGFvfFqqIJQFdfNHy7HwpDzk1CIkYkA=",
             "type": "url",
-            "url": "https://github.com/MetaCubeX/Yacd-meta/archive/e3e76f51c846e3f33862474b7f88cd83e3525dd1.zip"
+            "url": "https://github.com/MetaCubeX/Yacd-meta/archive/186b3a3d4ba5590d9525b90fafcadace043788ac.zip"
         },
-        "version": "e3e76f51c846e3f33862474b7f88cd83e3525dd1"
+        "version": "186b3a3d4ba5590d9525b90fafcadace043788ac"
     },
     "double-entry-generator": {
         "cargoLocks": null,

@@ -38,12 +38,12 @@
   };
   clash-webui-yacd-meta = {
     pname = "clash-webui-yacd-meta";
-    version = "e3e76f51c846e3f33862474b7f88cd83e3525dd1";
+    version = "186b3a3d4ba5590d9525b90fafcadace043788ac";
     src = fetchurl {
-      url = "https://github.com/MetaCubeX/Yacd-meta/archive/e3e76f51c846e3f33862474b7f88cd83e3525dd1.zip";
-      sha256 = "sha256-2kqXZ2WiIcMDDgsTzynXKOBzWgPlKLT20kBVWw54Zck=";
+      url = "https://github.com/MetaCubeX/Yacd-meta/archive/186b3a3d4ba5590d9525b90fafcadace043788ac.zip";
+      sha256 = "sha256-N+WDJGvtkyKHSGFvfFqqIJQFdfNHy7HwpDzk1CIkYkA=";
     };
-    date = "2024-06-23";
+    date = "2024-06-27";
   };
   double-entry-generator = {
     pname = "double-entry-generator";
