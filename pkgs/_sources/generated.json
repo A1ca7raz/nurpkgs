@@ -40,7 +40,7 @@
     },
     "baidupcs-go": {
         "cargoLocks": null,
-        "date": null,
+        "date": "2024-06-23",
         "extract": null,
         "name": "baidupcs-go",
         "passthru": null,
@@ -50,13 +50,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "owner": "qjfoidnh",
-            "repo": "BaiduPCS-Go",
-            "rev": "v3.9.5",
-            "sha256": "sha256-zNodRQzflOOB3hAeq4KbjRFlHQwknVy+4ucipUcoufY=",
-            "type": "github"
+            "rev": "5612fc337b9556ed330274987a2f876961639cff",
+            "sha256": "sha256-4mCJ5gVHjjvR6HNo47NTJvQEu7cdZZMfO8qQA7Kqzqo=",
+            "type": "git",
+            "url": "https://github.com/qjfoidnh/BaiduPCS-Go"
         },
-        "version": "v3.9.5"
+        "version": "5612fc337b9556ed330274987a2f876961639cff"
     },
     "clash-webui-yacd-meta": {
         "cargoLocks": null,

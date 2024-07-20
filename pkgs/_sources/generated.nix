@@ -27,14 +27,16 @@
   };
   baidupcs-go = {
     pname = "baidupcs-go";
-    version = "v3.9.5";
-    src = fetchFromGitHub {
-      owner = "qjfoidnh";
-      repo = "BaiduPCS-Go";
-      rev = "v3.9.5";
+    version = "5612fc337b9556ed330274987a2f876961639cff";
+    src = fetchgit {
+      url = "https://github.com/qjfoidnh/BaiduPCS-Go";
+      rev = "5612fc337b9556ed330274987a2f876961639cff";
       fetchSubmodules = false;
-      sha256 = "sha256-zNodRQzflOOB3hAeq4KbjRFlHQwknVy+4ucipUcoufY=";
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-4mCJ5gVHjjvR6HNo47NTJvQEu7cdZZMfO8qQA7Kqzqo=";
     };
+    date = "2024-06-23";
   };
   clash-webui-yacd-meta = {
     pname = "clash-webui-yacd-meta";

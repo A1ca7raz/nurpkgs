@@ -7,8 +7,8 @@ src.git = "https://github.com/moodyhunter/applet-window-buttons6"
 fetch.git = "https://github.com/moodyhunter/applet-window-buttons6"
 
 [baidupcs-go]
-src.github = "qjfoidnh/BaiduPCS-Go"
-fetch.github = "qjfoidnh/BaiduPCS-Go"
+src.git = "https://github.com/qjfoidnh/BaiduPCS-Go"
+fetch.git = "https://github.com/qjfoidnh/BaiduPCS-Go"
 
 [clash-webui-yacd-meta]
 src.git = "https://github.com/MetaCubeX/Yacd-meta"
