@@ -1,3 +1,7 @@
+[aosc-scriptlets]
+src.git = "https://github.com/AOSC-Dev/scriptlets"
+fetch.git = "https://github.com/AOSC-Dev/scriptlets"
+
 [applet-window-appmenu]
 src.github = "psifidotos/applet-window-appmenu"
 fetch.github = "psifidotos/applet-window-appmenu"
