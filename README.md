@@ -1,0 +1,1 @@
+![nurpkgs](https://socialify.git.ci/A1ca7raz/nurpkgs/image?description=1&font=KoHo&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2FNixOS%2Fnixos-artwork%2Fmaster%2Flogo%2Fnix-snowflake-colours.svg&owner=1&pattern=Plus&theme=Auto)
