@@ -1,7 +1,7 @@
 {
     "aosc-scriptlets": {
         "cargoLocks": null,
-        "date": "2024-07-17",
+        "date": "2024-07-26",
         "extract": null,
         "name": "aosc-scriptlets",
         "passthru": null,
@@ -11,32 +11,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "816c1009243e34a6282e1c7c8d09d48d5945e0e3",
-            "sha256": "sha256-wWd4IGUgkCrBZvOxVyOYSDEQF5r2dLh80bSoH3bskuQ=",
+            "rev": "148f9dacc12b52afd5ada7e2a2d05e25c405400e",
+            "sha256": "sha256-ecOqLZBLnQJXU1ti+CyktAnY0PGcKHHBtwhLnmu1jTw=",
             "type": "git",
             "url": "https://github.com/AOSC-Dev/scriptlets"
         },
-        "version": "816c1009243e34a6282e1c7c8d09d48d5945e0e3"
-    },
-    "applet-window-appmenu": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "applet-window-appmenu",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "psifidotos",
-            "repo": "applet-window-appmenu",
-            "rev": "v0.8.0",
-            "sha256": "sha256-ckbrSmZowy1+rp17C8OBnpX8wHRSmDRcdYjOhj4JunQ=",
-            "type": "github"
-        },
-        "version": "v0.8.0"
+        "version": "148f9dacc12b52afd5ada7e2a2d05e25c405400e"
     },
     "applet-window-buttons6": {
         "cargoLocks": null,

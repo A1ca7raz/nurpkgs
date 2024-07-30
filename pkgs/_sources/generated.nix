@@ -3,27 +3,16 @@
 {
   aosc-scriptlets = {
     pname = "aosc-scriptlets";
-    version = "816c1009243e34a6282e1c7c8d09d48d5945e0e3";
+    version = "148f9dacc12b52afd5ada7e2a2d05e25c405400e";
     src = fetchgit {
       url = "https://github.com/AOSC-Dev/scriptlets";
-      rev = "816c1009243e34a6282e1c7c8d09d48d5945e0e3";
+      rev = "148f9dacc12b52afd5ada7e2a2d05e25c405400e";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-wWd4IGUgkCrBZvOxVyOYSDEQF5r2dLh80bSoH3bskuQ=";
+      sha256 = "sha256-ecOqLZBLnQJXU1ti+CyktAnY0PGcKHHBtwhLnmu1jTw=";
     };
-    date = "2024-07-17";
-  };
-  applet-window-appmenu = {
-    pname = "applet-window-appmenu";
-    version = "v0.8.0";
-    src = fetchFromGitHub {
-      owner = "psifidotos";
-      repo = "applet-window-appmenu";
-      rev = "v0.8.0";
-      fetchSubmodules = false;
-      sha256 = "sha256-ckbrSmZowy1+rp17C8OBnpX8wHRSmDRcdYjOhj4JunQ=";
-    };
+    date = "2024-07-26";
   };
   applet-window-buttons6 = {
     pname = "applet-window-buttons6";
