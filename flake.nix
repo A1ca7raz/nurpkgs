@@ -24,6 +24,11 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hercules-ci-effects = {
+      url = "github:hercules-ci/hercules-ci-effects";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
 
     # Packages from other flakes
     sops-nix = {
@@ -54,9 +59,15 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpak = {
+      url = "github:nixpak/nixpak";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.hercules-ci-effects.follows = "hercules-ci-effects";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, nixpak, ... }:
     let
       inherit (import ./config.nix)
         substituters
@@ -75,11 +86,24 @@
           inherit system;
           overlays = [
             overlay
+            self.overlays.nixpaks
 #             nvfetcher.overlays.default
           ];
         };
         nurpkgs = import ./. { inherit pkgs lib; };
         inherit (pkgs) mkShell;
+
+        mkNixPak = nixpak.lib.nixpak {
+          inherit (pkgs) lib;
+          inherit pkgs;
+        };
+
+        nixpakPackages = utils.mapPackages (
+          name: vaule:
+            (mkNixPak {
+              config = vaule;
+            }).config.env
+        ) "function" ./pkgs/_nixpaks;
 
         # Groups of nur packages
         customPackages = flake-utils.lib.filterPackages pkgs.system (nurpkgs);
@@ -101,7 +125,8 @@
           spicetifyPackages //
           lanzabootePackages //
           nixIndexDbPackages //
-          JetBrainsPackages;
+          JetBrainsPackages //
+          nixpakPackages;
         packages = legacyPackages;
         packageBundles = utils.mkPackageBundles pkgs ./pkgs // {
           inherit
@@ -111,7 +136,8 @@
             sopsPackages
             spicetifyPackages
             nixIndexDbPackages
-            JetBrainsPackages;
+            JetBrainsPackages
+            nixpakPackages;
           ciPackages = sopsPackages;
           trivialPackages = spicetifyPackages //
             lanzabootePackages //
@@ -135,6 +161,9 @@
     ) // {
       overlay = self.overlays.default;
       overlays.default = overlay;
+      overlays.nixpaks = final: prev: {
+        nixpaks = self.packageBundles.nixpakPackages;
+      };
 #       overlays.nvfetcher = nvfetcher.overlays.default;
 
       nixosModule = self.nixosModules.default;
