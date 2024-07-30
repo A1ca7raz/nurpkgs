@@ -6,6 +6,10 @@ fetch.git = "https://github.com/AOSC-Dev/scriptlets"
 src.git = "https://github.com/moodyhunter/applet-window-buttons6"
 fetch.git = "https://github.com/moodyhunter/applet-window-buttons6"
 
+[applet-panel-colorizer]
+src.git = "https://github.com/luisbocanegra/plasma-panel-colorizer"
+fetch.git = "https://github.com/luisbocanegra/plasma-panel-colorizer"
+
 [baidupcs-go]
 src.git = "https://github.com/qjfoidnh/BaiduPCS-Go"
 fetch.git = "https://github.com/qjfoidnh/BaiduPCS-Go"

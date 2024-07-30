@@ -14,6 +14,19 @@
     };
     date = "2024-07-26";
   };
+  applet-panel-colorizer = {
+    pname = "applet-panel-colorizer";
+    version = "4d7af2cfe67705f06ca041e15681b2911db31868";
+    src = fetchgit {
+      url = "https://github.com/luisbocanegra/plasma-panel-colorizer";
+      rev = "4d7af2cfe67705f06ca041e15681b2911db31868";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-x7QKSKJNizCBhJjUbgNO45UqZ/7Yj9AK2UQ0qmtR3ao=";
+    };
+    date = "2024-06-13";
+  };
   applet-window-buttons6 = {
     pname = "applet-window-buttons6";
     version = "326382805641d340c9902689b549e4488682f553";

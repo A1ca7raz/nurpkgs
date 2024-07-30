@@ -18,6 +18,25 @@
         },
         "version": "148f9dacc12b52afd5ada7e2a2d05e25c405400e"
     },
+    "applet-panel-colorizer": {
+        "cargoLocks": null,
+        "date": "2024-06-13",
+        "extract": null,
+        "name": "applet-panel-colorizer",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "4d7af2cfe67705f06ca041e15681b2911db31868",
+            "sha256": "sha256-x7QKSKJNizCBhJjUbgNO45UqZ/7Yj9AK2UQ0qmtR3ao=",
+            "type": "git",
+            "url": "https://github.com/luisbocanegra/plasma-panel-colorizer"
+        },
+        "version": "4d7af2cfe67705f06ca041e15681b2911db31868"
+    },
     "applet-window-buttons6": {
         "cargoLocks": null,
         "date": "2024-04-05",
