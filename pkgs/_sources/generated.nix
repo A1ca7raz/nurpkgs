@@ -27,19 +27,6 @@
     };
     date = "2024-06-13";
   };
-  applet-window-buttons6 = {
-    pname = "applet-window-buttons6";
-    version = "326382805641d340c9902689b549e4488682f553";
-    src = fetchgit {
-      url = "https://github.com/moodyhunter/applet-window-buttons6";
-      rev = "326382805641d340c9902689b549e4488682f553";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sha256 = "sha256-POr56g3zqs10tmCbKN+QcF6P6OL84tQNkA+Jtk1LUfY=";
-    };
-    date = "2024-04-05";
-  };
   baidupcs-go = {
     pname = "baidupcs-go";
     version = "5612fc337b9556ed330274987a2f876961639cff";
@@ -91,13 +78,13 @@
   };
   plasma-panel-spacer-extended = {
     pname = "plasma-panel-spacer-extended";
-    version = "v1.8.2";
+    version = "v1.8.3";
     src = fetchFromGitHub {
       owner = "luisbocanegra";
       repo = "plasma-panel-spacer-extended";
-      rev = "v1.8.2";
+      rev = "v1.8.3";
       fetchSubmodules = false;
-      sha256 = "sha256-cZcEDcD+uTOTal6MoXARZ9wXlW7H+DfC3Nfy+5SR9hY=";
+      sha256 = "sha256-wjt/N4vRt7AmchAWRwvdG+9Lu7t+j5PxJKrULlvGHtE=";
     };
   };
 }

@@ -2,10 +2,6 @@
 src.git = "https://github.com/AOSC-Dev/scriptlets"
 fetch.git = "https://github.com/AOSC-Dev/scriptlets"
 
-[applet-window-buttons6]
-src.git = "https://github.com/moodyhunter/applet-window-buttons6"
-fetch.git = "https://github.com/moodyhunter/applet-window-buttons6"
-
 [applet-panel-colorizer]
 src.git = "https://github.com/luisbocanegra/plasma-panel-colorizer"
 fetch.git = "https://github.com/luisbocanegra/plasma-panel-colorizer"

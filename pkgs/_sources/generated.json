@@ -37,25 +37,6 @@
         },
         "version": "4d7af2cfe67705f06ca041e15681b2911db31868"
     },
-    "applet-window-buttons6": {
-        "cargoLocks": null,
-        "date": "2024-04-05",
-        "extract": null,
-        "name": "applet-window-buttons6",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "rev": "326382805641d340c9902689b549e4488682f553",
-            "sha256": "sha256-POr56g3zqs10tmCbKN+QcF6P6OL84tQNkA+Jtk1LUfY=",
-            "type": "git",
-            "url": "https://github.com/moodyhunter/applet-window-buttons6"
-        },
-        "version": "326382805641d340c9902689b549e4488682f553"
-    },
     "baidupcs-go": {
         "cargoLocks": null,
         "date": "2024-06-23",
@@ -154,10 +135,10 @@
             "name": null,
             "owner": "luisbocanegra",
             "repo": "plasma-panel-spacer-extended",
-            "rev": "v1.8.2",
-            "sha256": "sha256-cZcEDcD+uTOTal6MoXARZ9wXlW7H+DfC3Nfy+5SR9hY=",
+            "rev": "v1.8.3",
+            "sha256": "sha256-wjt/N4vRt7AmchAWRwvdG+9Lu7t+j5PxJKrULlvGHtE=",
             "type": "github"
         },
-        "version": "v1.8.2"
+        "version": "v1.8.3"
     }
 }
