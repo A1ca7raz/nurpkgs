@@ -1,14 +1,16 @@
 {
   extraPackages = pkgs: {
     inherit (pkgs)
+      cloudflare-warp
+      obsidian
+      spotify
       steam
       steam-run
-      wpsoffice
-      cloudflare-warp
-      spotify
       tor-browser
+      wpsoffice
+      unrar
       veracrypt
-      unrar;
+    ;
   };
 
   jetbrainsPackages = pkgs: {
