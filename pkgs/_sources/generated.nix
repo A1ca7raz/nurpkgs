@@ -3,29 +3,29 @@
 {
   aosc-scriptlets = {
     pname = "aosc-scriptlets";
-    version = "148f9dacc12b52afd5ada7e2a2d05e25c405400e";
+    version = "1c5c510db3db467c9c8e950f2a177a8e5516094a";
     src = fetchgit {
       url = "https://github.com/AOSC-Dev/scriptlets";
-      rev = "148f9dacc12b52afd5ada7e2a2d05e25c405400e";
+      rev = "1c5c510db3db467c9c8e950f2a177a8e5516094a";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-ecOqLZBLnQJXU1ti+CyktAnY0PGcKHHBtwhLnmu1jTw=";
+      sha256 = "sha256-e9qOVon+s3xBNFTxzMInS33I9qo40mfnKHSsx4Rspos=";
     };
-    date = "2024-07-26";
+    date = "2024-07-31";
   };
   applet-panel-colorizer = {
     pname = "applet-panel-colorizer";
-    version = "4d7af2cfe67705f06ca041e15681b2911db31868";
+    version = "4a11db4bad66313ba7f9b9e2e44a95b8322d32ac";
     src = fetchgit {
       url = "https://github.com/luisbocanegra/plasma-panel-colorizer";
-      rev = "4d7af2cfe67705f06ca041e15681b2911db31868";
+      rev = "4a11db4bad66313ba7f9b9e2e44a95b8322d32ac";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-x7QKSKJNizCBhJjUbgNO45UqZ/7Yj9AK2UQ0qmtR3ao=";
+      sha256 = "sha256-F2t6AmQ8x+Aq5UpCHaSUMyIVs2MsBt4XXR6Y6PJdqRM=";
     };
-    date = "2024-06-13";
+    date = "2024-08-01";
   };
   baidupcs-go = {
     pname = "baidupcs-go";
