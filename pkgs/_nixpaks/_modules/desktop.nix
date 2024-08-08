@@ -1,5 +1,5 @@
 # https://github.com/nixpak/pkgs/blob/master/pkgs/modules/gui-base.nix
-{ config, lib, sloth, ... }:
+{ config, lib, sloth, pkgs, ... }:
 let
   envSuffix = envKey: suffix: sloth.concat' (sloth.env envKey) suffix;
 in {
@@ -73,6 +73,11 @@ in {
       (sloth.concat' sloth.homeDir "/.local/share/fonts")
 
       "/run/current-system/sw/lib/locale/locale-archive"
+
+      [
+        "${pkgs.xdg-utils}/bin/xdg-open"
+        (sloth.concat' sloth.homeDir "/.local/bin/xdg-open")
+      ]
     ];
   };
 }
