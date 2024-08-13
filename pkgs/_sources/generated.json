@@ -58,18 +58,18 @@
     },
     "clash-webui-yacd-meta": {
         "cargoLocks": null,
-        "date": "2024-06-27",
+        "date": "2024-08-11",
         "extract": null,
         "name": "clash-webui-yacd-meta",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-N+WDJGvtkyKHSGFvfFqqIJQFdfNHy7HwpDzk1CIkYkA=",
+            "sha256": "sha256-3Mvl6KNXNxEWfAnznsWonEUSS5Okq0ChXhECsBAqcUU=",
             "type": "url",
-            "url": "https://github.com/MetaCubeX/Yacd-meta/archive/186b3a3d4ba5590d9525b90fafcadace043788ac.zip"
+            "url": "https://github.com/MetaCubeX/Yacd-meta/archive/8753c22b66388f07b64d72c60e5c479b63d15c5a.zip"
         },
-        "version": "186b3a3d4ba5590d9525b90fafcadace043788ac"
+        "version": "8753c22b66388f07b64d72c60e5c479b63d15c5a"
     },
     "double-entry-generator": {
         "cargoLocks": null,
@@ -100,11 +100,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-1BNfyMM7T19glWsB9oOOMHEWc+SE/qrxx5rsAz386Os=",
+            "sha256": "sha256-2jSKzDgjxuz0/Agqefy4JrScmqM7SXnIuZlLMkqAGT0=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20240709/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20240809/moegirl.dict"
         },
-        "version": "20240709"
+        "version": "20240809"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLocks": null,

@@ -42,12 +42,12 @@
   };
   clash-webui-yacd-meta = {
     pname = "clash-webui-yacd-meta";
-    version = "186b3a3d4ba5590d9525b90fafcadace043788ac";
+    version = "8753c22b66388f07b64d72c60e5c479b63d15c5a";
     src = fetchurl {
-      url = "https://github.com/MetaCubeX/Yacd-meta/archive/186b3a3d4ba5590d9525b90fafcadace043788ac.zip";
-      sha256 = "sha256-N+WDJGvtkyKHSGFvfFqqIJQFdfNHy7HwpDzk1CIkYkA=";
+      url = "https://github.com/MetaCubeX/Yacd-meta/archive/8753c22b66388f07b64d72c60e5c479b63d15c5a.zip";
+      sha256 = "sha256-3Mvl6KNXNxEWfAnznsWonEUSS5Okq0ChXhECsBAqcUU=";
     };
-    date = "2024-06-27";
+    date = "2024-08-11";
   };
   double-entry-generator = {
     pname = "double-entry-generator";
@@ -62,10 +62,10 @@
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20240709";
+    version = "20240809";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20240709/moegirl.dict";
-      sha256 = "sha256-1BNfyMM7T19glWsB9oOOMHEWc+SE/qrxx5rsAz386Os=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20240809/moegirl.dict";
+      sha256 = "sha256-2jSKzDgjxuz0/Agqefy4JrScmqM7SXnIuZlLMkqAGT0=";
     };
   };
   fcitx5-pinyin-zhwiki = {
