@@ -3,16 +3,16 @@
 {
   aosc-scriptlets = {
     pname = "aosc-scriptlets";
-    version = "1c5c510db3db467c9c8e950f2a177a8e5516094a";
+    version = "5556497012f83734d97e732aa0038f5de847888e";
     src = fetchgit {
       url = "https://github.com/AOSC-Dev/scriptlets";
-      rev = "1c5c510db3db467c9c8e950f2a177a8e5516094a";
+      rev = "5556497012f83734d97e732aa0038f5de847888e";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-e9qOVon+s3xBNFTxzMInS33I9qo40mfnKHSsx4Rspos=";
+      sha256 = "sha256-xgfkfp7drxW128UONcb//SpdlpOmX3amI4oJhYsyzOo=";
     };
-    date = "2024-07-31";
+    date = "2024-08-18";
   };
   applet-panel-colorizer = {
     pname = "applet-panel-colorizer";
