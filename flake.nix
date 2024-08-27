@@ -70,8 +70,6 @@
   outputs = inputs@{ self, nixpkgs, flake-utils, nixpak, ... }:
     let
       inherit (import ./config.nix)
-        substituters
-        trusted-public-keys
         extraPackages
         jetbrainsPackages;
       lib = nixpkgs.lib;
@@ -173,9 +171,7 @@
           self.overlays.default
 #           self.overlays.nvfetcher
         ];
-        nix.settings = {
-          inherit substituters trusted-public-keys;
-        };
+        nix.settings = import ./substituters.nix;
       };
     };
 }
