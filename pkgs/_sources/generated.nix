@@ -62,29 +62,29 @@
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20240809";
+    version = "20240909";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20240809/moegirl.dict";
-      sha256 = "sha256-2jSKzDgjxuz0/Agqefy4JrScmqM7SXnIuZlLMkqAGT0=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20240909/moegirl.dict";
+      sha256 = "sha256-+e4azEWHYSh3Gy9Xa+Y8E7f7rAA8YlWlbvbva9kNXCI=";
     };
   };
   fcitx5-pinyin-zhwiki = {
     pname = "fcitx5-pinyin-zhwiki";
-    version = "20240722";
+    version = "20240909";
     src = fetchurl {
-      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20240722.dict";
-      sha256 = "sha256-ozGXj/xZmXzopF7qiG2z+hcwGHc+3Lq6OqyFRreK9Kc=";
+      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20240909.dict";
+      sha256 = "sha256-djXrwl1MmiAf0U5Xvm4S7Fk2fKNRm5jtc94KUYIrcm8=";
     };
   };
   plasma-panel-spacer-extended = {
     pname = "plasma-panel-spacer-extended";
-    version = "v1.8.3";
+    version = "v1.9.0";
     src = fetchFromGitHub {
       owner = "luisbocanegra";
       repo = "plasma-panel-spacer-extended";
-      rev = "v1.8.3";
+      rev = "v1.9.0";
       fetchSubmodules = false;
-      sha256 = "sha256-wjt/N4vRt7AmchAWRwvdG+9Lu7t+j5PxJKrULlvGHtE=";
+      sha256 = "sha256-3ediynClboG6/dBQTih6jJPGjsTBZhZKOPQAjGLRNmk=";
     };
   };
 }

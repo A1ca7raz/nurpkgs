@@ -100,11 +100,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-2jSKzDgjxuz0/Agqefy4JrScmqM7SXnIuZlLMkqAGT0=",
+            "sha256": "sha256-+e4azEWHYSh3Gy9Xa+Y8E7f7rAA8YlWlbvbva9kNXCI=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20240809/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20240909/moegirl.dict"
         },
-        "version": "20240809"
+        "version": "20240909"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLocks": null,
@@ -115,11 +115,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-ozGXj/xZmXzopF7qiG2z+hcwGHc+3Lq6OqyFRreK9Kc=",
+            "sha256": "sha256-djXrwl1MmiAf0U5Xvm4S7Fk2fKNRm5jtc94KUYIrcm8=",
             "type": "url",
-            "url": "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20240722.dict"
+            "url": "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20240909.dict"
         },
-        "version": "20240722"
+        "version": "20240909"
     },
     "plasma-panel-spacer-extended": {
         "cargoLocks": null,
@@ -135,10 +135,10 @@
             "name": null,
             "owner": "luisbocanegra",
             "repo": "plasma-panel-spacer-extended",
-            "rev": "v1.8.3",
-            "sha256": "sha256-wjt/N4vRt7AmchAWRwvdG+9Lu7t+j5PxJKrULlvGHtE=",
+            "rev": "v1.9.0",
+            "sha256": "sha256-3ediynClboG6/dBQTih6jJPGjsTBZhZKOPQAjGLRNmk=",
             "type": "github"
         },
-        "version": "v1.8.3"
+        "version": "v1.9.0"
     }
 }
