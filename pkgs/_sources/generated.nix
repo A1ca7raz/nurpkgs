@@ -3,16 +3,16 @@
 {
   aosc-scriptlets = {
     pname = "aosc-scriptlets";
-    version = "5556497012f83734d97e732aa0038f5de847888e";
+    version = "5c42a2ad7d8cafab6b231e175acf8248bdcece16";
     src = fetchgit {
       url = "https://github.com/AOSC-Dev/scriptlets";
-      rev = "5556497012f83734d97e732aa0038f5de847888e";
+      rev = "5c42a2ad7d8cafab6b231e175acf8248bdcece16";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-xgfkfp7drxW128UONcb//SpdlpOmX3amI4oJhYsyzOo=";
+      sha256 = "sha256-lUIa3P04W7N8vj4P83eoIsch7CVmlhAwUfRw06VpQcA=";
     };
-    date = "2024-08-18";
+    date = "2024-09-16";
   };
   applet-panel-colorizer = {
     pname = "applet-panel-colorizer";
@@ -51,13 +51,13 @@
   };
   double-entry-generator = {
     pname = "double-entry-generator";
-    version = "v2.6.0";
+    version = "v2.7.0";
     src = fetchFromGitHub {
       owner = "deb-sig";
       repo = "double-entry-generator";
-      rev = "v2.6.0";
+      rev = "v2.7.0";
       fetchSubmodules = false;
-      sha256 = "sha256-+VIfV6bJFlPxczx1g8keRXPmELPZzYeVErRlhIQwRwY=";
+      sha256 = "sha256-uHDVs/bVS+1dSckwH+Uv/yMC6fi3nxLjpqyRcPWXWNs=";
     };
   };
   fcitx5-pinyin-moegirl = {

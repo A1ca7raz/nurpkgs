@@ -1,7 +1,7 @@
 {
     "aosc-scriptlets": {
         "cargoLocks": null,
-        "date": "2024-08-18",
+        "date": "2024-09-16",
         "extract": null,
         "name": "aosc-scriptlets",
         "passthru": null,
@@ -11,12 +11,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "5556497012f83734d97e732aa0038f5de847888e",
-            "sha256": "sha256-xgfkfp7drxW128UONcb//SpdlpOmX3amI4oJhYsyzOo=",
+            "rev": "5c42a2ad7d8cafab6b231e175acf8248bdcece16",
+            "sha256": "sha256-lUIa3P04W7N8vj4P83eoIsch7CVmlhAwUfRw06VpQcA=",
             "type": "git",
             "url": "https://github.com/AOSC-Dev/scriptlets"
         },
-        "version": "5556497012f83734d97e732aa0038f5de847888e"
+        "version": "5c42a2ad7d8cafab6b231e175acf8248bdcece16"
     },
     "applet-panel-colorizer": {
         "cargoLocks": null,
@@ -85,11 +85,11 @@
             "name": null,
             "owner": "deb-sig",
             "repo": "double-entry-generator",
-            "rev": "v2.6.0",
-            "sha256": "sha256-+VIfV6bJFlPxczx1g8keRXPmELPZzYeVErRlhIQwRwY=",
+            "rev": "v2.7.0",
+            "sha256": "sha256-uHDVs/bVS+1dSckwH+Uv/yMC6fi3nxLjpqyRcPWXWNs=",
             "type": "github"
         },
-        "version": "v2.6.0"
+        "version": "v2.7.0"
     },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,
