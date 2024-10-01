@@ -16,16 +16,16 @@
   };
   applet-panel-colorizer = {
     pname = "applet-panel-colorizer";
-    version = "4a11db4bad66313ba7f9b9e2e44a95b8322d32ac";
+    version = "be7ce3ad96fffa9cd1a1538269880257254d96d1";
     src = fetchgit {
       url = "https://github.com/luisbocanegra/plasma-panel-colorizer";
-      rev = "4a11db4bad66313ba7f9b9e2e44a95b8322d32ac";
+      rev = "be7ce3ad96fffa9cd1a1538269880257254d96d1";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-F2t6AmQ8x+Aq5UpCHaSUMyIVs2MsBt4XXR6Y6PJdqRM=";
+      sha256 = "sha256-LU6jkmc9wsnYyRh5O4Lb7h0gIZZ1L5BuivXA1pvO5TE=";
     };
-    date = "2024-08-01";
+    date = "2024-10-01";
   };
   baidupcs-go = {
     pname = "baidupcs-go";
@@ -51,13 +51,13 @@
   };
   double-entry-generator = {
     pname = "double-entry-generator";
-    version = "v2.7.0";
+    version = "v2.7.1";
     src = fetchFromGitHub {
       owner = "deb-sig";
       repo = "double-entry-generator";
-      rev = "v2.7.0";
+      rev = "v2.7.1";
       fetchSubmodules = false;
-      sha256 = "sha256-uHDVs/bVS+1dSckwH+Uv/yMC6fi3nxLjpqyRcPWXWNs=";
+      sha256 = "sha256-2Y8Spj1LAVZsUgChDYDCZ63pTH+nqs2ff9xcmC+gr0c=";
     };
   };
   fcitx5-pinyin-moegirl = {

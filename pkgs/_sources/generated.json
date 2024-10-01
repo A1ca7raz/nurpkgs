@@ -20,7 +20,7 @@
     },
     "applet-panel-colorizer": {
         "cargoLocks": null,
-        "date": "2024-08-01",
+        "date": "2024-10-01",
         "extract": null,
         "name": "applet-panel-colorizer",
         "passthru": null,
@@ -30,12 +30,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "4a11db4bad66313ba7f9b9e2e44a95b8322d32ac",
-            "sha256": "sha256-F2t6AmQ8x+Aq5UpCHaSUMyIVs2MsBt4XXR6Y6PJdqRM=",
+            "rev": "be7ce3ad96fffa9cd1a1538269880257254d96d1",
+            "sha256": "sha256-LU6jkmc9wsnYyRh5O4Lb7h0gIZZ1L5BuivXA1pvO5TE=",
             "type": "git",
             "url": "https://github.com/luisbocanegra/plasma-panel-colorizer"
         },
-        "version": "4a11db4bad66313ba7f9b9e2e44a95b8322d32ac"
+        "version": "be7ce3ad96fffa9cd1a1538269880257254d96d1"
     },
     "baidupcs-go": {
         "cargoLocks": null,
@@ -85,11 +85,11 @@
             "name": null,
             "owner": "deb-sig",
             "repo": "double-entry-generator",
-            "rev": "v2.7.0",
-            "sha256": "sha256-uHDVs/bVS+1dSckwH+Uv/yMC6fi3nxLjpqyRcPWXWNs=",
+            "rev": "v2.7.1",
+            "sha256": "sha256-2Y8Spj1LAVZsUgChDYDCZ63pTH+nqs2ff9xcmC+gr0c=",
             "type": "github"
         },
-        "version": "v2.7.0"
+        "version": "v2.7.1"
     },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,
