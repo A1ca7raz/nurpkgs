@@ -78,6 +78,9 @@ in {
         "${pkgs.xdg-utils}/bin/xdg-open"
         (sloth.concat' sloth.homeDir "/.local/bin/xdg-open")
       ]
+
+      # fix broken Document Portal
+      "/run/dbus/system_bus_socket"
     ];
   };
 }
