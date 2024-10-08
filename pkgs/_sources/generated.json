@@ -1,7 +1,7 @@
 {
     "aosc-scriptlets": {
         "cargoLocks": null,
-        "date": "2024-09-16",
+        "date": "2024-10-08",
         "extract": null,
         "name": "aosc-scriptlets",
         "passthru": null,
@@ -11,16 +11,16 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "5c42a2ad7d8cafab6b231e175acf8248bdcece16",
-            "sha256": "sha256-lUIa3P04W7N8vj4P83eoIsch7CVmlhAwUfRw06VpQcA=",
+            "rev": "35d9d949fb04bc62597c49821a52d1a3d908e7d5",
+            "sha256": "sha256-+fcqNxgsiAs/YytBdGlwfDTOm4n+pXh0GTjP6doyRV0=",
             "type": "git",
             "url": "https://github.com/AOSC-Dev/scriptlets"
         },
-        "version": "5c42a2ad7d8cafab6b231e175acf8248bdcece16"
+        "version": "35d9d949fb04bc62597c49821a52d1a3d908e7d5"
     },
     "applet-panel-colorizer": {
         "cargoLocks": null,
-        "date": "2024-10-01",
+        "date": "2024-10-06",
         "extract": null,
         "name": "applet-panel-colorizer",
         "passthru": null,
@@ -30,12 +30,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "be7ce3ad96fffa9cd1a1538269880257254d96d1",
-            "sha256": "sha256-LU6jkmc9wsnYyRh5O4Lb7h0gIZZ1L5BuivXA1pvO5TE=",
+            "rev": "c25c6c422ecc3b8599f1247df1333bb504f43c09",
+            "sha256": "sha256-2GBGxN0nkvHftnGXrSuwCnnRBkzKQTx6fFGQ05Rrit8=",
             "type": "git",
             "url": "https://github.com/luisbocanegra/plasma-panel-colorizer"
         },
-        "version": "be7ce3ad96fffa9cd1a1538269880257254d96d1"
+        "version": "c25c6c422ecc3b8599f1247df1333bb504f43c09"
     },
     "baidupcs-go": {
         "cargoLocks": null,
