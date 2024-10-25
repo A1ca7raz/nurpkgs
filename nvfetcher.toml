@@ -10,10 +10,6 @@ fetch.git = "https://github.com/luisbocanegra/plasma-panel-colorizer"
 src.git = "https://github.com/qjfoidnh/BaiduPCS-Go"
 fetch.git = "https://github.com/qjfoidnh/BaiduPCS-Go"
 
-[double-entry-generator]
-src.github = "deb-sig/double-entry-generator"
-fetch.github = "deb-sig/double-entry-generator"
-
 [fcitx5-pinyin-moegirl]
 src.github = "outloudvi/mw2fcitx"
 fetch.url = "https://github.com/outloudvi/mw2fcitx/releases/download/$ver/moegirl.dict"
