@@ -3,5 +3,5 @@
   baidupcs-go
 }:
 baidupcs-go.overrideAttrs (p: {
-  inherit (source) version src;
+  inherit (source) src;
 })
