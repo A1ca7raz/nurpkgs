@@ -3,32 +3,32 @@
 {
   aosc-scriptlets = {
     pname = "aosc-scriptlets";
-    version = "ff9543aa88d7564443b9165e1e48d8407186af06";
+    version = "26791f67157ae27dad0939a0f408fe4b354a2916";
     src = fetchgit {
       url = "https://github.com/AOSC-Dev/scriptlets";
-      rev = "ff9543aa88d7564443b9165e1e48d8407186af06";
+      rev = "26791f67157ae27dad0939a0f408fe4b354a2916";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-QDekIHPQFK8mjIsVBN9b361Oi9WMoiTn48UlRfwLwwI=";
+      sha256 = "sha256-AYAX5jsTfEr3SQ6DIVu4tMh2MdmZvSCIDxjkS4BneiU=";
     };
-    date = "2024-11-05";
+    date = "2024-11-09";
   };
   applet-panel-colorizer = {
     pname = "applet-panel-colorizer";
-    version = "e5248305ca3c4756c3846effb838710f5b002fc1";
+    version = "94a709cec9660dc6428bb65a645210d90362c2ca";
     src = fetchgit {
       url = "https://github.com/luisbocanegra/plasma-panel-colorizer";
-      rev = "e5248305ca3c4756c3846effb838710f5b002fc1";
+      rev = "94a709cec9660dc6428bb65a645210d90362c2ca";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-xAxiDX199gcgRJmGZgYjUAPbMm7Om1ZUCtO8oYBRFVY=";
+      sha256 = "sha256-8GjQioMCf4Hxnz78ns2dJAiaDIu2+f28I0K4l/P2W/s=";
     };
-    date = "2024-11-03";
+    date = "2024-11-10";
   };
-  baidupcs-go = {
-    pname = "baidupcs-go";
+  baidupcs-go-git = {
+    pname = "baidupcs-go-git";
     version = "5612fc337b9556ed330274987a2f876961639cff";
     src = fetchgit {
       url = "https://github.com/qjfoidnh/BaiduPCS-Go";
@@ -40,32 +40,12 @@
     };
     date = "2024-06-23";
   };
-  clash-webui-yacd-meta = {
-    pname = "clash-webui-yacd-meta";
-    version = "8753c22b66388f07b64d72c60e5c479b63d15c5a";
-    src = fetchurl {
-      url = "https://github.com/MetaCubeX/Yacd-meta/archive/8753c22b66388f07b64d72c60e5c479b63d15c5a.zip";
-      sha256 = "sha256-3Mvl6KNXNxEWfAnznsWonEUSS5Okq0ChXhECsBAqcUU=";
-    };
-    date = "2024-08-11";
-  };
-  double-entry-generator = {
-    pname = "double-entry-generator";
-    version = "v2.7.1";
-    src = fetchFromGitHub {
-      owner = "deb-sig";
-      repo = "double-entry-generator";
-      rev = "v2.7.1";
-      fetchSubmodules = false;
-      sha256 = "sha256-2Y8Spj1LAVZsUgChDYDCZ63pTH+nqs2ff9xcmC+gr0c=";
-    };
-  };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20241009";
+    version = "20241109";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20241009/moegirl.dict";
-      sha256 = "sha256-tb+Z7ja6yG7n6DcxSvdFhMq2xTNs6mJ6pdPfEKeRUww=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20241109/moegirl.dict";
+      sha256 = "sha256-Vg1Kx/7m1gNEJAe3bhxoIogXsNV8I0NYyhGt9SvqfM4=";
     };
   };
   fcitx5-pinyin-zhwiki = {

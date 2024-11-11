@@ -1,7 +1,7 @@
 {
     "aosc-scriptlets": {
         "cargoLocks": null,
-        "date": "2024-11-05",
+        "date": "2024-11-09",
         "extract": null,
         "name": "aosc-scriptlets",
         "passthru": null,
@@ -11,16 +11,16 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "ff9543aa88d7564443b9165e1e48d8407186af06",
-            "sha256": "sha256-QDekIHPQFK8mjIsVBN9b361Oi9WMoiTn48UlRfwLwwI=",
+            "rev": "26791f67157ae27dad0939a0f408fe4b354a2916",
+            "sha256": "sha256-AYAX5jsTfEr3SQ6DIVu4tMh2MdmZvSCIDxjkS4BneiU=",
             "type": "git",
             "url": "https://github.com/AOSC-Dev/scriptlets"
         },
-        "version": "ff9543aa88d7564443b9165e1e48d8407186af06"
+        "version": "26791f67157ae27dad0939a0f408fe4b354a2916"
     },
     "applet-panel-colorizer": {
         "cargoLocks": null,
-        "date": "2024-11-03",
+        "date": "2024-11-10",
         "extract": null,
         "name": "applet-panel-colorizer",
         "passthru": null,
@@ -30,18 +30,18 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "e5248305ca3c4756c3846effb838710f5b002fc1",
-            "sha256": "sha256-xAxiDX199gcgRJmGZgYjUAPbMm7Om1ZUCtO8oYBRFVY=",
+            "rev": "94a709cec9660dc6428bb65a645210d90362c2ca",
+            "sha256": "sha256-8GjQioMCf4Hxnz78ns2dJAiaDIu2+f28I0K4l/P2W/s=",
             "type": "git",
             "url": "https://github.com/luisbocanegra/plasma-panel-colorizer"
         },
-        "version": "e5248305ca3c4756c3846effb838710f5b002fc1"
+        "version": "94a709cec9660dc6428bb65a645210d90362c2ca"
     },
-    "baidupcs-go": {
+    "baidupcs-go-git": {
         "cargoLocks": null,
         "date": "2024-06-23",
         "extract": null,
-        "name": "baidupcs-go",
+        "name": "baidupcs-go-git",
         "passthru": null,
         "pinned": false,
         "src": {
@@ -56,41 +56,6 @@
         },
         "version": "5612fc337b9556ed330274987a2f876961639cff"
     },
-    "clash-webui-yacd-meta": {
-        "cargoLocks": null,
-        "date": "2024-08-11",
-        "extract": null,
-        "name": "clash-webui-yacd-meta",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-3Mvl6KNXNxEWfAnznsWonEUSS5Okq0ChXhECsBAqcUU=",
-            "type": "url",
-            "url": "https://github.com/MetaCubeX/Yacd-meta/archive/8753c22b66388f07b64d72c60e5c479b63d15c5a.zip"
-        },
-        "version": "8753c22b66388f07b64d72c60e5c479b63d15c5a"
-    },
-    "double-entry-generator": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "double-entry-generator",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "deb-sig",
-            "repo": "double-entry-generator",
-            "rev": "v2.7.1",
-            "sha256": "sha256-2Y8Spj1LAVZsUgChDYDCZ63pTH+nqs2ff9xcmC+gr0c=",
-            "type": "github"
-        },
-        "version": "v2.7.1"
-    },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,
         "date": null,
@@ -100,11 +65,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-tb+Z7ja6yG7n6DcxSvdFhMq2xTNs6mJ6pdPfEKeRUww=",
+            "sha256": "sha256-Vg1Kx/7m1gNEJAe3bhxoIogXsNV8I0NYyhGt9SvqfM4=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20241009/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20241109/moegirl.dict"
         },
-        "version": "20241009"
+        "version": "20241109"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLocks": null,

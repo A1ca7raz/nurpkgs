@@ -6,7 +6,7 @@ fetch.git = "https://github.com/AOSC-Dev/scriptlets"
 src.git = "https://github.com/luisbocanegra/plasma-panel-colorizer"
 fetch.git = "https://github.com/luisbocanegra/plasma-panel-colorizer"
 
-[baidupcs-go]
+[baidupcs-go-git]
 src.git = "https://github.com/qjfoidnh/BaiduPCS-Go"
 fetch.git = "https://github.com/qjfoidnh/BaiduPCS-Go"
 
