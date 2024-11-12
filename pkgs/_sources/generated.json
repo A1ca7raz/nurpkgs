@@ -1,7 +1,7 @@
 {
     "aosc-scriptlets": {
         "cargoLocks": null,
-        "date": "2024-11-09",
+        "date": "2024-11-10",
         "extract": null,
         "name": "aosc-scriptlets",
         "passthru": null,
@@ -11,12 +11,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "26791f67157ae27dad0939a0f408fe4b354a2916",
-            "sha256": "sha256-AYAX5jsTfEr3SQ6DIVu4tMh2MdmZvSCIDxjkS4BneiU=",
+            "rev": "2afe95e5982567d9550f5e017744093abd446cb1",
+            "sha256": "sha256-1XWy2pEhJw1L+CXp5rSTKHO/NjsbZK2kPxGkm19Jkz4=",
             "type": "git",
             "url": "https://github.com/AOSC-Dev/scriptlets"
         },
-        "version": "26791f67157ae27dad0939a0f408fe4b354a2916"
+        "version": "2afe95e5982567d9550f5e017744093abd446cb1"
     },
     "applet-panel-colorizer": {
         "cargoLocks": null,
