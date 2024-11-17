@@ -9,6 +9,6 @@ with lib; {
   };
 
   config = mkIf config.utils.encrypted.enable {
-    system.activationScripts.etc.deps = mkAfter [ "renderSecrets" ];
+    system.activationScripts.etc.deps = mkAfter [ "setupSecrets" ];
   };
 }
