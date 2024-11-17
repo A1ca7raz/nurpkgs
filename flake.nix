@@ -31,8 +31,9 @@
     };
 
     # Packages from other flakes
+    # FIXME: rollback sops-nix to fix breaking changes
     sops-nix = {
-      url = "github:Mic92/sops-nix";
+      url = "github:Mic92/sops-nix/59d6988329626132eaf107761643f55eb979eef1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 #     nvfetcher = {
