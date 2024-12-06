@@ -92,6 +92,29 @@
         "type": "github"
       }
     },
+    "kwin-effects-forceblur": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": [
+          "flake-utils"
+        ]
+      },
+      "locked": {
+        "lastModified": 1733424410,
+        "narHash": "sha256-DI/VSgIpvgrBv7mNULwVOfmEesUfppfCfhwVfWDmVbs=",
+        "owner": "taj-ny",
+        "repo": "kwin-effects-forceblur",
+        "rev": "dea38f35658ff1fd85a3db3b661ddedbd554f14b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "taj-ny",
+        "repo": "kwin-effects-forceblur",
+        "type": "github"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": [
@@ -244,6 +267,7 @@
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
         "hercules-ci-effects": "hercules-ci-effects",
+        "kwin-effects-forceblur": "kwin-effects-forceblur",
         "lanzaboote": "lanzaboote",
         "nix-index-database": "nix-index-database",
         "nixpak": "nixpak",

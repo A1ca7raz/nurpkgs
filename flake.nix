@@ -16,10 +16,7 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs-lib";
     };
-    crane = {
-      url = "github:ipetkov/crane";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    crane.url = "github:ipetkov/crane";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +32,11 @@
     sops-nix = {
       url = "github:Mic92/sops-nix/59d6988329626132eaf107761643f55eb979eef1";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    kwin-effects-forceblur = {
+      url = "github:taj-ny/kwin-effects-forceblur";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
     };
 #     nvfetcher = {
 #       url = "github:berberman/nvfetcher";
@@ -125,7 +127,9 @@
           lanzabootePackages //
           nixIndexDbPackages //
           JetBrainsPackages //
-          nixpakPackages;
+          nixpakPackages // {
+            kwin-effects-forceblur = pkgs.kdePackages.callPackage (inputs.kwin-effects-forceblur + "/package.nix") {};
+          };
         packages = legacyPackages;
         packageBundles = utils.mkPackageBundles pkgs ./pkgs // {
           inherit
@@ -170,6 +174,9 @@
         imports = utils.importsDirs ./modules;
         nixpkgs.overlays = [
           self.overlays.default
+          (f: p: {
+            inherit (self.packages.x86_64-linux) kwin-effects-forceblur;
+          })
 #           self.overlays.nvfetcher
         ];
         nix.settings = import ./substituters.nix;
