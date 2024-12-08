@@ -38,6 +38,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "flake-utils";
     };
+    kwin-gestures = {
+      url = "github:taj-ny/kwin-gestures";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
+    };
 #     nvfetcher = {
 #       url = "github:berberman/nvfetcher";
 #       inputs.nixpkgs.follows = "nixpkgs";
@@ -129,6 +134,7 @@
           JetBrainsPackages //
           nixpakPackages // {
             kwin-effects-forceblur = pkgs.kdePackages.callPackage (inputs.kwin-effects-forceblur + "/package.nix") {};
+            kwin-gestures = pkgs.kdePackages.callPackage (inputs.kwin-gestures + "/package.nix") {};
           };
         packages = legacyPackages;
         packageBundles = utils.mkPackageBundles pkgs ./pkgs // {
@@ -175,7 +181,10 @@
         nixpkgs.overlays = [
           self.overlays.default
           (f: p: {
-            inherit (self.packages.x86_64-linux) kwin-effects-forceblur;
+            inherit (self.packages.x86_64-linux)
+              kwin-effects-forceblur
+              kwin-gestures
+            ;
           })
 #           self.overlays.nvfetcher
         ];

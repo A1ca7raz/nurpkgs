@@ -115,6 +115,29 @@
         "type": "github"
       }
     },
+    "kwin-gestures": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": [
+          "flake-utils"
+        ]
+      },
+      "locked": {
+        "lastModified": 1729256394,
+        "narHash": "sha256-juXMOv4Dgbpoo1RggYow7P5xCnhGMk3912vrE3r2Q2Y=",
+        "owner": "taj-ny",
+        "repo": "kwin-gestures",
+        "rev": "2d1655190b2fc8e9c9efe4c14dbff85779270273",
+        "type": "github"
+      },
+      "original": {
+        "owner": "taj-ny",
+        "repo": "kwin-gestures",
+        "type": "github"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": [
@@ -268,6 +291,7 @@
         "flake-utils": "flake-utils",
         "hercules-ci-effects": "hercules-ci-effects",
         "kwin-effects-forceblur": "kwin-effects-forceblur",
+        "kwin-gestures": "kwin-gestures",
         "lanzaboote": "lanzaboote",
         "nix-index-database": "nix-index-database",
         "nixpak": "nixpak",
