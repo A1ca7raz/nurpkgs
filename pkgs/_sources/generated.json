@@ -39,7 +39,7 @@
     },
     "baidupcs-go-git": {
         "cargoLocks": null,
-        "date": "2024-06-23",
+        "date": "2024-12-14",
         "extract": null,
         "name": "baidupcs-go-git",
         "passthru": null,
@@ -49,12 +49,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "5612fc337b9556ed330274987a2f876961639cff",
-            "sha256": "sha256-4mCJ5gVHjjvR6HNo47NTJvQEu7cdZZMfO8qQA7Kqzqo=",
+            "rev": "a1d664808c4c60c348f51f9ed3726c4c27faec25",
+            "sha256": "sha256-mri9xH8o7puAlStYFuT75Kr1q6OWCETEJj6GJDZzNbs=",
             "type": "git",
             "url": "https://github.com/qjfoidnh/BaiduPCS-Go"
         },
-        "version": "5612fc337b9556ed330274987a2f876961639cff"
+        "version": "a1d664808c4c60c348f51f9ed3726c4c27faec25"
     },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,
@@ -65,11 +65,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-Vg1Kx/7m1gNEJAe3bhxoIogXsNV8I0NYyhGt9SvqfM4=",
+            "sha256": "sha256-yJYQ/zHFH2dTjkZMH4aM1U6RDNGljgl8iB3Eq5UwY9Q=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20241109/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20241211/moegirl.dict"
         },
-        "version": "20241109"
+        "version": "20241211"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLocks": null,

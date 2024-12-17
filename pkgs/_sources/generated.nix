@@ -29,23 +29,23 @@
   };
   baidupcs-go-git = {
     pname = "baidupcs-go-git";
-    version = "5612fc337b9556ed330274987a2f876961639cff";
+    version = "a1d664808c4c60c348f51f9ed3726c4c27faec25";
     src = fetchgit {
       url = "https://github.com/qjfoidnh/BaiduPCS-Go";
-      rev = "5612fc337b9556ed330274987a2f876961639cff";
+      rev = "a1d664808c4c60c348f51f9ed3726c4c27faec25";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-4mCJ5gVHjjvR6HNo47NTJvQEu7cdZZMfO8qQA7Kqzqo=";
+      sha256 = "sha256-mri9xH8o7puAlStYFuT75Kr1q6OWCETEJj6GJDZzNbs=";
     };
-    date = "2024-06-23";
+    date = "2024-12-14";
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20241109";
+    version = "20241211";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20241109/moegirl.dict";
-      sha256 = "sha256-Vg1Kx/7m1gNEJAe3bhxoIogXsNV8I0NYyhGt9SvqfM4=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20241211/moegirl.dict";
+      sha256 = "sha256-yJYQ/zHFH2dTjkZMH4aM1U6RDNGljgl8iB3Eq5UwY9Q=";
     };
   };
   fcitx5-pinyin-zhwiki = {
