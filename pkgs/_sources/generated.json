@@ -20,7 +20,7 @@
     },
     "applet-panel-colorizer": {
         "cargoLocks": null,
-        "date": "2024-11-12",
+        "date": "2024-12-17",
         "extract": null,
         "name": "applet-panel-colorizer",
         "passthru": null,
@@ -30,31 +30,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "0b3fa70a665a69c073e3e20cdc05000e14251507",
-            "sha256": "sha256-t2MykjNa59xrtYlhCMNlriMhWnatgVV5lPX3MiZuvL4=",
+            "rev": "2d831924803240cc242a9a7d8797054a234b9652",
+            "sha256": "sha256-xx7Z0pkZzCUOkbfrEFlS4T/DalO0HbywcvZ8GImOSqU=",
             "type": "git",
             "url": "https://github.com/luisbocanegra/plasma-panel-colorizer"
         },
-        "version": "0b3fa70a665a69c073e3e20cdc05000e14251507"
-    },
-    "baidupcs-go-git": {
-        "cargoLocks": null,
-        "date": "2024-12-14",
-        "extract": null,
-        "name": "baidupcs-go-git",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "rev": "a1d664808c4c60c348f51f9ed3726c4c27faec25",
-            "sha256": "sha256-mri9xH8o7puAlStYFuT75Kr1q6OWCETEJj6GJDZzNbs=",
-            "type": "git",
-            "url": "https://github.com/qjfoidnh/BaiduPCS-Go"
-        },
-        "version": "a1d664808c4c60c348f51f9ed3726c4c27faec25"
+        "version": "2d831924803240cc242a9a7d8797054a234b9652"
     },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,
@@ -80,11 +61,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-djXrwl1MmiAf0U5Xvm4S7Fk2fKNRm5jtc94KUYIrcm8=",
+            "sha256": "sha256-9Z+dgicQQdsySn1/xn6w4Q4hOqMv7Rngol615/JxtRk=",
             "type": "url",
-            "url": "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20240909.dict"
+            "url": "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20241218.dict"
         },
-        "version": "20240909"
+        "version": "20241218"
     },
     "plasma-panel-spacer-extended": {
         "cargoLocks": null,

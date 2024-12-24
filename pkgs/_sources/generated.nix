@@ -16,29 +16,16 @@
   };
   applet-panel-colorizer = {
     pname = "applet-panel-colorizer";
-    version = "0b3fa70a665a69c073e3e20cdc05000e14251507";
+    version = "2d831924803240cc242a9a7d8797054a234b9652";
     src = fetchgit {
       url = "https://github.com/luisbocanegra/plasma-panel-colorizer";
-      rev = "0b3fa70a665a69c073e3e20cdc05000e14251507";
+      rev = "2d831924803240cc242a9a7d8797054a234b9652";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-t2MykjNa59xrtYlhCMNlriMhWnatgVV5lPX3MiZuvL4=";
+      sha256 = "sha256-xx7Z0pkZzCUOkbfrEFlS4T/DalO0HbywcvZ8GImOSqU=";
     };
-    date = "2024-11-12";
-  };
-  baidupcs-go-git = {
-    pname = "baidupcs-go-git";
-    version = "a1d664808c4c60c348f51f9ed3726c4c27faec25";
-    src = fetchgit {
-      url = "https://github.com/qjfoidnh/BaiduPCS-Go";
-      rev = "a1d664808c4c60c348f51f9ed3726c4c27faec25";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sha256 = "sha256-mri9xH8o7puAlStYFuT75Kr1q6OWCETEJj6GJDZzNbs=";
-    };
-    date = "2024-12-14";
+    date = "2024-12-17";
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
@@ -50,10 +37,10 @@
   };
   fcitx5-pinyin-zhwiki = {
     pname = "fcitx5-pinyin-zhwiki";
-    version = "20240909";
+    version = "20241218";
     src = fetchurl {
-      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20240909.dict";
-      sha256 = "sha256-djXrwl1MmiAf0U5Xvm4S7Fk2fKNRm5jtc94KUYIrcm8=";
+      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20241218.dict";
+      sha256 = "sha256-9Z+dgicQQdsySn1/xn6w4Q4hOqMv7Rngol615/JxtRk=";
     };
   };
   plasma-panel-spacer-extended = {
