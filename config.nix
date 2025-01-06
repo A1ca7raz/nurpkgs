@@ -1,7 +1,6 @@
 {
   extraPackages = pkgs: {
     inherit (pkgs)
-      cloudflare-warp
       obsidian
       spotify
       steam
