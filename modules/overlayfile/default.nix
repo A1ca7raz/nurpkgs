@@ -8,6 +8,8 @@ let
     foldlAttrs
     foldAttrs
     mapAttrsToList
+    concatStrings
+    escapeShellArgs
     flatten
     strings
     filterAttrs
@@ -17,10 +19,12 @@ let
     attrNames
     attrValues
     concatStringsSep
+    readFile
   ;
 
-  cfg_ = config.environment.overlay;
-  cfg = cfg_.users;
+  cfg = config.environment.overlay.users;
+
+  inherit (import ./lib.nix { inherit lib; }) sourceStorePath;
 
   fileType = types.submoduleWith {
     modules = [ (import ./file-type.nix) ];
@@ -28,20 +32,11 @@ let
     specialArgs = { inherit pkgs; };
   };
 in {
-  imports = [
-    ./pack.nix
-  ];
-
   options.environment.overlay = {
     users = mkOption {
       type = with types; attrsOf (attrsOf fileType);
       default = {};
       description = "Attribute set of files to link into the user home.";
-    };
-
-    _filepacks = mkOption {
-      type = with types; attrsOf (package);
-      visible = false;
     };
   };
 
@@ -95,9 +90,28 @@ in {
             "${work_dir}/${user}"
           ];
         };
-        "/run/overlay_base/${user}" = {
-          device = cfg_._filepacks.${user};
-          fsType = "overlay";
+
+        "/run/overlay_base/${user}" =
+        let
+          pak = pkgs.runCommand "overlay-${user}-pack" {} (
+            let
+              scripts = concatStrings (mapAttrsToList (n: v: ''
+                insertFile ${escapeShellArgs [
+                  (sourceStorePath v)           # Source
+                  v.target                      # relTarget
+                ]}
+              '') files);
+              # NOTE: not chown here due to infrec when accessing config.users
+            in
+            (readFile ./scripts/insert_file.sh) +
+            scripts + ''
+              chmod -cR +w ./build
+              ${pkgs.erofs-utils}/bin/mkfs.erofs -zlz4 "$out" ./build/
+            ''
+          );
+        in {
+          device = pak.outPath;
+          fsType = "erofs";
           noCheck = true;
           depends = [
             "/nix" "/run"
@@ -109,68 +123,16 @@ in {
         let
           group = config.users.users.${user}.group;
         in {
-          # 1. Remove old files and copy new files' symlinks
-          # "overlayfile-${user}-copy-check" =
-          #   let
-          #     _store = "${storePath}/${user}";
-          #     storeHash = baseNameOf overlayPkg;
-          #     storeLock = "${_store}-lock-${storeHash}";
-
-          #     next = "overlayfile-${user}-pre-mount.service";
-          #   in {
-          #     description = "Check availablity of overlay files for ${user} and copy them";
-          #     before = [ next ];
-          #     requiredBy = [ next ];
-          #     wantedBy = [ "local-fs.target" ];
-          #     # bindsTo = "overlayfile-${user}-pre-mount.service";
-
-          #     environment = {
-          #       OUT = _store;
-          #     };
-
-          #     unitConfig = {
-          #       DefaultDependencies = "no";
-          #       # ConditionPathExists = "!${storeLock}";
-          #     };
-
-          #     serviceConfig = {
-          #       Type = "oneshot";
-          #       RemainAfterExit = "yes";
-          #     };
-
-          #     script = ''
-          #       [[ -f ${storeLock} ]] && exit 0
-          #       sou="$(realpath -m "${overlayPkg}")"
-
-          #       mkdir -p "$OUT"
-          #       rm -vf "$OUT-lock-"*
-          #       rm -vrf "$OUT"/*
-          #       rm -vrf "$OUT"/.*
-
-          #       cp -vrfHL "$sou"/. "$OUT"
-          #       echo "$sou" > "${storeLock}"
-          #       chown -cR ${user}:${group} "$OUT"
-          #       chmod -cR 1700 "$OUT"
-          #     '';
-
-          #     preStop = ''
-          #       rm -r "${storeLock}"
-          #     '';
-          #   };
-
-          # 2. Prepare for mounting overlayfs
+          # 1. Prepare for mounting overlayfs
           "overlayfile-${user}-pre-mount" =
             let
-              # prev = "overlayfile-${user}-copy-check.service";
               next = "run-overlay_files-${strings.escapeC ["-"] user}.mount";
             in {
               description = "Create Upperdir and Workdir for overlay files of ${user}";
               before = [ next ];
               requiredBy = [ next ];
               after = [ "tmp.mount" ];
-              # bindsTo = [ prev ];
               requires = [ "tmp.mount" ];
-              # partOf = [ prev ];
               wantedBy = [ "local-fs.target" ];
 
               unitConfig.DefaultDependencies = "no";
@@ -180,10 +142,16 @@ in {
                 RemainAfterExit = "yes";
               };
 
+              # NOTE: use idmapped bind mount alternatively
               script = ''
+                user=`id -u ${user}`
+                group=`id -g ${user}`
                 mkdir -p ${upper_dir}/${user}
                 mkdir -p ${work_dir}/${user}
                 chown ${user}:${group} ${upper_dir}/${user}
+                [[ $user = '1000' && $group = '100' ]] || \
+                  mount --bind -o X-mount.idmap="u:1000:$user:1 g:100:$group:1" \
+                    /run/overlay_base/${user}/ /run/overlay_base/${user}/
               '';
 
               preStop = ''
@@ -191,12 +159,13 @@ in {
                 rm -rf ${upper_dir}/${user}/.*
                 rm -rf ${work_dir}/${user}/*
                 rm -rf ${work_dir}/${user}/.*
+                umount /run/overlay_base/${user}/
               '';
             };
 
-          # 3. Mount overlayfs
+          # 2. Mount overlayfs
 
-          # 4. Make symlink to HOME
+          # 3. Make symlink to HOME
           "overlayfile-${user}-link-file" =
             let
               prev = "run-overlay_files-${strings.escapeC ["-"] user}.mount";

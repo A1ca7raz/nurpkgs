@@ -1,4 +1,4 @@
-mkdir -p $out
+# mkdir -p $out
 
 # Needed in case /nix is a symbolic link.
 # realOut="$(realpath -m "$out")"

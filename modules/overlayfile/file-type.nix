@@ -1,6 +1,12 @@
 # https://github.com/nix-community/home-manager/blob/master/modules/lib/file-type.nix
 { name, config, lib, pkgs, ... }:
-with lib; let
+let
+  inherit (lib)
+    mkOption
+    types
+    literalExpression
+  ;
+
   inherit (import ./lib.nix { inherit lib; }) storeFileName;
 in {
   options = {
