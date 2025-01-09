@@ -1,7 +1,9 @@
 mkdir -p $out
 
 # Needed in case /nix is a symbolic link.
-realOut="$(realpath -m "$out")"
+# realOut="$(realpath -m "$out")"
+mkdir build
+realOut="$(realpath -m ./build)"
 
 echo "Creating file store for User $owner..."
 
@@ -17,7 +19,7 @@ function insertFile() {
     echo "File conflict for file '$relTarget'" >&2
     return
   fi
-  
+
   # Figure out the real absolute path to the target.
   local target="$(realpath -m "$realOut/$relTarget")"
   echo "Copying file $relTarget to $target..."
@@ -29,5 +31,6 @@ function insertFile() {
   fi
 
   mkdir -p "$(dirname "$target")"
-  ln -s "$source" "$target"
+  # ln -s "$source" "$target"
+  cp -vrfHL "$source" "$target"
 }

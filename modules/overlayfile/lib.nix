@@ -1,7 +1,13 @@
 { lib, ... }:
 let
   inherit (lib)
-    genList length lowerChars replaceStrings stringToCharacters upperChars;
+    genList
+    length
+    lowerChars
+    replaceStrings
+    stringToCharacters
+    upperChars
+  ;
 in rec {
   # Figures out a valid Nix store name for the given path.
   storeFileName = path:
@@ -20,7 +26,7 @@ in rec {
       safeName = replaceStrings unsafeInName (empties unsafeInName) path;
     in
       "overlay_" + safeName;
-  
+
   sourceStorePath = file:
     let
       sourcePath = toString file.source;

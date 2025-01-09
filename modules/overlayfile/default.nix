@@ -1,11 +1,26 @@
 # https://github.com/nix-community/home-manager/blob/master/modules/files.nix
 { config, lib, pkgs, ... }:
-with lib; let
+let
+  inherit (lib)
+    mkIf
+    types
+    mkOption
+    foldlAttrs
+    foldAttrs
+    mapAttrsToList
+    flatten
+    strings
+    filterAttrs
+  ;
+
+  inherit (builtins)
+    attrNames
+    attrValues
+    concatStringsSep
+  ;
+
   cfg_ = config.environment.overlay;
   cfg = cfg_.users;
-
-  storePath = cfg_.tempStorePath;
-  inherit (import ./lib.nix { inherit lib; }) sourceStorePath;
 
   fileType = types.submoduleWith {
     modules = [ (import ./file-type.nix) ];
@@ -13,6 +28,10 @@ with lib; let
     specialArgs = { inherit pkgs; };
   };
 in {
+  imports = [
+    ./pack.nix
+  ];
+
   options.environment.overlay = {
     users = mkOption {
       type = with types; attrsOf (attrsOf fileType);
@@ -20,13 +39,10 @@ in {
       description = "Attribute set of files to link into the user home.";
     };
 
-    tempStorePath = mkOption {
-      type = types.str;
-      default = "";
-      description = "A path to store overlay files which is out of Nix store";
+    _filepacks = mkOption {
+      type = with types; attrsOf (package);
+      visible = false;
     };
-
-    debug = mkEnableOption "Create .overlay-debug file for debugging";
   };
 
   config = mkIf (cfg != {}) (
@@ -34,16 +50,9 @@ in {
       upper_dir = "/tmp/overlay_files_upper";
       work_dir = "/tmp/overlay_files_work";
 
-      mapper = func: mapAttrs' func cfg;
       folder = func: foldlAttrs func {} cfg;
     in {
       assertions = [
-        {
-          assertion = cfg_ != "";
-          message = ''
-            environment.overlay.tempStorePath should be set when overlay files is enabled.
-          '';
-        }
         (let
           dups = attrNames
             (filterAttrs (n: v: v > 1)
@@ -67,16 +76,17 @@ in {
         })
       ];
 
-      fileSystems = (mapper (user: files: {
-        name = "/run/overlay_files/${user}";
-        value = {
+      fileSystems = folder (acc: user: files: {
+        "/run/overlay_files/${user}" = {
           device = "overlay";
           fsType = "overlay";
           options = [
             "rw" "nosuid"
-            "lowerdir=${storePath}/${user}"
+            "lowerdir=/run/overlay_base/${user}"
             "upperdir=${upper_dir}/${user}"
             "workdir=${work_dir}/${user}"
+            "x-systemd.after=run-overlay_base-${strings.escapeC ["-"] user}.mount"
+            "x-systemd.requires=run-overlay_base-${strings.escapeC ["-"] user}.mount"
           ];
           noCheck = true;
           depends = [
@@ -85,91 +95,86 @@ in {
             "${work_dir}/${user}"
           ];
         };
-      }));
+        "/run/overlay_base/${user}" = {
+          device = cfg_._filepacks.${user};
+          fsType = "overlay";
+          noCheck = true;
+          depends = [
+            "/nix" "/run"
+          ];
+        };
+      } // acc);
 
       systemd.services = (folder (sum: user: files:
         let
           group = config.users.users.${user}.group;
-
-          overlayPkg = pkgs.runCommand "overlay-packfile-${user}" {} (
-            let
-              scripts = concatStrings (mapAttrsToList (n: v: ''
-                insertFile ${escapeShellArgs [
-                  (sourceStorePath v)           # Source
-                  v.target                      # relTarget
-                ]}
-              '') files );
-            in 
-            (builtins.readFile ./scripts/insert_file.sh) +
-            (if cfg_.debug then traceVal scripts else scripts)
-          );
         in {
           # 1. Remove old files and copy new files' symlinks
-          "overlayfile-${user}-copy-check" =
-            let
-              _store = "${storePath}/${user}";
-              storeHash = baseNameOf overlayPkg;
-              storeLock = "${_store}-lock-${storeHash}";
+          # "overlayfile-${user}-copy-check" =
+          #   let
+          #     _store = "${storePath}/${user}";
+          #     storeHash = baseNameOf overlayPkg;
+          #     storeLock = "${_store}-lock-${storeHash}";
 
-              next = "overlayfile-${user}-pre-mount.service";
-            in {
-              description = "Check availablity of overlay files for ${user} and copy them";
-              before = [ next ];
-              requiredBy = [ next ];
-              wantedBy = [ "local-fs.target" ];
-              # bindsTo = "overlayfile-${user}-pre-mount.service";
+          #     next = "overlayfile-${user}-pre-mount.service";
+          #   in {
+          #     description = "Check availablity of overlay files for ${user} and copy them";
+          #     before = [ next ];
+          #     requiredBy = [ next ];
+          #     wantedBy = [ "local-fs.target" ];
+          #     # bindsTo = "overlayfile-${user}-pre-mount.service";
 
-              environment = {
-                OUT = _store;
-              };
+          #     environment = {
+          #       OUT = _store;
+          #     };
 
-              unitConfig = {
-                DefaultDependencies = "no";
-                # ConditionPathExists = "!${storeLock}";
-              };
+          #     unitConfig = {
+          #       DefaultDependencies = "no";
+          #       # ConditionPathExists = "!${storeLock}";
+          #     };
 
-              serviceConfig = {
-                Type = "oneshot";
-                RemainAfterExit = "yes";
-              };
+          #     serviceConfig = {
+          #       Type = "oneshot";
+          #       RemainAfterExit = "yes";
+          #     };
 
-              script = ''
-                [[ -f ${storeLock} ]] && exit 0
-                sou="$(realpath -m "${overlayPkg}")"
+          #     script = ''
+          #       [[ -f ${storeLock} ]] && exit 0
+          #       sou="$(realpath -m "${overlayPkg}")"
 
-                mkdir -p "$OUT"
-                rm -vf "$OUT-lock-"*
-                rm -vrf "$OUT"/*
-                rm -vrf "$OUT"/.*
+          #       mkdir -p "$OUT"
+          #       rm -vf "$OUT-lock-"*
+          #       rm -vrf "$OUT"/*
+          #       rm -vrf "$OUT"/.*
 
-                cp -vrfHL "$sou"/. "$OUT"
-                echo "$sou" > "${storeLock}"
-                chown -cR ${user}:${group} "$OUT"
-                chmod -cR 1700 "$OUT"
-              '';
+          #       cp -vrfHL "$sou"/. "$OUT"
+          #       echo "$sou" > "${storeLock}"
+          #       chown -cR ${user}:${group} "$OUT"
+          #       chmod -cR 1700 "$OUT"
+          #     '';
 
-              preStop = ''
-                rm -r "${storeLock}"
-              '';
-            };
+          #     preStop = ''
+          #       rm -r "${storeLock}"
+          #     '';
+          #   };
 
           # 2. Prepare for mounting overlayfs
           "overlayfile-${user}-pre-mount" =
             let
-              prev = "overlayfile-${user}-copy-check.service";
+              # prev = "overlayfile-${user}-copy-check.service";
               next = "run-overlay_files-${strings.escapeC ["-"] user}.mount";
             in {
               description = "Create Upperdir and Workdir for overlay files of ${user}";
               before = [ next ];
               requiredBy = [ next ];
-              after = [ prev "tmp.mount" ];
-              bindsTo = [ prev ];
+              after = [ "tmp.mount" ];
+              # bindsTo = [ prev ];
               requires = [ "tmp.mount" ];
-              partOf = [ prev ];
+              # partOf = [ prev ];
               wantedBy = [ "local-fs.target" ];
 
               unitConfig.DefaultDependencies = "no";
-              
+
               serviceConfig = {
                 Type = "oneshot";
                 RemainAfterExit = "yes";
