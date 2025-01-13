@@ -155,11 +155,14 @@ in {
               '';
 
               preStop = ''
+                user=`id -u ${user}`
+                group=`id -g ${user}`
                 rm -rf ${upper_dir}/${user}/*
                 rm -rf ${upper_dir}/${user}/.*
                 rm -rf ${work_dir}/${user}/*
                 rm -rf ${work_dir}/${user}/.*
-                umount /run/overlay_base/${user}/
+                [[ $user = '1000' && $group = '100' ]] || \
+                  umount /run/overlay_base/${user}/
               '';
             };
 
