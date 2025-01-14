@@ -3,36 +3,36 @@
 {
   aosc-scriptlets = {
     pname = "aosc-scriptlets";
-    version = "80045d70971c91017ab62c62eee2900258e044d0";
+    version = "16128de2e02a418d127c2c8d8698b5b2ff3765cc";
     src = fetchgit {
       url = "https://github.com/AOSC-Dev/scriptlets";
-      rev = "80045d70971c91017ab62c62eee2900258e044d0";
+      rev = "16128de2e02a418d127c2c8d8698b5b2ff3765cc";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-5bwZ80NrBZcqOp0YuYI7hcg9cfS0g1IjjoS9dM9vghU=";
+      sha256 = "sha256-GOlZ3UxdfjkV9Zl/nTzt9SmUVgpyK3lOwyXDDR9GIYQ=";
     };
-    date = "2024-12-09";
+    date = "2025-01-07";
   };
   applet-panel-colorizer = {
     pname = "applet-panel-colorizer";
-    version = "2d831924803240cc242a9a7d8797054a234b9652";
+    version = "dbb85e4bc080cca675de544826afe52815aebabd";
     src = fetchgit {
       url = "https://github.com/luisbocanegra/plasma-panel-colorizer";
-      rev = "2d831924803240cc242a9a7d8797054a234b9652";
+      rev = "dbb85e4bc080cca675de544826afe52815aebabd";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-xx7Z0pkZzCUOkbfrEFlS4T/DalO0HbywcvZ8GImOSqU=";
+      sha256 = "sha256-CpZo51zK/XjKtcEnNzbk02IgUjdAxqwwes7F2/NPz9Y=";
     };
-    date = "2024-12-17";
+    date = "2025-01-12";
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20241211";
+    version = "20250113";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20241211/moegirl.dict";
-      sha256 = "sha256-yJYQ/zHFH2dTjkZMH4aM1U6RDNGljgl8iB3Eq5UwY9Q=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20250113/moegirl.dict";
+      sha256 = "sha256-Z6MqYZMpvTGcz61NnzZQy63GXfcaTWE8dezPoYht6q0=";
     };
   };
   fcitx5-pinyin-zhwiki = {
