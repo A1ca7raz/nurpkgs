@@ -72,6 +72,13 @@
       inputs.flake-parts.follows = "flake-parts";
       inputs.hercules-ci-effects.follows = "hercules-ci-effects";
     };
+
+    # Steal packages from others' nur
+    nur-cryolitia = {
+      url = "github:Cryolitia/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, flake-utils, nixpak, ... }:
@@ -134,6 +141,10 @@
           nixpakPackages // {
             kwin-effects-forceblur = pkgs.kdePackages.callPackage (inputs.kwin-effects-forceblur + "/package.nix") {};
             kwin-gestures = pkgs.kdePackages.callPackage (inputs.kwin-gestures + "/package.nix") {};
+          } // {
+            inherit (inputs.nur-cryolitia.packages."${system}")
+              maa-cli-nightly
+            ;
           };
         packages = legacyPackages;
         packageBundles = utils.mkPackageBundles pkgs ./pkgs // {
@@ -183,6 +194,7 @@
             inherit (self.packages.x86_64-linux)
               kwin-effects-forceblur
               kwin-gestures
+              maa-cli-nightly
             ;
           })
 #           self.overlays.nvfetcher

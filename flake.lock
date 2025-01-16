@@ -69,6 +69,46 @@
         "type": "github"
       }
     },
+    "gpd-fan-driver": {
+      "inputs": {
+        "nixpkgs": [
+          "nur-cryolitia",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1729072450,
+        "narHash": "sha256-gJZEoXg4EZ+3BRJOfCHlfA8gogrO3aYKMQ9pNKRnvQ4=",
+        "owner": "Cryolitia",
+        "repo": "gpd-fan-driver",
+        "rev": "2a59f63440bc73ad4561e0bf6991e7ac3ef04889",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Cryolitia",
+        "repo": "gpd-fan-driver",
+        "type": "github"
+      }
+    },
+    "gpd-linuxcontrols": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2",
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1720926613,
+        "narHash": "sha256-k2fYcrHLDxkgi/R/hpkdXrzUJy54gBaakW+hSwPkFq8=",
+        "owner": "Cryolitia",
+        "repo": "GPD-LinuxControls",
+        "rev": "03776f22389dd1e257f1bc3d61f2e1e304f42ede",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Cryolitia",
+        "repo": "GPD-LinuxControls",
+        "type": "github"
+      }
+    },
     "hercules-ci-effects": {
       "inputs": {
         "flake-parts": [
@@ -267,6 +307,73 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1720781449,
+        "narHash": "sha256-po3TZO9kcZwzvkyMJKb0WCzzDtiHWD34XeRaX1lWXp0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8b5a3d5a1d951344d683b442c0739010b80039db",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nur-cryolitia": {
+      "inputs": {
+        "gpd-fan-driver": "gpd-fan-driver",
+        "gpd-linuxcontrols": "gpd-linuxcontrols",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "pgp-sig2dot": "pgp-sig2dot",
+        "rust-overlay": [
+          "rust-overlay"
+        ]
+      },
+      "locked": {
+        "lastModified": 1736737293,
+        "narHash": "sha256-Yi2un4bC6nYDTpOZtGTYBzj/55HlcmnKpow1GAF63WE=",
+        "owner": "Cryolitia",
+        "repo": "nur-packages",
+        "rev": "6b5f14f8ca8be7c411c14b4f4c0dde5bb0a50234",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Cryolitia",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
+    "pgp-sig2dot": {
+      "inputs": {
+        "nixpkgs": [
+          "nur-cryolitia",
+          "nixpkgs"
+        ],
+        "rust-overlay": [
+          "nur-cryolitia",
+          "rust-overlay"
+        ]
+      },
+      "locked": {
+        "lastModified": 1736307122,
+        "narHash": "sha256-psWXR5S2EgpjzVA5Vj5AYyAri9L3h6cZIgBjrl3Y4qo=",
+        "owner": "Cryolitia",
+        "repo": "pgp-sig2dot",
+        "rev": "972cb85e01c37a911f0d6dae27b6509d3a1f9222",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Cryolitia",
+        "repo": "pgp-sig2dot",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "crane": "crane",
@@ -282,12 +389,35 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-lib": "nixpkgs-lib",
         "nixpkgs-stable": "nixpkgs-stable",
-        "rust-overlay": "rust-overlay",
+        "nur-cryolitia": "nur-cryolitia",
+        "rust-overlay": "rust-overlay_2",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix"
       }
     },
     "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nur-cryolitia",
+          "gpd-linuxcontrols",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1720923816,
+        "narHash": "sha256-GrDL1nFYZrB/+Ah1hNoaNFfduB1agpfqL9QyEl12UOU=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "fb8c8be0313f0e6385b3d70151a04ea1d71e4b68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
