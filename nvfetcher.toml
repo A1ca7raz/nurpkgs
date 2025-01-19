@@ -2,10 +2,6 @@
 src.git = "https://github.com/AOSC-Dev/scriptlets"
 fetch.git = "https://github.com/AOSC-Dev/scriptlets"
 
-[applet-panel-colorizer]
-src.git = "https://github.com/luisbocanegra/plasma-panel-colorizer"
-fetch.git = "https://github.com/luisbocanegra/plasma-panel-colorizer"
-
 [fcitx5-pinyin-moegirl]
 src.github = "outloudvi/mw2fcitx"
 fetch.url = "https://github.com/outloudvi/mw2fcitx/releases/download/$ver/moegirl.dict"
