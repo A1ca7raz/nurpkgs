@@ -18,25 +18,6 @@
         },
         "version": "16128de2e02a418d127c2c8d8698b5b2ff3765cc"
     },
-    "applet-panel-colorizer": {
-        "cargoLocks": null,
-        "date": "2025-01-12",
-        "extract": null,
-        "name": "applet-panel-colorizer",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "rev": "dbb85e4bc080cca675de544826afe52815aebabd",
-            "sha256": "sha256-CpZo51zK/XjKtcEnNzbk02IgUjdAxqwwes7F2/NPz9Y=",
-            "type": "git",
-            "url": "https://github.com/luisbocanegra/plasma-panel-colorizer"
-        },
-        "version": "dbb85e4bc080cca675de544826afe52815aebabd"
-    },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,
         "date": null,
@@ -67,6 +48,25 @@
         },
         "version": "20241218"
     },
+    "plasma-panel-colorizer-nightly": {
+        "cargoLocks": null,
+        "date": "2025-01-19",
+        "extract": null,
+        "name": "plasma-panel-colorizer-nightly",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "09dca4972f6c72f90b15bc7c0590f9775a38181e",
+            "sha256": "sha256-fNBaCesZFtqDk4yzc4Yl6fk5XX7AwFM9ejUfcRcAyJ0=",
+            "type": "git",
+            "url": "https://github.com/luisbocanegra/plasma-panel-colorizer"
+        },
+        "version": "09dca4972f6c72f90b15bc7c0590f9775a38181e"
+    },
     "plasma-panel-spacer-extended": {
         "cargoLocks": null,
         "date": null,
@@ -81,10 +81,10 @@
             "name": null,
             "owner": "luisbocanegra",
             "repo": "plasma-panel-spacer-extended",
-            "rev": "v1.9.0",
-            "sha256": "sha256-3ediynClboG6/dBQTih6jJPGjsTBZhZKOPQAjGLRNmk=",
+            "rev": "v1.10.0",
+            "sha256": "sha256-Rr80bI+9xnrlj8JNTL+vGqOw9/98R0ub0pQfHQmEWNM=",
             "type": "github"
         },
-        "version": "v1.9.0"
+        "version": "v1.10.0"
     }
 }

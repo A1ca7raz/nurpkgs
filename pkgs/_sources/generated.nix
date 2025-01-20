@@ -14,19 +14,6 @@
     };
     date = "2025-01-07";
   };
-  applet-panel-colorizer = {
-    pname = "applet-panel-colorizer";
-    version = "dbb85e4bc080cca675de544826afe52815aebabd";
-    src = fetchgit {
-      url = "https://github.com/luisbocanegra/plasma-panel-colorizer";
-      rev = "dbb85e4bc080cca675de544826afe52815aebabd";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sha256 = "sha256-CpZo51zK/XjKtcEnNzbk02IgUjdAxqwwes7F2/NPz9Y=";
-    };
-    date = "2025-01-12";
-  };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
     version = "20250113";
@@ -43,15 +30,28 @@
       sha256 = "sha256-9Z+dgicQQdsySn1/xn6w4Q4hOqMv7Rngol615/JxtRk=";
     };
   };
+  plasma-panel-colorizer-nightly = {
+    pname = "plasma-panel-colorizer-nightly";
+    version = "09dca4972f6c72f90b15bc7c0590f9775a38181e";
+    src = fetchgit {
+      url = "https://github.com/luisbocanegra/plasma-panel-colorizer";
+      rev = "09dca4972f6c72f90b15bc7c0590f9775a38181e";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-fNBaCesZFtqDk4yzc4Yl6fk5XX7AwFM9ejUfcRcAyJ0=";
+    };
+    date = "2025-01-19";
+  };
   plasma-panel-spacer-extended = {
     pname = "plasma-panel-spacer-extended";
-    version = "v1.9.0";
+    version = "v1.10.0";
     src = fetchFromGitHub {
       owner = "luisbocanegra";
       repo = "plasma-panel-spacer-extended";
-      rev = "v1.9.0";
+      rev = "v1.10.0";
       fetchSubmodules = false;
-      sha256 = "sha256-3ediynClboG6/dBQTih6jJPGjsTBZhZKOPQAjGLRNmk=";
+      sha256 = "sha256-Rr80bI+9xnrlj8JNTL+vGqOw9/98R0ub0pQfHQmEWNM=";
     };
   };
 }
