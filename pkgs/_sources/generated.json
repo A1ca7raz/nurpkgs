@@ -50,7 +50,7 @@
     },
     "plasma-panel-colorizer-nightly": {
         "cargoLocks": null,
-        "date": "2025-01-19",
+        "date": "2025-01-20",
         "extract": null,
         "name": "plasma-panel-colorizer-nightly",
         "passthru": null,
@@ -60,12 +60,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "09dca4972f6c72f90b15bc7c0590f9775a38181e",
-            "sha256": "sha256-fNBaCesZFtqDk4yzc4Yl6fk5XX7AwFM9ejUfcRcAyJ0=",
+            "rev": "51ddc8dd2316e61a26b4636155c4b02f2256898d",
+            "sha256": "sha256-8QuVhUvjBj8Jbta/NxTw2BTv4P1Flsdf0TvSw/hFcHw=",
             "type": "git",
             "url": "https://github.com/luisbocanegra/plasma-panel-colorizer"
         },
-        "version": "09dca4972f6c72f90b15bc7c0590f9775a38181e"
+        "version": "51ddc8dd2316e61a26b4636155c4b02f2256898d"
     },
     "plasma-panel-spacer-extended": {
         "cargoLocks": null,

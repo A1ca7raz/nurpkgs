@@ -32,16 +32,16 @@
   };
   plasma-panel-colorizer-nightly = {
     pname = "plasma-panel-colorizer-nightly";
-    version = "09dca4972f6c72f90b15bc7c0590f9775a38181e";
+    version = "51ddc8dd2316e61a26b4636155c4b02f2256898d";
     src = fetchgit {
       url = "https://github.com/luisbocanegra/plasma-panel-colorizer";
-      rev = "09dca4972f6c72f90b15bc7c0590f9775a38181e";
+      rev = "51ddc8dd2316e61a26b4636155c4b02f2256898d";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-fNBaCesZFtqDk4yzc4Yl6fk5XX7AwFM9ejUfcRcAyJ0=";
+      sha256 = "sha256-8QuVhUvjBj8Jbta/NxTw2BTv4P1Flsdf0TvSw/hFcHw=";
     };
-    date = "2025-01-19";
+    date = "2025-01-20";
   };
   plasma-panel-spacer-extended = {
     pname = "plasma-panel-spacer-extended";
