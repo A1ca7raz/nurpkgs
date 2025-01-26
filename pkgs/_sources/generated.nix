@@ -3,16 +3,17 @@
 {
   aosc-scriptlets = {
     pname = "aosc-scriptlets";
-    version = "16128de2e02a418d127c2c8d8698b5b2ff3765cc";
+    version = "017efe81db4e458d1a8a9398a169b70a7014c9e2";
     src = fetchgit {
       url = "https://github.com/AOSC-Dev/scriptlets";
-      rev = "16128de2e02a418d127c2c8d8698b5b2ff3765cc";
+      rev = "017efe81db4e458d1a8a9398a169b70a7014c9e2";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-GOlZ3UxdfjkV9Zl/nTzt9SmUVgpyK3lOwyXDDR9GIYQ=";
+      sparseCheckout = [ ];
+      sha256 = "sha256-v5X3QMlFrhNeSrsDycu44dGdYrveGL6vjMYQqXfLaRo=";
     };
-    date = "2025-01-07";
+    date = "2025-01-26";
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
@@ -32,16 +33,17 @@
   };
   plasma-panel-colorizer-nightly = {
     pname = "plasma-panel-colorizer-nightly";
-    version = "51ddc8dd2316e61a26b4636155c4b02f2256898d";
+    version = "905fa900193f4b577faf798958ece9cb321eb0f4";
     src = fetchgit {
       url = "https://github.com/luisbocanegra/plasma-panel-colorizer";
-      rev = "51ddc8dd2316e61a26b4636155c4b02f2256898d";
+      rev = "905fa900193f4b577faf798958ece9cb321eb0f4";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-8QuVhUvjBj8Jbta/NxTw2BTv4P1Flsdf0TvSw/hFcHw=";
+      sparseCheckout = [ ];
+      sha256 = "sha256-ymmVEbvyBOILGiIqbuTRe2/3I6VIzlmDO4DoxJC+eB0=";
     };
-    date = "2025-01-20";
+    date = "2025-01-26";
   };
   plasma-panel-spacer-extended = {
     pname = "plasma-panel-spacer-extended";

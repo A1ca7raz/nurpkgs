@@ -1,7 +1,7 @@
 {
     "aosc-scriptlets": {
         "cargoLocks": null,
-        "date": "2025-01-07",
+        "date": "2025-01-26",
         "extract": null,
         "name": "aosc-scriptlets",
         "passthru": null,
@@ -11,12 +11,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "16128de2e02a418d127c2c8d8698b5b2ff3765cc",
-            "sha256": "sha256-GOlZ3UxdfjkV9Zl/nTzt9SmUVgpyK3lOwyXDDR9GIYQ=",
+            "rev": "017efe81db4e458d1a8a9398a169b70a7014c9e2",
+            "sha256": "sha256-v5X3QMlFrhNeSrsDycu44dGdYrveGL6vjMYQqXfLaRo=",
+            "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/AOSC-Dev/scriptlets"
         },
-        "version": "16128de2e02a418d127c2c8d8698b5b2ff3765cc"
+        "version": "017efe81db4e458d1a8a9398a169b70a7014c9e2"
     },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,
@@ -50,7 +51,7 @@
     },
     "plasma-panel-colorizer-nightly": {
         "cargoLocks": null,
-        "date": "2025-01-20",
+        "date": "2025-01-26",
         "extract": null,
         "name": "plasma-panel-colorizer-nightly",
         "passthru": null,
@@ -60,12 +61,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "51ddc8dd2316e61a26b4636155c4b02f2256898d",
-            "sha256": "sha256-8QuVhUvjBj8Jbta/NxTw2BTv4P1Flsdf0TvSw/hFcHw=",
+            "rev": "905fa900193f4b577faf798958ece9cb321eb0f4",
+            "sha256": "sha256-ymmVEbvyBOILGiIqbuTRe2/3I6VIzlmDO4DoxJC+eB0=",
+            "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/luisbocanegra/plasma-panel-colorizer"
         },
-        "version": "51ddc8dd2316e61a26b4636155c4b02f2256898d"
+        "version": "905fa900193f4b577faf798958ece9cb321eb0f4"
     },
     "plasma-panel-spacer-extended": {
         "cargoLocks": null,
@@ -83,6 +85,7 @@
             "repo": "plasma-panel-spacer-extended",
             "rev": "v1.10.0",
             "sha256": "sha256-Rr80bI+9xnrlj8JNTL+vGqOw9/98R0ub0pQfHQmEWNM=",
+            "sparseCheckout": [],
             "type": "github"
         },
         "version": "v1.10.0"
