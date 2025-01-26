@@ -42,6 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
   passthru.updateScript = nix-update-script { };
 
   postInstall = ''
+    chmod +x $out/share/plasma/plasmoids/luisbocanegra.panel.colorizer/contents/ui/tools/*
     sed -i 's/<default>python3<\/default>/<default>${lib.escape ["/"] (lib.getExe pyEnv)}<\/default>/' $out/share/plasma/plasmoids/luisbocanegra.panel.colorizer/contents/config/main.xml
   '';
 })
