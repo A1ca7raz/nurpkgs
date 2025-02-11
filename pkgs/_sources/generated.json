@@ -1,7 +1,7 @@
 {
     "aosc-scriptlets": {
         "cargoLocks": null,
-        "date": "2025-01-27",
+        "date": "2025-02-10",
         "extract": null,
         "name": "aosc-scriptlets",
         "passthru": null,
@@ -11,13 +11,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "10c254f0b64ce5cdcf98b141844a8741c09721b3",
-            "sha256": "sha256-TzerzVAbcvEJ4GvjTzs+EHCoUGxI7gHDNjgdyQf4iGI=",
+            "rev": "6cd644eb7d439feda4b9467d98b9f15c775a9155",
+            "sha256": "sha256-K2lPT5waeWbirh6EANqsdL5kS2DgtlItUTFkxFMIbL4=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/AOSC-Dev/scriptlets"
         },
-        "version": "10c254f0b64ce5cdcf98b141844a8741c09721b3"
+        "version": "6cd644eb7d439feda4b9467d98b9f15c775a9155"
     },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,
@@ -28,11 +28,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-Z6MqYZMpvTGcz61NnzZQy63GXfcaTWE8dezPoYht6q0=",
+            "sha256": "sha256-+EIXBIu3OE59VpnAWalmiNqD4FsvuSgRr79OQCqrgMA=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20250113/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20250209/moegirl.dict"
         },
-        "version": "20250113"
+        "version": "20250209"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLocks": null,
@@ -51,7 +51,7 @@
     },
     "plasma-panel-colorizer-nightly": {
         "cargoLocks": null,
-        "date": "2025-02-01",
+        "date": "2025-02-08",
         "extract": null,
         "name": "plasma-panel-colorizer-nightly",
         "passthru": null,
@@ -61,13 +61,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "9ac80b86c7b4e0e9a34ef97ae01a8edb7b2a5373",
-            "sha256": "sha256-SIYrDrIKZzIdyC1vPrQsAFSZY0Lw97ycySfYs02PYgI=",
+            "rev": "ace313c26e41abcb403e2122884b03cf2f1b4fa4",
+            "sha256": "sha256-//Jk0fYqQ9Pdt97XzlGWCux+ViUyPWTQBQHNMyutmCg=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/luisbocanegra/plasma-panel-colorizer"
         },
-        "version": "9ac80b86c7b4e0e9a34ef97ae01a8edb7b2a5373"
+        "version": "ace313c26e41abcb403e2122884b03cf2f1b4fa4"
     },
     "plasma-panel-spacer-extended": {
         "cargoLocks": null,
