@@ -2,7 +2,6 @@
   extraPackages = pkgs: {
     inherit (pkgs)
       obsidian
-      spotify
       steam
       steam-run
       tor-browser

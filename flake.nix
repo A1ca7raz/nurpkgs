@@ -49,9 +49,9 @@
 #       inputs.flake-compat.follows = "flake-compat";
 #     };
     spicetify-nix = {
-      url = "github:A1ca7raz/spicetify-nix";
+      url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
+      inputs.systems.follows = "flake-utils/systems";
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
@@ -122,25 +122,39 @@
         unfreePackages = extraPackages pkgs;
 #         nvfetcherPackages = nvfetcher.packages.${system};
         sopsPackages = inputs.sops-nix.packages.${system};
-        spicetifyPackages = {
-          spicetifyAll = inputs.spicetify-nix.checks.${system}.all-tests;
-          spicetifyApps = inputs.spicetify-nix.checks.${system}.apps;
-        };
         lanzabootePackages = inputs.lanzaboote.packages.${system};
         nixIndexDbPackages = inputs.nix-index-database.packages.${system};
         JetBrainsPackages = jetbrainsPackages pkgs;
+
+        spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
       in rec {
         legacyPackages = customPackages //
           unfreePackages //
           sopsPackages //
 #           nvfetcherPackages //
-          spicetifyPackages //
           lanzabootePackages //
           nixIndexDbPackages //
           JetBrainsPackages //
           nixpakPackages // {
             kwin-effects-forceblur = pkgs.kdePackages.callPackage (inputs.kwin-effects-forceblur + "/package.nix") {};
             kwin-gestures = pkgs.kdePackages.callPackage (inputs.kwin-gestures + "/package.nix") {};
+            spicetify = inputs.spicetify-nix.lib.mkSpicetify pkgs {
+              enable = true;
+              theme = spicePkgs.themes.dribbblish;
+              colorScheme = "nord-light";
+
+              enabledExtensions = with spicePkgs.extensions; [
+                volumePercentage
+                copyToClipboard
+                playNext
+
+                shuffle
+                skipOrPlayLikedSongs
+              ];
+              enabledCustomApps = with spicePkgs.apps; [
+                lyricsPlus
+              ];
+            };
           } // {
             inherit (inputs.nur-cryolitia.packages."${system}")
               maa-cli-nightly
@@ -153,14 +167,11 @@
             customPackages
 #             nvfetcherPackages
             sopsPackages
-            spicetifyPackages
             nixIndexDbPackages
             JetBrainsPackages
             nixpakPackages;
           ciPackages = sopsPackages;
-          trivialPackages = spicetifyPackages //
-            lanzabootePackages //
-            nixIndexDbPackages;
+          trivialPackages = lanzabootePackages // nixIndexDbPackages;
         };
         checks = legacyPackages;
         formatter = pkgs.nixpkgs-fmt;
@@ -195,6 +206,7 @@
               kwin-effects-forceblur
               kwin-gestures
               maa-cli-nightly
+              spicetify
             ;
           })
 #           self.overlays.nvfetcher
