@@ -6,7 +6,7 @@
     nixpkgs.follows = "hub/nixpkgs";
     flake-utils.follows = "hub/flake-utils";
 
-    spicetify-nix.follows = "hub/spicetify-nix";
+    spicetify.follows = "hub/spicetify-nix";
     nixpak.follows = "hub/nixpak";
   };
 
@@ -17,7 +17,7 @@
       systems = [
         "x86_64-linux"
       ];
-      overlay = import ./overlay.nix lib;
+      overlay = import ./overlay.nix { inherit lib; };
     in
     flake-utils.lib.eachSystem systems (system:
       let
@@ -45,36 +45,11 @@
         ) "function" ./pkgs/_nixpaks;
 
         # Groups of nur packages
-        customPackages = flake-utils.lib.filterPackages pkgs.system (nurpkgs);
-
-        spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
+        customPackages = flake-utils.lib.filterPackages system nurpkgs;
       in rec {
-        legacyPackages = customPackages //
-          nixpakPackages // {
-            spicetify = inputs.spicetify-nix.lib.mkSpicetify pkgs {
-              enable = true;
-              theme = spicePkgs.themes.dribbblish;
-              colorScheme = "nord-light";
-
-              enabledExtensions = with spicePkgs.extensions; [
-                volumePercentage
-                copyToClipboard
-                playNext
-
-                shuffle
-                skipOrPlayLikedSongs
-              ];
-              enabledCustomApps = with spicePkgs.apps; [
-                lyricsPlus
-              ];
-            };
-          };
+        legacyPackages = customPackages // nixpakPackages;
         packages = legacyPackages;
-        packageBundles = utils.mkPackageBundles pkgs ./pkgs // {
-          inherit
-            customPackages
-            nixpakPackages;
-        };
+
         checks = legacyPackages;
         formatter = pkgs.nixpkgs-fmt;
         devShells.default = mkShell {

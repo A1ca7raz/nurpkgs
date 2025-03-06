@@ -1,35 +1,26 @@
-{ lib, ... }:
-with builtins; with lib; let
-  inherit (import ./nix.nix { inherit lib; }) isNix removeNix hasDefault;
+{ lib, specialArgs ? {}, ... }:
+let
+  inherit (import ./nix.nix {})
+    isNix
+    removeNix
+    hasDefault
+  ;
+
+  inherit (lib)
+    mapAttrsToList
+    hasPrefix
+    listToAttrs
+    flatten
+    intersectAttrs
+  ;
+
+  inherit (builtins)
+    readDir
+    mapAttrs
+    isFunction
+    functionArgs
+  ;
 in rec {
-  _mkPackageTree = _getter: path:
-    let
-      _scan_first = mapAttrs' (_recur path) (readDir path);
-      _scan = dir: mapAttrs' (_recur dir) (readDir dir);
-
-      _recur = path: n: v:
-        let
-          realpath = /${path}/${n};
-        in
-          if v == "directory" && ! hasPrefix "_" n  && hasDefault realpath
-          then { name = n; value = _getter n realpath;}
-          else if v == "regular" && ! hasPrefix "_" n  && isNix realpath
-          then { name = removeNix n; value = _getter n realpath;}
-          else if v == "directory" && ! hasPrefix "_" n
-          then { name = n; value = _scan realpath; }
-          else { name = removeNix n; value = null; };
-    in
-      filterAttrsRecursive (n: v: v != null) _scan_first;
-
-  mkPackageTree = type:
-    let
-      _getter = n: p:
-        if type == "function" then import p else p;
-    in
-      _mkPackageTree _getter;
-
-  mkPackageBundles = pkgs: _mkPackageTree (callPackage pkgs);
-
   _flatPackages = _getter: path:
     let
       _scan_first = mapAttrsToList (_recur path) (readDir path);
@@ -64,10 +55,10 @@ in rec {
       package = if isFunction value then value else import value;
       args = intersectAttrs
         (functionArgs package)
-        {
+        (specialArgs // {
           source = sources.${name};
-          inherit sources;
-        };
+          inherit sources pkgs;
+        });
     in
       pkgs.callPackage package args;
 }

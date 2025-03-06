@@ -506,7 +506,7 @@
           "hub",
           "nixpkgs"
         ],
-        "spicetify-nix": [
+        "spicetify": [
           "hub",
           "spicetify-nix"
         ]
