@@ -77,7 +77,7 @@ jobs:
       uses: DeterminateSystems/magic-nix-cache-action@v6
 
     - name: 0-5. Setup Cachix
-      uses: cachix/cachix-action@v14
+      uses: cachix/cachix-action@v16
       with:
         name: '${{ secrets.CACHIX_CACHE }}'
         authToken: '${{ secrets.CACHIX_ACCESS_TOKEN }}'
