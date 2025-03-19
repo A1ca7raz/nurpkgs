@@ -58,6 +58,8 @@
           ];
         };
       };
+
+      homeModules = hub.homeModules;
     };
 
   nixConfig = {
