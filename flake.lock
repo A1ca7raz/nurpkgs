@@ -224,11 +224,11 @@
         "spicetify-nix": "spicetify-nix"
       },
       "locked": {
-        "lastModified": 1742385350,
-        "narHash": "sha256-vEbtpYgnS1sTw7NYzca3aiO/nYO1Nz9wfTuKDUgU4d4=",
+        "lastModified": 1742385582,
+        "narHash": "sha256-rGIDoGHqQ/nTYk6BKRNoxP8HtfbEk853xcQXS7+o/Vw=",
         "owner": "A1ca7raz",
         "repo": "inputs-hub",
-        "rev": "7bafffbb7dac73c1b8bcfcf5ecfa790fe246227d",
+        "rev": "285c332bf893f4d9f286069320a0a4984bad3e1a",
         "type": "github"
       },
       "original": {
