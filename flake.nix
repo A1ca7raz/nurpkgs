@@ -10,49 +10,28 @@
     nixpak.follows = "hub/nixpak";
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, nixpak, ... }:
+  outputs = inputs@{ nixpkgs, flake-utils, nixpak, hub, ... }:
     let
-      lib = nixpkgs.lib;
-      utils = import ./lib lib;
+      utils = import ./lib/common.nix;
       systems = [
         "x86_64-linux"
       ];
-      overlay = import ./overlay.nix { inherit lib; };
-    in
-    flake-utils.lib.eachSystem systems (system:
+      specialArgs = { inherit inputs; };
+
+      nurpkgs = pkgs: import ./. { inherit pkgs specialArgs; };
+    in flake-utils.lib.eachSystem systems (system:
       let
         pkgs = import nixpkgs {
           config.allowUnfree = true;
           inherit system;
-          overlays = [
-            overlay
-            self.overlays.nixpaks
-          ];
         };
-        nurpkgs = import ./. { inherit pkgs lib; };
-        inherit (pkgs) mkShell;
-
-        mkNixPak = nixpak.lib.nixpak {
-          inherit (pkgs) lib;
-          inherit pkgs;
-        };
-
-        nixpakPackages = utils.mapPackages (
-          name: vaule:
-            (mkNixPak {
-              config = vaule;
-            }).config.env
-        ) "function" ./pkgs/_nixpaks;
-
-        # Groups of nur packages
-        customPackages = flake-utils.lib.filterPackages system nurpkgs;
       in rec {
-        legacyPackages = customPackages // nixpakPackages;
+        legacyPackages = nurpkgs pkgs;
         packages = legacyPackages;
 
         checks = legacyPackages;
         formatter = pkgs.nixpkgs-fmt;
-        devShells.default = mkShell {
+        devShells.default = pkgs.mkShell {
           nativeBuildInputs = with pkgs; [
             nvfetcher
             nix-init
@@ -65,24 +44,19 @@
           '').outPath;
         };
       }
-    ) // {
-      overlay = self.overlays.default;
-      overlays.default = overlay;
-      overlays.nixpaks = final: prev: {
-        nixpaks = self.packageBundles.nixpakPackages;
-      };
+    ) // rec {
+      overlays.default = f: nurpkgs;
 
-      nixosModule = self.nixosModules.default;
-      nixosModules.default = { ... }: {
-        imports = utils.importsDirs ./modules;
-        nixpkgs.overlays = [
-          self.overlays.default
-          (f: p: {
-            inherit (self.packages.x86_64-linux)
-              spicetify
-            ;
-          })
-        ];
+      nixosModules = hub.nixosModules // {
+        default = { ... }: {
+          imports = (utils.imports ./modules) ++ [
+            hub.nixosModules.helper
+          ];
+
+          nixpkgs.overlays = [
+            overlays.default
+          ];
+        };
       };
     };
 }

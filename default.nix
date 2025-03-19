@@ -1,10 +1,9 @@
 {
-  lib ? (import <nixpkgs> {}).lib,
-  pkgs ? import <nixpkgs> {
-    overlays = [ (import ./overlay.nix lib) ];
-  },
+  pkgs ? import <nixpkgs> { },
   specialArgs ? {}
 }:
-(import ./lib/collect_packages.nix { inherit lib specialArgs; }).mapPackages
-  (name: vaule: pkgs.${name})
-  "path" ./pkgs
+let
+  inherit (import ./lib/packages.nix { inherit pkgs specialArgs; })
+    mapPackages callPackage;
+in
+mapPackages callPackage "function" ./pkgs

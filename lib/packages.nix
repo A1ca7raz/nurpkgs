@@ -1,12 +1,12 @@
-{ lib, specialArgs ? {}, ... }:
+{ pkgs, specialArgs ? {}, ... }:
 let
-  inherit (import ./nix.nix {})
+  inherit (import ./common.nix)
     isNix
     removeNix
     hasDefault
   ;
 
-  inherit (lib)
+  inherit (pkgs.lib)
     mapAttrsToList
     hasPrefix
     listToAttrs
@@ -20,7 +20,7 @@ let
     isFunction
     functionArgs
   ;
-in rec {
+
   _flatPackages = _getter: path:
     let
       _scan_first = mapAttrsToList (_recur path) (readDir path);
@@ -39,6 +39,7 @@ in rec {
           else [];
     in
       listToAttrs (flatten _scan_first);
+in rec {
 
   flatPackages = type:
     let
@@ -49,7 +50,7 @@ in rec {
 
   mapPackages = f: type: path: mapAttrs f (flatPackages type path);
 
-  callPackage = pkgs: name: value:
+  callPackage = name: value:
     let
       sources = pkgs.callPackage ../pkgs/_sources/generated.nix {};
       package = if isFunction value then value else import value;
