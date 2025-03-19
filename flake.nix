@@ -45,7 +45,7 @@
         };
       }
     ) // rec {
-      overlays.default = f: nurpkgs;
+      overlays.default = final: nurpkgs;
 
       nixosModules = hub.nixosModules // {
         default = { ... }: {
