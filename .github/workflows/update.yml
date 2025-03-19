@@ -5,6 +5,8 @@ on:
     paths:
       - '.github/workflows/update.yml'
   repository_dispatch:
+    types:
+      - bump
   workflow_dispatch:
     inputs:
       update_lock:
