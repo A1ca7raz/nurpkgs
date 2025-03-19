@@ -31,4 +31,15 @@
       sha256 = "sha256-73yhLHfCLVlDxF74tS06bwiXYYVL5zzH8mnRgfJEahw=";
     };
   };
+  sierra-breeze-enhanced-git = {
+    pname = "sierra-breeze-enhanced-git";
+    version = "V.2.1.0";
+    src = fetchFromGitHub {
+      owner = "kupiqu";
+      repo = "SierraBreezeEnhanced";
+      rev = "V.2.1.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-Dzsl06FdCRGuBv2K5BmowCdaWQpYhe/U7aeQ0Q1T5Z4=";
+    };
+  };
 }

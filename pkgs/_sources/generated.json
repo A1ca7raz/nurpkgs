@@ -48,5 +48,26 @@
             "url": "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20250310.dict"
         },
         "version": "20250310"
+    },
+    "sierra-breeze-enhanced-git": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "sierra-breeze-enhanced-git",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "kupiqu",
+            "repo": "SierraBreezeEnhanced",
+            "rev": "V.2.1.0",
+            "sha256": "sha256-Dzsl06FdCRGuBv2K5BmowCdaWQpYhe/U7aeQ0Q1T5Z4=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "V.2.1.0"
     }
 }
