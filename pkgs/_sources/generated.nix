@@ -3,32 +3,32 @@
 {
   aosc-scriptlets = {
     pname = "aosc-scriptlets";
-    version = "bc6bb85fec30806fe4dc84af4c89d057af50bb3f";
+    version = "ecd285a4d56c6905cf92242fac8be8473b2e4719";
     src = fetchgit {
       url = "https://github.com/AOSC-Dev/scriptlets";
-      rev = "bc6bb85fec30806fe4dc84af4c89d057af50bb3f";
+      rev = "ecd285a4d56c6905cf92242fac8be8473b2e4719";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-06437YjLco2ytoGJGAaUU53Ulp6fTodytF+SET1xSLQ=";
+      sha256 = "sha256-AJThGDC/6czHVz6P5KHyUYoUwh8Q5bMJj2AADMfPdu8=";
     };
-    date = "2025-03-02";
+    date = "2025-03-14";
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20250209";
+    version = "20250309";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20250209/moegirl.dict";
-      sha256 = "sha256-+EIXBIu3OE59VpnAWalmiNqD4FsvuSgRr79OQCqrgMA=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20250309/moegirl.dict";
+      sha256 = "sha256-0ZXlPpeaxXK3dI2uGBmISpCGM9isQdPxJRTcoIa75fg=";
     };
   };
   fcitx5-pinyin-zhwiki = {
     pname = "fcitx5-pinyin-zhwiki";
-    version = "20241218";
+    version = "20250310";
     src = fetchurl {
-      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20241218.dict";
-      sha256 = "sha256-9Z+dgicQQdsySn1/xn6w4Q4hOqMv7Rngol615/JxtRk=";
+      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20250310.dict";
+      sha256 = "sha256-73yhLHfCLVlDxF74tS06bwiXYYVL5zzH8mnRgfJEahw=";
     };
   };
 }
