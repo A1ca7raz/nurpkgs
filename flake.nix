@@ -5,6 +5,7 @@
     hub.url = "github:A1ca7raz/inputs-hub";
     nixpkgs.follows = "hub/nixpkgs";
     flake-utils.follows = "hub/flake-utils";
+    flake-parts.follows = "hub/flake-parts";
 
     spicetify.follows = "hub/spicetify-nix";
     nixpak.follows = "hub/nixpak";

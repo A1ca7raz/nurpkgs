@@ -493,6 +493,10 @@
     },
     "root": {
       "inputs": {
+        "flake-parts": [
+          "hub",
+          "flake-parts"
+        ],
         "flake-utils": [
           "hub",
           "flake-utils"
