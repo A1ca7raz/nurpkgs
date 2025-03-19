@@ -49,27 +49,17 @@ jobs:
       CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_ACCESS_TOKEN }}
 
     steps:
-    - name: 0-1. Maximize space
-      run: |
-        sudo rm -rf /usr/share/dotnet
-        sudo rm -rf /usr/local/lib/android
-        sudo rm -rf /opt/ghc
-        sudo -E apt-get -qq autoremove --purge
-        sudo -E apt-get -qq clean
-        echo "Available space:"
-        df -h
-
-    - name: 0-2. Checkout repository
+    - name: 0-1. Checkout repository
       uses: actions/checkout@v4
       with:
         ref: 'main'
 
-    - name: 0-3. Install Nix
+    - name: 0-2. Install Nix
       uses: nixbuild/nix-quick-install-action@v30
       with:
         nix_conf: ${{ env.nix_conf }}
 
-    - name: 0.4. Setup cache
+    - name: 0.3. Setup cache
       uses: nix-community/cache-nix-action@v6
       with:
         primary-key: nur-${{ runner.os }}-individual-${{ inputs.package }}-${{ hashFiles('flake.lock', 'pkgs/_sources/generated.nix') }}
@@ -80,7 +70,7 @@ jobs:
         purge-created: 0
         purge-primary-key: never
 
-    - name: 0-5. Setup Cachix
+    - name: 0-4. Setup Cachix
       uses: cachix/cachix-action@v16
       with:
         name: '${{ secrets.CACHIX_CACHE }}'
