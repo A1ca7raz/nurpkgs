@@ -1,10 +1,10 @@
-name: "Build nur packages"
+name: "Build package"
 
 on:
   workflow_dispatch:
     inputs:
-      packages:
-        description: Package bundles or packages to build
+      package:
+        description: Package to build
         required: false
         type: string
       push_cache:
@@ -12,43 +12,44 @@ on:
         required: true
         default: true
         type: boolean
-      update_source:
-        description: Update sources
+      pre_check:
+        description: Check evaluation
         required: true
         default: true
         type: boolean
   workflow_call:
     inputs:
-      packages:
-        description: Package bundles or packages to build
+      package:
+        description: Package to build
         required: false
         type: string
       push_cache:
         description: Push cache
         default: true
         type: boolean
-      update_source:
-        description: Update sources
+      pre_check:
+        description: Check evaluation
         default: false
         type: boolean
+
+env:
+  nix_conf: |
+    keep-env-derivations = true
+    keep-outputs = true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
     env:
       CI_MODE: 1
-      NIXPKGS_ALLOW_UNFREE: 1
       CACHIX_CACHE: ${{ secrets.CACHIX_CACHE }}
-      CACHIX_ACCESS_TOKEN: ${{ secrets.CACHIX_ACCESS_TOKEN }}
-      # ATTIC_SERVER: ${{ secrets.ATTIC_SERVER }}
-      # ATTIC_CACHE: ${{ secrets.ATTIC_CACHE }}
-      # ATTIC_ACCESS_TOKEN: ${{ secrets.ATTIC_ACCESS_TOKEN }}
+      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_ACCESS_TOKEN }}
 
     steps:
     - name: 0-1. Maximize space
-      # https://github.com/Ninlives/emerge/blob/master/.github/workflows/os.yml#L15
       run: |
         sudo rm -rf /usr/share/dotnet
         sudo rm -rf /usr/local/lib/android
@@ -63,71 +64,45 @@ jobs:
       with:
         ref: 'main'
 
-    - name: 0-3. Install nix
-      uses: cachix/install-nix-action@V27
+    - name: 0-3. Install Nix
+      uses: nixbuild/nix-quick-install-action@v30
       with:
-        nix_path: nixpkgs=channel:nixos-unstable
-        extra_nix_config: |
-          experimental-features = nix-command flakes repl-flake
-          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-          substituters = https://cache.nixos.org/ https://cache.garnix.io
-          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=
+        nix_conf: ${{ env.nix_conf }}
 
-    - name: 0.4. Setup Magic Nix cache
-      uses: DeterminateSystems/magic-nix-cache-action@v6
+    - name: 0.4. Setup cache
+      uses: nix-community/cache-nix-action@v6
+      with:
+        primary-key: nur-${{ runner.os }}-individual-${{ inputs.package }}-${{ hashFiles('flake.lock', 'pkgs/_sources/generated.nix') }}
+        restore-prefixes-first-match: nur-${{ runner.os }}-shared-${{ hashFiles('flake.lock', 'pkgs/_sources/generated.nix') }}
+        gc-max-store-size-linux: 1G
+        purge: true
+        purge-prefixes: hub-${{ runner.os }}-individual-${{ inputs.package }}-
+        purge-created: 0
+        purge-primary-key: never
 
     - name: 0-5. Setup Cachix
-      uses: cachix/cachix-action@v14
+      uses: cachix/cachix-action@v16
       with:
         name: '${{ secrets.CACHIX_CACHE }}'
         authToken: '${{ secrets.CACHIX_ACCESS_TOKEN }}'
         skipPush: true
 
-    # - name: 0-6. Setup Attic
-    #   run: |
-    #     # curl -LO https://raw.githubusercontent.com/zhaofengli/attic/main/.github/install-attic-ci.sh
-    #     curl -LO https://raw.githubusercontent.com/icewind1991/attic-action/master/dist/main/install-attic-ci.sh
-    #     bash install-attic-ci.sh
-    #
-    #     # https://github.com/zhaofengli/attic/blob/main/.github/workflows/build.yml#L30
-    #     export PATH=$HOME/.nix-profile/bin:$PATH
-    #     attic login --set-default ci "$ATTIC_SERVER" "$ATTIC_ACCESS_TOKEN"
-    #     attic use "$ATTIC_CACHE"
+    - name: 1-1. Show flake metadata
+      if: ${{ inputs.pre_check == true }}
+      run: nix flake metadata
 
-    - name: 1-1. Update package sources
-      if: ${{ inputs.update_source == true }}
-      run: nix run .#update --impure
+    - name: 1-2. Show flake information
+      if: ${{ inputs.pre_check == true }}
+      run: nix flake show
 
-    - name: 1-2. Show flake metadata
-      if: ${{ always() }}
-      run: nix flake metadata --impure
+    - name: 1-3. Check evaluation
+      if: ${{ inputs.pre_check == true }}
+      run: nix flake check --no-build --no-allow-import-from-derivation
 
-    - name: 1-3. Show flake information
-      if: ${{ always() }}
-      run: nix flake show --impure
-
-    - name: 1-4. Check evaluation
-      if: ${{ always() }}
-      run: nix flake check --no-build --no-allow-import-from-derivation --impure
-
-    - name: 2-1. Build Nix packages bundles
-      if: ${{ inputs.packages != 0 }}
-      env:
-        GROUP_NAMES: ${{ inputs.packages }}
+    - name: 2-1. Build ${{ inputs.package }}
       run: |
-        bash ./.github/build_bundle.sh
+        nix build .#packages.x86_64-linux.${{ inputs.package }} -v --show-trace
 
-    - name: 2-2. Build entire nurpkgs
-      if: ${{ inputs.packages == 0 }}
-      run: nix flake check --no-allow-import-from-derivation --impure -v
-
-    - name: 3-1. Upload package sources
-      if: ${{ inputs.update_source == true }}
-      uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: "Update: sources"
-        file_pattern: "pkgs/_sources"
-
-    - name: 3-2. Push cache to Cachix
+    - name: 3-1. Push cache to Cachix
       if: ${{ inputs.push_cache == true }}
-      run: bash ./.github/push_cache.sh ${{ inputs.packages }}
+      run: bash ./.github/push_cache.sh ${{ inputs.package }}

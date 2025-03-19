@@ -1,11 +1,9 @@
-name: "Update packages weekly"
+name: "Update packages"
 
 on:
   push:
     paths:
       - '.github/workflows/update.yml'
-  schedule:
-    - cron:  '19 18 * * 2'
   repository_dispatch:
   workflow_dispatch:
     inputs:
@@ -19,90 +17,87 @@ on:
         required: true
         default: true
         type: boolean
+      skip_check:
+        description: Skip evaluation
+        required: true
+        default: false
+        type: boolean
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  bump_lock:
+  update:
     runs-on: ubuntu-latest
     permissions:
+      id-token: write
       contents: write
-    env:
-      NIXPKGS_ALLOW_UNFREE: 1
-      # ATTIC_SERVER: ${{ secrets.ATTIC_SERVER }}
-      # ATTIC_CACHE: ${{ secrets.ATTIC_CACHE }}
-      # ATTIC_ACCESS_TOKEN: ${{ secrets.ATTIC_ACCESS_TOKEN }}
+    outputs:
+      packages: ${{ steps.pkgs.outputs.packages }}
 
     steps:
     - name: 0-1. Checkout repository
       uses: actions/checkout@v4
 
-    - name: 0-2. Install nix
-      uses: cachix/install-nix-action@V27
-      with:
-        nix_path: nixpkgs=channel:nixos-unstable
-        extra_nix_config: |
-          experimental-features = nix-command flakes
-          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-          substituters = https://cache.nixos.org/ https://cache.garnix.io
-          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=
+    - name: 0-2. Install Nix
+      uses: nixbuild/nix-quick-install-action@v30
 
     - name: 1-1. Update flake.lock
-      if: ${{ inputs.update_lock == true || github.event_name != 'workflow_dispatch' }}
-      run: nix flake update --impure
+      if: ${{ inputs.update_lock == true || github.event_name == 'repository_dispatch' }}
+      run: nix flake update
 
-    # - name: 2-1. Setup Attic
-    #   if: ${{ inputs.update_source == true || github.event_name != 'workflow_dispatch' }}
-    #   run: |
-    #     # curl -LO https://raw.githubusercontent.com/zhaofengli/attic/main/.github/install-attic-ci.sh
-    #     curl -LO https://raw.githubusercontent.com/icewind1991/attic-action/master/dist/main/install-attic-ci.sh
-    #     bash install-attic-ci.sh
-    #
-    #     # https://github.com/zhaofengli/attic/blob/main/.github/workflows/build.yml#L30
-    #     export PATH=$HOME/.nix-profile/bin:$PATH
-    #     attic login --set-default ci "$ATTIC_SERVER" "$ATTIC_ACCESS_TOKEN"
-    #     attic use "$ATTIC_CACHE"
+    - name: 1-2. Update package sources
+      if: ${{ inputs.update_source == true || github.event_name == 'repository_dispatch' }}
+      run: nix run .#update
 
-    - name: 2-2. Update package sources
-      if: ${{ inputs.update_source == true || github.event_name != 'workflow_dispatch' }}
-      run: nix run .#update --impure
-
-    - name: 3-1. Show flake metadata
+    - name: 2-1. Show flake metadata
+      id: pkgs
       if: ${{ always() }}
-      run: nix flake metadata --impure
+      run: |
+        nix flake metadata
+        echo "packages=`nix eval --json .#packages.x86_64-linux --apply 'builtins.attrNames'`" >> $GITHUB_OUTPUT
+        echo "packages_raw=\"`nix eval --raw .#packages.x86_64-linux --apply 'x: with builtins; concatStringsSep " " (attrNames x)'`\"" >> $GITHUB_OUTPUT
 
-    - name: 3-2. Bump flake.lock ONLY
+    - name: 2-2. Show flake information
+      if: ${{ always() }}
+      run: nix flake show
+
+    - name: 2-3. Check evaluation
+      if: ${{ inputs.skip_check == false || github.event_name == 'repository_dispatch' }}
+      run: nix flake check --no-build --no-allow-import-from-derivation
+
+    - name: 3-1. Bump flake.lock ONLY
       if: ${{ inputs.update_lock == true && inputs.update_source == false }}
-      uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: "Update: sources"
-        file_pattern: "pkgs/_sources"
-
-    - name: 3-3. Bump package sources ONLY
-      if: ${{ inputs.update_source == true && inputs.update_lock == false }}
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "Update: flake.lock"
         file_pattern: "flake.lock"
 
-    - name: 3-4. Bump flake.lock & package sources
-      if: ${{ inputs.update_source == true && inputs.update_lock == true || github.event_name != 'workflow_dispatch' }}
+    - name: 3-2. Bump sources ONLY
+      if: ${{ inputs.update_source == true && inputs.update_lock == false }}
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "Update: source"
+        file_pattern: "pkgs/_sources"
+
+    - name: 3-3. Bump flake.lock and sources
+      if: ${{ inputs.update_source == true && inputs.update_lock == true || github.event_name == 'repository_dispatch' }}
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "Update: flake.lock&sources"
         file_pattern: "flake.lock pkgs/_sources"
 
-  build_bundles:
-    needs: bump_lock
+  build:
+    needs: update
     secrets: inherit
     permissions:
       contents: write
+      actions: write
     strategy:
+      fail-fast: false
       matrix:
-        bundles:
-          - ciPackages
-          - unfreePackages
-          # - JetBrainsPackages
-          - uncategorized
-          - trivialPackages
+        package: ${{ fromJSON(needs.update.outputs.packages) }}
     uses: ./.github/workflows/build.yml
     with:
-      packages: ${{ matrix.bundles }}
+      package: ${{ matrix.package }}
