@@ -13,7 +13,6 @@
 
   outputs = inputs@{ nixpkgs, flake-utils, nixpak, hub, ... }:
     let
-      utils = import ./lib/common.nix;
       systems = [
         "x86_64-linux"
       ];
@@ -50,7 +49,7 @@
 
       nixosModules = hub.nixosModules // {
         default = { ... }: {
-          imports = (utils.imports ./modules) ++ [
+          imports = [
             hub.nixosModules.helper
           ];
 

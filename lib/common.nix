@@ -2,10 +2,7 @@ let
   inherit (builtins)
     length
     split
-    attrNames
     elemAt
-    readDir
-    foldl'
     pathExists
   ;
 in rec {
@@ -18,16 +15,4 @@ in rec {
   addNix = x: x + ".nix";
 
   hasDefault = n: pathExists /${n}/default.nix;
-
-  imports = path:
-    let
-      dir = readDir path;
-    in foldl'
-      (acc: n:
-        if dir."${n}" == "directory" && pathExists /${path}/${n}/default.nix
-        then acc ++ [ (import /${path}/${n}) ]
-        else acc
-      )
-      []
-      (attrNames dir);
 }
