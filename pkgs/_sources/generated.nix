@@ -3,17 +3,17 @@
 {
   aosc-scriptlets = {
     pname = "aosc-scriptlets";
-    version = "ceb37b7608c26825ee3a43fd8ad5c5d1bbf20fe6";
+    version = "c7434e1bad58cc45d7b92feb47af280a65102c78";
     src = fetchgit {
       url = "https://github.com/AOSC-Dev/scriptlets";
-      rev = "ceb37b7608c26825ee3a43fd8ad5c5d1bbf20fe6";
+      rev = "c7434e1bad58cc45d7b92feb47af280a65102c78";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-iVITanuNgmQHq7qugYhOyC14N63ZiGvywmofr1gKErw=";
+      sha256 = "sha256-06mtMsOYfvCMvWj09x6zAcCkgQx0RITlMTVwzb7Orzc=";
     };
-    date = "2025-03-20";
+    date = "2025-03-30";
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
