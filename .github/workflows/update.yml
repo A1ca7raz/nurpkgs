@@ -103,3 +103,17 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       package: ${{ matrix.package }}
+
+  post_build:
+    needs: build
+    if: ${{ success() }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: 1-1. Send notification
+      env:
+        RECEIVER_ID: ${{ secrets.TG_RECEIVER_ID }}
+        BOT_KEY: ${{ secrets.TG_BOT_KEY }}
+        MESSAGE: "🟢 [nurpkgs](https://github.com/A1ca7raz/nurpkgs) has been updated."
+      run: |
+        pip install apprise
+        apprise -vv -b "$MESSAGE" "tgram://$BOT_KEY/$RECEIVER_ID/?format=markdown"
