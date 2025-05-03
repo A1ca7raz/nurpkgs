@@ -1,7 +1,7 @@
 {
     "aosc-scriptlets": {
         "cargoLocks": null,
-        "date": "2025-03-30",
+        "date": "2025-05-02",
         "extract": null,
         "name": "aosc-scriptlets",
         "passthru": null,
@@ -11,13 +11,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "c7434e1bad58cc45d7b92feb47af280a65102c78",
-            "sha256": "sha256-06mtMsOYfvCMvWj09x6zAcCkgQx0RITlMTVwzb7Orzc=",
+            "rev": "b0ea64c175cc32a53f8c8d99bac1fdba0c46e9b2",
+            "sha256": "sha256-he+rwOKD73Ng/MIz9Wf2Sq1/fGt08uD9eamR2qnFMrQ=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/AOSC-Dev/scriptlets"
         },
-        "version": "c7434e1bad58cc45d7b92feb47af280a65102c78"
+        "version": "b0ea64c175cc32a53f8c8d99bac1fdba0c46e9b2"
     },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,
@@ -28,11 +28,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-0ZXlPpeaxXK3dI2uGBmISpCGM9isQdPxJRTcoIa75fg=",
+            "sha256": "sha256-OuAJbuQs/yiCFJAG1qkS+0INdpmjdwc7vvz5WZruQ98=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20250309/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20250409/moegirl.dict"
         },
-        "version": "20250309"
+        "version": "20250409"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLocks": null,
@@ -43,11 +43,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-73yhLHfCLVlDxF74tS06bwiXYYVL5zzH8mnRgfJEahw=",
+            "sha256": "sha256-8dFBoP3UcYCl6EYojn14Bp7aYe/Z9cf4drSmeheHbLw=",
             "type": "url",
-            "url": "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20250310.dict"
+            "url": "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20250415.dict"
         },
-        "version": "20250310"
+        "version": "20250415"
     },
     "sierra-breeze-enhanced-git": {
         "cargoLocks": null,
