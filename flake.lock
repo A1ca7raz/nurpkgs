@@ -67,6 +67,31 @@
         "type": "github"
       }
     },
+    "dns": {
+      "inputs": {
+        "flake-utils": [
+          "hub",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "hub",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1737653493,
+        "narHash": "sha256-qTbv8Pm9WWF63M5Fj0Od9E54/lsbMSQUBHw/s30eFok=",
+        "owner": "nix-community",
+        "repo": "dns.nix",
+        "rev": "96e548ae8bd44883afc5bddb9dacd0502542276d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "dns.nix",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -238,6 +263,7 @@
         "colmena": "colmena",
         "crane": "crane",
         "disko": "disko",
+        "dns": "dns",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
@@ -256,11 +282,11 @@
         "spicetify-nix": "spicetify-nix"
       },
       "locked": {
-        "lastModified": 1746556838,
-        "narHash": "sha256-KIqIRBio8S76AlmqjP2IeZqaBRoIu6GdBoo31ZfN5ps=",
+        "lastModified": 1747061932,
+        "narHash": "sha256-qwj3O4OqI14KFkN7OlxSw+9sbe2tYv3X9fpwe2JF1ec=",
         "owner": "A1ca7raz",
         "repo": "inputs-hub",
-        "rev": "9308d3d315416923da45c80b1863616f0a4a0f56",
+        "rev": "fc626295dd5b004c465a8e3da2afc4b2f1b3aca1",
         "type": "github"
       },
       "original": {
@@ -559,6 +585,10 @@
     },
     "root": {
       "inputs": {
+        "dns": [
+          "hub",
+          "dns"
+        ],
         "flake-parts": [
           "hub",
           "flake-parts"

@@ -9,6 +9,7 @@
 
     spicetify.follows = "hub/spicetify-nix";
     nixpak.follows = "hub/nixpak";
+    dns.follows = "hub/dns";
   };
 
   outputs = inputs@{ nixpkgs, flake-utils, nixpak, hub, ... }:
