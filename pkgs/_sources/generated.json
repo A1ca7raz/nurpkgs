@@ -1,7 +1,7 @@
 {
     "aosc-scriptlets": {
         "cargoLocks": null,
-        "date": "2025-05-03",
+        "date": "2025-05-10",
         "extract": null,
         "name": "aosc-scriptlets",
         "passthru": null,
@@ -11,13 +11,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "27261477b3ae600495ae12afb5d316bc0fc47fbb",
-            "sha256": "sha256-HkEPrZGVJFz7mr4AJ/0vtgT+9grFoypzpFLpRjAXGk8=",
+            "rev": "5a9230041ef5128729cead141e55ab7946553537",
+            "sha256": "sha256-Zy2piPDjBn51aGjA5DwlQvTiQodoiKjjO0s+62JJ8BA=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/AOSC-Dev/scriptlets"
         },
-        "version": "27261477b3ae600495ae12afb5d316bc0fc47fbb"
+        "version": "5a9230041ef5128729cead141e55ab7946553537"
     },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,
@@ -28,11 +28,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-OuAJbuQs/yiCFJAG1qkS+0INdpmjdwc7vvz5WZruQ98=",
+            "sha256": "sha256-M0oquFoR44IRY3dvTjpZ48tRTi+OP+GqMfb5sdUcurY=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20250409/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20250509/moegirl.dict"
         },
-        "version": "20250409"
+        "version": "20250509"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLocks": null,
