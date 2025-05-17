@@ -14,3 +14,8 @@ fetch.url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/downlo
 [sierra-breeze-enhanced-git]
 src.github = "kupiqu/SierraBreezeEnhanced"
 fetch.github = "kupiqu/SierraBreezeEnhanced"
+
+[sillytavern-nightly]
+src.git = "https://github.com/SillyTavern/SillyTavern"
+src.branch = "staging"
+fetch.github = "SillyTavern/SillyTavern"

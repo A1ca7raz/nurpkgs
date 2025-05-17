@@ -1,7 +1,7 @@
 {
     "aosc-scriptlets": {
         "cargoLocks": null,
-        "date": "2025-05-10",
+        "date": "2025-05-16",
         "extract": null,
         "name": "aosc-scriptlets",
         "passthru": null,
@@ -11,13 +11,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "5a9230041ef5128729cead141e55ab7946553537",
-            "sha256": "sha256-Zy2piPDjBn51aGjA5DwlQvTiQodoiKjjO0s+62JJ8BA=",
+            "rev": "56804a7ae158eee0b38a1e1502eb8f105f985b20",
+            "sha256": "sha256-NsyFqEJgL/M1lUCjEwEpqfMm+ChZwKL4SRejj6KgZqQ=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/AOSC-Dev/scriptlets"
         },
-        "version": "5a9230041ef5128729cead141e55ab7946553537"
+        "version": "56804a7ae158eee0b38a1e1502eb8f105f985b20"
     },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,
@@ -69,5 +69,26 @@
             "type": "github"
         },
         "version": "V.2.1.0"
+    },
+    "sillytavern-nightly": {
+        "cargoLocks": null,
+        "date": "2025-05-19",
+        "extract": null,
+        "name": "sillytavern-nightly",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "SillyTavern",
+            "repo": "SillyTavern",
+            "rev": "92e80d3bad2b75bb09b0509da5b076cdcd72bdbb",
+            "sha256": "sha256-auBniZvRuVvyC6mPICm1rmZD1imhEx6/wzS0RZSKrtg=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "92e80d3bad2b75bb09b0509da5b076cdcd72bdbb"
     }
 }
