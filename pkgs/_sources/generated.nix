@@ -3,17 +3,17 @@
 {
   aosc-scriptlets = {
     pname = "aosc-scriptlets";
-    version = "5a9230041ef5128729cead141e55ab7946553537";
+    version = "56804a7ae158eee0b38a1e1502eb8f105f985b20";
     src = fetchgit {
       url = "https://github.com/AOSC-Dev/scriptlets";
-      rev = "5a9230041ef5128729cead141e55ab7946553537";
+      rev = "56804a7ae158eee0b38a1e1502eb8f105f985b20";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-Zy2piPDjBn51aGjA5DwlQvTiQodoiKjjO0s+62JJ8BA=";
+      sha256 = "sha256-NsyFqEJgL/M1lUCjEwEpqfMm+ChZwKL4SRejj6KgZqQ=";
     };
-    date = "2025-05-10";
+    date = "2025-05-16";
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
@@ -40,6 +40,14 @@
       rev = "V.2.1.0";
       fetchSubmodules = false;
       sha256 = "sha256-Dzsl06FdCRGuBv2K5BmowCdaWQpYhe/U7aeQ0Q1T5Z4=";
+    };
+  };
+  sillytavern-nightly = {
+    pname = "sillytavern-nightly";
+    version = "staging-20250517";
+    src = fetchTarball {
+      url = "https://github.com/SillyTavern/SillyTavern/archive/staging.tar.gz";
+      sha256 = "sha256-kihxNAD5jPLQKwcNhKpxyKOUuHwy3BWFesqrsChvCRc=";
     };
   };
 }

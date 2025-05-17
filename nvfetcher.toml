@@ -14,3 +14,7 @@ fetch.url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/downlo
 [sierra-breeze-enhanced-git]
 src.github = "kupiqu/SierraBreezeEnhanced"
 fetch.github = "kupiqu/SierraBreezeEnhanced"
+
+[sillytavern-nightly]
+src.cmd = "date '+staging-%Y%m%d'"
+fetch.tarball = "https://github.com/SillyTavern/SillyTavern/archive/staging.tar.gz"
