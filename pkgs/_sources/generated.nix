@@ -3,17 +3,17 @@
 {
   aosc-scriptlets = {
     pname = "aosc-scriptlets";
-    version = "56804a7ae158eee0b38a1e1502eb8f105f985b20";
+    version = "f332afaa1bf4e171ef94bf866e617fdeda9b3a77";
     src = fetchgit {
       url = "https://github.com/AOSC-Dev/scriptlets";
-      rev = "56804a7ae158eee0b38a1e1502eb8f105f985b20";
+      rev = "f332afaa1bf4e171ef94bf866e617fdeda9b3a77";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-NsyFqEJgL/M1lUCjEwEpqfMm+ChZwKL4SRejj6KgZqQ=";
+      sha256 = "sha256-3TqetHrTfVpZ40rlneGIFGWSFfrCFmd/U0PEQ4k6jQM=";
     };
-    date = "2025-05-16";
+    date = "2025-05-20";
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
@@ -44,14 +44,14 @@
   };
   sillytavern-nightly = {
     pname = "sillytavern-nightly";
-    version = "92e80d3bad2b75bb09b0509da5b076cdcd72bdbb";
+    version = "074ca4a55b5778b247fac44401b705230e859466";
     src = fetchFromGitHub {
       owner = "SillyTavern";
       repo = "SillyTavern";
-      rev = "92e80d3bad2b75bb09b0509da5b076cdcd72bdbb";
+      rev = "074ca4a55b5778b247fac44401b705230e859466";
       fetchSubmodules = false;
-      sha256 = "sha256-auBniZvRuVvyC6mPICm1rmZD1imhEx6/wzS0RZSKrtg=";
+      sha256 = "sha256-IPCD5wC7dOOkVBot64Q6udesPMqjoRfa/RTCrPHBqBY=";
     };
-    date = "2025-05-19";
+    date = "2025-05-20";
   };
 }
