@@ -3,15 +3,14 @@
   lib,
   buildNpmPackage,
   bash,
-  nodejs,
-  fetchFromGitHub
+  nodejs
 }:
 buildNpmPackage rec {
   pname = "sillytavern";
   inherit (source) version src;
   root = "SillyTavern-staging";
 
-  npmDepsHash = "sha256-OkvNSO4yoyic2HhHsPjWdS6I00yypqEGcHXegd6kOkM=";
+  npmDepsHash = "sha256-OLEfHVPSpgcU19IKgZC7Tl6DflJ+Y7FYQ+1j04iqyZQ=";
   buildPhase = "true";
   installPhase = ''
     mkdir -p $out/{bin,lib}
