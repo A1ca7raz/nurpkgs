@@ -7,6 +7,10 @@
     flake-utils.follows = "hub/flake-utils";
     flake-parts.follows = "hub/flake-parts";
 
+    uv2nix.follows = "hub/uv2nix";
+    pyproject-nix.follows = "hub/pyproject-nix";
+    pyproject-build-systems.follows = "hub/pyproject-build-systems";
+
     spicetify.follows = "hub/spicetify-nix";
     nixpak.follows = "hub/nixpak";
     dns.follows = "hub/dns";
