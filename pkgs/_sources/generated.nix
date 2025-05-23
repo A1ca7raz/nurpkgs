@@ -31,6 +31,52 @@
       sha256 = "sha256-8dFBoP3UcYCl6EYojn14Bp7aYe/Z9cf4drSmeheHbLw=";
     };
   };
+  moviepilot-core = {
+    pname = "moviepilot-core";
+    version = "v2.4.9";
+    src = fetchFromGitHub {
+      owner = "jxxghp";
+      repo = "MoviePilot";
+      rev = "v2.4.9";
+      fetchSubmodules = false;
+      sha256 = "sha256-QvYHTD2Y1do7THpQ/WM1++QxM8aFLsv8ne65hHxYNkM=";
+    };
+  };
+  moviepilot-frontend = {
+    pname = "moviepilot-frontend";
+    version = "v2.4.9";
+    src = fetchFromGitHub {
+      owner = "jxxghp";
+      repo = "MoviePilot-Frontend";
+      rev = "v2.4.9";
+      fetchSubmodules = false;
+      sha256 = "sha256-IuL4Dy8cZDek/esczv+YEgpK7Lot/FksLskCWaa4rs4=";
+    };
+  };
+  moviepilot-plugins = {
+    pname = "moviepilot-plugins";
+    version = "bc8fcd3db028392d45d0cf5375578351ba885e02";
+    src = fetchFromGitHub {
+      owner = "jxxghp";
+      repo = "MoviePilot-Plugins";
+      rev = "bc8fcd3db028392d45d0cf5375578351ba885e02";
+      fetchSubmodules = false;
+      sha256 = "sha256-DNFMmMMow2ZczwA4lyS7EA8OZ+C9bcma2lx06t0/f0o=";
+    };
+    date = "2025-05-22";
+  };
+  moviepilot-resources = {
+    pname = "moviepilot-resources";
+    version = "586d8bd3bfbc66e8e80de7a3ad2fed6d25cab421";
+    src = fetchFromGitHub {
+      owner = "jxxghp";
+      repo = "MoviePilot-Resources";
+      rev = "586d8bd3bfbc66e8e80de7a3ad2fed6d25cab421";
+      fetchSubmodules = false;
+      sha256 = "sha256-MvxXnSTbQ145h8DLD3GI94g8K1a7ZYnYllgoztXcyhk=";
+    };
+    date = "2025-05-21";
+  };
   sierra-breeze-enhanced-git = {
     pname = "sierra-breeze-enhanced-git";
     version = "V.2.1.0";
@@ -44,14 +90,14 @@
   };
   sillytavern-nightly = {
     pname = "sillytavern-nightly";
-    version = "074ca4a55b5778b247fac44401b705230e859466";
+    version = "6dc59b9fd3a36e4abb2edc42e6e8a70e9d0e2100";
     src = fetchFromGitHub {
       owner = "SillyTavern";
       repo = "SillyTavern";
-      rev = "074ca4a55b5778b247fac44401b705230e859466";
+      rev = "6dc59b9fd3a36e4abb2edc42e6e8a70e9d0e2100";
       fetchSubmodules = false;
-      sha256 = "sha256-IPCD5wC7dOOkVBot64Q6udesPMqjoRfa/RTCrPHBqBY=";
+      sha256 = "sha256-2yZWUKXGTGgoyzaoqV0edYSfZPjhL9QUKuVorOAFgno=";
     };
-    date = "2025-05-20";
+    date = "2025-05-22";
   };
 }
