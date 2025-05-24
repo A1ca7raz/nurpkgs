@@ -685,6 +685,18 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/b3/0d/bf0567477f7281d9a3926c582bfef21bff7498fc0ffd3e9de21811896a0b/func_timeout-4.3.5.tar.gz", hash = "sha256:74cd3c428ec94f4edfba81f9b2f14904846d5ffccc27c92433b8b5939b5575dd", size = 44264, upload-time = "2019-08-19T21:32:07.43Z" }
 
 [[package]]
+name = "gotify"
+version = "0.6.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/60/e5/f7d6b37c70adce7533a93aadd9624a67ab79323766c8b3978a6653f16ea8/gotify-0.6.0.tar.gz", hash = "sha256:47bdc0332143cd5c251e284ffa487467429c624a1d40aefb013774f6f4dd4b7d", size = 22832, upload-time = "2023-10-22T14:06:18.411Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/73/2e/a8eb9b07219346c1f87ff5fb810898a8de3eeeed758aa620cd43a53a2fc1/gotify-0.6.0-py3-none-any.whl", hash = "sha256:184faec76de78279c5acd6e21dfefd11223d74a816b607f1063ac22df40641b2", size = 10974, upload-time = "2023-10-22T14:06:16.972Z" },
+]
+
+[[package]]
 name = "greenlet"
 version = "3.1.1"
 source = { registry = "https://pypi.org/simple" }
@@ -734,6 +746,34 @@ dependencies = [
     { name = "cryptography" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/7c/af/249d1576653b69c20b9ac30e284b63bd94af6a175d72d87813235caf2482/http_ece-1.2.1.tar.gz", hash = "sha256:8c6ab23116bbf6affda894acfd5f2ca0fb8facbcbb72121c11c75c33e7ce8cff", size = 8830, upload-time = "2024-08-08T00:10:47.301Z" }
+
+[[package]]
+name = "httpcore"
+version = "1.0.9"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "certifi" },
+    { name = "h11" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/06/94/82699a10bca87a5556c9c59b5963f2d039dbd239f25bc2a63907a05a14cb/httpcore-1.0.9.tar.gz", hash = "sha256:6e34463af53fd2ab5d807f399a9b45ea31c3dfa2276f15a2c3f00afff6e176e8", size = 85484, upload-time = "2025-04-24T22:06:22.219Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7e/f5/f66802a942d491edb555dd61e3a9961140fd64c90bce1eafd741609d334d/httpcore-1.0.9-py3-none-any.whl", hash = "sha256:2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55", size = 78784, upload-time = "2025-04-24T22:06:20.566Z" },
+]
+
+[[package]]
+name = "httpx"
+version = "0.28.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "anyio" },
+    { name = "certifi" },
+    { name = "httpcore" },
+    { name = "idna" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/b1/df/48c586a5fe32a0f01324ee087459e112ebb7224f646c0b5023f5e79e9956/httpx-0.28.1.tar.gz", hash = "sha256:75e98c5f16b0f35b567856f597f06ff2270a374470a5c2392242528e3e3e42fc", size = 141406, upload-time = "2024-12-06T15:37:23.222Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/2a/39/e50c7c3a983047577ee07d2a9e53faf5a69493943ec3f6a384bdc792deb2/httpx-0.28.1-py3-none-any.whl", hash = "sha256:d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad", size = 73517, upload-time = "2024-12-06T15:37:21.509Z" },
+]
 
 [[package]]
 name = "huggingface-hub"
@@ -910,6 +950,7 @@ dependencies = [
     { name = "fastapi" },
     { name = "faster-whisper" },
     { name = "func-timeout" },
+    { name = "gotify" },
     { name = "iso639" },
     { name = "jieba" },
     { name = "jinja2" },
@@ -931,6 +972,7 @@ dependencies = [
     { name = "pyjwt" },
     { name = "pyotp" },
     { name = "pyparsing" },
+    { name = "pypushdeer" },
     { name = "pyquery" },
     { name = "pystray" },
     { name = "pytelegrambotapi" },
@@ -992,6 +1034,7 @@ requires-dist = [
     { name = "fastapi", specifier = "~=0.96.0" },
     { name = "faster-whisper", specifier = "~=1.0.1" },
     { name = "func-timeout", specifier = "==4.3.5" },
+    { name = "gotify", specifier = "~=0.6.0" },
     { name = "iso639", specifier = "~=0.1.4" },
     { name = "jieba", specifier = "~=0.42.1" },
     { name = "jinja2", specifier = "~=3.1.4" },
@@ -1013,6 +1056,7 @@ requires-dist = [
     { name = "pyjwt", specifier = "~=2.7.0" },
     { name = "pyotp", specifier = "~=2.9.0" },
     { name = "pyparsing", specifier = "~=3.0.9" },
+    { name = "pypushdeer", specifier = "~=0.0.3" },
     { name = "pyquery", specifier = "~=2.0.0" },
     { name = "pystray", specifier = "~=0.19.5" },
     { name = "pytelegrambotapi", specifier = "~=4.12.0" },
@@ -1638,6 +1682,18 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/71/22/207523d16464c40a0310d2d4d8926daffa00ac1f5b1576170a32db749636/pyparsing-3.0.9.tar.gz", hash = "sha256:2b020ecf7d21b687f219b71ecad3631f644a47f01403fa1d1036b0c6416d70fb", size = 1999906, upload-time = "2022-05-10T23:26:05.963Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/6c/10/a7d0fa5baea8fe7b50f448ab742f26f52b80bfca85ac2be9d35cdd9a3246/pyparsing-3.0.9-py3-none-any.whl", hash = "sha256:5026bae9a10eeaefb61dab2f09052b9f4307d44aee4eda64b309723d8d206bbc", size = 98338, upload-time = "2022-05-10T23:26:03.201Z" },
+]
+
+[[package]]
+name = "pypushdeer"
+version = "0.0.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/b7/0c/b9ff1a3bef64eed4f8b4ca78e3f495c86e2c2900240c37fdb1ed3bf8443b/pypushdeer-0.0.3.tar.gz", hash = "sha256:8b8e35595a45c4c6247a19761f471c9d5b5c8cad6c5b8e8076c8ca486f29bff6", size = 3475, upload-time = "2022-02-13T15:47:25.639Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/73/dc/044f0b7187b5d12ba8aaaf677463c6cb3e3d03849c606cb9486c879dd43c/pypushdeer-0.0.3-py3-none-any.whl", hash = "sha256:d17317a8109715b6446bb61bc66535e33831b9c8f1be9eddc303d22657cef0c9", size = 3966, upload-time = "2022-02-13T15:47:24.263Z" },
 ]
 
 [[package]]

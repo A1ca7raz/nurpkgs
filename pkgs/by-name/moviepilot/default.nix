@@ -5,6 +5,8 @@
   sources,
   bash,
   python312,
+  jq,
+  gawk,
   playwright-driver,
   mkYarnPackage,
   fetchYarnDeps,
@@ -45,15 +47,27 @@ stdenv.mkDerivation rec {
   pname = "moviepilot";
   inherit (sources.moviepilot-core) version src;
 
-  patchPhase = ''
-    runHook prePatch
+  prePatch = ''
+    ## Install Resources
+    cp ${resources}/resources/* app/helper
 
-    # install -Dm644 ${plugins}/plugins/* app/plugins
-    # cp -r ${plugins}/plugins.v2/* app/plugins
-    cp -r ${resources}/resources/* app/helper
+    ## Install Plugins from Official Repo
+    # V2 Plugins
+    cp -r ${plugins}/plugins.v2/* app/plugins
 
-    runHook postPatch
+    # V1 Plugins with V2 support
+    cat ${plugins}/package.json | \
+      jq -r 'to_entries[] | select(.value.v2 == true) | .key' | \
+      awk '{print tolower($0)}' | \
+      while read -r i; do [ ! -d "app/plugins/$i" ] && cp -r "${plugins}/plugins/$i" "app/plugins/"; done
+
+    chmod -R +w app/plugins
   '';
+
+  nativeBuildInputs = [
+    jq
+    gawk
+  ];
 
   buildInputs = [
     playwright-driver.browsers
