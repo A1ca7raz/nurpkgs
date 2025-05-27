@@ -3,17 +3,17 @@
 {
   aosc-scriptlets = {
     pname = "aosc-scriptlets";
-    version = "f332afaa1bf4e171ef94bf866e617fdeda9b3a77";
+    version = "f16452797abf686721402513475467cb62e5cc67";
     src = fetchgit {
       url = "https://github.com/AOSC-Dev/scriptlets";
-      rev = "f332afaa1bf4e171ef94bf866e617fdeda9b3a77";
+      rev = "f16452797abf686721402513475467cb62e5cc67";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-3TqetHrTfVpZ40rlneGIFGWSFfrCFmd/U0PEQ4k6jQM=";
+      sha256 = "sha256-slcgqIeMRs/1V26DRZeDdxgcRufeyOlKwnvX/wP1QuA=";
     };
-    date = "2025-05-20";
+    date = "2025-05-24";
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
@@ -25,57 +25,57 @@
   };
   fcitx5-pinyin-zhwiki = {
     pname = "fcitx5-pinyin-zhwiki";
-    version = "20250415";
+    version = "20250526";
     src = fetchurl {
-      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20250415.dict";
-      sha256 = "sha256-8dFBoP3UcYCl6EYojn14Bp7aYe/Z9cf4drSmeheHbLw=";
+      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20250526.dict";
+      sha256 = "sha256-znHic2/mP0HWJgO1v7sqF2W4Xv2ZhhC8xufaUu87ZzE=";
     };
   };
   moviepilot-core = {
     pname = "moviepilot-core";
-    version = "v2.4.9";
+    version = "v2.5.0";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.4.9";
+      rev = "v2.5.0";
       fetchSubmodules = false;
-      sha256 = "sha256-QvYHTD2Y1do7THpQ/WM1++QxM8aFLsv8ne65hHxYNkM=";
+      sha256 = "sha256-Jmn305n3qXsqSr84tDDqWXKmkOZPtL38jpJPMXFFM/M=";
     };
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.4.9";
+    version = "v2.5.1";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Frontend";
-      rev = "v2.4.9";
+      rev = "v2.5.1";
       fetchSubmodules = false;
-      sha256 = "sha256-IuL4Dy8cZDek/esczv+YEgpK7Lot/FksLskCWaa4rs4=";
+      sha256 = "sha256-Ix0DmdFr9Mk2czgjHG9PqeHoqDKvBTgOyAx51KirHmE=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "bc8fcd3db028392d45d0cf5375578351ba885e02";
+    version = "2817e6c9db9d6b6170541e6ebcf0a8ff14966901";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Plugins";
-      rev = "bc8fcd3db028392d45d0cf5375578351ba885e02";
+      rev = "2817e6c9db9d6b6170541e6ebcf0a8ff14966901";
       fetchSubmodules = false;
-      sha256 = "sha256-DNFMmMMow2ZczwA4lyS7EA8OZ+C9bcma2lx06t0/f0o=";
+      sha256 = "sha256-eNfzhXzNiiIPLVQZ7/N3/MeUCYTqizbjf+wAxXrzB0A=";
     };
-    date = "2025-05-22";
+    date = "2025-05-26";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
-    version = "586d8bd3bfbc66e8e80de7a3ad2fed6d25cab421";
+    version = "d2fba4700c90e0b667ebaaef381e86aa95d2d058";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Resources";
-      rev = "586d8bd3bfbc66e8e80de7a3ad2fed6d25cab421";
+      rev = "d2fba4700c90e0b667ebaaef381e86aa95d2d058";
       fetchSubmodules = false;
-      sha256 = "sha256-MvxXnSTbQ145h8DLD3GI94g8K1a7ZYnYllgoztXcyhk=";
+      sha256 = "sha256-7yXUCYxGR7Jgf4D6IhSvOiUfyC7glZQyEcicitpNf7A=";
     };
-    date = "2025-05-21";
+    date = "2025-05-26";
   };
   sierra-breeze-enhanced-git = {
     pname = "sierra-breeze-enhanced-git";
@@ -90,14 +90,14 @@
   };
   sillytavern-nightly = {
     pname = "sillytavern-nightly";
-    version = "6dc59b9fd3a36e4abb2edc42e6e8a70e9d0e2100";
+    version = "e2222ac40a950d95e51b616f49f02bb3f5b9e80a";
     src = fetchFromGitHub {
       owner = "SillyTavern";
       repo = "SillyTavern";
-      rev = "6dc59b9fd3a36e4abb2edc42e6e8a70e9d0e2100";
+      rev = "e2222ac40a950d95e51b616f49f02bb3f5b9e80a";
       fetchSubmodules = false;
-      sha256 = "sha256-2yZWUKXGTGgoyzaoqV0edYSfZPjhL9QUKuVorOAFgno=";
+      sha256 = "sha256-6S9UIEEuvw0+CjfZRAVxXkFwg7ClN0Mgv7AuZ+MmKD0=";
     };
-    date = "2025-05-22";
+    date = "2025-05-26";
   };
 }

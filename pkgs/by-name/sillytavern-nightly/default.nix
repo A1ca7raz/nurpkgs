@@ -10,7 +10,7 @@ buildNpmPackage rec {
   inherit (source) version src;
   root = "SillyTavern-staging";
 
-  npmDepsHash = "sha256-OLEfHVPSpgcU19IKgZC7Tl6DflJ+Y7FYQ+1j04iqyZQ=";
+  npmDepsHash = "sha256-IZMwDgazY+6oyuOlE7zdWcDn5D2/8v2mHX9yDBwK+4I=";
   buildPhase = "true";
   installPhase = ''
     mkdir -p $out/{bin,lib}
