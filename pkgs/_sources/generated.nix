@@ -50,7 +50,7 @@
       repo = "MoviePilot-Frontend";
       rev = "v2.5.1";
       fetchSubmodules = false;
-      sha256 = "sha256-Ix0DmdFr9Mk2czgjHG9PqeHoqDKvBTgOyAx51KirHmE=";
+      sha256 = "sha256-I0PwRmcCQCd9lJcxZBa/rBLMjazZSm/2jkqK5n6cZkg=";
     };
   };
   moviepilot-plugins = {
