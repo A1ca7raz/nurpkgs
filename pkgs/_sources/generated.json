@@ -1,7 +1,7 @@
 {
     "aosc-scriptlets": {
         "cargoLocks": null,
-        "date": "2025-05-24",
+        "date": "2025-05-28",
         "extract": null,
         "name": "aosc-scriptlets",
         "passthru": null,
@@ -11,13 +11,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "f16452797abf686721402513475467cb62e5cc67",
-            "sha256": "sha256-slcgqIeMRs/1V26DRZeDdxgcRufeyOlKwnvX/wP1QuA=",
+            "rev": "ec2a6ce198b38ebe065c500a959c24acad8ba263",
+            "sha256": "sha256-aaMLEwKfveaPvrLgZFeMQSdOVNTdEjXy2Z6CoI9rKck=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/AOSC-Dev/scriptlets"
         },
-        "version": "f16452797abf686721402513475467cb62e5cc67"
+        "version": "ec2a6ce198b38ebe065c500a959c24acad8ba263"
     },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,
@@ -63,12 +63,12 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot",
-            "rev": "v2.5.0",
-            "sha256": "sha256-Jmn305n3qXsqSr84tDDqWXKmkOZPtL38jpJPMXFFM/M=",
+            "rev": "v2.5.1",
+            "sha256": "sha256-rrfYXDzTpA8vUvy/y+e9Ff2LBbJrc5OSuGcibjFxi+E=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v2.5.0"
+        "version": "v2.5.1"
     },
     "moviepilot-frontend": {
         "cargoLocks": null,
@@ -85,7 +85,7 @@
             "owner": "jxxghp",
             "repo": "MoviePilot-Frontend",
             "rev": "v2.5.1",
-            "sha256": "sha256-I0PwRmcCQCd9lJcxZBa/rBLMjazZSm/2jkqK5n6cZkg=",
+            "sha256": "sha256-k0yXRva3b0/EO1KVFm5e4fkQZdfOkhqGe0fWmhgoMag=",
             "sparseCheckout": [],
             "type": "github"
         },
@@ -93,7 +93,7 @@
     },
     "moviepilot-plugins": {
         "cargoLocks": null,
-        "date": "2025-05-26",
+        "date": "2025-05-28",
         "extract": null,
         "name": "moviepilot-plugins",
         "passthru": null,
@@ -105,12 +105,12 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Plugins",
-            "rev": "2817e6c9db9d6b6170541e6ebcf0a8ff14966901",
-            "sha256": "sha256-eNfzhXzNiiIPLVQZ7/N3/MeUCYTqizbjf+wAxXrzB0A=",
+            "rev": "637cf9e83a20d714e9caac2268690dfe7e570eff",
+            "sha256": "sha256-BB3pPv7eHIW4R8iYDITBNyARWxCxhSAgrulUXgD31Ck=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "2817e6c9db9d6b6170541e6ebcf0a8ff14966901"
+        "version": "637cf9e83a20d714e9caac2268690dfe7e570eff"
     },
     "moviepilot-resources": {
         "cargoLocks": null,
@@ -156,7 +156,7 @@
     },
     "sillytavern-nightly": {
         "cargoLocks": null,
-        "date": "2025-05-26",
+        "date": "2025-05-29",
         "extract": null,
         "name": "sillytavern-nightly",
         "passthru": null,
@@ -168,11 +168,11 @@
             "name": null,
             "owner": "SillyTavern",
             "repo": "SillyTavern",
-            "rev": "e2222ac40a950d95e51b616f49f02bb3f5b9e80a",
-            "sha256": "sha256-6S9UIEEuvw0+CjfZRAVxXkFwg7ClN0Mgv7AuZ+MmKD0=",
+            "rev": "87df4db1a4217bf51e1c9bc31b21938c29bee71f",
+            "sha256": "sha256-199dAb1SMjZZ8fcEnwBy0IXpRyGJ4vrVEDKhFUO1xrA=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "e2222ac40a950d95e51b616f49f02bb3f5b9e80a"
+        "version": "87df4db1a4217bf51e1c9bc31b21938c29bee71f"
     }
 }

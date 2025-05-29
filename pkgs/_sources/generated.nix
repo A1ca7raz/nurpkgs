@@ -3,17 +3,17 @@
 {
   aosc-scriptlets = {
     pname = "aosc-scriptlets";
-    version = "f16452797abf686721402513475467cb62e5cc67";
+    version = "ec2a6ce198b38ebe065c500a959c24acad8ba263";
     src = fetchgit {
       url = "https://github.com/AOSC-Dev/scriptlets";
-      rev = "f16452797abf686721402513475467cb62e5cc67";
+      rev = "ec2a6ce198b38ebe065c500a959c24acad8ba263";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-slcgqIeMRs/1V26DRZeDdxgcRufeyOlKwnvX/wP1QuA=";
+      sha256 = "sha256-aaMLEwKfveaPvrLgZFeMQSdOVNTdEjXy2Z6CoI9rKck=";
     };
-    date = "2025-05-24";
+    date = "2025-05-28";
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
@@ -33,13 +33,13 @@
   };
   moviepilot-core = {
     pname = "moviepilot-core";
-    version = "v2.5.0";
+    version = "v2.5.1";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.5.0";
+      rev = "v2.5.1";
       fetchSubmodules = false;
-      sha256 = "sha256-Jmn305n3qXsqSr84tDDqWXKmkOZPtL38jpJPMXFFM/M=";
+      sha256 = "sha256-rrfYXDzTpA8vUvy/y+e9Ff2LBbJrc5OSuGcibjFxi+E=";
     };
   };
   moviepilot-frontend = {
@@ -50,20 +50,20 @@
       repo = "MoviePilot-Frontend";
       rev = "v2.5.1";
       fetchSubmodules = false;
-      sha256 = "sha256-I0PwRmcCQCd9lJcxZBa/rBLMjazZSm/2jkqK5n6cZkg=";
+      sha256 = "sha256-k0yXRva3b0/EO1KVFm5e4fkQZdfOkhqGe0fWmhgoMag=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "2817e6c9db9d6b6170541e6ebcf0a8ff14966901";
+    version = "637cf9e83a20d714e9caac2268690dfe7e570eff";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Plugins";
-      rev = "2817e6c9db9d6b6170541e6ebcf0a8ff14966901";
+      rev = "637cf9e83a20d714e9caac2268690dfe7e570eff";
       fetchSubmodules = false;
-      sha256 = "sha256-eNfzhXzNiiIPLVQZ7/N3/MeUCYTqizbjf+wAxXrzB0A=";
+      sha256 = "sha256-BB3pPv7eHIW4R8iYDITBNyARWxCxhSAgrulUXgD31Ck=";
     };
-    date = "2025-05-26";
+    date = "2025-05-28";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
@@ -90,14 +90,14 @@
   };
   sillytavern-nightly = {
     pname = "sillytavern-nightly";
-    version = "e2222ac40a950d95e51b616f49f02bb3f5b9e80a";
+    version = "87df4db1a4217bf51e1c9bc31b21938c29bee71f";
     src = fetchFromGitHub {
       owner = "SillyTavern";
       repo = "SillyTavern";
-      rev = "e2222ac40a950d95e51b616f49f02bb3f5b9e80a";
+      rev = "87df4db1a4217bf51e1c9bc31b21938c29bee71f";
       fetchSubmodules = false;
-      sha256 = "sha256-6S9UIEEuvw0+CjfZRAVxXkFwg7ClN0Mgv7AuZ+MmKD0=";
+      sha256 = "sha256-199dAb1SMjZZ8fcEnwBy0IXpRyGJ4vrVEDKhFUO1xrA=";
     };
-    date = "2025-05-26";
+    date = "2025-05-29";
   };
 }
