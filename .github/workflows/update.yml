@@ -116,4 +116,4 @@ jobs:
         MESSAGE: "🟢 [nurpkgs](https://github.com/A1ca7raz/nurpkgs) has been updated."
       run: |
         pip install apprise
-        apprise -vv -b "$MESSAGE" "tgram://$BOT_KEY/$RECEIVER_ID/?format=markdown"
+        apprise -vv -b "$MESSAGE" "tgram://$BOT_KEY/$RECEIVER_ID/?format=markdown" || true # Force complete task
