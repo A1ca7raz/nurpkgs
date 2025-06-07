@@ -285,11 +285,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1749302360,
-        "narHash": "sha256-alDf3K4Vo+TDJy/4QFS/5+6U2b/HVzxRs5GUQRJ1QNg=",
+        "lastModified": 1749302605,
+        "narHash": "sha256-XIOlrFYRBEQRNeiU+a/1ykgYaOGg8xsePOJ+KBNsThw=",
         "owner": "A1ca7raz",
         "repo": "inputs-hub",
-        "rev": "f1650075ca87a8c141bf7bf03e275ce0f3d6eb4d",
+        "rev": "78f889b1b80521ff5740987657aa1da5ba0e9509",
         "type": "github"
       },
       "original": {
