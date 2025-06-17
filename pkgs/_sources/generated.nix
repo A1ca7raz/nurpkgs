@@ -3,17 +3,17 @@
 {
   aosc-scriptlets = {
     pname = "aosc-scriptlets";
-    version = "26ebd3acd50867952baf4595a792c2708c3f27bb";
+    version = "ca0cbd216b76f1ac66dae88847c990193a8a6504";
     src = fetchgit {
       url = "https://github.com/AOSC-Dev/scriptlets";
-      rev = "26ebd3acd50867952baf4595a792c2708c3f27bb";
+      rev = "ca0cbd216b76f1ac66dae88847c990193a8a6504";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-i459aNFfPFoMZ9PnLzCpBBn+j5bPSqV/yZeAlzqptlc=";
+      sha256 = "sha256-kSyOuXj25whHA5xzUVQ7upEEf/kxI90cgFy9olv79aI=";
     };
-    date = "2025-06-07";
+    date = "2025-06-14";
   };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
@@ -33,49 +33,49 @@
   };
   moviepilot-core = {
     pname = "moviepilot-core";
-    version = "v2.5.4";
+    version = "v2.5.7";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.5.4";
+      rev = "v2.5.7";
       fetchSubmodules = false;
-      sha256 = "sha256-enWgoclng+68DuwIwsoDsq/MiDJ3UMN7TY8ztxnLi/Y=";
+      sha256 = "sha256-0gc3tuy9jbhfh/z0dnsQaH1R39Z1hdyvfOxWVmuiTmA=";
     };
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.5.4";
+    version = "v2.5.7";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Frontend";
-      rev = "v2.5.4";
+      rev = "v2.5.7";
       fetchSubmodules = false;
-      sha256 = "sha256-NtXHmXLoY7eDo/DVViGY+FvH2gr6H6sJN705rpesAWI=";
+      sha256 = "sha256-vBQLJIWmDC7FFt5KHZPXfkOVHjqtnNYELfmwle3Fvbc=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "fb5114c249198c10774082a70bc82ed8b42f756a";
+    version = "f96bda4db74b0f4e0a16406f411bd6e1ed662d78";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Plugins";
-      rev = "fb5114c249198c10774082a70bc82ed8b42f756a";
+      rev = "f96bda4db74b0f4e0a16406f411bd6e1ed662d78";
       fetchSubmodules = false;
-      sha256 = "sha256-yZboz6BV1+308c2JCTudso0LeUTtLLo2ZKZZiskoXnQ=";
+      sha256 = "sha256-Gjab6l9q+7Yj4g8bWENDtee1zqZzSzwz/oMjheQzaro=";
     };
-    date = "2025-06-10";
+    date = "2025-06-17";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
-    version = "312a28e1284a7b6b3ee2e8f1160b3cbfe31b4bc3";
+    version = "21692294fc06c1311505f6a1087905c010a2ff98";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Resources";
-      rev = "312a28e1284a7b6b3ee2e8f1160b3cbfe31b4bc3";
+      rev = "21692294fc06c1311505f6a1087905c010a2ff98";
       fetchSubmodules = false;
-      sha256 = "sha256-L6WmvoMKIfp4BxgnxBbmLcvp0d6rVhfO+/PaNT7aSRs=";
+      sha256 = "sha256-E03Emn8ITbgY3fhvuvDZ0eWYZDGsMF1BZxhCffBRVHA=";
     };
-    date = "2025-06-05";
+    date = "2025-06-16";
   };
   sierra-breeze-enhanced-git = {
     pname = "sierra-breeze-enhanced-git";
@@ -90,14 +90,14 @@
   };
   sillytavern-nightly = {
     pname = "sillytavern-nightly";
-    version = "350de3d9693008ba825e927d3b7b9c5599911b4c";
+    version = "dfe1cdee21d4d109e094e3880939e2d86e216758";
     src = fetchFromGitHub {
       owner = "SillyTavern";
       repo = "SillyTavern";
-      rev = "350de3d9693008ba825e927d3b7b9c5599911b4c";
+      rev = "dfe1cdee21d4d109e094e3880939e2d86e216758";
       fetchSubmodules = false;
-      sha256 = "sha256-UwsnHasZ/aZjR/z23aON8BTbDTc5RgVipntguLtcv3Q=";
+      sha256 = "sha256-mgBG4d89qjT/XcJOl1XSu5EjKiB1SGsg2873WIJOUUI=";
     };
-    date = "2025-06-10";
+    date = "2025-06-16";
   };
 }

@@ -1,7 +1,7 @@
 {
     "aosc-scriptlets": {
         "cargoLocks": null,
-        "date": "2025-06-07",
+        "date": "2025-06-14",
         "extract": null,
         "name": "aosc-scriptlets",
         "passthru": null,
@@ -11,13 +11,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "26ebd3acd50867952baf4595a792c2708c3f27bb",
-            "sha256": "sha256-i459aNFfPFoMZ9PnLzCpBBn+j5bPSqV/yZeAlzqptlc=",
+            "rev": "ca0cbd216b76f1ac66dae88847c990193a8a6504",
+            "sha256": "sha256-kSyOuXj25whHA5xzUVQ7upEEf/kxI90cgFy9olv79aI=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/AOSC-Dev/scriptlets"
         },
-        "version": "26ebd3acd50867952baf4595a792c2708c3f27bb"
+        "version": "ca0cbd216b76f1ac66dae88847c990193a8a6504"
     },
     "fcitx5-pinyin-moegirl": {
         "cargoLocks": null,
@@ -63,12 +63,12 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot",
-            "rev": "v2.5.4",
-            "sha256": "sha256-enWgoclng+68DuwIwsoDsq/MiDJ3UMN7TY8ztxnLi/Y=",
+            "rev": "v2.5.7",
+            "sha256": "sha256-0gc3tuy9jbhfh/z0dnsQaH1R39Z1hdyvfOxWVmuiTmA=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v2.5.4"
+        "version": "v2.5.7"
     },
     "moviepilot-frontend": {
         "cargoLocks": null,
@@ -84,16 +84,16 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Frontend",
-            "rev": "v2.5.4",
-            "sha256": "sha256-NtXHmXLoY7eDo/DVViGY+FvH2gr6H6sJN705rpesAWI=",
+            "rev": "v2.5.7",
+            "sha256": "sha256-vBQLJIWmDC7FFt5KHZPXfkOVHjqtnNYELfmwle3Fvbc=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v2.5.4"
+        "version": "v2.5.7"
     },
     "moviepilot-plugins": {
         "cargoLocks": null,
-        "date": "2025-06-10",
+        "date": "2025-06-17",
         "extract": null,
         "name": "moviepilot-plugins",
         "passthru": null,
@@ -105,16 +105,16 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Plugins",
-            "rev": "fb5114c249198c10774082a70bc82ed8b42f756a",
-            "sha256": "sha256-yZboz6BV1+308c2JCTudso0LeUTtLLo2ZKZZiskoXnQ=",
+            "rev": "f96bda4db74b0f4e0a16406f411bd6e1ed662d78",
+            "sha256": "sha256-Gjab6l9q+7Yj4g8bWENDtee1zqZzSzwz/oMjheQzaro=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "fb5114c249198c10774082a70bc82ed8b42f756a"
+        "version": "f96bda4db74b0f4e0a16406f411bd6e1ed662d78"
     },
     "moviepilot-resources": {
         "cargoLocks": null,
-        "date": "2025-06-05",
+        "date": "2025-06-16",
         "extract": null,
         "name": "moviepilot-resources",
         "passthru": null,
@@ -126,12 +126,12 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Resources",
-            "rev": "312a28e1284a7b6b3ee2e8f1160b3cbfe31b4bc3",
-            "sha256": "sha256-L6WmvoMKIfp4BxgnxBbmLcvp0d6rVhfO+/PaNT7aSRs=",
+            "rev": "21692294fc06c1311505f6a1087905c010a2ff98",
+            "sha256": "sha256-E03Emn8ITbgY3fhvuvDZ0eWYZDGsMF1BZxhCffBRVHA=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "312a28e1284a7b6b3ee2e8f1160b3cbfe31b4bc3"
+        "version": "21692294fc06c1311505f6a1087905c010a2ff98"
     },
     "sierra-breeze-enhanced-git": {
         "cargoLocks": null,
@@ -156,7 +156,7 @@
     },
     "sillytavern-nightly": {
         "cargoLocks": null,
-        "date": "2025-06-10",
+        "date": "2025-06-16",
         "extract": null,
         "name": "sillytavern-nightly",
         "passthru": null,
@@ -168,11 +168,11 @@
             "name": null,
             "owner": "SillyTavern",
             "repo": "SillyTavern",
-            "rev": "350de3d9693008ba825e927d3b7b9c5599911b4c",
-            "sha256": "sha256-UwsnHasZ/aZjR/z23aON8BTbDTc5RgVipntguLtcv3Q=",
+            "rev": "dfe1cdee21d4d109e094e3880939e2d86e216758",
+            "sha256": "sha256-mgBG4d89qjT/XcJOl1XSu5EjKiB1SGsg2873WIJOUUI=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "350de3d9693008ba825e927d3b7b9c5599911b4c"
+        "version": "dfe1cdee21d4d109e094e3880939e2d86e216758"
     }
 }
