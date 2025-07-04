@@ -1,7 +1,3 @@
-[aosc-scriptlets]
-src.git = "https://github.com/AOSC-Dev/scriptlets"
-fetch.git = "https://github.com/AOSC-Dev/scriptlets"
-
 [fcitx5-pinyin-moegirl]
 src.github = "outloudvi/mw2fcitx"
 fetch.url = "https://github.com/outloudvi/mw2fcitx/releases/download/$ver/moegirl.dict"
@@ -32,8 +28,3 @@ fetch.github = "jxxghp/MoviePilot-Resources"
 [sierra-breeze-enhanced-git]
 src.github = "kupiqu/SierraBreezeEnhanced"
 fetch.github = "kupiqu/SierraBreezeEnhanced"
-
-[sillytavern-nightly]
-src.git = "https://github.com/SillyTavern/SillyTavern"
-src.branch = "staging"
-fetch.github = "SillyTavern/SillyTavern"
