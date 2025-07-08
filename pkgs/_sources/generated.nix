@@ -19,49 +19,49 @@
   };
   moviepilot-core = {
     pname = "moviepilot-core";
-    version = "v2.6.1";
+    version = "v2.6.3";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.6.1";
+      rev = "v2.6.3";
       fetchSubmodules = false;
-      sha256 = "sha256-D3zz/93Uz4Y7s23abf9spBwOwZ4wCV9u3FULp/lA9v8=";
+      sha256 = "sha256-XX/QKRy1FSTwop0dsmhWSjZAA3Es7t1wo0EDw25NzUU=";
     };
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.6.1";
+    version = "v2.6.3";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Frontend";
-      rev = "v2.6.1";
+      rev = "v2.6.3";
       fetchSubmodules = false;
-      sha256 = "sha256-NKx32dsfQ5CBkgLOD6i4ubflVO0rUWku0B9q43JbBsA=";
+      sha256 = "sha256-fm2gWxE0+8JYP1sheiC8CRK6w9wgVyjwG1hRkXxB4mU=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "0cf5ecb1f653005daf2793b4ab4a20d2c679ec09";
+    version = "d1e964265fc958e3df124f31f7573f2ee4df4f65";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Plugins";
-      rev = "0cf5ecb1f653005daf2793b4ab4a20d2c679ec09";
+      rev = "d1e964265fc958e3df124f31f7573f2ee4df4f65";
       fetchSubmodules = false;
-      sha256 = "sha256-+vf4oBV0/p11leix8rLV829Xgf72cQOql09eUnzpeak=";
+      sha256 = "sha256-mg0eUeUjjDF8/vFTVGeZuh6KU6rwC9/HpoE/oCGVQrg=";
     };
-    date = "2025-07-03";
+    date = "2025-07-08";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
-    version = "e27b19e0717cd91658228667e1a306bdfb38535e";
+    version = "4b2d8ec7b26746e3920dda2fae303578b3eb6fb9";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Resources";
-      rev = "e27b19e0717cd91658228667e1a306bdfb38535e";
+      rev = "4b2d8ec7b26746e3920dda2fae303578b3eb6fb9";
       fetchSubmodules = false;
-      sha256 = "sha256-gUxAEvuKsE+5+jxlchJjjNrCCKLXelsF2mOlI9tDnJI=";
+      sha256 = "sha256-sbkToDBz1VhHwfm7YBkPKgpsNHhHhm+aQL53bLugXTQ=";
     };
-    date = "2025-07-03";
+    date = "2025-07-08";
   };
   sierra-breeze-enhanced-git = {
     pname = "sierra-breeze-enhanced-git";
