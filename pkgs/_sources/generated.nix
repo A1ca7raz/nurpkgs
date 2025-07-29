@@ -19,13 +19,13 @@
   };
   moviepilot-core = {
     pname = "moviepilot-core";
-    version = "v2.6.7";
+    version = "v2.6.8";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.6.7";
+      rev = "v2.6.8";
       fetchSubmodules = false;
-      sha256 = "sha256-XoO5HgPKLpAlRd/mcmpILHjlKSXVq3WzwrX5JOAqaXM=";
+      sha256 = "sha256-tvq+65lvTGSWV0lH5vHFXh2IlifV0MBWBjbQnudJXQQ=";
     };
   };
   moviepilot-frontend = {
@@ -36,7 +36,7 @@
       repo = "MoviePilot-Frontend";
       rev = "v2.6.8";
       fetchSubmodules = false;
-      sha256 = "sha256-o29vMwtAltoKHit/Puguw7wkKzOAFElO/ey7nWxlFLA=";
+      sha256 = "sha256-GJXHpteCi2ykAVIClL7kaGzpxuAN3FywlZ8BIQUeR3I=";
     };
   };
   moviepilot-plugins = {
