@@ -11,57 +11,57 @@
   };
   fcitx5-pinyin-zhwiki = {
     pname = "fcitx5-pinyin-zhwiki";
-    version = "20250526";
+    version = "20250731";
     src = fetchurl {
-      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20250526.dict";
-      sha256 = "sha256-znHic2/mP0HWJgO1v7sqF2W4Xv2ZhhC8xufaUu87ZzE=";
+      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.2.5/zhwiki-20250731.dict";
+      sha256 = "sha256-pS2fVLfihJGgKA1XsW1x0VanfhjHgDGtsqedpmvdUnE=";
     };
   };
   moviepilot-core = {
     pname = "moviepilot-core";
-    version = "v2.6.8";
+    version = "v2.6.9";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.6.8";
+      rev = "v2.6.9";
       fetchSubmodules = false;
-      sha256 = "sha256-tvq+65lvTGSWV0lH5vHFXh2IlifV0MBWBjbQnudJXQQ=";
+      sha256 = "sha256-bD9/QvsBGVS0CUa5qxvDtZ+bI8hpCCiHjh12s2K9fnw=";
     };
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.6.8";
+    version = "v2.6.9";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Frontend";
-      rev = "v2.6.8";
+      rev = "v2.6.9";
       fetchSubmodules = false;
-      sha256 = "sha256-GJXHpteCi2ykAVIClL7kaGzpxuAN3FywlZ8BIQUeR3I=";
+      sha256 = "sha256-7dk4gSLKlDJF5zK1guMGyIcsQgmBMvw2Xl6tSyh09uQ=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "969ed23d4c4793ff16001a280520b1515b279d3d";
+    version = "a058e01b2de1f11c6c2e0f2ffc40121de306cf2d";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Plugins";
-      rev = "969ed23d4c4793ff16001a280520b1515b279d3d";
+      rev = "a058e01b2de1f11c6c2e0f2ffc40121de306cf2d";
       fetchSubmodules = false;
-      sha256 = "sha256-LKS7qqKScFTt+NH00DGuolpdgrZ/9hZgvkUJd80h0lM=";
+      sha256 = "sha256-Ajvv7XZphRoLkyXS2y3DmDVyJhC+tueieZcuOGctTlg=";
     };
-    date = "2025-07-26";
+    date = "2025-08-05";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
-    version = "82566a4902392617c00e561447845fd5ea06874d";
+    version = "57379cd937f5e570963a35d0cb38f2dba65b1910";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Resources";
-      rev = "82566a4902392617c00e561447845fd5ea06874d";
+      rev = "57379cd937f5e570963a35d0cb38f2dba65b1910";
       fetchSubmodules = false;
-      sha256 = "sha256-23nRTloDznIfDR+r68JB3/OAicvYeAyLZn7RfndFDRQ=";
+      sha256 = "sha256-/py0CoB8mxa/HOLRh7DQbvUmxZEcqmgQF+bsj9zi4J4=";
     };
-    date = "2025-07-24";
+    date = "2025-08-04";
   };
   sierra-breeze-enhanced-git = {
     pname = "sierra-breeze-enhanced-git";
