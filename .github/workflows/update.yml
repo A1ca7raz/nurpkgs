@@ -43,7 +43,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: 0-2. Install Nix
-      uses: nixbuild/nix-quick-install-action@v32
+      uses: nixbuild/nix-quick-install-action@v33
 
     - name: 1-1. Update flake.lock
       if: ${{ inputs.update_lock == true || github.event_name == 'repository_dispatch' }}
