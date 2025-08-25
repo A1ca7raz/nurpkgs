@@ -55,7 +55,7 @@ jobs:
         ref: 'main'
 
     - name: 0-2. Install Nix
-      uses: nixbuild/nix-quick-install-action@v32
+      uses: nixbuild/nix-quick-install-action@v33
       with:
         nix_conf: ${{ env.nix_conf }}
 
