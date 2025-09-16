@@ -3,10 +3,10 @@
 {
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20250810";
+    version = "20250909";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20250810/moegirl.dict";
-      sha256 = "sha256-PuuW43+uu9Vasy33KW1IKb2uK2mh8M/V9fVCVp1QZl0=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20250909/moegirl.dict";
+      sha256 = "sha256-wtMLjgHb1IRkc0G/R5HDlF+r7/ooR9XxgFth3Lo+7ws=";
     };
   };
   fcitx5-pinyin-zhwiki = {
@@ -19,24 +19,24 @@
   };
   moviepilot-core = {
     pname = "moviepilot-core";
-    version = "v2.7.9";
+    version = "v2.8.1";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.7.9";
+      rev = "v2.8.1";
       fetchSubmodules = false;
-      sha256 = "sha256-8VXMKwexslGf7ekhYdgqpO1UoBa64jgGjKvoFj7wl+c=";
+      sha256 = "sha256-YTgy8wbd4zhoZXvTnJDauENrUQLNTQ4cxO0wpP+Y4vM=";
     };
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.8.0";
+    version = "v2.8.1";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Frontend";
-      rev = "v2.8.0";
+      rev = "v2.8.1";
       fetchSubmodules = false;
-      sha256 = "sha256-fprEU7azGsGh+Zv5y6xguVcVOK/ipwEjs8u2kon5SdA=";
+      sha256 = "sha256-M8iasahQ5rRBidN6nqnmHoW0W6pj7Jz+R4aaAAEk9Zk=";
     };
   };
   moviepilot-plugins = {
