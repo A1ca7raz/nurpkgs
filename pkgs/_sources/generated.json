@@ -44,7 +44,7 @@
             "owner": "jxxghp",
             "repo": "MoviePilot",
             "rev": "v2.8.1",
-            "sha256": "sha256-YTgy8wbd4zhoZXvTnJDauENrUQLNTQ4cxO0wpP+Y4vM=",
+            "sha256": "sha256-ytuFNV4fLoN+OpAwFODieIBSsvUoZUzdzZ4q10pSXbk=",
             "sparseCheckout": [],
             "type": "github"
         },
@@ -73,7 +73,7 @@
     },
     "moviepilot-plugins": {
         "cargoLocks": null,
-        "date": "2025-09-09",
+        "date": "2025-09-17",
         "extract": null,
         "name": "moviepilot-plugins",
         "passthru": null,
@@ -85,16 +85,16 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Plugins",
-            "rev": "fe8a7c6cd26cb1a8fbf262eab9c859947142fdf0",
-            "sha256": "sha256-RxUQrYYs7LGkENO1AtFoFzym2JldP5oYD4PVzQ0jgCw=",
+            "rev": "491f40663bc1e9425072b7be0d5011f2df961748",
+            "sha256": "sha256-09zx9SNQ1NiJ4Y4vFX/U1UOviKs81N6iUPvQtKpPQbI=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "fe8a7c6cd26cb1a8fbf262eab9c859947142fdf0"
+        "version": "491f40663bc1e9425072b7be0d5011f2df961748"
     },
     "moviepilot-resources": {
         "cargoLocks": null,
-        "date": "2025-09-02",
+        "date": "2025-09-20",
         "extract": null,
         "name": "moviepilot-resources",
         "passthru": null,
@@ -106,12 +106,12 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Resources",
-            "rev": "5a9e4a0a71e0eacdca85cc31ce4e3b131f3501d6",
-            "sha256": "sha256-lTHwf3tmETt/qMGi/NBHRw2YkDMK10jmzjcz4afNTV0=",
+            "rev": "45e31960a04725c729edaf65ce065585c6f83ea2",
+            "sha256": "sha256-aWykFg2DYes8vV2UG/QT1jhd6ZwRJI+RPw561pELqBc=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "5a9e4a0a71e0eacdca85cc31ce4e3b131f3501d6"
+        "version": "45e31960a04725c729edaf65ce065585c6f83ea2"
     },
     "sierra-breeze-enhanced-git": {
         "cargoLocks": null,
