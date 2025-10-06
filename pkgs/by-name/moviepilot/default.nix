@@ -122,7 +122,7 @@ stdenv.mkDerivation rec {
 
     offlineCache = fetchYarnDeps {
       yarnLock = "${src}/yarn.lock";
-      hash = "sha256-oa3nBJTz8odiJpPOzOWz2mqfD/aG10A93GsFJYOpYf4=";
+      hash = "sha256-+nSB3qoh18t8AZm+G/R7y1J4zv6G0AAuZAPOnzfyCiw=";
     };
 
     prePatch = ''
