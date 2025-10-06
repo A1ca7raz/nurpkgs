@@ -29,6 +29,7 @@ let
     "regex"
     "srt"
     "zhconv"
+    "python-hosts"
   ];
 in
 mapAttrs (
