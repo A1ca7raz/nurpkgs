@@ -28,3 +28,7 @@ fetch.github = "jxxghp/MoviePilot-Resources"
 [sierra-breeze-enhanced-git]
 src.github = "kupiqu/SierraBreezeEnhanced"
 fetch.github = "kupiqu/SierraBreezeEnhanced"
+
+[teamspeak-management-tools]
+src.github = "KunoiSayami/teamspeak-management-tools.rs"
+fetch.github = "KunoiSayami/teamspeak-management-tools.rs"

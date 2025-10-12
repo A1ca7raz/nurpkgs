@@ -3,10 +3,10 @@
 {
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20250909";
+    version = "20251009";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20250909/moegirl.dict";
-      sha256 = "sha256-wtMLjgHb1IRkc0G/R5HDlF+r7/ooR9XxgFth3Lo+7ws=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20251009/moegirl.dict";
+      sha256 = "sha256-s8i1eZrupWSSmgi52uhHLggtn5ZtoDFwMtJeZDw/znI=";
     };
   };
   fcitx5-pinyin-zhwiki = {
@@ -41,15 +41,15 @@
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "884efaebbf66f1d26befc8c6cf16ca7f307e1831";
+    version = "66ce816a31d8b24b158e13b2c1a77b677b6f8057";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Plugins";
-      rev = "884efaebbf66f1d26befc8c6cf16ca7f307e1831";
+      rev = "66ce816a31d8b24b158e13b2c1a77b677b6f8057";
       fetchSubmodules = false;
-      sha256 = "sha256-LjSsBIEKGo4MWmqDCp5P/yejrTFl4dfkjOZ2b4JNVOs=";
+      sha256 = "sha256-M0s2lLI8XAOUTACvxFvq7VqQsVfO0wG+sFkpoGCNR9U=";
     };
-    date = "2025-10-02";
+    date = "2025-10-08";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
@@ -72,6 +72,17 @@
       rev = "V.2.1.0";
       fetchSubmodules = false;
       sha256 = "sha256-Dzsl06FdCRGuBv2K5BmowCdaWQpYhe/U7aeQ0Q1T5Z4=";
+    };
+  };
+  teamspeak-management-tools = {
+    pname = "teamspeak-management-tools";
+    version = "v6.0.2";
+    src = fetchFromGitHub {
+      owner = "KunoiSayami";
+      repo = "teamspeak-management-tools.rs";
+      rev = "v6.0.2";
+      fetchSubmodules = false;
+      sha256 = "sha256-NDoaCMJ4p7JWNtBBniS5A5TlopQWitIyT9V5DBzvFrI=";
     };
   };
 }
