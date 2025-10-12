@@ -232,6 +232,7 @@
         "kwin-gestures": "kwin-gestures",
         "lanzaboote": "lanzaboote",
         "nix-index-database": "nix-index-database",
+        "nix-std": "nix-std",
         "nixpak": "nixpak",
         "nixpkgs": "nixpkgs",
         "nixpkgs-lib": "nixpkgs-lib",
@@ -243,11 +244,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1759862560,
-        "narHash": "sha256-tvmo930F/yiUtAvi7Jm91jf8Xe/trWJpCitW9qeiioQ=",
+        "lastModified": 1760265267,
+        "narHash": "sha256-n8iBgiR0oMe6MJECZyI56HUCvQDo+5gi2xQWBYBPWSs=",
         "owner": "A1ca7raz",
         "repo": "inputs-hub",
-        "rev": "b227dccbae2f27eae3797a86656393f7ce18d5f5",
+        "rev": "474802302331d1df87cefcfec6b6b9cb7d9c10d9",
         "type": "github"
       },
       "original": {
@@ -404,6 +405,21 @@
         "type": "github"
       }
     },
+    "nix-std": {
+      "locked": {
+        "lastModified": 1710870712,
+        "narHash": "sha256-e+7MJF2gsgTBuOWv4mCimSP0D9+naeFSw9a7N3yEmv4=",
+        "owner": "chessai",
+        "repo": "nix-std",
+        "rev": "31bbc925750cc9d8f828fe55cee1a2bd985e0c00",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chessai",
+        "repo": "nix-std",
+        "type": "github"
+      }
+    },
     "nixpak": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -545,6 +561,10 @@
         "spicetify": [
           "hub",
           "spicetify-nix"
+        ],
+        "std": [
+          "hub",
+          "nix-std"
         ],
         "uv2nix": [
           "hub",

@@ -6,6 +6,7 @@
     nixpkgs.follows = "hub/nixpkgs";
     flake-utils.follows = "hub/flake-utils";
     flake-parts.follows = "hub/flake-parts";
+    std.follows = "hub/nix-std";
 
     uv2nix.follows = "hub/uv2nix";
     pyproject-nix.follows = "hub/pyproject-nix";
@@ -16,7 +17,7 @@
     dns.follows = "hub/dns";
   };
 
-  outputs = inputs@{ nixpkgs, flake-utils, nixpak, hub, ... }:
+  outputs = inputs@{ nixpkgs, flake-utils, nixpak, hub, std, ... }:
     let
       systems = [
         "x86_64-linux"
@@ -65,6 +66,8 @@
       };
 
       homeModules = hub.homeModules;
+
+      lib = std.lib;
     };
 
   nixConfig = {
