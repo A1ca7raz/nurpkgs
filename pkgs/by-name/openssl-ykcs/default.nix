@@ -4,7 +4,7 @@
   libp11,
   writeText
 }:
-openssl.override {
+(openssl.override {
   conf = writeText "openssl.cnf" ''
     openssl_conf = openssl_init
 
@@ -21,4 +21,6 @@ openssl.override {
     MODULE_PATH = ${yubico-piv-tool}/lib/libykcs11.so
     init = 0
   '';
-}
+}).overrideAttrs (p: {
+  version = "${p.version}-ykcs";
+})

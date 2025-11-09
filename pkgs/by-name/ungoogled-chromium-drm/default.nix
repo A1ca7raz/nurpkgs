@@ -1,7 +1,7 @@
 {
   ungoogled-chromium
 }:
-ungoogled-chromium.override {
+(ungoogled-chromium.override {
   enableWideVine = true;
   commandLineArgs = [
     "--ozone-platform-hint=auto"  # Native Wayland
@@ -13,4 +13,6 @@ ungoogled-chromium.override {
     # FIXME: Disable popup shortcut setting window
     "--disable-features=GlobalShortcutsPortal"
   ];
-}
+}).overrideAttrs (p: {
+  version = "${p.version}-custom";
+})

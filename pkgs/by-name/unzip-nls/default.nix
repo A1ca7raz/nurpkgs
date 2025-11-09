@@ -1,6 +1,8 @@
 {
   unzip
 }:
-unzip.override {
+(unzip.override {
   enableNLS = true;
-}
+}).overrideAttrs (p: {
+  version = "${p.version}-nls";
+})
