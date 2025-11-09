@@ -65,14 +65,15 @@
   };
   sierra-breeze-enhanced-git = {
     pname = "sierra-breeze-enhanced-git";
-    version = "V.2.1.0";
+    version = "4a4f085aa5c48ad11071dee4e92289c2cc4a36cd";
     src = fetchFromGitHub {
       owner = "kupiqu";
       repo = "SierraBreezeEnhanced";
-      rev = "V.2.1.0";
+      rev = "4a4f085aa5c48ad11071dee4e92289c2cc4a36cd";
       fetchSubmodules = false;
-      sha256 = "sha256-Dzsl06FdCRGuBv2K5BmowCdaWQpYhe/U7aeQ0Q1T5Z4=";
+      sha256 = "sha256-dOIC2EQqninEIktVK6dLctzN/IiQIRvp1Qmcop9h7Dw=";
     };
+    date = "2025-10-14";
   };
   teamspeak-management-tools = {
     pname = "teamspeak-management-tools";

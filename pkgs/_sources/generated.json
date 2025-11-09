@@ -115,7 +115,7 @@
     },
     "sierra-breeze-enhanced-git": {
         "cargoLocks": null,
-        "date": null,
+        "date": "2025-10-14",
         "extract": null,
         "name": "sierra-breeze-enhanced-git",
         "passthru": null,
@@ -127,12 +127,12 @@
             "name": null,
             "owner": "kupiqu",
             "repo": "SierraBreezeEnhanced",
-            "rev": "V.2.1.0",
-            "sha256": "sha256-Dzsl06FdCRGuBv2K5BmowCdaWQpYhe/U7aeQ0Q1T5Z4=",
+            "rev": "4a4f085aa5c48ad11071dee4e92289c2cc4a36cd",
+            "sha256": "sha256-dOIC2EQqninEIktVK6dLctzN/IiQIRvp1Qmcop9h7Dw=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "V.2.1.0"
+        "version": "4a4f085aa5c48ad11071dee4e92289c2cc4a36cd"
     },
     "teamspeak-management-tools": {
         "cargoLocks": null,
