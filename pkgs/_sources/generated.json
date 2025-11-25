@@ -43,12 +43,12 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot",
-            "rev": "v2.8.1",
-            "sha256": "sha256-ytuFNV4fLoN+OpAwFODieIBSsvUoZUzdzZ4q10pSXbk=",
+            "rev": "v2.8.7",
+            "sha256": "sha256-PdT6pHXnmL6J/eSYBQey0PYgucqDDOUNm1ZfmCJf0uc=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v2.8.1"
+        "version": "v2.8.7"
     },
     "moviepilot-frontend": {
         "cargoLocks": null,
@@ -64,16 +64,16 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Frontend",
-            "rev": "v2.8.1",
-            "sha256": "sha256-M8iasahQ5rRBidN6nqnmHoW0W6pj7Jz+R4aaAAEk9Zk=",
+            "rev": "v2.8.7",
+            "sha256": "sha256-3ayq5jAf+tmjwLnj3NFHG7Kw0j8HZ/6kzExQU75WARA=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v2.8.1"
+        "version": "v2.8.7"
     },
     "moviepilot-plugins": {
         "cargoLocks": null,
-        "date": "2025-11-04",
+        "date": "2025-11-20",
         "extract": null,
         "name": "moviepilot-plugins",
         "passthru": null,
@@ -85,16 +85,16 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Plugins",
-            "rev": "e68d915f36e0a8544680b21bc0a36beef5cafa45",
-            "sha256": "sha256-3itb22PnafpwWWkds2Ez9NPVW2aU9v2g0xIPVhYb2KI=",
+            "rev": "de0e83f830ccc1050bebfb93305bd873045b1114",
+            "sha256": "sha256-26dE5gimthhzEEEPDRbs7qvTcAZqqoYHBjzGjDfK9Kk=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "e68d915f36e0a8544680b21bc0a36beef5cafa45"
+        "version": "de0e83f830ccc1050bebfb93305bd873045b1114"
     },
     "moviepilot-resources": {
         "cargoLocks": null,
-        "date": "2025-11-03",
+        "date": "2025-11-24",
         "extract": null,
         "name": "moviepilot-resources",
         "passthru": null,
@@ -106,12 +106,12 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Resources",
-            "rev": "23a0cb36834d6c4c51d3098357904464afbe44d5",
-            "sha256": "sha256-4FwIExHXIgul1BV4R0tPrKFCPegM3b2PYVgRWc1xvvs=",
+            "rev": "a955aa657425d73e28031d3ac66bafe91ae80286",
+            "sha256": "sha256-IN850cqn4OA3G6dwCdIsHv/PPAFWB5ANlSoifzL7Zj8=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "23a0cb36834d6c4c51d3098357904464afbe44d5"
+        "version": "a955aa657425d73e28031d3ac66bafe91ae80286"
     },
     "sierra-breeze-enhanced-git": {
         "cargoLocks": null,
