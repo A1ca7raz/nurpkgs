@@ -53,15 +53,15 @@
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
-    version = "a955aa657425d73e28031d3ac66bafe91ae80286";
+    version = "2a8290da1fffdf51b06c97bc05231594d3b131ab";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Resources";
-      rev = "a955aa657425d73e28031d3ac66bafe91ae80286";
+      rev = "2a8290da1fffdf51b06c97bc05231594d3b131ab";
       fetchSubmodules = false;
-      sha256 = "sha256-IN850cqn4OA3G6dwCdIsHv/PPAFWB5ANlSoifzL7Zj8=";
+      sha256 = "sha256-xKue0xk1rbUDdB7dgs7O0iP/PFi5RUbWMwvDAEJ3VMU=";
     };
-    date = "2025-11-24";
+    date = "2025-12-02";
   };
   sierra-breeze-enhanced-git = {
     pname = "sierra-breeze-enhanced-git";
