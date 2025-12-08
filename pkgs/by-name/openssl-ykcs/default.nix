@@ -23,4 +23,5 @@
   '';
 }).overrideAttrs (p: {
   version = "${p.version}-ykcs";
+  __intentionallyOverridingVersion = true;
 })

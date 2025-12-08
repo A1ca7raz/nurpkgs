@@ -31,4 +31,5 @@
   '';
 }).overrideAttrs (p: {
   version = "${p.version}-opensc";
+  __intentionallyOverridingVersion = true;
 })
