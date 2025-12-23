@@ -11,10 +11,10 @@
   };
   fcitx5-pinyin-zhwiki = {
     pname = "fcitx5-pinyin-zhwiki";
-    version = "20251104";
+    version = "20251223";
     src = fetchurl {
-      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.3.0/zhwiki-20251104.dict";
-      sha256 = "sha256-bYp4HRUeXMUO7bkjmhp9nfotnBvyVRIROSeT7VapAKc=";
+      url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.3.0/zhwiki-20251223.dict";
+      sha256 = "sha256-1/KKfeRhor1LGYBrOHqLvxfK9Byv3AplzqVX3lRO50Y=";
     };
   };
   moviepilot-core = {
@@ -30,38 +30,38 @@
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.8.8";
+    version = "v2.8.9";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Frontend";
-      rev = "v2.8.8";
+      rev = "v2.8.9";
       fetchSubmodules = false;
-      sha256 = "sha256-VRN4Uo8LxN3m92/XeZtAj4P2Sv5mDs4qsXCZjc3sVBM=";
+      sha256 = "sha256-m2p2aIN54dQxTzqXd4lCEXiMywx3Fq1KKvkqOuOGXQg=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "6d601232723a15a561e7ae92b8cbacc59e68b08d";
+    version = "d7effcd625ad40cdfb0f1cd36be7e8231cb91582";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Plugins";
-      rev = "6d601232723a15a561e7ae92b8cbacc59e68b08d";
+      rev = "d7effcd625ad40cdfb0f1cd36be7e8231cb91582";
       fetchSubmodules = false;
-      sha256 = "sha256-xzETRE+zrDBSym65xLDFoi2Dm09J5/98CbNhYguZ3j8=";
+      sha256 = "sha256-slQ2+qy9lUCiDlTodCS6XPUqH0OEv9bRXu90xOrdRcM=";
     };
-    date = "2025-12-13";
+    date = "2025-12-23";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
-    version = "ecef52e702dde312511b99aea35c8cbfd2865ca1";
+    version = "b6be2a078f222d4133ab57a106f2a825e974ab29";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Resources";
-      rev = "ecef52e702dde312511b99aea35c8cbfd2865ca1";
+      rev = "b6be2a078f222d4133ab57a106f2a825e974ab29";
       fetchSubmodules = false;
-      sha256 = "sha256-L6NdUhUXx7UmtyxcNEqsepK2NDLQy17N/HBFaDBZIOQ=";
+      sha256 = "sha256-/9prPK+P5R6wNKZTQxUr6HyteRNizSFw2ddoHtmn0Mc=";
     };
-    date = "2025-12-08";
+    date = "2025-12-23";
   };
   sierra-breeze-enhanced-git = {
     pname = "sierra-breeze-enhanced-git";
