@@ -6,4 +6,5 @@
 }).overrideAttrs (p: {
   version = "${p.version}-vapoursynth";
   __intentionallyOverridingVersion = true;
+  nativeInstallCheckInputs = [];  # Skip versionCheck
 })
