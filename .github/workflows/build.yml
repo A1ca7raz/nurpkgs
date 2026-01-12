@@ -60,7 +60,7 @@ jobs:
         nix_conf: ${{ env.nix_conf }}
 
     - name: 0.3. Setup cache
-      uses: nix-community/cache-nix-action@v6
+      uses: nix-community/cache-nix-action@v7
       with:
         primary-key: nur-${{ runner.os }}-individual-${{ inputs.package }}-${{ hashFiles('flake.lock', 'pkgs/_sources/generated.nix') }}
         restore-prefixes-first-match: nur-${{ runner.os }}-shared-${{ hashFiles('flake.lock', 'pkgs/_sources/generated.nix') }}
