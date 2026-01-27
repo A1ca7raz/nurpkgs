@@ -1,6 +1,6 @@
 {
     "fcitx5-pinyin-moegirl": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "fcitx5-pinyin-moegirl",
@@ -15,7 +15,7 @@
         "version": "20260109"
     },
     "fcitx5-pinyin-zhwiki": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "fcitx5-pinyin-zhwiki",
@@ -30,7 +30,7 @@
         "version": "20251223"
     },
     "moviepilot-core": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "moviepilot-core",
@@ -43,15 +43,15 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot",
-            "rev": "v2.9.4",
-            "sha256": "sha256-TEzEcpf6XNlLUY1PlJp7AmY9BSMMxYmLiRVgDQp3UkU=",
+            "rev": "v2.9.7",
+            "sha256": "sha256-v82ihCqehqtuuPfjrqoKj8jSuiMSeSjYrMITxxa8sew=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v2.9.4"
+        "version": "v2.9.7"
     },
     "moviepilot-frontend": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "moviepilot-frontend",
@@ -64,16 +64,16 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Frontend",
-            "rev": "v2.9.5",
-            "sha256": "sha256-eN1M0Ojp8TCLD+WEoiAzzrBzq5FwPtYC8A5HoxWpGzk=",
+            "rev": "v2.9.7",
+            "sha256": "sha256-IOHe88g4bJakNYi1Nx+GQzZ5VLzvsByQaNnobbH9rYo=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v2.9.5"
+        "version": "v2.9.7"
     },
     "moviepilot-plugins": {
-        "cargoLocks": null,
-        "date": "2026-01-14",
+        "cargoLock": null,
+        "date": "2026-01-26",
         "extract": null,
         "name": "moviepilot-plugins",
         "passthru": null,
@@ -85,16 +85,16 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Plugins",
-            "rev": "d2503648a9949aa43138d3f5f21c65d63e93ff71",
-            "sha256": "sha256-O6vxPLkHqnBZYqrmzxPrKx9fkJgW+jTs4m0dPr72/zk=",
+            "rev": "4d1b90abc8dce3ac05a9912dcab7894eedb37d2f",
+            "sha256": "sha256-OPt46DHRp2xU6GVLdCwHLTTzvnXgeO15SbOQwxN37O8=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "d2503648a9949aa43138d3f5f21c65d63e93ff71"
+        "version": "4d1b90abc8dce3ac05a9912dcab7894eedb37d2f"
     },
     "moviepilot-resources": {
-        "cargoLocks": null,
-        "date": "2026-01-15",
+        "cargoLock": null,
+        "date": "2026-01-22",
         "extract": null,
         "name": "moviepilot-resources",
         "passthru": null,
@@ -106,15 +106,15 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Resources",
-            "rev": "64e72a0e0f7cbeaaa0160f2972facaf5ae6dc496",
-            "sha256": "sha256-MV1Nui4963i3LhtutHHLYkxvin9RKWfLoAaqbp2idew=",
+            "rev": "c03973c28080371fcf4db5702a3f3782e47d016e",
+            "sha256": "sha256-2hHYQbOslvXzhqechM16iYF409NTmG7/1+47OVFv96I=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "64e72a0e0f7cbeaaa0160f2972facaf5ae6dc496"
+        "version": "c03973c28080371fcf4db5702a3f3782e47d016e"
     },
     "sierra-breeze-enhanced-git": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": "2025-10-14",
         "extract": null,
         "name": "sierra-breeze-enhanced-git",
@@ -135,7 +135,7 @@
         "version": "4a4f085aa5c48ad11071dee4e92289c2cc4a36cd"
     },
     "teamspeak-management-tools": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "teamspeak-management-tools",
