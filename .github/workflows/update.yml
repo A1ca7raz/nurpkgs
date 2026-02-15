@@ -71,21 +71,21 @@ jobs:
 
     - name: 3-1. Bump flake.lock ONLY
       if: ${{ inputs.update_lock == true && inputs.update_source == false }}
-      uses: stefanzweifel/git-auto-commit-action@v6
+      uses: stefanzweifel/git-auto-commit-action@v7
       with:
         commit_message: "Update: flake.lock"
         file_pattern: "flake.lock"
 
     - name: 3-2. Bump sources ONLY
       if: ${{ inputs.update_source == true && inputs.update_lock == false }}
-      uses: stefanzweifel/git-auto-commit-action@v6
+      uses: stefanzweifel/git-auto-commit-action@v7
       with:
         commit_message: "Update: source"
         file_pattern: "pkgs/_sources"
 
     - name: 3-3. Bump flake.lock and sources
       if: ${{ inputs.update_source == true && inputs.update_lock == true || github.event_name == 'repository_dispatch' }}
-      uses: stefanzweifel/git-auto-commit-action@v6
+      uses: stefanzweifel/git-auto-commit-action@v7
       with:
         commit_message: "Update: flake.lock&sources"
         file_pattern: "flake.lock pkgs/_sources"
