@@ -1,7 +1,7 @@
 {
-  mpv-unwrapped
+  mpv
 }:
-(mpv-unwrapped.override {
+(mpv.override {
   vapoursynthSupport = true;
 }).overrideAttrs (p: {
   version = "${p.version}-vapoursynth";
