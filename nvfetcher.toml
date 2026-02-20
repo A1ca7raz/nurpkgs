@@ -1,3 +1,7 @@
+[applet-window-title6]
+src.github = "dhruv8sh/plasma6-window-title-applet"
+fetch.github = "dhruv8sh/plasma6-window-title-applet"
+
 [fcitx5-pinyin-moegirl]
 src.github = "outloudvi/mw2fcitx"
 fetch.url = "https://github.com/outloudvi/mw2fcitx/releases/download/$ver/moegirl.dict"

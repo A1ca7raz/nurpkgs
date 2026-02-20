@@ -1,4 +1,25 @@
 {
+    "applet-window-title6": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "applet-window-title6",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "dhruv8sh",
+            "repo": "plasma6-window-title-applet",
+            "rev": "v0.9.0",
+            "sha256": "sha256-pFXVySorHq5EpgsBz01vZQ0sLAy2UrF4VADMjyz2YLs=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v0.9.0"
+    },
     "fcitx5-pinyin-moegirl": {
         "cargoLock": null,
         "date": null,

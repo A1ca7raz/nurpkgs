@@ -6,6 +6,17 @@
   dockerTools,
 }:
 {
+  applet-window-title6 = {
+    pname = "applet-window-title6";
+    version = "v0.9.0";
+    src = fetchFromGitHub {
+      owner = "dhruv8sh";
+      repo = "plasma6-window-title-applet";
+      rev = "v0.9.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-pFXVySorHq5EpgsBz01vZQ0sLAy2UrF4VADMjyz2YLs=";
+    };
+  };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
     version = "20260209";
