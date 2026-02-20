@@ -35,24 +35,24 @@
   };
   moviepilot-core = {
     pname = "moviepilot-core";
-    version = "v2.9.10";
+    version = "v2.9.11";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.9.10";
+      rev = "v2.9.11";
       fetchSubmodules = false;
-      sha256 = "sha256-/NkNB1QmWBbVTECX/lEL69AVld3A0o97WYE4VpwYS1Q=";
+      sha256 = "sha256-9opSKZU+7t2zP1AuJwhkmepTELlmuyubkX+upL8trhI=";
     };
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.9.10";
+    version = "v2.9.11";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Frontend";
-      rev = "v2.9.10";
+      rev = "v2.9.11";
       fetchSubmodules = false;
-      sha256 = "sha256-6FFq0QG5KzQ59VB6EM6qXtF7HXVRbqD3iW060pHilYg=";
+      sha256 = "sha256-DcaOw5RvU5nO2lj6yXfBjw2RtRFPSMAyeqk1+ScVfCk=";
     };
   };
   moviepilot-plugins = {
