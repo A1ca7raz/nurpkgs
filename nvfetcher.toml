@@ -11,6 +11,10 @@ src.archpkg = "fcitx5-pinyin-zhwiki"
 src.prefix = "0.3.0."
 fetch.url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.3.0/zhwiki-$ver.dict"
 
+[kwin-effects-dynamic-workspaces]
+src.git = "https://github.com/maurges/dynamic_workspaces"
+fetch.git = "https://github.com/maurges/dynamic_workspaces"
+
 [moviepilot-core]
 src.github_tag = "jxxghp/MoviePilot"
 src.include_regex = "^v2.[0-9.]+$"

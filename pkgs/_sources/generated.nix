@@ -33,6 +33,20 @@
       sha256 = "sha256-1/KKfeRhor1LGYBrOHqLvxfK9Byv3AplzqVX3lRO50Y=";
     };
   };
+  kwin-effects-dynamic-workspaces = {
+    pname = "kwin-effects-dynamic-workspaces";
+    version = "a06e723804398d672be74eba0cd4ccee062e1410";
+    src = fetchgit {
+      url = "https://github.com/maurges/dynamic_workspaces";
+      rev = "a06e723804398d672be74eba0cd4ccee062e1410";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sparseCheckout = [ ];
+      sha256 = "sha256-fOxWVj6bB5nBiPXvVvjwc3MVjKWaOniqPe7UnsPsusE=";
+    };
+    date = "2025-04-13";
+  };
   moviepilot-core = {
     pname = "moviepilot-core";
     version = "v2.9.11";

@@ -50,6 +50,26 @@
         },
         "version": "20251223"
     },
+    "kwin-effects-dynamic-workspaces": {
+        "cargoLock": null,
+        "date": "2025-04-13",
+        "extract": null,
+        "name": "kwin-effects-dynamic-workspaces",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "a06e723804398d672be74eba0cd4ccee062e1410",
+            "sha256": "sha256-fOxWVj6bB5nBiPXvVvjwc3MVjKWaOniqPe7UnsPsusE=",
+            "sparseCheckout": [],
+            "type": "git",
+            "url": "https://github.com/maurges/dynamic_workspaces"
+        },
+        "version": "a06e723804398d672be74eba0cd4ccee062e1410"
+    },
     "moviepilot-core": {
         "cargoLock": null,
         "date": null,
