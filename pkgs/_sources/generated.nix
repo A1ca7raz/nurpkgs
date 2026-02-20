@@ -6,17 +6,6 @@
   dockerTools,
 }:
 {
-  applet-window-title6 = {
-    pname = "applet-window-title6";
-    version = "v0.9.0";
-    src = fetchFromGitHub {
-      owner = "dhruv8sh";
-      repo = "plasma6-window-title-applet";
-      rev = "v0.9.0";
-      fetchSubmodules = false;
-      sha256 = "sha256-pFXVySorHq5EpgsBz01vZQ0sLAy2UrF4VADMjyz2YLs=";
-    };
-  };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
     version = "20260209";
@@ -92,6 +81,17 @@
       sha256 = "sha256-hBg9ZHPKjARluk9euGYWdv2Gdiw2NDgi30CAwbFOtOg=";
     };
     date = "2026-02-10";
+  };
+  plasma-applet-window-title6 = {
+    pname = "plasma-applet-window-title6";
+    version = "v0.9.0";
+    src = fetchFromGitHub {
+      owner = "dhruv8sh";
+      repo = "plasma6-window-title-applet";
+      rev = "v0.9.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-pFXVySorHq5EpgsBz01vZQ0sLAy2UrF4VADMjyz2YLs=";
+    };
   };
   plasma-panel-colorizer-nighty = {
     pname = "plasma-panel-colorizer-nighty";

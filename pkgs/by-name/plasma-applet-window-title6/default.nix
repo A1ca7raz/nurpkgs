@@ -15,10 +15,10 @@ stdenv.mkDerivation {
   dontBuild = true;
 
   installPhase = ''
-    mkdir -p $out/share/plasma/plasmoids/plasma6-window-title-applet
-    cp -r $src/* $out/share/plasma/plasmoids/plasma6-window-title-applet
+    mkdir -p $out/share/plasma/plasmoids/org.kde.windowtitle
+    cp -r $src/* $out/share/plasma/plasmoids/org.kde.windowtitle
 
-    rm $out/share/plasma/plasmoids/plasma6-window-title-applet/install.sh
-    rm $out/share/plasma/plasmoids/plasma6-window-title-applet/README.md
+    rm $out/share/plasma/plasmoids/org.kde.windowtitle/install.sh
+    rm $out/share/plasma/plasmoids/org.kde.windowtitle/README.md
   '';
 }
