@@ -79,6 +79,17 @@
     };
     date = "2026-02-10";
   };
+  plasma-panel-colorizer-nighty = {
+    pname = "plasma-panel-colorizer-nighty";
+    version = "v6.8.1";
+    src = fetchFromGitHub {
+      owner = "luisbocanegra";
+      repo = "plasma-panel-colorizer";
+      rev = "v6.8.1";
+      fetchSubmodules = false;
+      sha256 = "sha256-ePY9Q+43ejFNyzHOObo4CkhYX9XTnwyelHO5+N+t1wE=";
+    };
+  };
   sierra-breeze-enhanced-git = {
     pname = "sierra-breeze-enhanced-git";
     version = "4a4f085aa5c48ad11071dee4e92289c2cc4a36cd";

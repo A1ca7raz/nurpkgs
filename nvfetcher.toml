@@ -29,6 +29,10 @@ fetch.github = "jxxghp/MoviePilot-Plugins"
 src.git = "https://github.com/jxxghp/MoviePilot-Resources"
 fetch.github = "jxxghp/MoviePilot-Resources"
 
+[plasma-panel-colorizer-nighty]
+src.github = "luisbocanegra/plasma-panel-colorizer"
+fetch.github = "luisbocanegra/plasma-panel-colorizer"
+
 [sierra-breeze-enhanced-git]
 src.git = "https://github.com/kupiqu/SierraBreezeEnhanced"
 fetch.github = "kupiqu/SierraBreezeEnhanced"

@@ -134,6 +134,27 @@
         },
         "version": "1da8b2d56ccda1733e993619ae8125c073ac6ab8"
     },
+    "plasma-panel-colorizer-nighty": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "plasma-panel-colorizer-nighty",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "luisbocanegra",
+            "repo": "plasma-panel-colorizer",
+            "rev": "v6.8.1",
+            "sha256": "sha256-ePY9Q+43ejFNyzHOObo4CkhYX9XTnwyelHO5+N+t1wE=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v6.8.1"
+    },
     "sierra-breeze-enhanced-git": {
         "cargoLock": null,
         "date": "2025-10-14",
