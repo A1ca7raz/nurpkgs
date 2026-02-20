@@ -6,13 +6,13 @@
 # https://github.com/taj-ny/nix-config/blob/main/pkgs/kwin-effects-geometry-change/default.nix
 stdenv.mkDerivation rec {
   pname = "kwin-effects-geometry-change";
-  version = "1.3";
+  version = "1.5";
 
   src = fetchFromGitHub {
     owner = "peterfajdiga";
     repo = "kwin4_effect_geometry_change";
     rev = "v${version}";
-    hash = "sha256-H3cslx6ceAJGXSa0+gNzmUINRoLeYODhGt4pSFfgNbQ=";
+    hash = "sha256-p4FpqagR8Dxi+r9A8W5rGM5ybaBXP0gRKAuzigZ1lyA=";
   };
 
 #   patches = [ ./polonium-virtual-desktop-animation-fix.patch ];
