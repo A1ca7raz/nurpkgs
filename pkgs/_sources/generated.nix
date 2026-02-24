@@ -38,37 +38,37 @@
   };
   moviepilot-core = {
     pname = "moviepilot-core";
-    version = "v2.9.11";
+    version = "v2.9.12";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.9.11";
+      rev = "v2.9.12";
       fetchSubmodules = false;
-      sha256 = "sha256-9opSKZU+7t2zP1AuJwhkmepTELlmuyubkX+upL8trhI=";
+      sha256 = "sha256-UtPzaFjds0hhP2McdCz7s2pwXHiGwLhR8pPP8NJi+LU=";
     };
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.9.11";
+    version = "v2.9.12";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Frontend";
-      rev = "v2.9.11";
+      rev = "v2.9.12";
       fetchSubmodules = false;
-      sha256 = "sha256-DcaOw5RvU5nO2lj6yXfBjw2RtRFPSMAyeqk1+ScVfCk=";
+      sha256 = "sha256-CXHPa+FyQRoIEAA7zUkM8H15WmibqoU7AVhhGbXB5OA=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "b938ca5bf3d49857b6f82959ac437a43ad35ea7f";
+    version = "1ae826cf14d8e6094826f5ebf8442d648bac719b";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Plugins";
-      rev = "b938ca5bf3d49857b6f82959ac437a43ad35ea7f";
+      rev = "1ae826cf14d8e6094826f5ebf8442d648bac719b";
       fetchSubmodules = false;
-      sha256 = "sha256-p/5cZfrU/cbZqFstBdkXCT25fL3shecAhxfPM9WYNjE=";
+      sha256 = "sha256-1krQBhPmDBcnykfjrwNGDNwEBOzoaaDV38HP2leJ0J8=";
     };
-    date = "2026-02-10";
+    date = "2026-02-24";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
