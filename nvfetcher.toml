@@ -44,3 +44,11 @@ fetch.github = "kupiqu/SierraBreezeEnhanced"
 [teamspeak-management-tools]
 src.github = "KunoiSayami/teamspeak-management-tools.rs"
 fetch.github = "KunoiSayami/teamspeak-management-tools.rs"
+
+[tela-icon-theme-nighty]
+src.git = "https://github.com/vinceliuice/tela-icon-theme"
+fetch.git = "https://github.com/vinceliuice/tela-icon-theme"
+
+[tela-circle-icon-theme-nighty]
+src.git = "https://github.com/vinceliuice/Tela-circle-icon-theme"
+fetch.git = "https://github.com/vinceliuice/Tela-circle-icon-theme"

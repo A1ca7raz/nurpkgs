@@ -127,4 +127,32 @@
       sha256 = "sha256-NDoaCMJ4p7JWNtBBniS5A5TlopQWitIyT9V5DBzvFrI=";
     };
   };
+  tela-circle-icon-theme-nighty = {
+    pname = "tela-circle-icon-theme-nighty";
+    version = "bdb616e4cb0cf61fc6bd52a42af9c07261015b21";
+    src = fetchgit {
+      url = "https://github.com/vinceliuice/Tela-circle-icon-theme";
+      rev = "bdb616e4cb0cf61fc6bd52a42af9c07261015b21";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sparseCheckout = [ ];
+      sha256 = "sha256-3vqFK+yyk3EJwEpeKY92CHpFKLbXWDu1W3IDGl93VDo=";
+    };
+    date = "2025-12-11";
+  };
+  tela-icon-theme-nighty = {
+    pname = "tela-icon-theme-nighty";
+    version = "340333cfd0ebdab7ea9d25cd66a5142c440d2f48";
+    src = fetchgit {
+      url = "https://github.com/vinceliuice/tela-icon-theme";
+      rev = "340333cfd0ebdab7ea9d25cd66a5142c440d2f48";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sparseCheckout = [ ];
+      sha256 = "sha256-IN1sQdZIoaonRc8AB1wdiRsFCfvGeZ5kzzLT16l/9wA=";
+    };
+    date = "2025-12-05";
+  };
 }
