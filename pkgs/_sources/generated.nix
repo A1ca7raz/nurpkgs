@@ -60,15 +60,15 @@
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "1ae826cf14d8e6094826f5ebf8442d648bac719b";
+    version = "437b2b05d43f67dca5ee5c0d5faf4124990404d3";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Plugins";
-      rev = "1ae826cf14d8e6094826f5ebf8442d648bac719b";
+      rev = "437b2b05d43f67dca5ee5c0d5faf4124990404d3";
       fetchSubmodules = false;
-      sha256 = "sha256-1krQBhPmDBcnykfjrwNGDNwEBOzoaaDV38HP2leJ0J8=";
+      sha256 = "sha256-z/M3RbTChSPE/Gr/blyPSMrLYV95C9SmYXBemUIT7tY=";
     };
-    date = "2026-02-24";
+    date = "2026-02-25";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";

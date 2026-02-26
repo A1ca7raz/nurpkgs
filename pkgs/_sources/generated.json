@@ -93,7 +93,7 @@
     },
     "moviepilot-plugins": {
         "cargoLock": null,
-        "date": "2026-02-24",
+        "date": "2026-02-25",
         "extract": null,
         "name": "moviepilot-plugins",
         "passthru": null,
@@ -105,12 +105,12 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Plugins",
-            "rev": "1ae826cf14d8e6094826f5ebf8442d648bac719b",
-            "sha256": "sha256-1krQBhPmDBcnykfjrwNGDNwEBOzoaaDV38HP2leJ0J8=",
+            "rev": "437b2b05d43f67dca5ee5c0d5faf4124990404d3",
+            "sha256": "sha256-z/M3RbTChSPE/Gr/blyPSMrLYV95C9SmYXBemUIT7tY=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "1ae826cf14d8e6094826f5ebf8442d648bac719b"
+        "version": "437b2b05d43f67dca5ee5c0d5faf4124990404d3"
     },
     "moviepilot-resources": {
         "cargoLock": null,
