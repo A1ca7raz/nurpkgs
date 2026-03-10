@@ -8,10 +8,10 @@
 {
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20260209";
+    version = "20260310";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20260209/moegirl.dict";
-      sha256 = "sha256-ZpuAcS6KgVRL8ru+U///Zi7jiXLGIbSx6dPF0KWLvwQ=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20260310/moegirl.dict";
+      sha256 = "sha256-A+XfMCmu2l31/zDsTFcPfBx9Kx4LgKy/V5LqdlB4E8w=";
     };
   };
   fcitx5-pinyin-zhwiki = {
@@ -38,37 +38,37 @@
   };
   moviepilot-core = {
     pname = "moviepilot-core";
-    version = "v2.9.12";
+    version = "v2.9.13";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.9.12";
+      rev = "v2.9.13";
       fetchSubmodules = false;
-      sha256 = "sha256-UtPzaFjds0hhP2McdCz7s2pwXHiGwLhR8pPP8NJi+LU=";
+      sha256 = "sha256-PfuakfnVGMw1h+MI4Nh3jPozkVJpyZvluEsEtvQV3gg=";
     };
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.9.12";
+    version = "v2.9.14";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Frontend";
-      rev = "v2.9.12";
+      rev = "v2.9.14";
       fetchSubmodules = false;
-      sha256 = "sha256-CXHPa+FyQRoIEAA7zUkM8H15WmibqoU7AVhhGbXB5OA=";
+      sha256 = "sha256-fME3kBIgbQikcqStWpmkQIyGhFqbytm7NPxCb6zMrf4=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "437b2b05d43f67dca5ee5c0d5faf4124990404d3";
+    version = "8d30ba5c692781ed8142acce5a8bfd69fbe5be04";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Plugins";
-      rev = "437b2b05d43f67dca5ee5c0d5faf4124990404d3";
+      rev = "8d30ba5c692781ed8142acce5a8bfd69fbe5be04";
       fetchSubmodules = false;
-      sha256 = "sha256-z/M3RbTChSPE/Gr/blyPSMrLYV95C9SmYXBemUIT7tY=";
+      sha256 = "sha256-Y0TWEvt0O9vSMhcZAlCeFfCQd2U385IgJMOTWb1+Blo=";
     };
-    date = "2026-02-25";
+    date = "2026-03-08";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
