@@ -8,11 +8,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-A+XfMCmu2l31/zDsTFcPfBx9Kx4LgKy/V5LqdlB4E8w=",
+            "sha256": "sha256-YnN1ArHyikV0kADquH2kwpk7cpiXKcL6YwUxVJXlQKM=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20260310/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20260315/moegirl.dict"
         },
-        "version": "20260310"
+        "version": "20260315"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLock": null,
@@ -63,12 +63,12 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot",
-            "rev": "v2.9.13",
-            "sha256": "sha256-PfuakfnVGMw1h+MI4Nh3jPozkVJpyZvluEsEtvQV3gg=",
+            "rev": "v2.9.15",
+            "sha256": "sha256-a0qE+Mjk0gPSodYA7d52KLNZbWVw0PT7/wtkXP4m8Wk=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v2.9.13"
+        "version": "v2.9.15"
     },
     "moviepilot-frontend": {
         "cargoLock": null,
@@ -84,16 +84,16 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Frontend",
-            "rev": "v2.9.14",
-            "sha256": "sha256-fME3kBIgbQikcqStWpmkQIyGhFqbytm7NPxCb6zMrf4=",
+            "rev": "v2.9.15",
+            "sha256": "sha256-DRDJSU1o7JSdtSgmnw2nJD0JL8sOHAzrAbIzNDY7G/0=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v2.9.14"
+        "version": "v2.9.15"
     },
     "moviepilot-plugins": {
         "cargoLock": null,
-        "date": "2026-03-08",
+        "date": "2026-03-16",
         "extract": null,
         "name": "moviepilot-plugins",
         "passthru": null,
@@ -105,16 +105,16 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Plugins",
-            "rev": "8d30ba5c692781ed8142acce5a8bfd69fbe5be04",
-            "sha256": "sha256-Y0TWEvt0O9vSMhcZAlCeFfCQd2U385IgJMOTWb1+Blo=",
+            "rev": "20e18117ab24e9439e57dd6a8db03cb1a97aec82",
+            "sha256": "sha256-4qYNLOd7/jcSSZ7BKHeX5AS//kxb4gG5A0cCiUDpJs4=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "8d30ba5c692781ed8142acce5a8bfd69fbe5be04"
+        "version": "20e18117ab24e9439e57dd6a8db03cb1a97aec82"
     },
     "moviepilot-resources": {
         "cargoLock": null,
-        "date": "2026-02-10",
+        "date": "2026-03-11",
         "extract": null,
         "name": "moviepilot-resources",
         "passthru": null,
@@ -126,12 +126,12 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot-Resources",
-            "rev": "1da8b2d56ccda1733e993619ae8125c073ac6ab8",
-            "sha256": "sha256-hBg9ZHPKjARluk9euGYWdv2Gdiw2NDgi30CAwbFOtOg=",
+            "rev": "5ed4280ac980dffc85aec1859613735893095c07",
+            "sha256": "sha256-6FhAhMLH8S/fPHXJJjyWi4BAnCShoiPFL3bkccUdW2w=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "1da8b2d56ccda1733e993619ae8125c073ac6ab8"
+        "version": "5ed4280ac980dffc85aec1859613735893095c07"
     },
     "plasma-applet-window-title6": {
         "cargoLock": null,
