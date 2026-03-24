@@ -38,49 +38,49 @@
   };
   moviepilot-core = {
     pname = "moviepilot-core";
-    version = "v2.9.15";
+    version = "v2.9.17";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.9.15";
+      rev = "v2.9.17";
       fetchSubmodules = false;
-      sha256 = "sha256-a0qE+Mjk0gPSodYA7d52KLNZbWVw0PT7/wtkXP4m8Wk=";
+      sha256 = "sha256-7pyemcHXLvXM8Bio9c1sfC+RIweVl2h7OaCXeGdQJys=";
     };
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.9.15";
+    version = "v2.9.16";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Frontend";
-      rev = "v2.9.15";
+      rev = "v2.9.16";
       fetchSubmodules = false;
-      sha256 = "sha256-DRDJSU1o7JSdtSgmnw2nJD0JL8sOHAzrAbIzNDY7G/0=";
+      sha256 = "sha256-JtZ//feyE8kcLBvVSH/UYz23laRUfmR4qLw0NBm5IXU=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "20e18117ab24e9439e57dd6a8db03cb1a97aec82";
+    version = "7f41a8a5f223fdf2564bd06c6d76c9a0a0814ee5";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Plugins";
-      rev = "20e18117ab24e9439e57dd6a8db03cb1a97aec82";
+      rev = "7f41a8a5f223fdf2564bd06c6d76c9a0a0814ee5";
       fetchSubmodules = false;
-      sha256 = "sha256-4qYNLOd7/jcSSZ7BKHeX5AS//kxb4gG5A0cCiUDpJs4=";
+      sha256 = "sha256-rZkby3mHQrDND+g9sOwe8ZMBpA5ev1+iGUqkXfRGFCc=";
     };
-    date = "2026-03-16";
+    date = "2026-03-24";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
-    version = "5ed4280ac980dffc85aec1859613735893095c07";
+    version = "cf1dfb09150f2b5d63ce86460c5b54a72949f2dd";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Resources";
-      rev = "5ed4280ac980dffc85aec1859613735893095c07";
+      rev = "cf1dfb09150f2b5d63ce86460c5b54a72949f2dd";
       fetchSubmodules = false;
-      sha256 = "sha256-6FhAhMLH8S/fPHXJJjyWi4BAnCShoiPFL3bkccUdW2w=";
+      sha256 = "sha256-JKSMJFFgra91U31R0ZLgkoWcy3HMlL2EDOfuTxCrVLs=";
     };
-    date = "2026-03-11";
+    date = "2026-03-23";
   };
   plasma-applet-window-title6 = {
     pname = "plasma-applet-window-title6";
