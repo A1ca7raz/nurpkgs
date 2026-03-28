@@ -306,11 +306,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1774702682,
-        "narHash": "sha256-M0EW91FTW6xKTH1gP+VCpEKlkRZ8Ms/CPfRtjNR3xBA=",
+        "lastModified": 1774707316,
+        "narHash": "sha256-MrTFx3/yPfky4viNdH9IbF2GpIDQEfsGc9/rTTIPMXU=",
         "owner": "A1ca7raz",
         "repo": "inputs-hub",
-        "rev": "228245deadf73f7ca3ff95f0cb480222d57b2169",
+        "rev": "39cfe22333a285a684cc00eca9da4538d9476f75",
         "type": "github"
       },
       "original": {
@@ -380,15 +380,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1774616418,
-        "narHash": "sha256-z+dLkAS4bqytIlOI4h2MnjBJrSP4d1Awx0n+IV5YA3Y=",
+        "lastModified": 1774190104,
+        "narHash": "sha256-L/Ldq9G41Mj8WjWTuC+rePvWIx1A/tHdFpLbQmtrMSA=",
         "owner": "niri-wm",
         "repo": "niri",
-        "rev": "8f48f56fe19918b5cfa02e5d68a47ebaf7bf3dee",
+        "rev": "d06dd4b9e60fa07120c217aa095f3ed8caac99f2",
         "type": "github"
       },
       "original": {
         "owner": "niri-wm",
+        "ref": "wip/branch",
         "repo": "niri",
         "type": "github"
       }
