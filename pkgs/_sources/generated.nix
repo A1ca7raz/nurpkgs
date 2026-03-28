@@ -38,37 +38,37 @@
   };
   moviepilot-core = {
     pname = "moviepilot-core";
-    version = "v2.9.17";
+    version = "v2.9.21";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.9.17";
+      rev = "v2.9.21";
       fetchSubmodules = false;
-      sha256 = "sha256-7pyemcHXLvXM8Bio9c1sfC+RIweVl2h7OaCXeGdQJys=";
+      sha256 = "sha256-lOfykOerPQ2fSpbkat9yv9URNI285Qk3k2VPnJQ8YC4=";
     };
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.9.16";
+    version = "v2.9.21";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Frontend";
-      rev = "v2.9.16";
+      rev = "v2.9.21";
       fetchSubmodules = false;
-      sha256 = "sha256-JtZ//feyE8kcLBvVSH/UYz23laRUfmR4qLw0NBm5IXU=";
+      sha256 = "sha256-TLwl6hh7FBnLsGoMgb4dTEabeoaJysCmQijaCuuoyfo=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "7f41a8a5f223fdf2564bd06c6d76c9a0a0814ee5";
+    version = "f3d1aa1ea9447699e5a2ba92bcbb3743fbfa0c0b";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Plugins";
-      rev = "7f41a8a5f223fdf2564bd06c6d76c9a0a0814ee5";
+      rev = "f3d1aa1ea9447699e5a2ba92bcbb3743fbfa0c0b";
       fetchSubmodules = false;
-      sha256 = "sha256-rZkby3mHQrDND+g9sOwe8ZMBpA5ev1+iGUqkXfRGFCc=";
+      sha256 = "sha256-h4H5vY2ZTMrvKGH6j6cTQSkgsEpqqYo8km2Yzm4ogfM=";
     };
-    date = "2026-03-24";
+    date = "2026-03-27";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
@@ -95,13 +95,13 @@
   };
   plasma-panel-colorizer-nighty = {
     pname = "plasma-panel-colorizer-nighty";
-    version = "v6.8.1";
+    version = "v6.9.1";
     src = fetchFromGitHub {
       owner = "luisbocanegra";
       repo = "plasma-panel-colorizer";
-      rev = "v6.8.1";
+      rev = "v6.9.1";
       fetchSubmodules = false;
-      sha256 = "sha256-ePY9Q+43ejFNyzHOObo4CkhYX9XTnwyelHO5+N+t1wE=";
+      sha256 = "sha256-9AmevhSaDJ97dcbghA/WxczY66MXkkpFVCVclOcK6j0=";
     };
   };
   sierra-breeze-enhanced-git = {
