@@ -4,7 +4,7 @@
   inputs,
   sources,
   bash,
-  python312,
+  python313,
   jq,
   gawk,
   playwright-driver,
@@ -32,7 +32,7 @@ let
 
   pythonSet =
     (callPackage pyproject-nix.build.packages {
-      python = python312;
+      python = python313;
     }).overrideScope (
       lib.composeManyExtensions [
         pyproject-build-systems.overlays.default
@@ -122,7 +122,7 @@ stdenv.mkDerivation rec {
 
     offlineCache = fetchYarnDeps {
       yarnLock = "${src}/yarn.lock";
-      hash = "sha256-+nSB3qoh18t8AZm+G/R7y1J4zv6G0AAuZAPOnzfyCiw=";
+      hash = "sha256-qcNSasJcVDWUyionDQHQWZMNkvoNDtHh5wW75+26Dhg=";
     };
 
     prePatch = ''

@@ -15,21 +15,19 @@ let
   # `setuptools-scm[toml]` in pyproject.toml would be written as
   # `foo.setuptools-scm = [ "toml" ]` in Nix
   buildSystemOverrides = overrideSetuptools [
-    "anitopy"
+    "aiohttp"
     "aliyun-python-sdk-core"
+    "anitopy"
+    "asyncpg"
+    "audioop"
+    "audioop-lts"
+    "cffi"
     "crcmod"
-    "func-timeout"
     "http-ece"
-    "iso639"
     "jieba"
     "oss2"
-    "paho-mqtt"
     "pinyin2hanzi"
-    "pytelegrambotapi"
-    "regex"
-    "srt"
     "zhconv"
-    "python-hosts"
   ];
 in
 mapAttrs (
