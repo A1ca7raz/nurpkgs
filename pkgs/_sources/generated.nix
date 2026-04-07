@@ -38,24 +38,24 @@
   };
   moviepilot-core = {
     pname = "moviepilot-core";
-    version = "v2.9.23";
+    version = "v2.9.26";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.9.23";
+      rev = "v2.9.26";
       fetchSubmodules = false;
-      sha256 = "sha256-JW/JWA6ESF6H03gvvAw9wnlju5cvQnXb75pyaB3/Nr8=";
+      sha256 = "sha256-qYQBPXoAcbojWRqB6+4/e7xzQKuPMI0CFQO8gvDghp0=";
     };
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.9.23";
+    version = "v2.9.26";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Frontend";
-      rev = "v2.9.23";
+      rev = "v2.9.26";
       fetchSubmodules = false;
-      sha256 = "sha256-EC08nTfjh4dJ7x7oFnIV/KW8A+cj0I2Or88L+44yKzw=";
+      sha256 = "sha256-MjGPNeVlbIBqhHXMMXNOiQDH2mRQgs+iIObfr/eHPIo=";
     };
   };
   moviepilot-plugins = {
@@ -95,13 +95,13 @@
   };
   plasma-panel-colorizer-nighty = {
     pname = "plasma-panel-colorizer-nighty";
-    version = "v6.9.1";
+    version = "v6.10.0";
     src = fetchFromGitHub {
       owner = "luisbocanegra";
       repo = "plasma-panel-colorizer";
-      rev = "v6.9.1";
+      rev = "v6.10.0";
       fetchSubmodules = false;
-      sha256 = "sha256-9AmevhSaDJ97dcbghA/WxczY66MXkkpFVCVclOcK6j0=";
+      sha256 = "sha256-s5KdQLBjy7RlgUwZScw9b6GLPsMBZzeV/kETtGdkNNE=";
     };
   };
   sierra-breeze-enhanced-git = {
