@@ -8,10 +8,10 @@
 {
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20260315";
+    version = "20260412";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20260315/moegirl.dict";
-      sha256 = "sha256-YnN1ArHyikV0kADquH2kwpk7cpiXKcL6YwUxVJXlQKM=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20260412/moegirl.dict";
+      sha256 = "sha256-YsdZU56dB0o1pV7SJG1/SMhShMoZmiSJ53jSsbph9gk=";
     };
   };
   fcitx5-pinyin-zhwiki = {
@@ -38,49 +38,49 @@
   };
   moviepilot-core = {
     pname = "moviepilot-core";
-    version = "v2.9.26";
+    version = "v2.9.30";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.9.26";
+      rev = "v2.9.30";
       fetchSubmodules = false;
-      sha256 = "sha256-qYQBPXoAcbojWRqB6+4/e7xzQKuPMI0CFQO8gvDghp0=";
+      sha256 = "sha256-yn3DTQy6B10nv0KE/W1NbzytpBVx2UO8iMsrMbKLS9Y=";
     };
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.9.26";
+    version = "v2.9.30";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Frontend";
-      rev = "v2.9.26";
+      rev = "v2.9.30";
       fetchSubmodules = false;
-      sha256 = "sha256-MjGPNeVlbIBqhHXMMXNOiQDH2mRQgs+iIObfr/eHPIo=";
+      sha256 = "sha256-AwzQ9brvc8x6v2CAJBq0VQ4hKfwTFYoZtyvhcdAY/wc=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "f3d1aa1ea9447699e5a2ba92bcbb3743fbfa0c0b";
+    version = "57f2ad523c16d5b1a66e03bdb023e1c0398282a9";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Plugins";
-      rev = "f3d1aa1ea9447699e5a2ba92bcbb3743fbfa0c0b";
+      rev = "57f2ad523c16d5b1a66e03bdb023e1c0398282a9";
       fetchSubmodules = false;
-      sha256 = "sha256-h4H5vY2ZTMrvKGH6j6cTQSkgsEpqqYo8km2Yzm4ogfM=";
+      sha256 = "sha256-xGn3Z6Yxg8RSCGDqBuTxDmJRyUFN4SgSeTkjdnyKWMY=";
     };
-    date = "2026-03-27";
+    date = "2026-04-10";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
-    version = "cf1dfb09150f2b5d63ce86460c5b54a72949f2dd";
+    version = "e2e2379094673ba9b38a0e7a884b68455f261827";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot-Resources";
-      rev = "cf1dfb09150f2b5d63ce86460c5b54a72949f2dd";
+      rev = "e2e2379094673ba9b38a0e7a884b68455f261827";
       fetchSubmodules = false;
-      sha256 = "sha256-JKSMJFFgra91U31R0ZLgkoWcy3HMlL2EDOfuTxCrVLs=";
+      sha256 = "sha256-5QF1Lxwftb5JkDhly4wq+RYdD63k8ORWKnxPIJB1Mi0=";
     };
-    date = "2026-03-23";
+    date = "2026-04-14";
   };
   plasma-applet-window-title6 = {
     pname = "plasma-applet-window-title6";
@@ -95,13 +95,13 @@
   };
   plasma-panel-colorizer-nighty = {
     pname = "plasma-panel-colorizer-nighty";
-    version = "v6.10.0";
+    version = "v7.0.1";
     src = fetchFromGitHub {
       owner = "luisbocanegra";
       repo = "plasma-panel-colorizer";
-      rev = "v6.10.0";
+      rev = "v7.0.1";
       fetchSubmodules = false;
-      sha256 = "sha256-s5KdQLBjy7RlgUwZScw9b6GLPsMBZzeV/kETtGdkNNE=";
+      sha256 = "sha256-T2LodP2E5R1NtuTNPxzUNenbs6P3Ur1kbEIHGRbzah0=";
     };
   };
   sierra-breeze-enhanced-git = {
