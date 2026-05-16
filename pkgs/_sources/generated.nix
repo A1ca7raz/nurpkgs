@@ -36,52 +36,6 @@
     };
     date = "2025-04-13";
   };
-  moviepilot-core = {
-    pname = "moviepilot-core";
-    version = "v2.11.2";
-    src = fetchFromGitHub {
-      owner = "jxxghp";
-      repo = "MoviePilot";
-      rev = "v2.11.2";
-      fetchSubmodules = false;
-      sha256 = "sha256-d0aUs04kdRtizTdVfbHtEhz1ty8h9I5y1AcRqUrmyFc=";
-    };
-  };
-  moviepilot-frontend = {
-    pname = "moviepilot-frontend";
-    version = "v2.11.3";
-    src = fetchFromGitHub {
-      owner = "jxxghp";
-      repo = "MoviePilot-Frontend";
-      rev = "v2.11.3";
-      fetchSubmodules = false;
-      sha256 = "sha256-lokMG9QwuNoAw/fGtvzY7yeqW0K6bY05nvaX2ZVarDE=";
-    };
-  };
-  moviepilot-plugins = {
-    pname = "moviepilot-plugins";
-    version = "f370a0041a14b67100e332ceb8cb1aea567563aa";
-    src = fetchFromGitHub {
-      owner = "jxxghp";
-      repo = "MoviePilot-Plugins";
-      rev = "f370a0041a14b67100e332ceb8cb1aea567563aa";
-      fetchSubmodules = false;
-      sha256 = "sha256-hOgxe8zEKkTyp+L+zo508vyJfyOlCKXXutKvHTv+Pm0=";
-    };
-    date = "2026-05-14";
-  };
-  moviepilot-resources = {
-    pname = "moviepilot-resources";
-    version = "0ac5c3e901ce3ff011c3406d38ba9acb7c0f1d13";
-    src = fetchFromGitHub {
-      owner = "jxxghp";
-      repo = "MoviePilot-Resources";
-      rev = "0ac5c3e901ce3ff011c3406d38ba9acb7c0f1d13";
-      fetchSubmodules = false;
-      sha256 = "sha256-dU0RHCQzYL1TSSfKEEyBvDYe/4NorDgYvcT4S3HN64Q=";
-    };
-    date = "2026-04-27";
-  };
   plasma-applet-window-title6 = {
     pname = "plasma-applet-window-title6";
     version = "v0.9.0";
@@ -95,26 +49,14 @@
   };
   plasma-panel-colorizer-nighty = {
     pname = "plasma-panel-colorizer-nighty";
-    version = "v7.0.1";
+    version = "v7.1.0";
     src = fetchFromGitHub {
       owner = "luisbocanegra";
       repo = "plasma-panel-colorizer";
-      rev = "v7.0.1";
+      rev = "v7.1.0";
       fetchSubmodules = false;
-      sha256 = "sha256-T2LodP2E5R1NtuTNPxzUNenbs6P3Ur1kbEIHGRbzah0=";
+      sha256 = "sha256-OyOFQZzsWRbsvv0jAFRXWo4AMeu4t1KMtubg3R/jb50=";
     };
-  };
-  sierra-breeze-enhanced-git = {
-    pname = "sierra-breeze-enhanced-git";
-    version = "4a4f085aa5c48ad11071dee4e92289c2cc4a36cd";
-    src = fetchFromGitHub {
-      owner = "kupiqu";
-      repo = "SierraBreezeEnhanced";
-      rev = "4a4f085aa5c48ad11071dee4e92289c2cc4a36cd";
-      fetchSubmodules = false;
-      sha256 = "sha256-dOIC2EQqninEIktVK6dLctzN/IiQIRvp1Qmcop9h7Dw=";
-    };
-    date = "2025-10-14";
   };
   teamspeak-management-tools = {
     pname = "teamspeak-management-tools";

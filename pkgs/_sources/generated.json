@@ -49,90 +49,6 @@
         },
         "version": "a06e723804398d672be74eba0cd4ccee062e1410"
     },
-    "moviepilot-core": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "moviepilot-core",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "jxxghp",
-            "repo": "MoviePilot",
-            "rev": "v2.11.2",
-            "sha256": "sha256-d0aUs04kdRtizTdVfbHtEhz1ty8h9I5y1AcRqUrmyFc=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "v2.11.2"
-    },
-    "moviepilot-frontend": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "moviepilot-frontend",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "jxxghp",
-            "repo": "MoviePilot-Frontend",
-            "rev": "v2.11.3",
-            "sha256": "sha256-lokMG9QwuNoAw/fGtvzY7yeqW0K6bY05nvaX2ZVarDE=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "v2.11.3"
-    },
-    "moviepilot-plugins": {
-        "cargoLock": null,
-        "date": "2026-05-14",
-        "extract": null,
-        "name": "moviepilot-plugins",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "jxxghp",
-            "repo": "MoviePilot-Plugins",
-            "rev": "f370a0041a14b67100e332ceb8cb1aea567563aa",
-            "sha256": "sha256-hOgxe8zEKkTyp+L+zo508vyJfyOlCKXXutKvHTv+Pm0=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "f370a0041a14b67100e332ceb8cb1aea567563aa"
-    },
-    "moviepilot-resources": {
-        "cargoLock": null,
-        "date": "2026-04-27",
-        "extract": null,
-        "name": "moviepilot-resources",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "jxxghp",
-            "repo": "MoviePilot-Resources",
-            "rev": "0ac5c3e901ce3ff011c3406d38ba9acb7c0f1d13",
-            "sha256": "sha256-dU0RHCQzYL1TSSfKEEyBvDYe/4NorDgYvcT4S3HN64Q=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "0ac5c3e901ce3ff011c3406d38ba9acb7c0f1d13"
-    },
     "plasma-applet-window-title6": {
         "cargoLock": null,
         "date": null,
@@ -168,33 +84,12 @@
             "name": null,
             "owner": "luisbocanegra",
             "repo": "plasma-panel-colorizer",
-            "rev": "v7.0.1",
-            "sha256": "sha256-T2LodP2E5R1NtuTNPxzUNenbs6P3Ur1kbEIHGRbzah0=",
+            "rev": "v7.1.0",
+            "sha256": "sha256-OyOFQZzsWRbsvv0jAFRXWo4AMeu4t1KMtubg3R/jb50=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v7.0.1"
-    },
-    "sierra-breeze-enhanced-git": {
-        "cargoLock": null,
-        "date": "2025-10-14",
-        "extract": null,
-        "name": "sierra-breeze-enhanced-git",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "kupiqu",
-            "repo": "SierraBreezeEnhanced",
-            "rev": "4a4f085aa5c48ad11071dee4e92289c2cc4a36cd",
-            "sha256": "sha256-dOIC2EQqninEIktVK6dLctzN/IiQIRvp1Qmcop9h7Dw=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "4a4f085aa5c48ad11071dee4e92289c2cc4a36cd"
+        "version": "v7.1.0"
     },
     "teamspeak-management-tools": {
         "cargoLock": null,

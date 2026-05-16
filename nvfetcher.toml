@@ -11,24 +11,6 @@ fetch.url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/downlo
 src.git = "https://github.com/maurges/dynamic_workspaces"
 fetch.git = "https://github.com/maurges/dynamic_workspaces"
 
-[moviepilot-core]
-src.github_tag = "jxxghp/MoviePilot"
-src.include_regex = "^v2.[0-9.]+$"
-fetch.github = "jxxghp/MoviePilot"
-
-[moviepilot-frontend]
-src.github_tag = "jxxghp/MoviePilot-Frontend"
-src.include_regex = "^v2.[0-9.]+$"
-fetch.github = "jxxghp/MoviePilot-Frontend"
-
-[moviepilot-plugins]
-src.git = "https://github.com/jxxghp/MoviePilot-Plugins"
-fetch.github = "jxxghp/MoviePilot-Plugins"
-
-[moviepilot-resources]
-src.git = "https://github.com/jxxghp/MoviePilot-Resources"
-fetch.github = "jxxghp/MoviePilot-Resources"
-
 [plasma-applet-window-title6]
 src.github = "dhruv8sh/plasma6-window-title-applet"
 fetch.github = "dhruv8sh/plasma6-window-title-applet"
@@ -36,10 +18,6 @@ fetch.github = "dhruv8sh/plasma6-window-title-applet"
 [plasma-panel-colorizer-nighty]
 src.github = "luisbocanegra/plasma-panel-colorizer"
 fetch.github = "luisbocanegra/plasma-panel-colorizer"
-
-[sierra-breeze-enhanced-git]
-src.git = "https://github.com/kupiqu/SierraBreezeEnhanced"
-fetch.github = "kupiqu/SierraBreezeEnhanced"
 
 [teamspeak-management-tools]
 src.github = "KunoiSayami/teamspeak-management-tools.rs"
