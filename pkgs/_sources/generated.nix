@@ -49,13 +49,13 @@
   };
   plasma-panel-colorizer-nighty = {
     pname = "plasma-panel-colorizer-nighty";
-    version = "v7.1.0";
+    version = "v7.2.0";
     src = fetchFromGitHub {
       owner = "luisbocanegra";
       repo = "plasma-panel-colorizer";
-      rev = "v7.1.0";
+      rev = "v7.2.0";
       fetchSubmodules = false;
-      sha256 = "sha256-OyOFQZzsWRbsvv0jAFRXWo4AMeu4t1KMtubg3R/jb50=";
+      sha256 = "sha256-CRuiHVRCstpD3LtT52Xiu4f2+d0Y4RKKLLt056kqNwg=";
     };
   };
   teamspeak-management-tools = {
