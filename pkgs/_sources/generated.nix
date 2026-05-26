@@ -71,17 +71,17 @@
   };
   tela-circle-icon-theme-nighty = {
     pname = "tela-circle-icon-theme-nighty";
-    version = "bdb616e4cb0cf61fc6bd52a42af9c07261015b21";
+    version = "e3171a34427d0900046dedbdf9979631adea7608";
     src = fetchgit {
       url = "https://github.com/vinceliuice/Tela-circle-icon-theme";
-      rev = "bdb616e4cb0cf61fc6bd52a42af9c07261015b21";
+      rev = "e3171a34427d0900046dedbdf9979631adea7608";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-3vqFK+yyk3EJwEpeKY92CHpFKLbXWDu1W3IDGl93VDo=";
+      sha256 = "sha256-oejJcmdRIv9Agk61rgu786ZpkHtzfOGAA5GBlETb4Dc=";
     };
-    date = "2025-12-11";
+    date = "2026-05-25";
   };
   tela-icon-theme-nighty = {
     pname = "tela-icon-theme-nighty";

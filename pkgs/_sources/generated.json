@@ -114,7 +114,7 @@
     },
     "tela-circle-icon-theme-nighty": {
         "cargoLock": null,
-        "date": "2025-12-11",
+        "date": "2026-05-25",
         "extract": null,
         "name": "tela-circle-icon-theme-nighty",
         "passthru": null,
@@ -124,13 +124,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "bdb616e4cb0cf61fc6bd52a42af9c07261015b21",
-            "sha256": "sha256-3vqFK+yyk3EJwEpeKY92CHpFKLbXWDu1W3IDGl93VDo=",
+            "rev": "e3171a34427d0900046dedbdf9979631adea7608",
+            "sha256": "sha256-oejJcmdRIv9Agk61rgu786ZpkHtzfOGAA5GBlETb4Dc=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/vinceliuice/Tela-circle-icon-theme"
         },
-        "version": "bdb616e4cb0cf61fc6bd52a42af9c07261015b21"
+        "version": "e3171a34427d0900046dedbdf9979631adea7608"
     },
     "tela-icon-theme-nighty": {
         "cargoLock": null,
