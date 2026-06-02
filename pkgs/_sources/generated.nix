@@ -85,16 +85,16 @@
   };
   tela-icon-theme-nighty = {
     pname = "tela-icon-theme-nighty";
-    version = "340333cfd0ebdab7ea9d25cd66a5142c440d2f48";
+    version = "bf51523edbf825054c1bee6efe02a09aaeda394f";
     src = fetchgit {
       url = "https://github.com/vinceliuice/tela-icon-theme";
-      rev = "340333cfd0ebdab7ea9d25cd66a5142c440d2f48";
+      rev = "bf51523edbf825054c1bee6efe02a09aaeda394f";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-IN1sQdZIoaonRc8AB1wdiRsFCfvGeZ5kzzLT16l/9wA=";
+      sha256 = "sha256-b8P0SO6piebjoBbiw1vKJTxHO3wzsdW/F766z7nxnkg=";
     };
-    date = "2025-12-05";
+    date = "2026-05-28";
   };
 }
