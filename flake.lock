@@ -3,18 +3,13 @@
     "colmena": {
       "inputs": {
         "flake-compat": [
-          "hub",
           "flake-compat"
         ],
         "flake-utils": [
-          "hub",
           "flake-utils"
         ],
-        "nix-github-actions": [
-          "hub"
-        ],
+        "nix-github-actions": [],
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ],
         "stable": "stable"
@@ -51,7 +46,6 @@
     "disko": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ]
       },
@@ -72,20 +66,18 @@
     "dms": {
       "inputs": {
         "flake-compat": [
-          "hub",
           "flake-compat"
         ],
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1780429727,
-        "narHash": "sha256-ru7OFrvfKbTGkYWDdufRgvkgppIfbXjH1yym/OFNyWY=",
+        "lastModified": 1780461319,
+        "narHash": "sha256-qOMarDL7c8Gcqa/mM/uTwuEidMGahsLmncFujru/AQ0=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "1ee42506b690300577e515cb4b7a65b88b15b3fa",
+        "rev": "510269dda901ca427909e09abfba1c5a50369a91",
         "type": "github"
       },
       "original": {
@@ -97,11 +89,9 @@
     "dns": {
       "inputs": {
         "flake-utils": [
-          "hub",
           "flake-utils"
         ],
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ]
       },
@@ -154,7 +144,6 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
-          "hub",
           "nixpkgs-lib"
         ]
       },
@@ -175,7 +164,6 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
-          "hub",
           "nixpak",
           "nixpkgs"
         ]
@@ -215,7 +203,6 @@
     "gitignore": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "lanzaboote",
           "pre-commit",
           "nixpkgs"
@@ -238,36 +225,30 @@
     "hermes-agent": {
       "inputs": {
         "flake-parts": [
-          "hub",
           "flake-parts"
         ],
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ],
         "npm-lockfile-fix": [
-          "hub",
           "npm-lockfile-fix"
         ],
         "pyproject-build-systems": [
-          "hub",
           "pyproject-build-systems"
         ],
         "pyproject-nix": [
-          "hub",
           "pyproject-nix"
         ],
         "uv2nix": [
-          "hub",
           "uv2nix"
         ]
       },
       "locked": {
-        "lastModified": 1780433504,
-        "narHash": "sha256-FEt8DvVTeUqEfuAs3+557QwDo8q6rKe6S9iXqgTXcYU=",
+        "lastModified": 1780464645,
+        "narHash": "sha256-nKNmI4PMR14dlhr6kPwm+dvzDXeOW+qxIGjbwvhysBE=",
         "owner": "NousResearch",
         "repo": "hermes-agent",
-        "rev": "c47b9d126f2f820f41059813a2c5b16ea4742bf8",
+        "rev": "9272e4019aa43d9d28f6f9d3a4cf62e2278dbd00",
         "type": "github"
       },
       "original": {
@@ -279,7 +260,6 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ]
       },
@@ -300,7 +280,6 @@
     "home-manager_2": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "impermanence",
           "nixpkgs"
         ]
@@ -316,51 +295,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "hub": {
-      "inputs": {
-        "colmena": "colmena",
-        "crane": "crane",
-        "disko": "disko",
-        "dms": "dms",
-        "dns": "dns",
-        "flake-compat": "flake-compat",
-        "flake-parts": "flake-parts",
-        "flake-utils": "flake-utils",
-        "hermes-agent": "hermes-agent",
-        "home-manager": "home-manager",
-        "impermanence": "impermanence",
-        "kimi-code": "kimi-code",
-        "lanzaboote": "lanzaboote",
-        "niri-flake": "niri-flake",
-        "nix-std": "nix-std",
-        "nixpak": "nixpak",
-        "nixpkgs": "nixpkgs_2",
-        "nixpkgs-lib": "nixpkgs-lib",
-        "noctalia": "noctalia",
-        "noctalia-qs": "noctalia-qs",
-        "npm-lockfile-fix": "npm-lockfile-fix",
-        "pyproject-build-systems": "pyproject-build-systems",
-        "pyproject-nix": "pyproject-nix",
-        "quadlet-nix": "quadlet-nix",
-        "rust-overlay": "rust-overlay",
-        "sops-nix": "sops-nix",
-        "spicetify-nix": "spicetify-nix",
-        "uv2nix": "uv2nix"
-      },
-      "locked": {
-        "lastModified": 1780435495,
-        "narHash": "sha256-pj3U0V+44rqKZmJb/sk+GeBfaI4rGbwXU6sH1AKTVwM=",
-        "owner": "A1ca7raz",
-        "repo": "inputs-hub",
-        "rev": "cb400e5c21354b6769ec641bcfc601f85f145e68",
-        "type": "github"
-      },
-      "original": {
-        "owner": "A1ca7raz",
-        "repo": "inputs-hub",
         "type": "github"
       }
     },
@@ -386,16 +320,15 @@
     "kimi-code": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1780412876,
-        "narHash": "sha256-oCwFyhmBNUQJNeOV9EpwpDR/3SJht1tEVvUKdwBvHxw=",
+        "lastModified": 1780462554,
+        "narHash": "sha256-f3zbXJZ62qUsHTs/Fv8ZVjBmmBxuT9AZEcINQ7u7Y4s=",
         "owner": "MoonshotAI",
         "repo": "kimi-code",
-        "rev": "9143fdadf68c252ed4d84b16db0d8274390fa132",
+        "rev": "33496bd03109772442b3c1c13f1e579bb3ebc07b",
         "type": "github"
       },
       "original": {
@@ -407,16 +340,13 @@
     "lanzaboote": {
       "inputs": {
         "crane": [
-          "hub",
           "crane"
         ],
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ],
         "pre-commit": "pre-commit",
         "rust-overlay": [
-          "hub",
           "rust-overlay"
         ]
       },
@@ -439,12 +369,9 @@
         "niri-stable": "niri-stable",
         "niri-unstable": "niri-unstable",
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ],
-        "nixpkgs-stable": [
-          "hub"
-        ],
+        "nixpkgs-stable": [],
         "xwayland-satellite-stable": "xwayland-satellite-stable",
         "xwayland-satellite-unstable": "xwayland-satellite-unstable"
       },
@@ -513,11 +440,8 @@
     "nixpak": {
       "inputs": {
         "flake-parts": "flake-parts_2",
-        "hercules-ci-effects": [
-          "hub"
-        ],
+        "hercules-ci-effects": [],
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ]
       },
@@ -588,11 +512,9 @@
     "noctalia": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ],
         "noctalia-qs": [
-          "hub",
           "noctalia-qs"
         ]
       },
@@ -613,7 +535,6 @@
     "noctalia-qs": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ],
         "systems": "systems_2",
@@ -636,7 +557,6 @@
     "npm-lockfile-fix": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ]
       },
@@ -659,7 +579,6 @@
         "flake-compat": "flake-compat_2",
         "gitignore": "gitignore",
         "nixpkgs": [
-          "hub",
           "lanzaboote",
           "nixpkgs"
         ]
@@ -681,15 +600,12 @@
     "pyproject-build-systems": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ],
         "pyproject-nix": [
-          "hub",
           "pyproject-nix"
         ],
         "uv2nix": [
-          "hub",
           "uv2nix"
         ]
       },
@@ -710,7 +626,6 @@
     "pyproject-nix": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ]
       },
@@ -745,62 +660,48 @@
     },
     "root": {
       "inputs": {
-        "dns": [
-          "hub",
-          "dns"
-        ],
-        "flake-parts": [
-          "hub",
-          "flake-parts"
-        ],
-        "flake-utils": [
-          "hub",
-          "flake-utils"
-        ],
-        "hub": "hub",
-        "nixpak": [
-          "hub",
-          "nixpak"
-        ],
-        "nixpkgs": [
-          "hub",
-          "nixpkgs"
-        ],
-        "pyproject-build-systems": [
-          "hub",
-          "pyproject-build-systems"
-        ],
-        "pyproject-nix": [
-          "hub",
-          "pyproject-nix"
-        ],
-        "spicetify": [
-          "hub",
-          "spicetify-nix"
-        ],
-        "std": [
-          "hub",
-          "nix-std"
-        ],
-        "uv2nix": [
-          "hub",
-          "uv2nix"
-        ]
+        "colmena": "colmena",
+        "crane": "crane",
+        "disko": "disko",
+        "dms": "dms",
+        "dns": "dns",
+        "flake-compat": "flake-compat",
+        "flake-parts": "flake-parts",
+        "flake-utils": "flake-utils",
+        "hermes-agent": "hermes-agent",
+        "home-manager": "home-manager",
+        "impermanence": "impermanence",
+        "kimi-code": "kimi-code",
+        "lanzaboote": "lanzaboote",
+        "niri-flake": "niri-flake",
+        "nix-std": "nix-std",
+        "nixpak": "nixpak",
+        "nixpkgs": "nixpkgs_2",
+        "nixpkgs-lib": "nixpkgs-lib",
+        "noctalia": "noctalia",
+        "noctalia-qs": "noctalia-qs",
+        "npm-lockfile-fix": "npm-lockfile-fix",
+        "pyproject-build-systems": "pyproject-build-systems",
+        "pyproject-nix": "pyproject-nix",
+        "quadlet-nix": "quadlet-nix",
+        "rust-overlay": "rust-overlay",
+        "sops-nix": "sops-nix",
+        "spicetify-nix": "spicetify-nix",
+        "uv2nix": "uv2nix"
       }
     },
     "rust-overlay": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1780370483,
-        "narHash": "sha256-7mDa7OBAaf7MU6ZovT9ENfD62kH911SsSazBb4KTDF0=",
+        "lastModified": 1780456895,
+        "narHash": "sha256-CvRZn3Ut0scqLJ1xwQFkZwKGVBUUNBPrFVXRTMZpbfU=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "4a408e1fc99ad517b4cb402fd0de7464f40c05e1",
+        "rev": "7cc96a6a3fd6613cafd633250a3934483479b9a1",
         "type": "github"
       },
       "original": {
@@ -812,7 +713,6 @@
     "sops-nix": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ]
       },
@@ -833,11 +733,9 @@
     "spicetify-nix": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ],
         "systems": [
-          "hub",
           "flake-utils",
           "systems"
         ]
@@ -905,7 +803,6 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "noctalia-qs",
           "nixpkgs"
         ]
@@ -927,11 +824,9 @@
     "uv2nix": {
       "inputs": {
         "nixpkgs": [
-          "hub",
           "nixpkgs"
         ],
         "pyproject-nix": [
-          "hub",
           "pyproject-nix"
         ]
       },

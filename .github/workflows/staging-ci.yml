@@ -1,0 +1,70 @@
+name: "Staging CI"
+
+on:
+  push:
+    branches:
+      - staging
+
+concurrency:
+  group: staging-ci
+  cancel-in-progress: true
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      packages: ${{ steps.pkgs.outputs.packages }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          ref: staging
+
+      - name: Install Nix
+        uses: nixbuild/nix-quick-install-action@v33
+
+      - name: Evaluate packages
+        id: pkgs
+        run: |
+          nix flake metadata
+          echo "packages=$(nix eval --json .#packages.x86_64-linux --apply 'builtins.attrNames')" >> $GITHUB_OUTPUT
+
+      - name: Show flake information
+        run: nix flake show
+
+      - name: Check evaluation
+        run: nix flake check --no-build --no-allow-import-from-derivation
+
+  build:
+    needs: eval
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+    permissions:
+      contents: write
+      actions: write
+    with:
+      packages: ${{ needs.eval.outputs.packages }}
+      push_cache: true
+      pre_check: false
+
+  merge-to-main:
+    needs: build
+    if: ${{ success() }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Merge staging into main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git merge origin/staging --ff-only
+          git push origin main

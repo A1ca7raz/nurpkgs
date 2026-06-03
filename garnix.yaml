@@ -2,4 +2,5 @@ builds:
   include:
     - packages.x86_64-linux.*
     - devShell.x86_64-linux.*
+    - checks.x86_64-linux.*
   exclude: []

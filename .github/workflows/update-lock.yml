@@ -1,0 +1,88 @@
+name: "Update flake.lock"
+
+on:
+  schedule:
+    - cron: '19 18 * * 2'
+  workflow_dispatch:
+    inputs:
+      skip_check:
+        description: Skip evaluation
+        required: true
+        default: false
+        type: boolean
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+    outputs:
+      packages: ${{ steps.pkgs.outputs.packages }}
+      changed: ${{ steps.changes.outputs.changed }}
+    steps:
+      - name: Checkout staging
+        uses: actions/checkout@v5
+        with:
+          ref: staging
+
+      - name: Install Nix
+        uses: nixbuild/nix-quick-install-action@v33
+
+      - name: Update flake.lock
+        run: nix flake update
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet flake.lock; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get external package list
+        id: pkgs
+        if: ${{ steps.changes.outputs.changed == 'true' }}
+        run: |
+          nix flake metadata
+          all=$(nix eval --json .#packages.x86_64-linux --apply 'builtins.attrNames')
+          nur=$(find pkgs/by-name -mindepth 1 -maxdepth 1 -type d | xargs -n1 basename | jq -R . | jq -s .)
+          external=$(echo "$all" | jq --argjson nur "$nur" '[.[] | select(. as $x | $nur | index($x) | not)]')
+          echo "packages=$external" >> $GITHUB_OUTPUT
+
+      - name: Build external packages
+        if: ${{ steps.changes.outputs.changed == 'true' }}
+        uses: ./.github/workflows/build.yml
+        with:
+          packages: ${{ steps.pkgs.outputs.packages }}
+          push_cache: false
+          pre_check: ${{ inputs.skip_check == false }}
+
+      - name: Create Pull Request
+        id: cpr
+        if: ${{ steps.changes.outputs.changed == 'true' }}
+        uses: peter-evans/create-pull-request@v7
+        with:
+          base: staging
+          branch: auto/update-lock
+          add-paths: flake.lock
+          title: "Update flake.lock"
+          body: |
+            Automated flake.lock update.
+
+            - External packages have been built and verified.
+            - No cache has been pushed in this stage.
+          commit-message: "Update: flake.lock"
+          delete-branch: true
+
+      - name: Enable automerge
+        if: ${{ steps.changes.outputs.changed == 'true' && steps.cpr.outputs.pull-request-number != '' }}
+        run: gh pr merge --auto --rebase ${{ steps.cpr.outputs.pull-request-number }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
