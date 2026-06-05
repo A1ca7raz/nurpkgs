@@ -1,4 +1,4 @@
-{ pkgs, specialArgs ? {}, ... }:
+{ pkgs, lib, specialArgs ? {}, ... }:
 let
   inherit (import ./common.nix)
     isNix
@@ -6,7 +6,7 @@ let
     hasDefault
   ;
 
-  inherit (pkgs.lib)
+  inherit (lib)
     mapAttrsToList
     hasPrefix
     listToAttrs

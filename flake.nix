@@ -1,4 +1,4 @@
-rec {
+{
   description = "A1ca7raz's Nix User Repo";
 
   inputs = {
@@ -119,146 +119,17 @@ rec {
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
-    let
+  outputs = inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
       ];
-      specialArgs = { inherit inputs; };
 
-      nurpkgs = pkgs: import ./. { inherit pkgs specialArgs; };
-    in
-    flake-utils.lib.eachSystem systems (system:
-      let
-        pkgs = import nixpkgs {
-          config.allowUnfree = true;
-          inherit system;
-        };
-
-        mkBundle = name: apps: {
-          "bundle_${name}" = pkgs.stdenv.mkDerivation {
-            name = "${name}-bundle";
-            srcs = with builtins; filter isAttrs (attrValues apps);
-
-            phases = [ "installPhase" ];
-            installPhase = ''
-              mkdir -p $out
-              for _src in $srcs; do
-                [[ -e "$out/$(basename $_src)" ]] || ln -s "$_src"  "$out/$(basename $_src)"
-              done
-            '';
-          };
-        };
-
-        # Packages from external flakes
-        externalPackages = with inputs; {
-          hermes-agent = hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default;
-          kimi-code-unstable = kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default;
-          noctalia-nighty = noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override { calendarSupport = true; };
-          dms-nighty = dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
-          inherit (niri-flake.packages.${pkgs.stdenv.hostPlatform.system})
-            niri-unstable
-            xwayland-satellite-unstable
-          ;
-        };
-      in rec {
-        legacyPackages = nurpkgs pkgs // externalPackages;
-
-        packages = {
-          inherit (pkgs)
-            obsidian
-            unrar
-            veracrypt
-            wpsoffice
-            teamspeak_server
-          ;
-        } // legacyPackages
-          // mkBundle "lanzaboote" inputs.lanzaboote.packages.${system}
-          // mkBundle "sops-nix" inputs.lanzaboote.packages.${system}
-        ;
-
-        checks = nurpkgs pkgs;
-
-        formatter = pkgs.nixpkgs-fmt;
-        devShells.default = pkgs.mkShell {
-          nativeBuildInputs = with pkgs; [
-            nvfetcher
-            nix-init
-          ];
-        };
-        apps.update = {
-          type = "app";
-          program = (pkgs.writeShellScript "script" ''
-            ${pkgs.nvfetcher}/bin/nvfetcher -o pkgs/_sources "$@"
-          '').outPath;
-        };
-      }
-    ) // rec {
-      overlays.default = final: nurpkgs;
-      overlays.external = final: prev: self.packages.${prev.stdenv.hostPlatform.system};
-
-      nixosModules = with inputs; {
-        colmena = colmena.nixosModules.deploymentOptions;
-        disko = disko.nixosModules.disko;
-        dms = dms.nixosModules.dank-material-shell;
-        hermes = hermes-agent.nixosModules.default;
-        home-manager = home-manager.nixosModules.home-manager;
-        impermanence = impermanence.nixosModules.impermanence;
-        lanzaboote = lanzaboote.nixosModules.lanzaboote;
-        niri = { pkgs, lib, ... }: {
-          imports = [
-            niri-flake.nixosModules.niri
-          ];
-
-          programs.niri.package = pkgs.niri-unstable;
-          programs.niri.settings.xwayland-satellite.path = lib.mkDefault (lib.getExe pkgs.xwayland-satellite-unstable);
-        };
-        noctalia = noctalia.nixosModules.default;
-        quadlet = quadlet-nix.nixosModules.quadlet;
-        sops = sops-nix.nixosModules.sops;
-
-        default = { ... }: {
-          nix.settings = nixConfig;
-
-          nixpkgs.overlays = with overlays; [
-            default
-            external
-          ];
-        };
-      };
-
-      homeModules = with inputs; {
-        # dms = dms.homeModules.dank-material-shell;
-        dms = { ... }: {
-          imports = with dms.homeModules; [
-            dank-material-shell
-            niri
-          ];
-        };
-        niri = { ... }: {
-          imports = [
-            niri-flake.homeModules.niri
-          ];
-
-          programs.niri.package = pkgs.niri-unstable;
-          programs.niri.settings.xwayland-satellite.path = lib.mkDefault (lib.getExe pkgs.xwayland-satellite-unstable);
-        };
-        noctalia = noctalia.homeModules.default;
-        quadlet = quadlet-nix.homeManagerModule.quadlet;
-        sops = sops-nix.homeManagerModule;
-      };
-
-      lib = inputs.nix-std.lib;
+      imports = [
+        ./flake-modules/custom-packages.nix
+        ./flake-modules/external-packages.nix
+        ./flake-modules/modules.nix
+        ./flake-modules/dev.nix
+      ];
     };
-
-  nixConfig = {
-    extra-substituters = [
-      "https://a1ca7raz-nur.cachix.org"
-    ];
-
-    extra-trusted-public-keys = [
-      "a1ca7raz-nur.cachix.org-1:twTlSh62806B8lfG0QQzge4l5srn9Z8/xxyAFauOZnQ="
-    ];
-  };
 }
