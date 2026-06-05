@@ -66,7 +66,7 @@ jobs:
         restore-prefixes-first-match: nur-${{ runner.os }}-shared-${{ hashFiles('flake.lock', 'pkgs/_sources/generated.nix') }}
         gc-max-store-size-linux: 1G
         purge: true
-        purge-prefixes: hub-${{ runner.os }}-individual-${{ inputs.package }}-
+        purge-prefixes: nur-${{ runner.os }}-individual-${{ inputs.package }}-
         purge-created: 0
         purge-primary-key: never
 

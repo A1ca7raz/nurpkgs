@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - '.github/workflows/update.yml'
+  schedule:
+    - cron:  '19 18 * * 2'
   repository_dispatch:
     types:
       - bump
@@ -46,7 +48,7 @@ jobs:
       uses: nixbuild/nix-quick-install-action@v33
 
     - name: 1-1. Update flake.lock
-      if: ${{ inputs.update_lock == true || github.event_name == 'repository_dispatch' }}
+      if: ${{ inputs.update_lock == true || github.event_name == 'schedule' || github.event_name == 'repository_dispatch' }}
       run: nix flake update
 
     - name: 1-2. Update package sources
@@ -66,7 +68,7 @@ jobs:
       run: nix flake show
 
     - name: 2-3. Check evaluation
-      if: ${{ inputs.skip_check == false || github.event_name == 'repository_dispatch' }}
+      if: ${{ inputs.skip_check == false || github.event_name == 'schedule' || github.event_name == 'repository_dispatch' }}
       run: nix flake check --no-build --no-allow-import-from-derivation
 
     - name: 3-1. Bump flake.lock ONLY
@@ -84,7 +86,7 @@ jobs:
         file_pattern: "pkgs/_sources"
 
     - name: 3-3. Bump flake.lock and sources
-      if: ${{ inputs.update_source == true && inputs.update_lock == true || github.event_name == 'repository_dispatch' }}
+      if: ${{ inputs.update_source == true && inputs.update_lock == true || github.event_name == 'schedule' || github.event_name == 'repository_dispatch' }}
       uses: stefanzweifel/git-auto-commit-action@v6
       with:
         commit_message: "Update: flake.lock&sources"
