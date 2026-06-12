@@ -7,6 +7,7 @@ on:
     paths:
       - 'flake.lock'
       - 'pkgs/_sources/**'
+  workflow_dispatch:
 
 env:
   nix_conf: |
@@ -71,7 +72,7 @@ jobs:
     uses: ./.github/workflows/builder.yml
     with:
       output: checks
-      package: ${{ matrix.package }}
+      package: ${{ matrix.packages }}
       push_cache: true
       pre_check: false
 
@@ -85,11 +86,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        package: ${{ fromJSON(needs.detect.outputs.pkgs_custom) }}
+        packages: ${{ fromJSON(needs.detect.outputs.pkgs_custom) }}
     uses: ./.github/workflows/builder.yml
     with:
       output: packages
-      package: ${{ matrix.package }}
+      package: ${{ matrix.packages }}
       push_cache: true
       pre_check: false
 

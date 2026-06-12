@@ -45,11 +45,8 @@ on:
         type: string
       arch:
         description: Architecture
-        required: true
         default: x86_64-linux
-        type: choice
-        options:
-          - x86_64-linux
+        type: string
       push_cache:
         description: Push cache
         default: true
