@@ -100,7 +100,7 @@ jobs:
 
   post-build:
     needs: [ build-external-pkgs, build-cached-pkgs, build-custom-pkgs ]
-    if: ${{ needs.build-external-pkgs.result == 'success' || needs.build-cached-pkgs.result == 'success' || needs.build-custom-pkgs.result == 'success' }}
+    if: ${{ github.event_name == 'push' && (needs.build-external-pkgs.result == 'success' || needs.build-cached-pkgs.result == 'success' || needs.build-custom-pkgs.result == 'success') }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
