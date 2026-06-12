@@ -69,12 +69,12 @@ jobs:
       actions: write
     env:
       CI_MODE: 1
+      CACHIX_CACHE: ${{ secrets.CACHIX_CACHE }}
+      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_ACCESS_TOKEN }}
 
     steps:
     - name: 0-1. Checkout repository
       uses: actions/checkout@v6
-      with:
-        ref: 'main'
 
     - name: 0-2. Install Nix
       uses: nixbuild/nix-quick-install-action@v34
@@ -100,15 +100,15 @@ jobs:
         skipPush: true
 
     - name: 1-1. Show flake metadata
-      if: ${{ inputs.pre_check == true }}
+      if: inputs.pre_check
       run: nix flake metadata
 
     - name: 1-2. Show flake information
-      if: ${{ inputs.pre_check == true }}
+      if: inputs.pre_check
       run: nix flake show
 
     - name: 1-3. Check evaluation
-      if: ${{ inputs.pre_check == true }}
+      if: inputs.pre_check
       run: nix flake check --no-build --no-allow-import-from-derivation
 
     - name: 2-1. Build ${{ inputs.output }}.${{ inputs.package }}
@@ -116,5 +116,5 @@ jobs:
         nix build .#${{ inputs.output }}.${{ inputs.arch }}.${{ inputs.package }} -v --show-trace
 
     - name: 3-1. Push cache to Cachix
-      if: ${{ inputs.push_cache == true }}
+      if: inputs.push_cache
       run: bash ./.github/push_cache.sh "${{ inputs.output }}" "${{ inputs.arch }}" "${{ inputs.package }}"

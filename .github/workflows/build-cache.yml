@@ -9,6 +9,10 @@ on:
       - 'pkgs/_sources/**'
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   nix_conf: |
     keep-env-derivations = true
@@ -106,6 +110,7 @@ jobs:
         env:
           COMMIT_SHA: ${{ github.sha }}
           COMMIT_URL: ${{ github.event.head_commit.url }}
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           short_sha=${COMMIT_SHA:0:7}
