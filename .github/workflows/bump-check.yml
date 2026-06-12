@@ -1,0 +1,102 @@
+name: "[PR] Bump check"
+
+on:
+  pull_request:
+    branches:
+      - staging
+    paths:
+      - 'flake.lock'
+      - 'pkgs/_sources/**'
+
+env:
+  nix_conf: |
+    keep-env-derivations = true
+    keep-outputs = true
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      pkgs_ext: ${{ steps.detect.outputs.pkgs_ext }}
+      pkgs_cached: ${{ steps.detect.outputs.pkgs_cached }}
+      pkgs_custom: ${{ steps.detect.outputs.pkgs_custom }}
+
+    steps:
+      - name: 0-1. Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: 0-2. Install Nix
+        uses: nixbuild/nix-quick-install-action@v34
+        with:
+          nix_conf: ${{ env.nix_conf }}
+
+      - name: 1-1. Detect changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v46
+
+      - name: 1-2. Detect packages to build
+        id: detect
+        run: |
+          if echo "${{ steps.changed-files.outputs.all_changed_files }}" | grep -q '^flake.lock$'; then
+            echo "pkgs_ext=$(nix eval --json .#legacyPackages.x86_64-linux --apply 'builtins.attrNames' 2>/dev/null)" >> $GITHUB_OUTPUT
+            echo "pkgs_cached=$(nix eval --json .#checks.x86_64-linux --apply 'builtins.attrNames' 2>/dev/null)" >> $GITHUB_OUTPUT
+          fi
+          if echo "${{ steps.changed-files.outputs.all_changed_files }}" | grep -q '^pkgs/_sources/'; then
+            echo "pkgs_custom=$(nix eval --json .#packages.x86_64-linux --apply 'builtins.attrNames' 2>/dev/null)" >> $GITHUB_OUTPUT
+          fi
+
+  build-external-pkgs:
+    needs: detect
+    if: ${{ needs.detect.outputs.pkgs_ext != '' && needs.detect.outputs.pkgs_ext != '[]' }}
+    secrets: inherit
+    permissions:
+      contents: write
+      actions: write
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJSON(needs.detect.outputs.pkgs_ext) }}
+    uses: ./.github/workflows/builder.yml
+    with:
+      output: legacyPackages
+      package: ${{ matrix.package }}
+      push_cache: false
+      pre_check: false
+
+  build-cached-pkgs:
+    needs: detect
+    if: ${{ needs.detect.outputs.pkgs_cached != '' && needs.detect.outputs.pkgs_cached != '[]' }}
+    secrets: inherit
+    permissions:
+      contents: write
+      actions: write
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJSON(needs.detect.outputs.pkgs_cached) }}
+    uses: ./.github/workflows/builder.yml
+    with:
+      output: checks
+      package: ${{ matrix.package }}
+      push_cache: false
+      pre_check: false
+
+  build-custom-pkgs:
+    needs: detect
+    if: ${{ needs.detect.outputs.pkgs_custom != '' && needs.detect.outputs.pkgs_custom != '[]' }}
+    secrets: inherit
+    permissions:
+      contents: write
+      actions: write
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJSON(needs.detect.outputs.pkgs_custom) }}
+    uses: ./.github/workflows/builder.yml
+    with:
+      output: packages
+      package: ${{ matrix.package }}
+      push_cache: false
+      pre_check: false

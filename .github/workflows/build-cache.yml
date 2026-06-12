@@ -1,0 +1,143 @@
+name: "[Post PR] Build binary cache"
+
+on:
+  push:
+    branches:
+      - staging
+    paths:
+      - 'flake.lock'
+      - 'pkgs/_sources/**'
+
+env:
+  nix_conf: |
+    keep-env-derivations = true
+    keep-outputs = true
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      pkgs_ext: ${{ steps.detect.outputs.pkgs_ext }}
+      pkgs_cached: ${{ steps.detect.outputs.pkgs_cached }}
+      pkgs_custom: ${{ steps.detect.outputs.pkgs_custom }}
+
+    steps:
+      - name: 0-1. Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+
+      - name: 0-2. Install Nix
+        uses: nixbuild/nix-quick-install-action@v34
+        with:
+          nix_conf: ${{ env.nix_conf }}
+
+      - name: 1-1. Detect packages to build
+        id: detect
+        run: |
+          echo "pkgs_ext=$(nix eval --json .#legacyPackages.x86_64-linux --apply 'builtins.attrNames' 2>/dev/null)" >> $GITHUB_OUTPUT
+          echo "pkgs_cached=$(nix eval --json .#checks.x86_64-linux --apply 'builtins.attrNames' 2>/dev/null)" >> $GITHUB_OUTPUT
+          echo "pkgs_custom=$(nix eval --json .#packages.x86_64-linux --apply 'builtins.attrNames' 2>/dev/null)" >> $GITHUB_OUTPUT
+
+  build-external-pkgs:
+    needs: detect
+    if: ${{ needs.detect.outputs.pkgs_ext != '' && needs.detect.outputs.pkgs_ext != '[]' }}
+    secrets: inherit
+    permissions:
+      contents: write
+      actions: write
+    strategy:
+      fail-fast: false
+      matrix:
+        packages: ${{ fromJSON(needs.detect.outputs.pkgs_ext) }}
+    uses: ./.github/workflows/builder.yml
+    with:
+      output: legacyPackages
+      package: ${{ matrix.packages }}
+      push_cache: true
+      pre_check: false
+
+  build-cached-pkgs:
+    needs: detect
+    if: ${{ needs.detect.outputs.pkgs_cached != '' && needs.detect.outputs.pkgs_cached != '[]' }}
+    secrets: inherit
+    permissions:
+      contents: write
+      actions: write
+    strategy:
+      fail-fast: false
+      matrix:
+        packages: ${{ fromJSON(needs.detect.outputs.pkgs_cached) }}
+    uses: ./.github/workflows/builder.yml
+    with:
+      output: checks
+      package: ${{ matrix.package }}
+      push_cache: true
+      pre_check: false
+
+  build-custom-pkgs:
+    needs: detect
+    if: ${{ needs.detect.outputs.pkgs_custom != '' && needs.detect.outputs.pkgs_custom != '[]' }}
+    secrets: inherit
+    permissions:
+      contents: write
+      actions: write
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJSON(needs.detect.outputs.pkgs_custom) }}
+    uses: ./.github/workflows/builder.yml
+    with:
+      output: packages
+      package: ${{ matrix.package }}
+      push_cache: true
+      pre_check: false
+
+  post-build:
+    needs: [ build-external-pkgs, build-cached-pkgs, build-custom-pkgs ]
+    if: ${{ needs.build-external-pkgs.result == 'success' || needs.build-cached-pkgs.result == 'success' || needs.build-custom-pkgs.result == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Generate notification message
+        id: notify
+        env:
+          COMMIT_SHA: ${{ github.sha }}
+          COMMIT_URL: ${{ github.event.head_commit.url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          short_sha=${COMMIT_SHA:0:7}
+          {
+            echo 'message<<EOF'
+            echo "🟢 nurpkgs@[$short_sha]($COMMIT_URL) built successfully."
+            echo
+            echo "```"
+            echo "$COMMIT_MSG"
+            echo "```"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Send notification
+        env:
+          RECEIVER_ID: ${{ secrets.TG_RECEIVER_ID }}
+          BOT_KEY: ${{ secrets.TG_BOT_KEY }}
+          MESSAGE: ${{ steps.notify.outputs.message }}
+        run: |
+          pip install apprise
+          apprise -vv -b "$MESSAGE" "tgram://$BOT_KEY/$RECEIVER_ID/?format=markdown" || true
+
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Rebase staging to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin staging
+          git rebase origin/staging
+          git push origin main

@@ -1,0 +1,113 @@
+name: "Bump flake.lock"
+
+on:
+  schedule:
+    - cron: '28 19 * * 2'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+
+    steps:
+    - name: 0-1. Checkout repository
+      uses: actions/checkout@v6
+      with:
+        ref: main
+        fetch-depth: 2
+
+    - name: 0-2. Install Nix
+      uses: nixbuild/nix-quick-install-action@v34
+
+    - name: 0-3. Collect current package versions
+      run: |
+        nix eval --json '.#legacyPackages.x86_64-linux' \
+          --apply 'pkgs: builtins.mapAttrs (name: pkg: pkg.version or null) pkgs' \
+          > /tmp/versions_before.json
+
+    - name: 1-1. Update flake.lock
+      run: nix flake update
+
+    - name: 1-2. Collect latest package versions
+      run: |
+        nix eval --json '.#legacyPackages.x86_64-linux' \
+          --apply 'pkgs: builtins.mapAttrs (name: pkg: pkg.version or null) pkgs' \
+          > /tmp/versions_after.json
+
+    - name: 1-3. Generate summary
+      id: summary
+      run: |
+        jq -s '
+          .[0] as $before |
+          .[1] as $after |
+          ($before | keys) + ($after | keys) | unique |
+          map({
+            key: .,
+            value: {
+              previousVersion: ($before[.] // null),
+              latestVersion: ($after[.] // null)
+            }
+          }) |
+          from_entries
+        ' /tmp/versions_before.json /tmp/versions_after.json > /tmp/version_changes.json
+
+        echo "date=$(date +'%Y%m%d')" >> "$GITHUB_OUTPUT"
+        {
+          echo 'body<<EOF'
+          echo '### Changelog of external packages'
+          jq -r '
+            to_entries |
+            map(
+              .key as $name |
+              (.value.previousVersion // "-") as $current |
+              (.value.latestVersion // "-") as $latest |
+              if $current == $latest then
+                "- \($name): \($latest)"
+              else
+                "- **\($name)**: \($current) -> \($latest)"
+              end
+            ) |
+            join("\n")
+          ' /tmp/version_changes.json
+          echo EOF
+        } >> "$GITHUB_OUTPUT"
+        {
+          echo 'commit<<EOF'
+          echo 'Update: Bump flake.lock'
+          echo
+          jq -r '
+            to_entries |
+            map(
+              .key as $name |
+              (.value.previousVersion // "-") as $current |
+              (.value.latestVersion // "-") as $latest |
+              if $current == $latest then
+                "- \($name): \($latest)"
+              else
+                "- \($name): \($current) -> \($latest)"
+              end
+            ) |
+            join("\n")
+          ' /tmp/version_changes.json
+          echo EOF
+        } >> "$GITHUB_OUTPUT"
+
+
+    - name: 2-1. Create Pull Request
+      uses: peter-evans/create-pull-request@v8
+      with:
+        branch: update/flake-lock
+        base: staging
+        title: "inputs: bump flake lock"
+        body: ${{ steps.summary.outputs.body }}
+        commit-message: ${{ steps.summary.outputs.commit }}
+        add-paths: flake.lock
+        delete-branch: true

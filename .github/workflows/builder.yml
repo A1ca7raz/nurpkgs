@@ -1,12 +1,28 @@
-name: "Build package"
+name: "Package builder"
 
 on:
   workflow_dispatch:
     inputs:
+      output:
+        description: "Flake output (packages|legacyPackages|checks)"
+        required: true
+        default: packages
+        type: choice
+        options:
+          - packages
+          - legacyPackages
+          - checks
       package:
         description: Package to build
         required: false
         type: string
+      arch:
+        description: Architecture
+        required: true
+        default: x86_64-linux
+        type: choice
+        options:
+          - x86_64-linux
       push_cache:
         description: Push cache
         required: true
@@ -19,10 +35,21 @@ on:
         type: boolean
   workflow_call:
     inputs:
+      output:
+        description: "Flake output (packages|legacyPackages|checks)"
+        default: "packages"
+        type: string
       package:
         description: Package to build
         required: false
         type: string
+      arch:
+        description: Architecture
+        required: true
+        default: x86_64-linux
+        type: choice
+        options:
+          - x86_64-linux
       push_cache:
         description: Push cache
         default: true
@@ -45,22 +72,20 @@ jobs:
       actions: write
     env:
       CI_MODE: 1
-      CACHIX_CACHE: ${{ secrets.CACHIX_CACHE }}
-      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_ACCESS_TOKEN }}
 
     steps:
     - name: 0-1. Checkout repository
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with:
         ref: 'main'
 
     - name: 0-2. Install Nix
-      uses: nixbuild/nix-quick-install-action@v33
+      uses: nixbuild/nix-quick-install-action@v34
       with:
         nix_conf: ${{ env.nix_conf }}
 
     - name: 0.3. Setup cache
-      uses: nix-community/cache-nix-action@v6
+      uses: nix-community/cache-nix-action@v7
       with:
         primary-key: nur-${{ runner.os }}-individual-${{ inputs.package }}-${{ hashFiles('flake.lock', 'pkgs/_sources/generated.nix') }}
         restore-prefixes-first-match: nur-${{ runner.os }}-shared-${{ hashFiles('flake.lock', 'pkgs/_sources/generated.nix') }}
@@ -71,7 +96,7 @@ jobs:
         purge-primary-key: never
 
     - name: 0-4. Setup Cachix
-      uses: cachix/cachix-action@v16
+      uses: cachix/cachix-action@v17
       with:
         name: '${{ secrets.CACHIX_CACHE }}'
         authToken: '${{ secrets.CACHIX_ACCESS_TOKEN }}'
@@ -89,10 +114,10 @@ jobs:
       if: ${{ inputs.pre_check == true }}
       run: nix flake check --no-build --no-allow-import-from-derivation
 
-    - name: 2-1. Build ${{ inputs.package }}
+    - name: 2-1. Build ${{ inputs.output }}.${{ inputs.package }}
       run: |
-        nix build .#packages.x86_64-linux.${{ inputs.package }} -v --show-trace
+        nix build .#${{ inputs.output }}.${{ inputs.arch }}.${{ inputs.package }} -v --show-trace
 
     - name: 3-1. Push cache to Cachix
       if: ${{ inputs.push_cache == true }}
-      run: bash ./.github/push_cache.sh ${{ inputs.package }}
+      run: bash ./.github/push_cache.sh "${{ inputs.output }}" "${{ inputs.arch }}" "${{ inputs.package }}"

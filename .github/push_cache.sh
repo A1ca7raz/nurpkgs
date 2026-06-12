@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 # Variables
+output=${1:-packages}
+arch=${2:-x86_64-linux}
+package=${3}
 cache=${CACHIX_CACHE:-test}
 retry_times=${ATTIC_PUSH_RETRY:-10}
-arch=${ARCH:-x86_64-linux}
 [[ $CI_MODE ]] && dryrun="" || dryrun=echo
 
 # Functions
@@ -16,7 +18,7 @@ push_with_retry() {
 }
 
 # Calc store
-store_list=($(nix eval --raw .#packages.${arch} --apply "x: with builtins; let store_list=with x;[$*]; in foldl' (acc: y: acc+\" \"+y.outPath) '''' store_list"))
+store_list=($(nix eval --raw .#${output}.${arch} --apply "x: with builtins; let store_list=with x;[$package]; in foldl' (acc: y: acc+\" \"+y.outPath) '''' store_list"))
 
 # Show package information
 echo -en "\e[35m==>\e[0m Total \e[35m${#store_list[*]}\e[0m package"
