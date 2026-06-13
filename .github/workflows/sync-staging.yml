@@ -77,7 +77,7 @@ jobs:
             git fetch origin "$branch"
             git checkout -B "$branch" "origin/$branch"
             git rebase origin/main
-            git push --force-with-lease "$remote_url" "$branch"
+            git push --force-with-lease origin "$branch"
           }
 
           sync_staging
