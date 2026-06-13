@@ -104,6 +104,9 @@ jobs:
       contents: write
       pull-requests: write
     steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
       - name: Generate notification message
         id: notify
         env:
