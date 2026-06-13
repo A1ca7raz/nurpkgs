@@ -1,0 +1,87 @@
+name: "Sync staging with main"
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GH_PR_PAT }}
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch branches
+        run: |
+          git fetch origin main staging
+
+      - name: Find open update PRs
+        id: find-prs
+        env:
+          GH_TOKEN: ${{ secrets.GH_PR_PAT }}
+        run: |
+          prs_sources=$(gh pr list --base staging --head update/sources --json headRefName --jq '.[].headRefName' 2>/dev/null || true)
+          prs_lock=$(gh pr list --base staging --head update/flake-lock --json headRefName --jq '.[].headRefName' 2>/dev/null || true)
+          prs=$(printf '%s\n%s\n' "$prs_sources" "$prs_lock" | sort -u | sed '/^$/d')
+          {
+            echo 'prs<<EOF'
+            echo "$prs"
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+          echo "Found PR branches: $prs"
+
+      - name: Sync staging and rebase update branches
+        env:
+          GH_PR_PAT: ${{ secrets.GH_PR_PAT }}
+          PR_BRANCHES: ${{ steps.find-prs.outputs.prs }}
+        run: |
+          set -euo pipefail
+
+          remote_url="https://x-access-token:${GH_PR_PAT}@github.com/${{ github.repository }}.git"
+
+          sync_staging() {
+            if git merge-base --is-ancestor origin/staging origin/main; then
+              echo "Staging is ancestor of main, fast-forwarding..."
+              git checkout staging
+              git merge --ff-only origin/main
+              git push "$remote_url" staging
+            else
+              echo "Staging is not ancestor of main, resetting staging to main..."
+              git checkout -B staging origin/main
+              git push --force-with-lease "$remote_url" staging
+            fi
+          }
+
+          rebase_branch() {
+            local branch=$1
+            echo "Rebasing $branch onto main..."
+            git fetch origin "$branch"
+            git checkout -B "$branch" "origin/$branch"
+            git rebase origin/main
+            git push --force-with-lease "$remote_url" "$branch"
+          }
+
+          sync_staging
+
+          for branch in $PR_BRANCHES; do
+            rebase_branch "$branch"
+          done

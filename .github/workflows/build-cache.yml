@@ -102,6 +102,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
     steps:
       - name: Generate notification message
         id: notify
@@ -131,17 +132,29 @@ jobs:
           pip install apprise
           apprise -vv -b "$MESSAGE" "tgram://$BOT_KEY/$RECEIVER_ID/?format=markdown" || true
 
-      - name: Checkout main
-        uses: actions/checkout@v6
-        with:
-          ref: main
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Rebase staging to main
+      - name: Create PR to main
+        env:
+          GH_TOKEN: ${{ secrets.GH_PR_PAT }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin staging
-          git rebase origin/staging
-          git push origin main
+          set -euo pipefail
+          existing=$(gh pr list --base main --head staging --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            echo "PR #$existing already exists"
+          else
+            gh pr create \
+              --base main \
+              --head staging \
+              --title "chore: sync staging to main" \
+              --body "Automated sync after binary cache build." \
+              --label automated
+          fi
+
+      - name: Enable auto-merge
+        env:
+          GH_TOKEN: ${{ secrets.GH_PR_PAT }}
+        run: |
+          set -euo pipefail
+          pr=$(gh pr list --base main --head staging --json number --jq '.[0].number')
+          if [ -n "$pr" ]; then
+            gh pr merge "$pr" --auto --rebase
+          fi

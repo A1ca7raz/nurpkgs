@@ -100,19 +100,7 @@ jobs:
           echo EOF
         } >> "$GITHUB_OUTPUT"
 
-    - name: 2-1. Reset staging to main
-      env:
-        GH_PR_PAT: ${{ secrets.GH_PR_PAT }}
-      run: |
-        export WORKING_BRANCH=`git branch --show-current`
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
-        git fetch origin main
-        git checkout -B staging origin/main
-        git push --force "https://x-access-token:${GH_PR_PAT}@github.com/${{ github.repository }}.git" staging
-        git checkout $WORKING_BRANCH
-
-    - name: 2-2. Create Pull Request
+    - name: 2-1. Create Pull Request
       uses: peter-evans/create-pull-request@v8
       with:
         token: ${{ secrets.GH_PR_PAT }}
