@@ -148,7 +148,7 @@ jobs:
               --base main \
               --head staging \
               --title "chore: sync staging to main" \
-              --body "Automated sync after binary cache build." \
+              --body "Automated sync after binary cache build."
           fi
 
       # - name: Enable auto-merge
