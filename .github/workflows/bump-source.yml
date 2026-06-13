@@ -103,6 +103,7 @@ jobs:
     - name: 2-1. Create Pull Request
       uses: peter-evans/create-pull-request@v8
       with:
+        token: ${{ secrets.GH_PR_PAT }}
         branch: update/sources
         base: staging
         title: "Update: bump sources on ${{ steps.summary.outputs.date }}"
