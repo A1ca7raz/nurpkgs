@@ -149,15 +149,14 @@ jobs:
               --head staging \
               --title "chore: sync staging to main" \
               --body "Automated sync after binary cache build." \
-              --label automated
           fi
 
-      - name: Enable auto-merge
-        env:
-          GH_TOKEN: ${{ secrets.GH_PR_PAT }}
-        run: |
-          set -euo pipefail
-          pr=$(gh pr list --base main --head staging --json number --jq '.[0].number')
-          if [ -n "$pr" ]; then
-            gh pr merge "$pr" --auto --rebase
-          fi
+      # - name: Enable auto-merge
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GH_PR_PAT }}
+      #   run: |
+      #     set -euo pipefail
+      #     pr=$(gh pr list --base main --head staging --json number --jq '.[0].number')
+      #     if [ -n "$pr" ]; then
+      #       gh pr merge "$pr" --auto --rebase
+      #     fi
