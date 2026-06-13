@@ -107,7 +107,7 @@ jobs:
         token: ${{ secrets.GH_PR_PAT }}
         branch: update/flake-lock
         base: staging
-        title: "inputs: bump flake lock"
+        title: "inputs: bump flake.lock on ${{ steps.summary.outputs.date }}"
         body: ${{ steps.summary.outputs.body }}
         commit-message: ${{ steps.summary.outputs.commit }}
         add-paths: flake.lock
