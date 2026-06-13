@@ -102,6 +102,7 @@ jobs:
 
 
     - name: 2-1. Create Pull Request
+      id: cpr
       uses: peter-evans/create-pull-request@v8
       with:
         token: ${{ secrets.GH_PR_PAT }}
@@ -112,3 +113,31 @@ jobs:
         commit-message: ${{ steps.summary.outputs.commit }}
         add-paths: flake.lock
         delete-branch: true
+
+    - name: 2-2. Generate notification message
+      if: steps.cpr.outputs.pull-request-url != ''
+      id: notify
+      env:
+        PR_URL: ${{ steps.cpr.outputs.pull-request-url }}
+        PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+        COMMIT_MSG: ${{ steps.summary.outputs.commit }}
+      run: |
+        {
+          echo 'message<<EOF'
+          echo "🔔 nurpkgs update of flake.lock needs review: [#$PR_NUMBER]($PR_URL)"
+          echo
+          echo "\`\`\`"
+          echo "$COMMIT_MSG"
+          echo "\`\`\`"
+          echo EOF
+        } >> "$GITHUB_OUTPUT"
+
+    - name: 2-3. Send Telegram notification
+      if: steps.notify.outputs.message != ''
+      env:
+        RECEIVER_ID: ${{ secrets.TG_RECEIVER_ID }}
+        BOT_KEY: ${{ secrets.TG_BOT_KEY }}
+        MESSAGE: ${{ steps.notify.outputs.message }}
+      run: |
+        pip install apprise
+        apprise -vv -b "$MESSAGE" "tgram://$BOT_KEY/$RECEIVER_ID/?format=markdown" || true
