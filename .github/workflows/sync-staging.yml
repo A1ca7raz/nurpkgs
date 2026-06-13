@@ -56,18 +56,16 @@ jobs:
         run: |
           set -euo pipefail
 
-          remote_url="https://x-access-token:${GH_PR_PAT}@github.com/${{ github.repository }}.git"
-
           sync_staging() {
             if git merge-base --is-ancestor origin/staging origin/main; then
               echo "Staging is ancestor of main, fast-forwarding..."
               git checkout staging
               git merge --ff-only origin/main
-              git push "$remote_url" staging
+              git push origin staging
             else
               echo "Staging is not ancestor of main, resetting staging to main..."
               git checkout -B staging origin/main
-              git push --force-with-lease "$remote_url" staging
+              git push --force-with-lease origin staging
             fi
           }
 
