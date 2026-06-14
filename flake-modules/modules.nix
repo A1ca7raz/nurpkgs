@@ -20,7 +20,7 @@ in {
     lanzaboote = lanzaboote.nixosModules.lanzaboote;
     niri = { pkgs, lib, ... }: {
       imports = [
-        niri-flake.nixosModules.niri
+        niri-nix.nixosModules.default
       ];
 
       programs.niri.package = pkgs.niri-unstable;
@@ -49,7 +49,8 @@ in {
     };
     niri = { ... }: {
       imports = [
-        niri-flake.homeModules.niri
+        niri-nix.homeModules.default
+        niri-nix.homeModules.stylix
       ];
 
       programs.niri.package = pkgs.niri-unstable;

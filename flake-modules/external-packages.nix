@@ -23,7 +23,7 @@
         noctalia-nighty = noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override { calendarSupport = true; };
         dms-nighty = dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
-        inherit (niri-flake.packages.${pkgs.stdenv.hostPlatform.system})
+        inherit (niri-nix.packages.${pkgs.stdenv.hostPlatform.system})
           niri-unstable
           xwayland-satellite-unstable
         ;

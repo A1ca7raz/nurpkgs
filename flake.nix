@@ -92,8 +92,8 @@
       inputs.crane.follows = "crane";
       inputs.rust-overlay.follows = "rust-overlay";
     };
-    niri-flake = {
-      url = "github:sodiboo/niri-flake";
+    niri-nix = {
+      url = "git+https://codeberg.org/BANanaD3V/niri-nix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "";
     };
