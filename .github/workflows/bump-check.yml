@@ -34,7 +34,7 @@ jobs:
 
       - name: 1-1. Detect changed files
         id: changed-files
-        uses: tj-actions/changed-files@v46
+        uses: tj-actions/changed-files@v47
 
       - name: 1-2. Detect packages to build
         id: detect
