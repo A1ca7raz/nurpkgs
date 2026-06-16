@@ -117,4 +117,12 @@ jobs:
 
     - name: 3-1. Push cache to Cachix
       if: inputs.push_cache
-      run: bash ./.github/push_cache.sh "${{ inputs.output }}" "${{ inputs.arch }}" "${{ inputs.package }}"
+      env:
+        retry_times: 4
+      run: |
+        nix eval --raw .#${{ inputs.output }}.${{ inputs.arch }}.${{ inputs.package }}.drvPath > .buildpaths
+        for n in $(seq 1 ${{ retry_times }}); do
+          cat .buildpaths | cachix push $CACHIX_CACHE
+          [[ $? == 0 ]] && break
+        done
+        # bash ./.github/push_cache.sh "${{ inputs.output }}" "${{ inputs.arch }}" "${{ inputs.package }}"
