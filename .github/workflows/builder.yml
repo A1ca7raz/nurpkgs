@@ -118,7 +118,8 @@ jobs:
     - name: 3-1. Push cache to Cachix
       if: inputs.push_cache
       run: |
-        nix eval --raw .#${{ inputs.output }}.${{ inputs.arch }}.${{ inputs.package }}.drvPath > .buildpaths
+        nix eval --raw .#${{ inputs.output }}.${{ inputs.arch }}.${{ inputs.package }} \
+          --apply 'drv: builtins.concatStringsSep "\n" (map (x: "${drv.${x}}") drv.outputs)' > .buildpaths
         for n in $(seq 1 4); do
           cat .buildpaths | cachix push $CACHIX_CACHE
           [[ $? == 0 ]] && break
