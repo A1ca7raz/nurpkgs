@@ -40,13 +40,7 @@ in {
   };
 
   flake.homeModules = with inputs; {
-    # dms = dms.homeModules.dank-material-shell;
-    dms = { ... }: {
-      imports = with dms.homeModules; [
-        dank-material-shell
-        niri
-      ];
-    };
+    dms = dms.homeModules.dank-material-shell;
     niri = { ... }: {
       imports = [
         niri-nix.homeModules.default
