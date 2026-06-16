@@ -86,6 +86,26 @@
         "type": "github"
       }
     },
+    "dms-plugin-registry": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781578295,
+        "narHash": "sha256-9GYAvOxvB4QQq1Ma6WMc6wPqJTlUZqLyz1NotBPUVGc=",
+        "owner": "AvengeMedia",
+        "repo": "dms-plugin-registry",
+        "rev": "3e0401f01c6b6562448e0b80d7518e4dca22aff1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AvengeMedia",
+        "repo": "dms-plugin-registry",
+        "type": "github"
+      }
+    },
     "dns": {
       "inputs": {
         "flake-utils": [
@@ -645,6 +665,7 @@
         "crane": "crane",
         "disko": "disko",
         "dms": "dms",
+        "dms-plugin-registry": "dms-plugin-registry",
         "dns": "dns",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",

@@ -13,7 +13,12 @@ in {
   flake.nixosModules = with inputs; {
     colmena = colmena.nixosModules.deploymentOptions;
     disko = disko.nixosModules.disko;
-    dms = dms.nixosModules.dank-material-shell;
+    dms = { ... }: {
+      imports = [
+        dms.nixosModules.dank-material-shell
+        dms-plugin-registry.nixosModules.default
+      ];
+    };
     hermes = hermes-agent.nixosModules.default;
     home-manager = home-manager.nixosModules.home-manager;
     impermanence = impermanence.nixosModules.impermanence;
@@ -40,7 +45,12 @@ in {
   };
 
   flake.homeModules = with inputs; {
-    dms = dms.homeModules.dank-material-shell;
+    dms = { ... }: {
+      imports = [
+        dms.homeModules.dank-material-shell
+        dms-plugin-registry.homeModules.default
+      ];
+    };
     niri = { ... }: {
       imports = [
         niri-nix.homeModules.default
