@@ -117,11 +117,9 @@ jobs:
 
     - name: 3-1. Push cache to Cachix
       if: inputs.push_cache
-      env:
-        retry_times: 4
       run: |
         nix eval --raw .#${{ inputs.output }}.${{ inputs.arch }}.${{ inputs.package }}.drvPath > .buildpaths
-        for n in $(seq 1 ${{ retry_times }}); do
+        for n in $(seq 1 4); do
           cat .buildpaths | cachix push $CACHIX_CACHE
           [[ $? == 0 ]] && break
         done
