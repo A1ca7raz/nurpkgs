@@ -344,11 +344,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781355335,
-        "narHash": "sha256-Dh9sY2zi6NOQgMglp0WBuwQ93bDAeJyD17i5sebJYPs=",
+        "lastModified": 1781621380,
+        "narHash": "sha256-NDi+EOySng9cGqCKUIhQ8LmJoTR/d5H2Cy6qmZimET4=",
         "owner": "MoonshotAI",
         "repo": "kimi-code",
-        "rev": "f874251288927243a9b9d4bfd546e8c17754d566",
+        "rev": "8ac274369ce132976259621cb2ebf5200907e94c",
         "type": "github"
       },
       "original": {
