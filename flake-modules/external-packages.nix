@@ -42,7 +42,7 @@
       legacyPackages = externalPackages;
       checks = cachedPackages //
         mkBundle "lanzaboote" inputs.lanzaboote.packages.${system} //
-        mkBundle "sops-nix" inputs.lanzaboote.packages.${system}
+        mkBundle "sops-nix" inputs.lanzaboote.packages.${system} //
         mkBundle "dms-plugins" inputs.dms-plugin-registry.packages.${system}
       ;
     };
