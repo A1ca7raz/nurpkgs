@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   perSystem = { pkgs, system, self', ... }:
     let
@@ -19,10 +19,9 @@
 
       externalPackages = with inputs; {
         hermes-agent = hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default;
+        # kimi-code-unstable = kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default;
         kimi-code-unstable = kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (p: {
-          postInstall = p.postInstall + ''
-            wrapProgram $out/bin/kimi --set KIMI_CODE_HOME ~/.config/kimi-code
-          '';
+          postInstall = lib.removeSuffix "\n" p.postInstall + " --set KIMI_CODE_HOME '~/.config/kimi-code'\n";
         });
         noctalia-nighty = noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override { calendarSupport = true; };
         dms-nighty = dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
