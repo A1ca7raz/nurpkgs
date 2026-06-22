@@ -28,7 +28,7 @@ jobs:
           fetch-depth: 0
 
       - name: 0-2. Install Nix
-        uses: nixbuild/nix-quick-install-action@v34
+        uses: nixbuild/nix-quick-install-action@v35
         with:
           nix_conf: ${{ env.nix_conf }}
 
