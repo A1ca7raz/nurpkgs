@@ -25,7 +25,7 @@ jobs:
         fetch-depth: 2
 
     - name: 0-2. Install Nix
-      uses: nixbuild/nix-quick-install-action@v34
+      uses: nixbuild/nix-quick-install-action@v35
 
     - name: 0-3. Collect current package versions
       run: |
