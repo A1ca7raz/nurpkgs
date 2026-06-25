@@ -54,7 +54,6 @@ in {
     niri = { pkgs, ... }: {
       imports = [
         niri-nix.homeModules.default
-        niri-nix.homeModules.stylix
       ];
 
       wayland.windowManager.niri.package = pkgs.niri-unstable;
