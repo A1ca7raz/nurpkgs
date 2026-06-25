@@ -51,7 +51,7 @@ in {
         dms-plugin-registry.homeModules.default
       ];
     };
-    niri = { ... }: {
+    niri = { pkgs, ... }: {
       imports = [
         niri-nix.homeModules.default
         niri-nix.homeModules.stylix
