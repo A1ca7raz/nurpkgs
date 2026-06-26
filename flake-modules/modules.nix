@@ -28,8 +28,7 @@ in {
         niri-nix.nixosModules.default
       ];
 
-      programs.niri.package = pkgs.niri-unstable;
-      programs.niri.settings.xwayland-satellite.path = lib.mkDefault (lib.getExe pkgs.xwayland-satellite-unstable);
+      programs.niri.package = lib.mkDefault pkgs.niri-unstable;
     };
     noctalia = noctalia.nixosModules.default;
     quadlet = quadlet-nix.nixosModules.quadlet;
@@ -56,7 +55,7 @@ in {
         niri-nix.homeModules.default
       ];
 
-      wayland.windowManager.niri.package = pkgs.niri-unstable;
+      wayland.windowManager.niri.package = lib.mkDefault null;
       wayland.windowManager.niri.settings.xwayland-satellite.path = lib.mkDefault (lib.getExe pkgs.xwayland-satellite-unstable);
     };
     noctalia = noctalia.homeModules.default;
