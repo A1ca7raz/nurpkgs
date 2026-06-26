@@ -55,7 +55,7 @@ in {
         niri-nix.homeModules.default
       ];
 
-      wayland.windowManager.niri.package = lib.mkDefault null;
+      wayland.windowManager.niri.package = lib.mkDefault pkgs.niri-unstable;
       wayland.windowManager.niri.settings.xwayland-satellite.path = lib.mkDefault (lib.getExe pkgs.xwayland-satellite-unstable);
     };
     noctalia = noctalia.homeModules.default;
