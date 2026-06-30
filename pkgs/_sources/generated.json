@@ -125,16 +125,16 @@
             "name": null,
             "owner": "KunoiSayami",
             "repo": "teamspeak-management-tools.rs",
-            "rev": "v6.0.2",
-            "sha256": "sha256-NDoaCMJ4p7JWNtBBniS5A5TlopQWitIyT9V5DBzvFrI=",
+            "rev": "v6.2.2",
+            "sha256": "sha256-BL4xfeXsJjtK8skcB0Td4dW4dWSpNwWj3hJxEmRytMs=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v6.0.2"
+        "version": "v6.2.2"
     },
     "tela-circle-icon-theme-nighty": {
         "cargoLock": null,
-        "date": "2026-05-25",
+        "date": "2026-06-19",
         "extract": null,
         "name": "tela-circle-icon-theme-nighty",
         "passthru": null,
@@ -144,17 +144,17 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "e3171a34427d0900046dedbdf9979631adea7608",
-            "sha256": "sha256-oejJcmdRIv9Agk61rgu786ZpkHtzfOGAA5GBlETb4Dc=",
+            "rev": "add2ddfa7f73f1e19857b40eb629d914306f6229",
+            "sha256": "sha256-SOl/8fRu3bN3zEEqwf2v3dRQhvQxeQ9QiiufOcFb2I4=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/vinceliuice/Tela-circle-icon-theme"
         },
-        "version": "e3171a34427d0900046dedbdf9979631adea7608"
+        "version": "add2ddfa7f73f1e19857b40eb629d914306f6229"
     },
     "tela-icon-theme-nighty": {
         "cargoLock": null,
-        "date": "2026-05-28",
+        "date": "2026-06-19",
         "extract": null,
         "name": "tela-icon-theme-nighty",
         "passthru": null,
@@ -164,12 +164,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "bf51523edbf825054c1bee6efe02a09aaeda394f",
-            "sha256": "sha256-b8P0SO6piebjoBbiw1vKJTxHO3wzsdW/F766z7nxnkg=",
+            "rev": "4f560eccd0acc9c192f31077c2b3202422cb24fb",
+            "sha256": "sha256-jadkfS39N51fYouxn7xFQ29BZOY0ccpKJY0Br4s/Guo=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/vinceliuice/tela-icon-theme"
         },
-        "version": "bf51523edbf825054c1bee6efe02a09aaeda394f"
+        "version": "4f560eccd0acc9c192f31077c2b3202422cb24fb"
     }
 }
