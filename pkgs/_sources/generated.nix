@@ -36,6 +36,20 @@
     };
     date = "2025-04-13";
   };
+  ndrop = {
+    pname = "ndrop";
+    version = "f2fb1c611811c48b48cd0f0fecab4f3f935e7405";
+    src = fetchgit {
+      url = "https://github.com/Schweber/ndrop";
+      rev = "f2fb1c611811c48b48cd0f0fecab4f3f935e7405";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sparseCheckout = [ ];
+      sha256 = "sha256-/Xco1sr76+F3mAIGq29yp5Y6FPcXS/AVXDpwZ1+rLQk=";
+    };
+    date = "2026-01-25";
+  };
   plasma-applet-window-title6 = {
     pname = "plasma-applet-window-title6";
     version = "v0.9.0";

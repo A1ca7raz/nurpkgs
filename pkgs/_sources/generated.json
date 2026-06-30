@@ -49,6 +49,26 @@
         },
         "version": "a06e723804398d672be74eba0cd4ccee062e1410"
     },
+    "ndrop": {
+        "cargoLock": null,
+        "date": "2026-01-25",
+        "extract": null,
+        "name": "ndrop",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "f2fb1c611811c48b48cd0f0fecab4f3f935e7405",
+            "sha256": "sha256-/Xco1sr76+F3mAIGq29yp5Y6FPcXS/AVXDpwZ1+rLQk=",
+            "sparseCheckout": [],
+            "type": "git",
+            "url": "https://github.com/Schweber/ndrop"
+        },
+        "version": "f2fb1c611811c48b48cd0f0fecab4f3f935e7405"
+    },
     "plasma-applet-window-title6": {
         "cargoLock": null,
         "date": null,

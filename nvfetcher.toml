@@ -11,6 +11,10 @@ fetch.url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/downlo
 src.git = "https://github.com/maurges/dynamic_workspaces"
 fetch.git = "https://github.com/maurges/dynamic_workspaces"
 
+[ndrop]
+src.git = "https://github.com/Schweber/ndrop"
+fetch.git = "https://github.com/Schweber/ndrop"
+
 [plasma-applet-window-title6]
 src.github = "dhruv8sh/plasma6-window-title-applet"
 fetch.github = "dhruv8sh/plasma6-window-title-applet"
