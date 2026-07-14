@@ -8,10 +8,10 @@
 {
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20260511";
+    version = "20260713";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20260511/moegirl.dict";
-      sha256 = "sha256-H9SZRkwZJZ9LMDiyfXXZm8zCq3E3CjbSCBePjf1pPd4=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20260713/moegirl.dict";
+      sha256 = "sha256-ZmpTcolKTjJBino+zkVK6hBv/+yllAiBiR6Jy4SBdVs=";
     };
   };
   fcitx5-pinyin-zhwiki = {
@@ -74,41 +74,41 @@
   };
   teamspeak-management-tools = {
     pname = "teamspeak-management-tools";
-    version = "v6.0.2";
+    version = "v6.2.2";
     src = fetchFromGitHub {
       owner = "KunoiSayami";
       repo = "teamspeak-management-tools.rs";
-      rev = "v6.0.2";
+      rev = "v6.2.2";
       fetchSubmodules = false;
-      sha256 = "sha256-NDoaCMJ4p7JWNtBBniS5A5TlopQWitIyT9V5DBzvFrI=";
+      sha256 = "sha256-BL4xfeXsJjtK8skcB0Td4dW4dWSpNwWj3hJxEmRytMs=";
     };
   };
   tela-circle-icon-theme-nighty = {
     pname = "tela-circle-icon-theme-nighty";
-    version = "e3171a34427d0900046dedbdf9979631adea7608";
+    version = "c0adf1ab92f564e3b83540441921f26d121b09c3";
     src = fetchgit {
       url = "https://github.com/vinceliuice/Tela-circle-icon-theme";
-      rev = "e3171a34427d0900046dedbdf9979631adea7608";
+      rev = "c0adf1ab92f564e3b83540441921f26d121b09c3";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-oejJcmdRIv9Agk61rgu786ZpkHtzfOGAA5GBlETb4Dc=";
+      sha256 = "sha256-0P4KLwrBPsLMaSdaq06dUe8E1qFoGLlMbWxZ89GebKE=";
     };
-    date = "2026-05-25";
+    date = "2026-07-06";
   };
   tela-icon-theme-nighty = {
     pname = "tela-icon-theme-nighty";
-    version = "bf51523edbf825054c1bee6efe02a09aaeda394f";
+    version = "4f560eccd0acc9c192f31077c2b3202422cb24fb";
     src = fetchgit {
       url = "https://github.com/vinceliuice/tela-icon-theme";
-      rev = "bf51523edbf825054c1bee6efe02a09aaeda394f";
+      rev = "4f560eccd0acc9c192f31077c2b3202422cb24fb";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-b8P0SO6piebjoBbiw1vKJTxHO3wzsdW/F766z7nxnkg=";
+      sha256 = "sha256-jadkfS39N51fYouxn7xFQ29BZOY0ccpKJY0Br4s/Guo=";
     };
-    date = "2026-05-28";
+    date = "2026-06-19";
   };
 }
