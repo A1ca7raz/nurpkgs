@@ -24,7 +24,7 @@ stdenv.mkDerivation (finalAttrs: {
     inherit (finalAttrs) pname version src;
     inherit pnpm;
     fetcherVersion = 4;
-    hash = "sha256-useVogy4f2Ip2km2OV8a5tQR7T8sO5O1dmnGYwjH+UQ=";
+    hash = "sha256-SLBtfDuhSodH8G8nQ9DY2wDYlq4WytqMxDjAbqZ74K8=";
     sourceRoot = "${finalAttrs.src.name}/src/dashboard/ui";
   };
 
