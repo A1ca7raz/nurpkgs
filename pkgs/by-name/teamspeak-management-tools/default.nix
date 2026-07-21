@@ -6,7 +6,7 @@
 rustPlatform.buildRustPackage (final: {
   inherit (source) pname version src;
 
-  cargoHash = "sha256-3W8+gTAEuXVFQw9sFfdJKoliUue+YIsrSyIqflv5rZ0=";
+  cargoHash = "sha256-oue/6jxZM4mP1lG6uqdWxYC04OY6DMzVBeOQsYUPPi4=";
 
   meta = {
     maintainers = with lib.maintainers; [ A1ca7raz ];
