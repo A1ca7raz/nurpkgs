@@ -2,99 +2,99 @@
   source,
   lib,
   callPackage,
-  fetchPnpmDeps,
-  nodejs,
-  node-gyp,
-  sqlite,
-  python3,
-  srcOnly,
-  gnumake,
-  pnpm_11,
-  removeReferencesTo,
-  pnpmConfigHook,
   makeWrapper,
-  stdenv
+  pnpm_11,
+  nodejs,
+  stdenv,
+
+  python3Packages,
+  uv,
+  jq,
+  yq,
+  ffmpeg,
+  unzip,
+  zip,
+  wget,
+  curl,
+  imagemagick,
+  git,
+  cacert,
+  pandoc,
+  poppler-utils,
+  dnsutils,
+  ruff,
+  gnumake,
+  sqlite,
+
+  runtimeDependencies ? [
+    python3Packages.python
+    python3Packages.pip
+    ruff
+    uv
+    jq
+    yq
+    ffmpeg
+    unzip
+    zip
+    wget
+    curl
+    imagemagick
+    git
+    cacert
+    pandoc
+    poppler-utils
+    dnsutils
+    gnumake
+    sqlite
+  ],
+  extraRuntimeDependencies ? []
 }:
 let
   pnpm = pnpm_11;
-  nodeSources = srcOnly nodejs;
 
   frontend = callPackage ./frontend.nix {
-    inherit source;
+    inherit source pnpm nodejs;
   };
+  unwrapped = callPackage ./unwrapped.nix {
+    inherit source pnpm nodejs;
+  };
+
+  inherit (builtins)
+    concatStringsSep
+    map
+  ;
 in
-stdenv.mkDerivation (finalAttrs: {
+stdenv.mkDerivation rec {
   inherit (source) src;
-  pname = "cybergroupmate-core-nighty";
+  pname = "cybergroupmate-nighty";
   version = "${source.date}-unstable";
 
+  buildInputs = runtimeDependencies ++ extraRuntimeDependencies;
+
   nativeBuildInputs = [
-    nodejs
-    pnpmConfigHook
-    pnpm
     makeWrapper
-    python3
-    sqlite
-    gnumake
-    node-gyp
   ];
-
-  pnpmDeps = fetchPnpmDeps {
-    inherit (finalAttrs) pname version src;
-    inherit pnpm;
-    fetcherVersion = 4;
-    hash = "sha256-2WgD872lsp/c6ITlSuJkWA13KYtyGlgOhGQF2U0DXi0=";
-  };
-
-  buildPhase = ''
-    runHook preBuild
-
-    # build better-sqlite3
-    betterSqlitePath="node_modules/better-sqlite3"
-    pushd "$betterSqlitePath"
-    npm run build-release --offline --nodedir="${nodeSources}"
-    rm -rf build/Release/{.deps,obj,obj.target,test_extension.node}
-    find build -type f -exec \
-      ${lib.getExe removeReferencesTo} -t "${nodeSources}" {} \;
-    popd
-
-    # build node-pty
-    nodePtyPath="node_modules/node-pty"
-    pushd "$nodePtyPath"
-    npm run install --offline --nodedir="${nodeSources}"
-    rm -rf build/Release/{.deps,obj,obj.target,test_extension.node}
-    find build -type f -exec \
-      ${lib.getExe removeReferencesTo} -t "${nodeSources}" {} \;
-    popd
-
-    runHook postBuild
-  '';
 
   installPhase = ''
     runHook preInstall
 
     mkdir -p $out/bin
-    mkdir -p $out/share/cybergroupmate
-
-    # install CGM core
-    cp -r node_modules $out/share/cybergroupmate
-    cp -r src $out/share/cybergroupmate
-    cp -r system-prompts $out/share/cybergroupmate
-    cp package.json $out/share/cybergroupmate
-
-    # install CGM frontend
-    ln -s ${frontend} $out/share/cybergroupmate/src/dashboard/public
 
     makeWrapper ${nodejs}/bin/node $out/bin/cybergroupmate \
-      --add-flags $out/share/cybergroupmate/node_modules/tsx/dist/cli.mjs \
-      --add-flags $out/share/cybergroupmate/src/main.ts \
-      --prefix PATH : ${nodejs}/bin
+      --add-flags ${unwrapped}/node_modules/tsx/dist/cli.mjs \
+      --add-flags ${unwrapped}/src/main.ts \
+      --prefix PATH : ${nodejs}/bin \
+      ${concatStringsSep "\n" (
+        map (bin: "--prefix PATH : ${bin}/bin \\") buildInputs
+      )}
+      --set NODE_ENV production \
+      --set LOG_LEVEL info
     ln -s $out/bin/cybergroupmate $out/bin/cgm
 
     runHook postInstall
   '';
 
   passthru = {
-    inherit frontend;
+    inherit frontend unwrapped;
   };
-})
+}

@@ -9,7 +9,7 @@
 }:
 stdenv.mkDerivation (finalAttrs: {
   inherit (source) src;
-  pname = "cybergroupmate-frontend-nighty";
+  pname = "cybergroupmate-nighty_frontend";
   version = "${source.date}-unstable";
 
   sourceRoot = "${finalAttrs.src.name}/src/dashboard/ui";
