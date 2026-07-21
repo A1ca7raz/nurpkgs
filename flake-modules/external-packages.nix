@@ -18,9 +18,16 @@
       };
 
       externalPackages = with inputs; {
-        hermes-agent = hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default;
-        kimi-code-unstable = kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default;
-        noctalia-nighty = noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override { calendarSupport = true; };
+        inherit (llm-agents.packages.${pkgs.stdenv.hostPlatform.system})
+          cli-proxy-api
+          codex
+          hermes-agent
+          kimi-code
+          opencode
+          pi
+          skills
+        ;
+
         dms-nighty = dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
         inherit (niri-nix.packages.${pkgs.stdenv.hostPlatform.system})
