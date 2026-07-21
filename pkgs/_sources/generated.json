@@ -8,11 +8,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-H9SZRkwZJZ9LMDiyfXXZm8zCq3E3CjbSCBePjf1pPd4=",
+            "sha256": "sha256-ZmpTcolKTjJBino+zkVK6hBv/+yllAiBiR6Jy4SBdVs=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20260511/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20260713/moegirl.dict"
         },
-        "version": "20260511"
+        "version": "20260713"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLock": null,
@@ -28,26 +28,6 @@
             "url": "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/download/0.3.0/zhwiki-20260416.dict"
         },
         "version": "20260416"
-    },
-    "kwin-effects-dynamic-workspaces": {
-        "cargoLock": null,
-        "date": "2025-04-13",
-        "extract": null,
-        "name": "kwin-effects-dynamic-workspaces",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "rev": "a06e723804398d672be74eba0cd4ccee062e1410",
-            "sha256": "sha256-fOxWVj6bB5nBiPXvVvjwc3MVjKWaOniqPe7UnsPsusE=",
-            "sparseCheckout": [],
-            "type": "git",
-            "url": "https://github.com/maurges/dynamic_workspaces"
-        },
-        "version": "a06e723804398d672be74eba0cd4ccee062e1410"
     },
     "ndrop": {
         "cargoLock": null,
@@ -69,48 +49,6 @@
         },
         "version": "f2fb1c611811c48b48cd0f0fecab4f3f935e7405"
     },
-    "plasma-applet-window-title6": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "plasma-applet-window-title6",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "dhruv8sh",
-            "repo": "plasma6-window-title-applet",
-            "rev": "v0.9.0",
-            "sha256": "sha256-pFXVySorHq5EpgsBz01vZQ0sLAy2UrF4VADMjyz2YLs=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "v0.9.0"
-    },
-    "plasma-panel-colorizer-nighty": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "plasma-panel-colorizer-nighty",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "luisbocanegra",
-            "repo": "plasma-panel-colorizer",
-            "rev": "v7.2.0",
-            "sha256": "sha256-CRuiHVRCstpD3LtT52Xiu4f2+d0Y4RKKLLt056kqNwg=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "v7.2.0"
-    },
     "teamspeak-management-tools": {
         "cargoLock": null,
         "date": null,
@@ -125,16 +63,16 @@
             "name": null,
             "owner": "KunoiSayami",
             "repo": "teamspeak-management-tools.rs",
-            "rev": "v6.0.2",
-            "sha256": "sha256-NDoaCMJ4p7JWNtBBniS5A5TlopQWitIyT9V5DBzvFrI=",
+            "rev": "v6.2.2",
+            "sha256": "sha256-BL4xfeXsJjtK8skcB0Td4dW4dWSpNwWj3hJxEmRytMs=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v6.0.2"
+        "version": "v6.2.2"
     },
     "tela-circle-icon-theme-nighty": {
         "cargoLock": null,
-        "date": "2026-05-25",
+        "date": "2026-07-06",
         "extract": null,
         "name": "tela-circle-icon-theme-nighty",
         "passthru": null,
@@ -144,17 +82,17 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "e3171a34427d0900046dedbdf9979631adea7608",
-            "sha256": "sha256-oejJcmdRIv9Agk61rgu786ZpkHtzfOGAA5GBlETb4Dc=",
+            "rev": "c0adf1ab92f564e3b83540441921f26d121b09c3",
+            "sha256": "sha256-0P4KLwrBPsLMaSdaq06dUe8E1qFoGLlMbWxZ89GebKE=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/vinceliuice/Tela-circle-icon-theme"
         },
-        "version": "e3171a34427d0900046dedbdf9979631adea7608"
+        "version": "c0adf1ab92f564e3b83540441921f26d121b09c3"
     },
     "tela-icon-theme-nighty": {
         "cargoLock": null,
-        "date": "2026-05-28",
+        "date": "2026-06-19",
         "extract": null,
         "name": "tela-icon-theme-nighty",
         "passthru": null,
@@ -164,12 +102,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "bf51523edbf825054c1bee6efe02a09aaeda394f",
-            "sha256": "sha256-b8P0SO6piebjoBbiw1vKJTxHO3wzsdW/F766z7nxnkg=",
+            "rev": "4f560eccd0acc9c192f31077c2b3202422cb24fb",
+            "sha256": "sha256-jadkfS39N51fYouxn7xFQ29BZOY0ccpKJY0Br4s/Guo=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/vinceliuice/tela-icon-theme"
         },
-        "version": "bf51523edbf825054c1bee6efe02a09aaeda394f"
+        "version": "4f560eccd0acc9c192f31077c2b3202422cb24fb"
     }
 }
