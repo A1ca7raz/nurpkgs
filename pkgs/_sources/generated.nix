@@ -47,20 +47,6 @@
       sha256 = "sha256-BL4xfeXsJjtK8skcB0Td4dW4dWSpNwWj3hJxEmRytMs=";
     };
   };
-  tela-circle-icon-theme-nighty = {
-    pname = "tela-circle-icon-theme-nighty";
-    version = "c0adf1ab92f564e3b83540441921f26d121b09c3";
-    src = fetchgit {
-      url = "https://github.com/vinceliuice/Tela-circle-icon-theme";
-      rev = "c0adf1ab92f564e3b83540441921f26d121b09c3";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sparseCheckout = [ ];
-      sha256 = "sha256-0P4KLwrBPsLMaSdaq06dUe8E1qFoGLlMbWxZ89GebKE=";
-    };
-    date = "2026-07-06";
-  };
   tela-icon-theme-nighty = {
     pname = "tela-icon-theme-nighty";
     version = "4f560eccd0acc9c192f31077c2b3202422cb24fb";
