@@ -79,6 +79,7 @@ stdenv.mkDerivation (finalAttrs: {
     cp -r src $out/
     cp -r system-prompts $out/
     cp package.json $out/
+    cp config.example.yaml $out/
 
     # install CGM frontend
     ln -s ${frontend} $out/src/dashboard/public
