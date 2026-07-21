@@ -1,7 +1,3 @@
-[cybergroupmate-nighty]
-src.git = "https://github.com/Archeb/CyberGroupmate"
-fetch.git = "https://github.com/Archeb/CyberGroupmate"
-
 [fcitx5-pinyin-moegirl]
 src.github = "outloudvi/mw2fcitx"
 fetch.url = "https://github.com/outloudvi/mw2fcitx/releases/download/$ver/moegirl.dict"

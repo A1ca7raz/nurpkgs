@@ -6,20 +6,6 @@
   dockerTools,
 }:
 {
-  cybergroupmate-nighty = {
-    pname = "cybergroupmate-nighty";
-    version = "4ff5ffc09b0dc743abe0d09d1884c40d2bd1458e";
-    src = fetchgit {
-      url = "https://github.com/Archeb/CyberGroupmate";
-      rev = "4ff5ffc09b0dc743abe0d09d1884c40d2bd1458e";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sparseCheckout = [ ];
-      sha256 = "sha256-edfhGetstmVhBd0Y6JhJonqefy+PltflytQ/nDqThTI=";
-    };
-    date = "2026-07-19";
-  };
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
     version = "20260511";
