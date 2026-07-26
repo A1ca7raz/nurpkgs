@@ -49,6 +49,21 @@
         },
         "version": "f2fb1c611811c48b48cd0f0fecab4f3f935e7405"
     },
+    "orca-ide": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "orca-ide",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-Sp7FwVNCcH5RFdSqtXyqwxyRWkOKXJ+YehsI6uDgrS8=",
+            "type": "url",
+            "url": "https://github.com/stablyai/orca/releases/download/v1.4.156/orca-ide_1.4.156_amd64.deb"
+        },
+        "version": "1.4.156"
+    },
     "teamspeak-management-tools": {
         "cargoLock": null,
         "date": null,

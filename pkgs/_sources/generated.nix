@@ -36,6 +36,14 @@
     };
     date = "2026-01-25";
   };
+  orca-ide = {
+    pname = "orca-ide";
+    version = "1.4.156";
+    src = fetchurl {
+      url = "https://github.com/stablyai/orca/releases/download/v1.4.156/orca-ide_1.4.156_amd64.deb";
+      sha256 = "sha256-Sp7FwVNCcH5RFdSqtXyqwxyRWkOKXJ+YehsI6uDgrS8=";
+    };
+  };
   teamspeak-management-tools = {
     pname = "teamspeak-management-tools";
     version = "v6.2.2";
