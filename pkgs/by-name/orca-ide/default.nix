@@ -133,16 +133,7 @@ stdenv.mkDerivation {
     makeWrapper "$app_dir/orca-ide" "$out/bin/orca" \
       --unset ELECTRON_RUN_AS_NODE
 
-    install -Dm644 -T /dev/stdin "$out/share/applications/orca.desktop" <<'EOF'
-    [Desktop Entry]
-    Name=Orca
-    Comment=Next-gen IDE for parallel agentic development
-    Exec=orca %U
-    Terminal=false
-    Type=Application
-    Categories=Development;IDE;
-    StartupWMClass=Orca
-    EOF
+    sed -i 's#/opt/Orca/orca-ide#orca#g' $out/share/applications/orca-ide.desktop
 
     runHook postInstall
   '';
