@@ -13,8 +13,7 @@ fetch.git = "https://github.com/Schweber/ndrop"
 
 [orca-ide]
 src.github = "stablyai/orca"
-src.prefix = "v"
-fetch.url = "https://github.com/stablyai/orca/releases/download/v$ver/orca-ide_$ver_amd64.deb"
+fetch.github = "stablyai/orca"
 
 [teamspeak-management-tools]
 src.github = "KunoiSayami/teamspeak-management-tools.rs"
