@@ -85,13 +85,13 @@
   };
   orca-ide = {
     pname = "orca-ide";
-    version = "v1.4.158";
+    version = "v1.4.168";
     src = fetchFromGitHub {
       owner = "stablyai";
       repo = "orca";
-      rev = "v1.4.158";
+      rev = "v1.4.168";
       fetchSubmodules = false;
-      sha256 = "sha256-JmrH6o9BP7qCLjGlijw6ZQDGANipVbRznO6X5cmoAOc=";
+      sha256 = "sha256-doNDwf31s/ojBwnrZWHlvWlDHWYQQPy0WzvK6FigWfk=";
     };
   };
   teamspeak-management-tools = {
