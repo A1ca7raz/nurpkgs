@@ -139,12 +139,12 @@
             "name": null,
             "owner": "stablyai",
             "repo": "orca",
-            "rev": "v1.4.158",
-            "sha256": "sha256-JmrH6o9BP7qCLjGlijw6ZQDGANipVbRznO6X5cmoAOc=",
+            "rev": "v1.4.168",
+            "sha256": "sha256-doNDwf31s/ojBwnrZWHlvWlDHWYQQPy0WzvK6FigWfk=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v1.4.158"
+        "version": "v1.4.168"
     },
     "teamspeak-management-tools": {
         "cargoLock": null,
