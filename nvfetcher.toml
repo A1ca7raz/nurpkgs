@@ -11,6 +11,22 @@ fetch.url = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki/releases/downlo
 src.git = "https://github.com/Schweber/ndrop"
 fetch.git = "https://github.com/Schweber/ndrop"
 
+[moviepilot]
+src.github = "jxxghp/MoviePilot"
+fetch.github = "jxxghp/MoviePilot"
+
+[moviepilot-frontend]
+src.github = "jxxghp/MoviePilot-Frontend"
+fetch.url = "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/$ver/dist.zip"
+
+[moviepilot-plugins]
+src.git = "https://github.com/jxxghp/MoviePilot-Plugins"
+fetch.git = "https://github.com/jxxghp/MoviePilot-Plugins"
+
+[moviepilot-resources]
+src.git = "https://github.com/jxxghp/MoviePilot-Resources"
+fetch.git = "https://github.com/jxxghp/MoviePilot-Resources"
+
 [orca-ide]
 src.github = "stablyai/orca"
 fetch.github = "stablyai/orca"

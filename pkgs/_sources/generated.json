@@ -29,6 +29,82 @@
         },
         "version": "20260416"
     },
+    "moviepilot": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "moviepilot",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "jxxghp",
+            "repo": "MoviePilot",
+            "rev": "v2.15.4",
+            "sha256": "sha256-Z3llJaf8ASA+IskflyVbCW8Ng1ro0jxmC/eDqU7FHCg=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v2.15.4"
+    },
+    "moviepilot-frontend": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "moviepilot-frontend",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-VbghSDLD9AUofJylQl8yOFs0sh8dA9Q4pdej7bvKFjM=",
+            "type": "url",
+            "url": "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/v2.15.4/dist.zip"
+        },
+        "version": "v2.15.4"
+    },
+    "moviepilot-plugins": {
+        "cargoLock": null,
+        "date": "2026-08-05",
+        "extract": null,
+        "name": "moviepilot-plugins",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "7c430760158c86915fedc94a268cd53dd8a30b14",
+            "sha256": "sha256-nlb0DEGe1f58XFGQRicOE6wXmAvVVNwtmlk7KMPk+tg=",
+            "sparseCheckout": [],
+            "type": "git",
+            "url": "https://github.com/jxxghp/MoviePilot-Plugins"
+        },
+        "version": "7c430760158c86915fedc94a268cd53dd8a30b14"
+    },
+    "moviepilot-resources": {
+        "cargoLock": null,
+        "date": "2026-08-05",
+        "extract": null,
+        "name": "moviepilot-resources",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "75bbfdf48c194c60b766aa1d2a3416481c21de45",
+            "sha256": "sha256-Rh0xyWOH5AfpE2I/nic3kTrFwTGOQr7dE0VXTPfRdkI=",
+            "sparseCheckout": [],
+            "type": "git",
+            "url": "https://github.com/jxxghp/MoviePilot-Resources"
+        },
+        "version": "75bbfdf48c194c60b766aa1d2a3416481c21de45"
+    },
     "ndrop": {
         "cargoLock": null,
         "date": "2026-01-25",
