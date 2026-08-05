@@ -69,11 +69,8 @@ jobs:
               .key as $name |
               (.value.previousVersion // "-") as $current |
               (.value.latestVersion // "-") as $latest |
-              if $current == $latest then
-                "- \($name): \($latest)"
-              else
-                "- **\($name)**: \($current) -> \($latest)"
-              end
+              select($current != $latest) |
+              "- **\($name)**: \($current) -> \($latest)"
             ) |
             join("\n")
           ' /tmp/version_changes.json
@@ -89,11 +86,8 @@ jobs:
               .key as $name |
               (.value.previousVersion // "-") as $current |
               (.value.latestVersion // "-") as $latest |
-              if $current == $latest then
-                "- \($name): \($latest)"
-              else
-                "- \($name): \($current) -> \($latest)"
-              end
+              select($current != $latest) |
+              "- \($name): \($current) -> \($latest)"
             ) |
             join("\n")
           ' /tmp/version_changes.json
