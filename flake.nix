@@ -66,7 +66,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dms = {
-      url = "github:A1ca7raz/DankMaterialShell";
+      # url = "github:A1ca7raz/DankMaterialShell";
+      url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
     };
