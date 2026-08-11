@@ -24,50 +24,50 @@
   };
   moviepilot = {
     pname = "moviepilot";
-    version = "v2.15.4";
+    version = "v3.0.0";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.15.4";
+      rev = "v3.0.0";
       fetchSubmodules = false;
-      sha256 = "sha256-Z3llJaf8ASA+IskflyVbCW8Ng1ro0jxmC/eDqU7FHCg=";
+      sha256 = "sha256-6rI+aSStgLCsV15Ajc5neJISAbrMByg3JjoV9kfMrnY=";
     };
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.15.4";
+    version = "v3.0.0";
     src = fetchurl {
-      url = "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/v2.15.4/dist.zip";
-      sha256 = "sha256-VbghSDLD9AUofJylQl8yOFs0sh8dA9Q4pdej7bvKFjM=";
+      url = "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/v3.0.0/dist.zip";
+      sha256 = "sha256-77aUv0MKHV5aDkZTRkiUspHDNOYNJzI7mXJFagA9R7E=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "7c430760158c86915fedc94a268cd53dd8a30b14";
+    version = "efc4b8f03ca23939b89ea00e6d8808c4ef6da63a";
     src = fetchgit {
       url = "https://github.com/jxxghp/MoviePilot-Plugins";
-      rev = "7c430760158c86915fedc94a268cd53dd8a30b14";
+      rev = "efc4b8f03ca23939b89ea00e6d8808c4ef6da63a";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-nlb0DEGe1f58XFGQRicOE6wXmAvVVNwtmlk7KMPk+tg=";
+      sha256 = "sha256-9XYy10YACWd049I8+yZfLWZufhkW55IHyGs2Mvcihdg=";
     };
-    date = "2026-08-05";
+    date = "2026-08-11";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
-    version = "75bbfdf48c194c60b766aa1d2a3416481c21de45";
+    version = "a8b90c273f4ba23622bc3bf8f203f383c0f91c71";
     src = fetchgit {
       url = "https://github.com/jxxghp/MoviePilot-Resources";
-      rev = "75bbfdf48c194c60b766aa1d2a3416481c21de45";
+      rev = "a8b90c273f4ba23622bc3bf8f203f383c0f91c71";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-Rh0xyWOH5AfpE2I/nic3kTrFwTGOQr7dE0VXTPfRdkI=";
+      sha256 = "sha256-Dnz17jX/wn/8jJoD3L8wrxNeOlEq2BFQBJdBUdyrc+c=";
     };
-    date = "2026-08-05";
+    date = "2026-08-10";
   };
   ndrop = {
     pname = "ndrop";
@@ -85,13 +85,13 @@
   };
   orca-ide = {
     pname = "orca-ide";
-    version = "v1.4.158";
+    version = "v1.4.180";
     src = fetchFromGitHub {
       owner = "stablyai";
       repo = "orca";
-      rev = "v1.4.158";
+      rev = "v1.4.180";
       fetchSubmodules = false;
-      sha256 = "sha256-JmrH6o9BP7qCLjGlijw6ZQDGANipVbRznO6X5cmoAOc=";
+      sha256 = "sha256-PTATpzrqXHKHx3S5uJz8bIAKaRbyyb0AkuoLMRXcSeg=";
     };
   };
   teamspeak-management-tools = {
@@ -107,16 +107,16 @@
   };
   tela-icon-theme-nighty = {
     pname = "tela-icon-theme-nighty";
-    version = "4f560eccd0acc9c192f31077c2b3202422cb24fb";
+    version = "a1fffc5bfab716bd022dd228ee96fe3965cdb33d";
     src = fetchgit {
       url = "https://github.com/vinceliuice/tela-icon-theme";
-      rev = "4f560eccd0acc9c192f31077c2b3202422cb24fb";
+      rev = "a1fffc5bfab716bd022dd228ee96fe3965cdb33d";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-jadkfS39N51fYouxn7xFQ29BZOY0ccpKJY0Br4s/Guo=";
+      sha256 = "sha256-e4Ysu9YE2jAib9+q9eYL0E3w1BBXbu/QYNTmSjk0CRY=";
     };
-    date = "2026-06-19";
+    date = "2026-08-10";
   };
 }
