@@ -24,6 +24,7 @@
           hermes-agent
           kimi-code
           opencode
+          omp
           pi
           skills
         ;
