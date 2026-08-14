@@ -27,6 +27,7 @@
           omp
           pi
           skills
+          dsh
         ;
 
         dms-nighty = dms.packages.${pkgs.stdenv.hostPlatform.system}.default;

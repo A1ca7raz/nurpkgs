@@ -8,11 +8,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-ZmpTcolKTjJBino+zkVK6hBv/+yllAiBiR6Jy4SBdVs=",
+            "sha256": "sha256-JN3PJAS2x2Fsvx2iQZ+K0MYOR4esHGHOsTVl+6dZZVE=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20260713/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20260812/moegirl.dict"
         },
-        "version": "20260713"
+        "version": "20260812"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLock": null,
@@ -43,12 +43,12 @@
             "name": null,
             "owner": "jxxghp",
             "repo": "MoviePilot",
-            "rev": "v2.15.4",
-            "sha256": "sha256-Z3llJaf8ASA+IskflyVbCW8Ng1ro0jxmC/eDqU7FHCg=",
+            "rev": "v3.0.0",
+            "sha256": "sha256-KghUfo/LOMUl9M/dySpap8y+bUY4kwMzZb6HeHmrjb8=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v2.15.4"
+        "version": "v3.0.0"
     },
     "moviepilot-frontend": {
         "cargoLock": null,
@@ -59,15 +59,15 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-VbghSDLD9AUofJylQl8yOFs0sh8dA9Q4pdej7bvKFjM=",
+            "sha256": "sha256-aTublmUTvvttG0fCdWNTgeVRM/RNfkRNiOljxabaQuI=",
             "type": "url",
-            "url": "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/v2.15.4/dist.zip"
+            "url": "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/v3.0.0/dist.zip"
         },
-        "version": "v2.15.4"
+        "version": "v3.0.0"
     },
     "moviepilot-plugins": {
         "cargoLock": null,
-        "date": "2026-08-05",
+        "date": "2026-08-13",
         "extract": null,
         "name": "moviepilot-plugins",
         "passthru": null,
@@ -77,17 +77,17 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "7c430760158c86915fedc94a268cd53dd8a30b14",
-            "sha256": "sha256-nlb0DEGe1f58XFGQRicOE6wXmAvVVNwtmlk7KMPk+tg=",
+            "rev": "bd4e3bf13fae45ecda460ce90cc289444790d596",
+            "sha256": "sha256-ZBPJ5WWrogAF5nR7LDIwKT8iNUzkwanJlTtkl4twD80=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/jxxghp/MoviePilot-Plugins"
         },
-        "version": "7c430760158c86915fedc94a268cd53dd8a30b14"
+        "version": "bd4e3bf13fae45ecda460ce90cc289444790d596"
     },
     "moviepilot-resources": {
         "cargoLock": null,
-        "date": "2026-08-05",
+        "date": "2026-08-14",
         "extract": null,
         "name": "moviepilot-resources",
         "passthru": null,
@@ -97,13 +97,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "75bbfdf48c194c60b766aa1d2a3416481c21de45",
-            "sha256": "sha256-Rh0xyWOH5AfpE2I/nic3kTrFwTGOQr7dE0VXTPfRdkI=",
+            "rev": "2c244a6614f7cf3b2ed3448a8ee08cafc2e61a33",
+            "sha256": "sha256-A+tFxXQIghuwP3YNI9yfdUwKWtOjOFkLoppt8jQ2k0E=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/jxxghp/MoviePilot-Resources"
         },
-        "version": "75bbfdf48c194c60b766aa1d2a3416481c21de45"
+        "version": "2c244a6614f7cf3b2ed3448a8ee08cafc2e61a33"
     },
     "ndrop": {
         "cargoLock": null,
@@ -139,12 +139,12 @@
             "name": null,
             "owner": "stablyai",
             "repo": "orca",
-            "rev": "v1.4.158",
-            "sha256": "sha256-JmrH6o9BP7qCLjGlijw6ZQDGANipVbRznO6X5cmoAOc=",
+            "rev": "v1.4.182",
+            "sha256": "sha256-QRjVc9Bpl1iGJBCv6z4Un/tkfYiiM+z+3Dml634Mo+w=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v1.4.158"
+        "version": "v1.4.182"
     },
     "teamspeak-management-tools": {
         "cargoLock": null,
@@ -169,7 +169,7 @@
     },
     "tela-icon-theme-nighty": {
         "cargoLock": null,
-        "date": "2026-06-19",
+        "date": "2026-08-10",
         "extract": null,
         "name": "tela-icon-theme-nighty",
         "passthru": null,
@@ -179,12 +179,12 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "4f560eccd0acc9c192f31077c2b3202422cb24fb",
-            "sha256": "sha256-jadkfS39N51fYouxn7xFQ29BZOY0ccpKJY0Br4s/Guo=",
+            "rev": "a1fffc5bfab716bd022dd228ee96fe3965cdb33d",
+            "sha256": "sha256-e4Ysu9YE2jAib9+q9eYL0E3w1BBXbu/QYNTmSjk0CRY=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/vinceliuice/tela-icon-theme"
         },
-        "version": "4f560eccd0acc9c192f31077c2b3202422cb24fb"
+        "version": "a1fffc5bfab716bd022dd228ee96fe3965cdb33d"
     }
 }

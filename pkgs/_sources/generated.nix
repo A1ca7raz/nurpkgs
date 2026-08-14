@@ -8,10 +8,10 @@
 {
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20260713";
+    version = "20260812";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20260713/moegirl.dict";
-      sha256 = "sha256-ZmpTcolKTjJBino+zkVK6hBv/+yllAiBiR6Jy4SBdVs=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20260812/moegirl.dict";
+      sha256 = "sha256-JN3PJAS2x2Fsvx2iQZ+K0MYOR4esHGHOsTVl+6dZZVE=";
     };
   };
   fcitx5-pinyin-zhwiki = {
@@ -24,50 +24,50 @@
   };
   moviepilot = {
     pname = "moviepilot";
-    version = "v2.15.4";
+    version = "v3.0.0";
     src = fetchFromGitHub {
       owner = "jxxghp";
       repo = "MoviePilot";
-      rev = "v2.15.4";
+      rev = "v3.0.0";
       fetchSubmodules = false;
-      sha256 = "sha256-Z3llJaf8ASA+IskflyVbCW8Ng1ro0jxmC/eDqU7FHCg=";
+      sha256 = "sha256-KghUfo/LOMUl9M/dySpap8y+bUY4kwMzZb6HeHmrjb8=";
     };
   };
   moviepilot-frontend = {
     pname = "moviepilot-frontend";
-    version = "v2.15.4";
+    version = "v3.0.0";
     src = fetchurl {
-      url = "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/v2.15.4/dist.zip";
-      sha256 = "sha256-VbghSDLD9AUofJylQl8yOFs0sh8dA9Q4pdej7bvKFjM=";
+      url = "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/v3.0.0/dist.zip";
+      sha256 = "sha256-aTublmUTvvttG0fCdWNTgeVRM/RNfkRNiOljxabaQuI=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "7c430760158c86915fedc94a268cd53dd8a30b14";
+    version = "bd4e3bf13fae45ecda460ce90cc289444790d596";
     src = fetchgit {
       url = "https://github.com/jxxghp/MoviePilot-Plugins";
-      rev = "7c430760158c86915fedc94a268cd53dd8a30b14";
+      rev = "bd4e3bf13fae45ecda460ce90cc289444790d596";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-nlb0DEGe1f58XFGQRicOE6wXmAvVVNwtmlk7KMPk+tg=";
+      sha256 = "sha256-ZBPJ5WWrogAF5nR7LDIwKT8iNUzkwanJlTtkl4twD80=";
     };
-    date = "2026-08-05";
+    date = "2026-08-13";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
-    version = "75bbfdf48c194c60b766aa1d2a3416481c21de45";
+    version = "2c244a6614f7cf3b2ed3448a8ee08cafc2e61a33";
     src = fetchgit {
       url = "https://github.com/jxxghp/MoviePilot-Resources";
-      rev = "75bbfdf48c194c60b766aa1d2a3416481c21de45";
+      rev = "2c244a6614f7cf3b2ed3448a8ee08cafc2e61a33";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-Rh0xyWOH5AfpE2I/nic3kTrFwTGOQr7dE0VXTPfRdkI=";
+      sha256 = "sha256-A+tFxXQIghuwP3YNI9yfdUwKWtOjOFkLoppt8jQ2k0E=";
     };
-    date = "2026-08-05";
+    date = "2026-08-14";
   };
   ndrop = {
     pname = "ndrop";
@@ -85,13 +85,13 @@
   };
   orca-ide = {
     pname = "orca-ide";
-    version = "v1.4.158";
+    version = "v1.4.182";
     src = fetchFromGitHub {
       owner = "stablyai";
       repo = "orca";
-      rev = "v1.4.158";
+      rev = "v1.4.182";
       fetchSubmodules = false;
-      sha256 = "sha256-JmrH6o9BP7qCLjGlijw6ZQDGANipVbRznO6X5cmoAOc=";
+      sha256 = "sha256-QRjVc9Bpl1iGJBCv6z4Un/tkfYiiM+z+3Dml634Mo+w=";
     };
   };
   teamspeak-management-tools = {
@@ -107,16 +107,16 @@
   };
   tela-icon-theme-nighty = {
     pname = "tela-icon-theme-nighty";
-    version = "4f560eccd0acc9c192f31077c2b3202422cb24fb";
+    version = "a1fffc5bfab716bd022dd228ee96fe3965cdb33d";
     src = fetchgit {
       url = "https://github.com/vinceliuice/tela-icon-theme";
-      rev = "4f560eccd0acc9c192f31077c2b3202422cb24fb";
+      rev = "a1fffc5bfab716bd022dd228ee96fe3965cdb33d";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-jadkfS39N51fYouxn7xFQ29BZOY0ccpKJY0Br4s/Guo=";
+      sha256 = "sha256-e4Ysu9YE2jAib9+q9eYL0E3w1BBXbu/QYNTmSjk0CRY=";
     };
-    date = "2026-06-19";
+    date = "2026-08-10";
   };
 }
