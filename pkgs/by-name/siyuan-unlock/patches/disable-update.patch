@@ -1,0 +1,73 @@
+diff --git forkSrcPrefix/model/updater.go forkDstPrefix/model/updater.go
+index d1773fb3f1c6b6f61ba124aec081edd573996943..cbc13a8d69341fb40254b1665653cd10531cffa3 100644
+--- forkSrcPrefix/model/updater.go
++++ forkDstPrefix/model/updater.go
+@@ -312,6 +312,10 @@ func isVersionUpToDate(releaseVer string) bool {
+ var skipInstallPkgPlatformCached = -1
+
+ func skipNewVerInstallPkg() bool {
++	// Conf.System.DownloadInstallPkg(自动下载更新安装包) 强制赋值为false
++	Conf.System.DownloadInstallPkg = false
++	Conf.Save()
++
+ 	if skipInstallPkgPlatformCached == -1 {
+ 		skipInstallPkgPlatformCached = 0
+ 		if !gulu.OS.IsWindows() && !gulu.OS.IsDarwin() {
+diff --git forkSrcPrefix/model/mount.go forkDstPrefix/model/mount.go
+index b34f88cf23f43f4db768dbab940c05533959ad77..e3f8a9ee8d8519863a279479403735124e8a6542 100644
+--- forkSrcPrefix/model/mount.go
++++ forkDstPrefix/model/mount.go
+@@ -276,8 +276,8 @@ func Mount(boxID string) (alreadyMount bool, err error) {
+ 		task.AppendAsyncTaskWithDelay(task.PushMsg, 3*time.Second, util.PushErrMsg, Conf.Language(244), 7000)
+ 		go func() {
+ 			// 每次打开帮助文档时自动检查版本更新并提醒 https://github.com/siyuan-note/siyuan/issues/5057
+-			time.Sleep(time.Second * 10)
+-			CheckUpdate(true)
++			// time.Sleep(time.Second * 10)
++			// CheckUpdate(true)
+ 		}()
+ 	}
+
+diff --git forkSrcPrefix/conf/system.go forkDstPrefix/conf/system.go
+index 60ccf4f175b02f38c420c86cb33b27f04d6b6ea2..d8682bff5300e1877f521cda72289b9f2228e648 100644
+--- forkSrcPrefix/conf/system.go
++++ forkDstPrefix/conf/system.go
+@@ -57,7 +57,7 @@ func NewSystem() *System {
+ 		Name:               util.GetDeviceName(),
+ 		KernelVersion:      util.Ver,
+ 		NetworkProxy:       &NetworkProxy{},
+-		DownloadInstallPkg: true,
++		DownloadInstallPkg: false,
+ 	}
+ }
+
+diff --git forkSrcPrefix/api/system.go forkDstPrefix/api/system.go
+index bb3aa788c4ee166bc5f8152955484c29ce95b669..a5a210465120418c81b526368aa9cc1b74b24b5c 100644
+--- forkSrcPrefix/api/system.go
++++ forkDstPrefix/api/system.go
+@@ -274,16 +274,17 @@ func addCustomEmoji(name string, items *[]map[string]any) {
+ }
+
+ func checkUpdate(c *gin.Context) {
+-	ret := gulu.Ret.NewResult()
+-	defer c.JSON(http.StatusOK, ret)
++	// ret := gulu.Ret.NewResult()
++	// defer c.JSON(http.StatusOK, ret)
+
+-	arg, ok := util.JsonArg(c, ret)
+-	if !ok {
+-		return
+-	}
++	// arg, ok := util.JsonArg(c, ret)
++	// if !ok {
++	// 	return
++	// }
+
+-	showMsg := arg["showMsg"].(bool)
+-	model.CheckUpdate(showMsg)
++	// showMsg := arg["showMsg"].(bool)
++	// model.CheckUpdate(showMsg)
++	return
+ }
+
+ func exportLog(c *gin.Context) {
