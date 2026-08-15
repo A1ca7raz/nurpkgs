@@ -91,6 +91,222 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   postPatch = ''
+    # Keep the native-module rebuild aligned with the Electron patch release
+    # provided by nixpkgs. Otherwise the upstream exact-version check removes
+    # the injected distribution and tries to download its package version.
+    substituteInPlace config/scripts/rebuild-native-deps.mjs \
+      --replace-fail \
+        "const electronVersion = JSON.parse(
+  readFileSync(resolve(electronPackageDir, 'package.json'), 'utf8')
+).version" \
+        "const electronVersion = '${electron.version}'"
+
+    # v1.4.182 contains the paired-web host-selection tests but only part of
+    # their implementation. Restore the missing upstream wiring so web clients
+    # never fall back to the client machine's filesystem while the paired host
+    # is unavailable.
+    substituteInPlace src/renderer/src/components/sidebar/use-add-repo-host-selection.ts \
+      --replace-fail \
+        "import { translate } from '@/i18n/i18n'" \
+        "import { translate } from '@/i18n/i18n'
+import { isWebClientLocation } from '@/lib/web-client-location'" \
+      --replace-fail \
+        "  selectedHostId: ExecutionHostId" \
+        "  selectedHostId: ExecutionHostId | null" \
+      --replace-fail \
+        "  const { hostOptions } = useSidebarHostScopeOptions()" \
+        "  const { hostOptions } = useSidebarHostScopeOptions()
+  const isWebClient = isWebClientLocation()" \
+      --replace-fail \
+        "        return (
+          parsed?.kind !== 'runtime' || !ephemeralRuntimeEnvironmentIds.has(parsed.environmentId)
+        )" \
+        "        return (
+          !(isWebClient && parsed?.kind === 'local') &&
+          (parsed?.kind !== 'runtime' || !ephemeralRuntimeEnvironmentIds.has(parsed.environmentId))
+        )" \
+      --replace-fail \
+        "    [ephemeralRuntimeEnvironmentIds, hostOptions]" \
+        "    [ephemeralRuntimeEnvironmentIds, hostOptions, isWebClient]" \
+      --replace-fail \
+        "  const previousOpenRef = useRef(false)" \
+        "  const previousOpenRef = useRef(false)
+  const pairedWebRuntimeHost = isWebClient
+    ? selectableHostOptions.find((host) => host.kind === 'runtime' && canSelectAddRepoHost(host))
+    : undefined" \
+      --replace-fail \
+        "    ) ??
+    selectableHostOptions.find(
+      (host) => host.id === LOCAL_EXECUTION_HOST_ID && canSelectAddRepoHost(host)
+    )" \
+        "    ) ??
+    pairedWebRuntimeHost ??
+    selectableHostOptions.find(
+      (host) => host.id === LOCAL_EXECUTION_HOST_ID && canSelectAddRepoHost(host)
+    )" \
+      --replace-fail \
+        "        ? focusedHostId
+        : LOCAL_EXECUTION_HOST_ID
+      setSelectedAddProjectHostId(nextHostId)" \
+        "        ? focusedHostId
+        : (pairedWebRuntimeHost?.id ?? (isWebClient ? null : LOCAL_EXECUTION_HOST_ID))
+      if (nextHostId) {
+        setSelectedAddProjectHostId(nextHostId)
+      }" \
+      --replace-fail \
+        "  }, [isOpen, selectableHostOptions, settings])" \
+        "  }, [isOpen, isWebClient, pairedWebRuntimeHost?.id, selectableHostOptions, settings])"
+
+    substituteInPlace src/renderer/src/components/sidebar/use-add-repo-host-selection.test.ts \
+      --replace-fail \
+        "  sshConnect: vi.fn(),
+  sshGetState: vi.fn()
+}))" \
+        "  sshConnect: vi.fn(),
+  sshGetState: vi.fn(),
+  isWebClient: false
+}))" \
+      --replace-fail \
+        "vi.mock('./use-sidebar-host-scope-options', () => ({
+  useSidebarHostScopeOptions: () => ({ hostOptions: mocks.hostOptions })
+}))" \
+        "vi.mock('./use-sidebar-host-scope-options', () => ({
+  useSidebarHostScopeOptions: () => ({ hostOptions: mocks.hostOptions })
+}))
+
+vi.mock('@/lib/web-client-location', () => ({
+  isWebClientLocation: () => mocks.isWebClient
+}))" \
+      --replace-fail \
+        "    mocks.sshGetState.mockReset()" \
+        "    mocks.sshGetState.mockReset()
+    mocks.isWebClient = false"
+
+    substituteInPlace src/renderer/src/components/sidebar/AddRepoHostSelector.tsx \
+      --replace-fail \
+        "  selectedHostId: ExecutionHostId" \
+        "  selectedHostId: ExecutionHostId | null"
+
+    substituteInPlace src/renderer/src/components/sidebar/use-add-repo-host-change-reset.ts \
+      --replace-fail \
+        "  selectedHostId: string" \
+        "  selectedHostId: string | null"
+
+    substituteInPlace src/renderer/src/components/sidebar/AddRepoStartSteps.tsx \
+      --replace-fail \
+        "  canCreateProject?: boolean
+  browseHostKind?: 'local' | 'ssh' | 'runtime'" \
+        "  canCreateProject?: boolean
+  actionsDisabled?: boolean
+  browseHostKind?: 'local' | 'ssh' | 'runtime'" \
+      --replace-fail \
+        "  canCreateProject = true,
+  browseHostKind = 'local'," \
+        "  canCreateProject = true,
+  actionsDisabled = false,
+  browseHostKind = 'local'," \
+      --replace-fail \
+        "  const actionsRef = useRef<HTMLDivElement | null>(null)
+  const { primaryAction, secondaryActions }" \
+        "  const actionsRef = useRef<HTMLDivElement | null>(null)
+  const actionsUnavailable = isAdding || actionsDisabled
+  const { primaryAction, secondaryActions }" \
+      --replace-fail \
+        "  const [selectedKind, setSelectedKind] = useState<string | null>(primaryAction.kind)
+
+  useEffect(() => {
+    if (isAdding) {
+      setSelectedKind(null)
+      return
+    }
+    if (!isAdding) {
+      browseActionRef.current?.focus()
+    }
+  }, [isAdding])" \
+        "  const [selectedKind, setSelectedKind] = useState<string | null>(primaryAction.kind)
+  const visibleSelectedKind = actionsUnavailable ? null : selectedKind
+
+  useEffect(() => {
+    if (!actionsUnavailable) {
+      browseActionRef.current?.focus()
+    }
+  }, [actionsUnavailable])" \
+      --replace-fail \
+        "          disabled={isAdding}
+          selected={selectedKind === primaryAction.kind}" \
+        "          disabled={actionsUnavailable}
+          selected={visibleSelectedKind === primaryAction.kind}" \
+      --replace-fail \
+        "                disabled={isAdding || Boolean(action.disabled)}
+                selected={selectedKind === action.kind}" \
+        "                disabled={actionsUnavailable || Boolean(action.disabled)}
+                selected={visibleSelectedKind === action.kind}"
+
+    substituteInPlace src/renderer/src/components/sidebar/AddRepoDialogStepContent.tsx \
+      --replace-fail \
+        "  canCreateProject?: boolean
+  manualCreateParentEntry?: boolean" \
+        "  canCreateProject?: boolean
+  actionsDisabled?: boolean
+  manualCreateParentEntry?: boolean" \
+      --replace-fail \
+        "  canCreateProject = true,
+  manualCreateParentEntry = isRuntimeEnvironmentActive," \
+        "  canCreateProject = true,
+  actionsDisabled = false,
+  manualCreateParentEntry = isRuntimeEnvironmentActive," \
+      --replace-fail \
+        "        canCreateProject={canCreateProject}
+        browseHostKind={browseHostKind}" \
+        "        canCreateProject={canCreateProject}
+        actionsDisabled={actionsDisabled}
+        browseHostKind={browseHostKind}"
+
+    substituteInPlace src/renderer/src/components/sidebar/AddRepoDialog.tsx \
+      --replace-fail \
+        "            ?.label ?? hostSelection.selectedHostId" \
+        "            ?.label ?? null" \
+      --replace-fail \
+        "        browseHostKind={
+          selectedHostKind === 'ssh' || selectedHostKind === 'runtime' ? selectedHostKind : 'local'
+        }" \
+        "        actionsDisabled={!hostSelection.selectedHostId}
+        browseHostKind={selectedHostKind ?? 'runtime'}" \
+      --replace-fail \
+        "        onBrowse={
+          selectedHostKind === 'ssh'
+            ? () => void handleOpenRemoteStep(hostSelection.selectedSshTargetId)
+            : selectedHostKind === 'runtime'
+              ? () => setStep('server-path')
+              : handleBrowse
+        }" \
+        "        onBrowse={() => {
+          const selectedHost = hostSelection.selectedParsedHost
+          if (selectedHost?.kind === 'ssh') {
+            void handleOpenRemoteStep(selectedHost.targetId)
+          } else if (selectedHost?.kind === 'runtime') {
+            setStep('server-path')
+          } else if (selectedHost?.kind === 'local') {
+            void handleBrowse()
+          }
+        }}" \
+      --replace-fail \
+        "        onOpenCloneStep={() => {
+          setCloneError(null)" \
+        "        onOpenCloneStep={() => {
+          if (!hostSelection.selectedHostId) {
+            return
+          }
+          setCloneError(null)" \
+      --replace-fail \
+        "        onOpenCreateStep={() => {
+          setCreateError(null)" \
+        "        onOpenCreateStep={() => {
+          if (!hostSelection.selectedHostId) {
+            return
+          }
+          setCreateError(null)"
+
     # Native modules use the glibc from this package's Nix closure, so the
     # upstream Ubuntu 20.04 compatibility gate does not apply.
     substituteInPlace config/electron-builder.config.cjs \
@@ -146,6 +362,18 @@ stdenv.mkDerivation (finalAttrs: {
       --config.electronVersion=${electron.version}
 
     runHook postBuild
+  '';
+
+  doCheck = true;
+
+  checkPhase = ''
+    runHook preCheck
+
+    pnpm exec vitest run \
+      --config config/vitest.config.ts \
+      src/renderer/src/components/sidebar/use-add-repo-host-selection.test.ts
+
+    runHook postCheck
   '';
 
   installPhase = ''
