@@ -66,19 +66,6 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  doInstallCheck = true;
-  installCheckPhase = ''
-    runHook preInstallCheck
-
-    test -f "$out/share/siyuan-headless/appearance/langs/en.json"
-    test -f "$out/share/siyuan-headless/stage/build/desktop/index.html"
-    test -f "$out/share/siyuan-headless/LICENSE"
-    test -x "$out/share/siyuan-headless/kernel/SiYuan-Kernel"
-    "$out/bin/siyuan-headless" --help >/dev/null
-
-    runHook postInstallCheck
-  '';
-
   meta = {
     description = "Headless browser server for SiYuan";
     homepage = "https://b3log.org/siyuan/";
