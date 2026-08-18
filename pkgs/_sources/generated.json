@@ -44,7 +44,7 @@
             "owner": "jxxghp",
             "repo": "MoviePilot",
             "rev": "v3.0.0",
-            "sha256": "sha256-KghUfo/LOMUl9M/dySpap8y+bUY4kwMzZb6HeHmrjb8=",
+            "sha256": "sha256-Qr9qi0+ov89aig+odMqzFA0KK4W4v31xpeJu5VaknSI=",
             "sparseCheckout": [],
             "type": "github"
         },
@@ -59,7 +59,7 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-aTublmUTvvttG0fCdWNTgeVRM/RNfkRNiOljxabaQuI=",
+            "sha256": "sha256-t2CFXIpnd4R+Exk5oZC7nUrVa5z+bisdH+Xji/SD26M=",
             "type": "url",
             "url": "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/v3.0.0/dist.zip"
         },
@@ -67,7 +67,7 @@
     },
     "moviepilot-plugins": {
         "cargoLock": null,
-        "date": "2026-08-13",
+        "date": "2026-08-18",
         "extract": null,
         "name": "moviepilot-plugins",
         "passthru": null,
@@ -77,13 +77,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "bd4e3bf13fae45ecda460ce90cc289444790d596",
-            "sha256": "sha256-ZBPJ5WWrogAF5nR7LDIwKT8iNUzkwanJlTtkl4twD80=",
+            "rev": "734a9d73b2adcd4eddc9fa4c653c5fd397e95e45",
+            "sha256": "sha256-4cjlpvSClIAqIk/eCi1eI1gewcEHAz03GsNGwPh+Abw=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/jxxghp/MoviePilot-Plugins"
         },
-        "version": "bd4e3bf13fae45ecda460ce90cc289444790d596"
+        "version": "734a9d73b2adcd4eddc9fa4c653c5fd397e95e45"
     },
     "moviepilot-resources": {
         "cargoLock": null,
@@ -139,12 +139,12 @@
             "name": null,
             "owner": "stablyai",
             "repo": "orca",
-            "rev": "v1.4.182",
-            "sha256": "sha256-QRjVc9Bpl1iGJBCv6z4Un/tkfYiiM+z+3Dml634Mo+w=",
+            "rev": "v1.4.184",
+            "sha256": "sha256-ByTda7B9HBbt2dY8yb7OH99MWlUGAgDNVxfY/s60fSI=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v1.4.182"
+        "version": "v1.4.184"
     },
     "teamspeak-management-tools": {
         "cargoLock": null,

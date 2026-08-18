@@ -30,7 +30,7 @@
       repo = "MoviePilot";
       rev = "v3.0.0";
       fetchSubmodules = false;
-      sha256 = "sha256-KghUfo/LOMUl9M/dySpap8y+bUY4kwMzZb6HeHmrjb8=";
+      sha256 = "sha256-Qr9qi0+ov89aig+odMqzFA0KK4W4v31xpeJu5VaknSI=";
     };
   };
   moviepilot-frontend = {
@@ -38,22 +38,22 @@
     version = "v3.0.0";
     src = fetchurl {
       url = "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/v3.0.0/dist.zip";
-      sha256 = "sha256-aTublmUTvvttG0fCdWNTgeVRM/RNfkRNiOljxabaQuI=";
+      sha256 = "sha256-t2CFXIpnd4R+Exk5oZC7nUrVa5z+bisdH+Xji/SD26M=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "bd4e3bf13fae45ecda460ce90cc289444790d596";
+    version = "734a9d73b2adcd4eddc9fa4c653c5fd397e95e45";
     src = fetchgit {
       url = "https://github.com/jxxghp/MoviePilot-Plugins";
-      rev = "bd4e3bf13fae45ecda460ce90cc289444790d596";
+      rev = "734a9d73b2adcd4eddc9fa4c653c5fd397e95e45";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-ZBPJ5WWrogAF5nR7LDIwKT8iNUzkwanJlTtkl4twD80=";
+      sha256 = "sha256-4cjlpvSClIAqIk/eCi1eI1gewcEHAz03GsNGwPh+Abw=";
     };
-    date = "2026-08-13";
+    date = "2026-08-18";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
@@ -85,13 +85,13 @@
   };
   orca-ide = {
     pname = "orca-ide";
-    version = "v1.4.182";
+    version = "v1.4.184";
     src = fetchFromGitHub {
       owner = "stablyai";
       repo = "orca";
-      rev = "v1.4.182";
+      rev = "v1.4.184";
       fetchSubmodules = false;
-      sha256 = "sha256-QRjVc9Bpl1iGJBCv6z4Un/tkfYiiM+z+3Dml634Mo+w=";
+      sha256 = "sha256-ByTda7B9HBbt2dY8yb7OH99MWlUGAgDNVxfY/s60fSI=";
     };
   };
   teamspeak-management-tools = {
