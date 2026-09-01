@@ -44,7 +44,7 @@
             "owner": "jxxghp",
             "repo": "MoviePilot",
             "rev": "v3.0.0",
-            "sha256": "sha256-KghUfo/LOMUl9M/dySpap8y+bUY4kwMzZb6HeHmrjb8=",
+            "sha256": "sha256-swnp5QPj5X3z4LRR9swSqjHxTy3i069Een7ulndjSqs=",
             "sparseCheckout": [],
             "type": "github"
         },
@@ -59,7 +59,7 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-aTublmUTvvttG0fCdWNTgeVRM/RNfkRNiOljxabaQuI=",
+            "sha256": "sha256-ieNE/rt6eLJ5oqoFlABnYpGIZjF+KUWIix2mDMP7hnA=",
             "type": "url",
             "url": "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/v3.0.0/dist.zip"
         },
@@ -67,7 +67,7 @@
     },
     "moviepilot-plugins": {
         "cargoLock": null,
-        "date": "2026-08-13",
+        "date": "2026-09-01",
         "extract": null,
         "name": "moviepilot-plugins",
         "passthru": null,
@@ -77,17 +77,17 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "bd4e3bf13fae45ecda460ce90cc289444790d596",
-            "sha256": "sha256-ZBPJ5WWrogAF5nR7LDIwKT8iNUzkwanJlTtkl4twD80=",
+            "rev": "abd88236d84a305f99d41960b44d3c16d02d5e93",
+            "sha256": "sha256-mtSc9AqnGzpFlBHjwrvuZ2AFJWmKCnT5fWnTv/m9rls=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/jxxghp/MoviePilot-Plugins"
         },
-        "version": "bd4e3bf13fae45ecda460ce90cc289444790d596"
+        "version": "abd88236d84a305f99d41960b44d3c16d02d5e93"
     },
     "moviepilot-resources": {
         "cargoLock": null,
-        "date": "2026-08-14",
+        "date": "2026-09-01",
         "extract": null,
         "name": "moviepilot-resources",
         "passthru": null,
@@ -97,13 +97,13 @@
             "fetchSubmodules": false,
             "leaveDotGit": false,
             "name": null,
-            "rev": "2c244a6614f7cf3b2ed3448a8ee08cafc2e61a33",
-            "sha256": "sha256-A+tFxXQIghuwP3YNI9yfdUwKWtOjOFkLoppt8jQ2k0E=",
+            "rev": "8561d69e3a6f6bf4c5dd5faca71ab6e3e4f8fc77",
+            "sha256": "sha256-+lyopUvXBetx3vHqARdpVTKOaNAWBEFEtAnO+Lw12ag=",
             "sparseCheckout": [],
             "type": "git",
             "url": "https://github.com/jxxghp/MoviePilot-Resources"
         },
-        "version": "2c244a6614f7cf3b2ed3448a8ee08cafc2e61a33"
+        "version": "8561d69e3a6f6bf4c5dd5faca71ab6e3e4f8fc77"
     },
     "ndrop": {
         "cargoLock": null,
@@ -139,12 +139,12 @@
             "name": null,
             "owner": "stablyai",
             "repo": "orca",
-            "rev": "v1.4.182",
-            "sha256": "sha256-QRjVc9Bpl1iGJBCv6z4Un/tkfYiiM+z+3Dml634Mo+w=",
+            "rev": "v1.4.194",
+            "sha256": "sha256-j44a5YiPnJ+/IGCVJG6szGesi/Sx010JyOHCqWQieQ0=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v1.4.182"
+        "version": "v1.4.194"
     },
     "teamspeak-management-tools": {
         "cargoLock": null,
