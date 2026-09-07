@@ -30,7 +30,7 @@
       repo = "MoviePilot";
       rev = "v3.0.0";
       fetchSubmodules = false;
-      sha256 = "sha256-swnp5QPj5X3z4LRR9swSqjHxTy3i069Een7ulndjSqs=";
+      sha256 = "sha256-KghUfo/LOMUl9M/dySpap8y+bUY4kwMzZb6HeHmrjb8=";
     };
   };
   moviepilot-frontend = {
@@ -38,36 +38,36 @@
     version = "v3.0.0";
     src = fetchurl {
       url = "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/v3.0.0/dist.zip";
-      sha256 = "sha256-ieNE/rt6eLJ5oqoFlABnYpGIZjF+KUWIix2mDMP7hnA=";
+      sha256 = "sha256-aTublmUTvvttG0fCdWNTgeVRM/RNfkRNiOljxabaQuI=";
     };
   };
   moviepilot-plugins = {
     pname = "moviepilot-plugins";
-    version = "abd88236d84a305f99d41960b44d3c16d02d5e93";
+    version = "bd4e3bf13fae45ecda460ce90cc289444790d596";
     src = fetchgit {
       url = "https://github.com/jxxghp/MoviePilot-Plugins";
-      rev = "abd88236d84a305f99d41960b44d3c16d02d5e93";
+      rev = "bd4e3bf13fae45ecda460ce90cc289444790d596";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-mtSc9AqnGzpFlBHjwrvuZ2AFJWmKCnT5fWnTv/m9rls=";
+      sha256 = "sha256-ZBPJ5WWrogAF5nR7LDIwKT8iNUzkwanJlTtkl4twD80=";
     };
-    date = "2026-09-01";
+    date = "2026-08-13";
   };
   moviepilot-resources = {
     pname = "moviepilot-resources";
-    version = "8561d69e3a6f6bf4c5dd5faca71ab6e3e4f8fc77";
+    version = "2c244a6614f7cf3b2ed3448a8ee08cafc2e61a33";
     src = fetchgit {
       url = "https://github.com/jxxghp/MoviePilot-Resources";
-      rev = "8561d69e3a6f6bf4c5dd5faca71ab6e3e4f8fc77";
+      rev = "2c244a6614f7cf3b2ed3448a8ee08cafc2e61a33";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
       sparseCheckout = [ ];
-      sha256 = "sha256-+lyopUvXBetx3vHqARdpVTKOaNAWBEFEtAnO+Lw12ag=";
+      sha256 = "sha256-A+tFxXQIghuwP3YNI9yfdUwKWtOjOFkLoppt8jQ2k0E=";
     };
-    date = "2026-09-01";
+    date = "2026-08-14";
   };
   ndrop = {
     pname = "ndrop";
@@ -85,13 +85,13 @@
   };
   orca-ide = {
     pname = "orca-ide";
-    version = "v1.4.194";
+    version = "v1.4.182";
     src = fetchFromGitHub {
       owner = "stablyai";
       repo = "orca";
-      rev = "v1.4.194";
+      rev = "v1.4.182";
       fetchSubmodules = false;
-      sha256 = "sha256-j44a5YiPnJ+/IGCVJG6szGesi/Sx010JyOHCqWQieQ0=";
+      sha256 = "sha256-QRjVc9Bpl1iGJBCv6z4Un/tkfYiiM+z+3Dml634Mo+w=";
     };
   };
   teamspeak-management-tools = {
