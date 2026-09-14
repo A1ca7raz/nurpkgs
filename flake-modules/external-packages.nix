@@ -22,6 +22,7 @@
           cli-proxy-api
           codex
           hermes-agent
+          herdr
           kimi-code
           opencode
           omp
