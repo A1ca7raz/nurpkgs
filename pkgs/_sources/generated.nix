@@ -8,10 +8,10 @@
 {
   fcitx5-pinyin-moegirl = {
     pname = "fcitx5-pinyin-moegirl";
-    version = "20260812";
+    version = "20260911";
     src = fetchurl {
-      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20260812/moegirl.dict";
-      sha256 = "sha256-JN3PJAS2x2Fsvx2iQZ+K0MYOR4esHGHOsTVl+6dZZVE=";
+      url = "https://github.com/outloudvi/mw2fcitx/releases/download/20260911/moegirl.dict";
+      sha256 = "sha256-FZGi1+t6RLQ7B068IFLsSkkvyyfrYy8hXBmP7MuYFtA=";
     };
   };
   fcitx5-pinyin-zhwiki = {
@@ -35,6 +35,17 @@
       sha256 = "sha256-/Xco1sr76+F3mAIGq29yp5Y6FPcXS/AVXDpwZ1+rLQk=";
     };
     date = "2026-01-25";
+  };
+  siyuan-patch = {
+    pname = "siyuan-patch";
+    version = "v3.8.3";
+    src = fetchFromGitHub {
+      owner = "demoshang";
+      repo = "siyuan-patch";
+      rev = "v3.8.3";
+      fetchSubmodules = false;
+      sha256 = "sha256-gWKyQPGjtx/OTGVeHFAbiTzm1tAM8Bfm3wa2pLgV7tk=";
+    };
   };
   teamspeak-management-tools = {
     pname = "teamspeak-management-tools";

@@ -1,29 +1,40 @@
 {
   lib,
   stdenv,
+  sources,
+  applyPatches,
   makeWrapper,
   nodejs_22,
   pnpm_11,
   pnpmConfigHook,
-  siyuan
+  siyuan,
 }:
-
 let
   pnpm = pnpm_11;
 
-  unlock_patches = builtins.map (p: ../siyuan-unlock/patches/${p}) [
-    "default-config.patch"
-    "disable-update.patch"
-    "mock-vip-user.patch"
-  ];
+  # https://github.com/demoshang/siyuan-patch
+  # Upstream tags its patch set after the siyuan version it applies to,
+  # so the tag always follows the siyuan version being built.
+  patchRepo = sources.siyuan-patch.src;
+  patchedSrc = applyPatches {
+    name = "siyuan-${siyuan.version}-patched";
+    src = siyuan.src;
+    patches = map (f: "${patchRepo}/patches/siyuan/${f}") [
+      "default-config.patch"
+      "disable-update.patch"
+      "mock-vip-user.patch"
+    ];
+  };
 
   # Reuse the kernel definition maintained by nixpkgs, but drop its desktop-only
   # patch that hard-codes Pandoc into the binary. Upstream disables Pandoc in
   # Docker mode, so retaining that reference would only enlarge the closure.
   kernel = siyuan.kernel.overrideAttrs (oldAttrs: {
+    src = patchedSrc;
+    sourceRoot = "${patchedSrc.name}/kernel";
     patches = lib.filter
       (patch: !(lib.hasInfix "set-pandoc-path.patch" (toString patch)))
-      (oldAttrs.patches or [ ]) ++ unlock_patches;
+      (oldAttrs.patches or [ ]);
   });
 in
 stdenv.mkDerivation (finalAttrs: {

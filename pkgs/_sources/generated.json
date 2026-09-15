@@ -8,11 +8,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-JN3PJAS2x2Fsvx2iQZ+K0MYOR4esHGHOsTVl+6dZZVE=",
+            "sha256": "sha256-FZGi1+t6RLQ7B068IFLsSkkvyyfrYy8hXBmP7MuYFtA=",
             "type": "url",
-            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20260812/moegirl.dict"
+            "url": "https://github.com/outloudvi/mw2fcitx/releases/download/20260911/moegirl.dict"
         },
-        "version": "20260812"
+        "version": "20260911"
     },
     "fcitx5-pinyin-zhwiki": {
         "cargoLock": null,
@@ -48,6 +48,27 @@
             "url": "https://github.com/Schweber/ndrop"
         },
         "version": "f2fb1c611811c48b48cd0f0fecab4f3f935e7405"
+    },
+    "siyuan-patch": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "siyuan-patch",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "demoshang",
+            "repo": "siyuan-patch",
+            "rev": "v3.8.3",
+            "sha256": "sha256-gWKyQPGjtx/OTGVeHFAbiTzm1tAM8Bfm3wa2pLgV7tk=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v3.8.3"
     },
     "teamspeak-management-tools": {
         "cargoLock": null,
