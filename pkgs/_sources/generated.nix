@@ -22,53 +22,6 @@
       sha256 = "sha256-m7b9A/A1DMEzQOw0/1n2lb336w8U22rPE8HryR+Jgjs=";
     };
   };
-  moviepilot = {
-    pname = "moviepilot";
-    version = "v3.0.0";
-    src = fetchFromGitHub {
-      owner = "jxxghp";
-      repo = "MoviePilot";
-      rev = "v3.0.0";
-      fetchSubmodules = false;
-      sha256 = "sha256-Te1qi3YrAWpveS9yHh9lBeZBw0A038naKleKFIna0So=";
-    };
-  };
-  moviepilot-frontend = {
-    pname = "moviepilot-frontend";
-    version = "v3.0.0";
-    src = fetchurl {
-      url = "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/v3.0.0/dist.zip";
-      sha256 = "sha256-ZnNsHVn/l4Ct6/jrp5aLnMNHJ5RIc6tnbMcRXGe5LjM=";
-    };
-  };
-  moviepilot-plugins = {
-    pname = "moviepilot-plugins";
-    version = "bd4e3bf13fae45ecda460ce90cc289444790d596";
-    src = fetchgit {
-      url = "https://github.com/jxxghp/MoviePilot-Plugins";
-      rev = "bd4e3bf13fae45ecda460ce90cc289444790d596";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sparseCheckout = [ ];
-      sha256 = "sha256-ZBPJ5WWrogAF5nR7LDIwKT8iNUzkwanJlTtkl4twD80=";
-    };
-    date = "2026-08-13";
-  };
-  moviepilot-resources = {
-    pname = "moviepilot-resources";
-    version = "2c244a6614f7cf3b2ed3448a8ee08cafc2e61a33";
-    src = fetchgit {
-      url = "https://github.com/jxxghp/MoviePilot-Resources";
-      rev = "2c244a6614f7cf3b2ed3448a8ee08cafc2e61a33";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sparseCheckout = [ ];
-      sha256 = "sha256-A+tFxXQIghuwP3YNI9yfdUwKWtOjOFkLoppt8jQ2k0E=";
-    };
-    date = "2026-08-14";
-  };
   ndrop = {
     pname = "ndrop";
     version = "f2fb1c611811c48b48cd0f0fecab4f3f935e7405";
