@@ -30,7 +30,7 @@
       repo = "MoviePilot";
       rev = "v3.0.0";
       fetchSubmodules = false;
-      sha256 = "sha256-KghUfo/LOMUl9M/dySpap8y+bUY4kwMzZb6HeHmrjb8=";
+      sha256 = "sha256-Te1qi3YrAWpveS9yHh9lBeZBw0A038naKleKFIna0So=";
     };
   };
   moviepilot-frontend = {
@@ -38,7 +38,7 @@
     version = "v3.0.0";
     src = fetchurl {
       url = "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/v3.0.0/dist.zip";
-      sha256 = "sha256-aTublmUTvvttG0fCdWNTgeVRM/RNfkRNiOljxabaQuI=";
+      sha256 = "sha256-ZnNsHVn/l4Ct6/jrp5aLnMNHJ5RIc6tnbMcRXGe5LjM=";
     };
   };
   moviepilot-plugins = {
@@ -82,17 +82,6 @@
       sha256 = "sha256-/Xco1sr76+F3mAIGq29yp5Y6FPcXS/AVXDpwZ1+rLQk=";
     };
     date = "2026-01-25";
-  };
-  orca-ide = {
-    pname = "orca-ide";
-    version = "v1.4.182";
-    src = fetchFromGitHub {
-      owner = "stablyai";
-      repo = "orca";
-      rev = "v1.4.182";
-      fetchSubmodules = false;
-      sha256 = "sha256-QRjVc9Bpl1iGJBCv6z4Un/tkfYiiM+z+3Dml634Mo+w=";
-    };
   };
   teamspeak-management-tools = {
     pname = "teamspeak-management-tools";

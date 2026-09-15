@@ -44,7 +44,7 @@
             "owner": "jxxghp",
             "repo": "MoviePilot",
             "rev": "v3.0.0",
-            "sha256": "sha256-KghUfo/LOMUl9M/dySpap8y+bUY4kwMzZb6HeHmrjb8=",
+            "sha256": "sha256-Te1qi3YrAWpveS9yHh9lBeZBw0A038naKleKFIna0So=",
             "sparseCheckout": [],
             "type": "github"
         },
@@ -59,7 +59,7 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-aTublmUTvvttG0fCdWNTgeVRM/RNfkRNiOljxabaQuI=",
+            "sha256": "sha256-ZnNsHVn/l4Ct6/jrp5aLnMNHJ5RIc6tnbMcRXGe5LjM=",
             "type": "url",
             "url": "https://github.com/jxxghp/MoviePilot-Frontend/releases/download/v3.0.0/dist.zip"
         },
@@ -124,27 +124,6 @@
             "url": "https://github.com/Schweber/ndrop"
         },
         "version": "f2fb1c611811c48b48cd0f0fecab4f3f935e7405"
-    },
-    "orca-ide": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "orca-ide",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "stablyai",
-            "repo": "orca",
-            "rev": "v1.4.182",
-            "sha256": "sha256-QRjVc9Bpl1iGJBCv6z4Un/tkfYiiM+z+3Dml634Mo+w=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "v1.4.182"
     },
     "teamspeak-management-tools": {
         "cargoLock": null,

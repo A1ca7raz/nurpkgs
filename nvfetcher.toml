@@ -27,10 +27,6 @@ fetch.git = "https://github.com/jxxghp/MoviePilot-Plugins"
 src.git = "https://github.com/jxxghp/MoviePilot-Resources"
 fetch.git = "https://github.com/jxxghp/MoviePilot-Resources"
 
-[orca-ide]
-src.github = "stablyai/orca"
-fetch.github = "stablyai/orca"
-
 [teamspeak-management-tools]
 src.github = "KunoiSayami/teamspeak-management-tools.rs"
 fetch.github = "KunoiSayami/teamspeak-management-tools.rs"
