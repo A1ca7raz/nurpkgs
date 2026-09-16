@@ -37,6 +37,8 @@
           niri-unstable
           xwayland-satellite-unstable
         ;
+
+        noctalia-unstable = noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
       };
 
       cachedPackages = {

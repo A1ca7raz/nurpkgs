@@ -114,6 +114,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.hercules-ci-effects.follows = "";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     preservation.url = "github:nix-community/preservation";
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
     sops-nix = {
