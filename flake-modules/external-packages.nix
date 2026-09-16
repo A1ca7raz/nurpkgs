@@ -25,7 +25,7 @@
           herdr
           kimi-code
           opencode
-          omp
+          # omp
           pi
           skills
           dsh
