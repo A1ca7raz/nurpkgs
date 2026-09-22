@@ -38,13 +38,13 @@
   };
   siyuan-patch = {
     pname = "siyuan-patch";
-    version = "v3.8.3";
+    version = "v3.8.5";
     src = fetchFromGitHub {
       owner = "demoshang";
       repo = "siyuan-patch";
-      rev = "v3.8.3";
+      rev = "v3.8.5";
       fetchSubmodules = false;
-      sha256 = "sha256-gWKyQPGjtx/OTGVeHFAbiTzm1tAM8Bfm3wa2pLgV7tk=";
+      sha256 = "sha256-GnFp8DvQUTZ/FAZdQy2szPv5Kito7KUZ9PW16lme4Mw=";
     };
   };
   teamspeak-management-tools = {
