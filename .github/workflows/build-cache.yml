@@ -3,10 +3,7 @@ name: "[Post PR] Build binary cache"
 on:
   push:
     branches:
-      - staging
-    paths:
-      - 'flake.lock'
-      - 'pkgs/_sources/**'
+      - main
   workflow_dispatch:
 
 concurrency:
@@ -29,6 +26,8 @@ jobs:
     steps:
       - name: 0-1. Checkout
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
 
       - name: 0-2. Install Nix
         uses: nixbuild/nix-quick-install-action@v35
@@ -38,9 +37,23 @@ jobs:
       - name: 1-1. Detect packages to build
         id: detect
         run: |
-          echo "pkgs_ext=$(nix eval --json .#legacyPackages.x86_64-linux --apply 'builtins.attrNames' 2>/dev/null)" >> $GITHUB_OUTPUT
-          echo "pkgs_cached=$(nix eval --json .#checks.x86_64-linux --apply 'builtins.attrNames' 2>/dev/null)" >> $GITHUB_OUTPUT
-          echo "pkgs_custom=$(nix eval --json .#packages.x86_64-linux --apply 'builtins.attrNames' 2>/dev/null)" >> $GITHUB_OUTPUT
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            # Manual run: build everything.
+            entries=$(
+              for o in packages legacyPackages checks; do
+                nix eval --json ".#$o.x86_64-linux" --apply 'builtins.attrNames' \
+                  | jq --arg o "$o" -r '.[] | "\($o).\(.)"'
+              done | jq -R . | jq -sc .
+            )
+          else
+            # Push: build only what actually changed (drvPath diff).
+            entries=$(.github/scripts/drv-diff.sh "${{ github.event.before }}" "${{ github.sha }}")
+          fi
+          echo "Changed entries: $entries"
+          echo "pkgs_custom=$(jq -c --arg p 'packages.' '[.[] | select(startswith($p)) | ltrimstr($p)]' <<< "$entries")" >> "$GITHUB_OUTPUT"
+          echo "pkgs_ext=$(jq -c --arg p 'legacyPackages.' '[.[] | select(startswith($p)) | ltrimstr($p)]' <<< "$entries")" >> "$GITHUB_OUTPUT"
+          echo "pkgs_cached=$(jq -c --arg p 'checks.' '[.[] | select(startswith($p)) | ltrimstr($p)]' <<< "$entries")" >> "$GITHUB_OUTPUT"
 
   build-external-pkgs:
     needs: detect
@@ -102,27 +115,22 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-
       - name: Generate notification message
         id: notify
         env:
           COMMIT_SHA: ${{ github.sha }}
           COMMIT_URL: ${{ github.event.head_commit.url }}
           COMMIT_MSG: ${{ github.event.head_commit.message }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           short_sha=${COMMIT_SHA:0:7}
           {
             echo 'message<<EOF'
             echo "🟢 nurpkgs@[$short_sha]($COMMIT_URL) built successfully."
             echo
-            echo "```"
+            echo "\`\`\`"
             echo "$COMMIT_MSG"
-            echo "```"
+            echo "\`\`\`"
             echo 'EOF'
           } >> "$GITHUB_OUTPUT"
 
@@ -134,28 +142,3 @@ jobs:
         run: |
           pip install apprise
           apprise -vv -b "$MESSAGE" "tgram://$BOT_KEY/$RECEIVER_ID/?format=markdown" || true
-
-      - name: Create PR to main
-        env:
-          GH_TOKEN: ${{ secrets.GH_PR_PAT }}
-        run: |
-          existing=$(gh pr list --base main --head staging --json number --jq '.[0].number')
-          if [ -n "$existing" ]; then
-            echo "PR #$existing already exists"
-          else
-            gh pr create \
-              --base main \
-              --head staging \
-              --title "chore: sync staging to main" \
-              --body "Automated sync after binary cache build." || true
-          fi
-
-      # - name: Enable auto-merge
-      #   env:
-      #     GH_TOKEN: ${{ secrets.GH_PR_PAT }}
-      #   run: |
-      #     set -euo pipefail
-      #     pr=$(gh pr list --base main --head staging --json number --jq '.[0].number')
-      #     if [ -n "$pr" ]; then
-      #       gh pr merge "$pr" --auto --rebase
-      #     fi

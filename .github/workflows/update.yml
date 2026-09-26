@@ -1,0 +1,346 @@
+name: "Update"
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  nix_conf: |
+    keep-env-derivations = true
+    keep-outputs = true
+
+jobs:
+  # Gate: decide whether phase 2 may run. Phase 1 lives in
+  # update-primary.yml; its 主输入 updates are prioritized and block
+  # everything here.
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.gate.outputs.skip }}
+      reason: ${{ steps.gate.outputs.reason }}
+    steps:
+      - name: 0-1. Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: 1-1. Evaluate gate
+        id: gate
+        env:
+          GH_TOKEN: ${{ secrets.GH_PR_PAT }}
+          EVENT_NAME: ${{ github.event_name }}
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PR_MERGED: ${{ github.event.pull_request.merged }}
+        run: |
+          set -euo pipefail
+          skip=false
+          reason=""
+
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            # Event-driven path: only a MERGED primary-inputs PR fires
+            # phase 2.
+            if [ "$PR_MERGED" = "true" ] && echo "$PR_HEAD_REF" | grep -qEx "update/flake/primary"; then
+              reason="merged primary-inputs PR from $PR_HEAD_REF"
+            else
+              skip=true
+              reason="not a merged primary-inputs PR (head: $PR_HEAD_REF, merged: $PR_MERGED)"
+            fi
+          else
+            # Manual dispatch: blocked only by an open primary-inputs PR.
+            open=$(gh pr list --base main --limit 100 --json headRefName --jq '.[].headRefName' \
+              | grep -Ex "update/flake/primary" || true)
+            if [ -n "$open" ]; then
+              skip=true
+              reason="open primary-inputs PR: $open"
+            else
+              reason="manual dispatch; no open primary-inputs PR"
+            fi
+          fi
+
+          echo "skip=$skip" >> "$GITHUB_OUTPUT"
+          echo "reason=$reason" >> "$GITHUB_OUTPUT"
+          echo "Gate: skip=$skip ($reason)"
+
+  # ------------------------------------------------------------------
+  # Phase 2a: non-primary flake inputs, one PR per input, no cap.
+  # ------------------------------------------------------------------
+  phase2a-list:
+    needs: gate
+    if: ${{ needs.gate.outputs.skip != 'true' }}
+    runs-on: ubuntu-latest
+    outputs:
+      inputs: ${{ steps.list.outputs.inputs }}
+    steps:
+      - name: 0-1. Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: 0-2. Install Nix
+        uses: nixbuild/nix-quick-install-action@v35
+
+      - name: 0-3. Enumerate non-primary inputs
+        id: list
+        run: |
+          set -euo pipefail
+          all=$(nix flake metadata --json | jq -r '.locks.nodes.root.inputs | keys[]')
+          primary=$(jq -r '.primaryFlakeInputs[]' .github/ci-config.json)
+          others=$(comm -23 <(sort <<< "$all") <(sort <<< "$primary") | jq -R . | jq -sc .)
+          echo "inputs=$others" >> "$GITHUB_OUTPUT"
+          echo "Non-primary inputs: $others"
+
+  phase2a:
+    needs: phase2a-list
+    if: ${{ needs.phase2a-list.outputs.inputs != '[]' }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        input: ${{ fromJSON(needs.phase2a-list.outputs.inputs) }}
+    steps:
+      - name: 0-1. Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 2
+
+      - name: 0-2. Install Nix
+        uses: nixbuild/nix-quick-install-action@v35
+        with:
+          nix_conf: ${{ env.nix_conf }}
+
+      - name: 1-1. Update input ${{ matrix.input }}
+        id: bump
+        run: |
+          set -euo pipefail
+          name='${{ matrix.input }}'
+          old_rev=$(jq -r --arg n "$name" '.nodes[$n].locked.rev // "unknown"' flake.lock)
+          nix flake lock --update-input "$name"
+          if git diff --quiet flake.lock; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            new_rev=$(jq -r --arg n "$name" '.nodes[$n].locked.rev // "unknown"' flake.lock)
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            {
+              echo 'body<<EOF'
+              printf '`%s`: `%s` → `%s`\n' "$name" "$old_rev" "$new_rev"
+              echo EOF
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 1-2. Create Pull Request
+        if: steps.bump.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GH_PR_PAT }}
+          branch: update/flake/${{ matrix.input }}
+          base: main
+          title: "update(flake): ${{ matrix.input }}"
+          body: ${{ steps.bump.outputs.body }}
+          commit-message: "update(flake): ${{ matrix.input }}"
+          add-paths: flake.lock
+          delete-branch: true
+
+      - name: 1-3. Record status
+        if: always()
+        run: |
+          mkdir -p status
+          if [ "${{ steps.bump.outcome }}" = "failure" ]; then
+            echo "- ❌ **${{ matrix.input }}**: update failed" > status/entry.md
+          elif [ "${{ steps.bump.outputs.changed }}" = "true" ]; then
+            echo "- ✅ **${{ matrix.input }}**: PR created/updated (\`update/flake/${{ matrix.input }}\`)" > status/entry.md
+          else
+            echo "- ➖ **${{ matrix.input }}**: already up to date" > status/entry.md
+          fi
+
+      - name: 1-4. Upload status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: status-phase2a-${{ matrix.input }}
+          path: status/
+          if-no-files-found: ignore
+
+  # ------------------------------------------------------------------
+  # Phase 2b: packages, dynamic matrix over updater.<system> entries.
+  # ------------------------------------------------------------------
+  phase2b-list:
+    needs: gate
+    if: ${{ needs.gate.outputs.skip != 'true' }}
+    runs-on: ubuntu-latest
+    outputs:
+      updaters: ${{ steps.list.outputs.updaters }}
+    steps:
+      - name: 0-1. Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: 0-2. Install Nix
+        uses: nixbuild/nix-quick-install-action@v35
+
+      - name: 0-3. Enumerate updaters
+        id: list
+        run: |
+          updaters=$(nix eval .#updater.x86_64-linux --apply builtins.attrNames --json | jq -c .)
+          echo "updaters=$updaters" >> "$GITHUB_OUTPUT"
+          echo "Updaters: $updaters"
+
+  phase2b:
+    needs: phase2b-list
+    if: ${{ needs.phase2b-list.outputs.updaters != '[]' }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        updater: ${{ fromJSON(needs.phase2b-list.outputs.updaters) }}
+    steps:
+      - name: 0-1. Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 2
+
+      - name: 0-2. Install Nix
+        uses: nixbuild/nix-quick-install-action@v35
+        with:
+          nix_conf: ${{ env.nix_conf }}
+
+      - name: 1-1. Capture versions before update
+        id: before
+        run: |
+          set -euo pipefail
+          name='${{ matrix.updater }}'
+          nix eval --json ".#updater.x86_64-linux.$name.packages" > /tmp/packages.json
+          : > /tmp/versions_before.txt
+          for p in $(jq -r '.[]' /tmp/packages.json); do
+            v=$(nix eval --raw ".#packages.x86_64-linux.$p.version" 2>/dev/null || echo '?')
+            echo "$p $v" >> /tmp/versions_before.txt
+          done
+          cat /tmp/versions_before.txt
+
+      - name: 1-2. Run updater script
+        id: run
+        run: |
+          if nix run ".#updater.x86_64-linux.${{ matrix.updater }}.script"; then
+            echo "failed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "failed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 1-3. Detect working tree changes
+        if: steps.run.outputs.failed != 'true'
+        id: diff
+        run: |
+          if git status --porcelain | grep -q .; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 1-4. Capture versions after & build PR text
+        if: steps.diff.outputs.changed == 'true'
+        id: text
+        run: |
+          set -euo pipefail
+          name='${{ matrix.updater }}'
+          : > /tmp/versions_after.txt
+          while read -r p oldv; do
+            newv=$(nix eval --raw ".#packages.x86_64-linux.$p.version" 2>/dev/null || echo '?')
+            echo "$p $newv" >> /tmp/versions_after.txt
+          done < /tmp/versions_before.txt
+
+          body=$(join <(sort /tmp/versions_before.txt) <(sort /tmp/versions_after.txt) \
+            | awk '{printf "- **%s**: %s → %s\n", $1, $2, $3}')
+          count=$(wc -l < /tmp/versions_after.txt)
+          if [ "$count" -eq 1 ]; then
+            oldv=$(awk 'NR==1 {print $2}' /tmp/versions_before.txt)
+            newv=$(awk 'NR==1 {print $2}' /tmp/versions_after.txt)
+            title="update(source): $name — $oldv → $newv"
+          else
+            title="update(source): $name"
+          fi
+          {
+            echo 'title<<EOF'
+            echo "$title"
+            echo EOF
+            echo 'body<<EOF'
+            echo "$body"
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+
+      - name: 1-5. Create Pull Request
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GH_PR_PAT }}
+          branch: update/source/${{ matrix.updater }}
+          base: main
+          title: ${{ steps.text.outputs.title }}
+          body: ${{ steps.text.outputs.body }}
+          commit-message: ${{ steps.text.outputs.title }}
+          delete-branch: true
+
+      - name: 1-6. Record status
+        if: always()
+        run: |
+          mkdir -p status
+          if [ "${{ steps.run.outcome }}" = "failure" ] || [ "${{ steps.run.outputs.failed }}" = "true" ]; then
+            echo "- ❌ **${{ matrix.updater }}**: updater script failed" > status/entry.md
+          elif [ "${{ steps.diff.outputs.changed }}" = "true" ]; then
+            echo "- ✅ **${{ matrix.updater }}**: PR created/updated (\`update/source/${{ matrix.updater }}\`)" > status/entry.md
+          else
+            echo "- ➖ **${{ matrix.updater }}**: already up to date" > status/entry.md
+          fi
+
+      - name: 1-7. Upload status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: status-phase2b-${{ matrix.updater }}
+          path: status/
+          if-no-files-found: ignore
+
+  phase2-summary:
+    needs: [gate, phase2a, phase2b]
+    if: ${{ always() && needs.gate.outputs.skip != 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1-1. Download phase 2 statuses
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          pattern: status-phase2*
+          path: status
+          # No merge-multiple: every artifact holds status/entry.md and
+          # would overwrite each other; keep one dir per artifact.
+
+      - name: 1-2. Send Telegram summary
+        env:
+          RECEIVER_ID: ${{ secrets.TG_RECEIVER_ID }}
+          BOT_KEY: ${{ secrets.TG_BOT_KEY }}
+          REASON: ${{ needs.gate.outputs.reason }}
+          R2A: ${{ needs.phase2a.result }}
+          R2B: ${{ needs.phase2b.result }}
+        run: |
+          pip install apprise
+          {
+            echo "📦 nurpkgs update — phase 2 (other flake inputs & packages)"
+            echo
+            echo "gate: $REASON"
+            echo
+            cat status/*/*.md 2>/dev/null || echo "(no status recorded)"
+            echo
+            echo "phase2a result: $R2A / phase2b result: $R2B"
+          } > message.txt
+          apprise -vv -b "$(cat message.txt)" "tgram://$BOT_KEY/$RECEIVER_ID/?format=markdown" || true

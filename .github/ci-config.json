@@ -1,0 +1,8 @@
+{
+  "primaryFlakeInputs": [
+    "nixpkgs",
+    "flake-parts",
+    "systems",
+    "treefmt-nix"
+  ]
+}

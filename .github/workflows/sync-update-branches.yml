@@ -1,0 +1,160 @@
+name: "Sync update branches"
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  nix_conf: |
+    keep-env-derivations = true
+    keep-outputs = true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 0-1. Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GH_PR_PAT }}
+
+      - name: 0-2. Install Nix
+        uses: nixbuild/nix-quick-install-action@v35
+        with:
+          nix_conf: ${{ env.nix_conf }}
+
+      - name: 0-3. Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: 1-1. Rebuild open update branches on top of main
+        env:
+          GH_TOKEN: ${{ secrets.GH_PR_PAT }}
+        run: |
+          set -euo pipefail
+
+          prs=$(gh pr list --base main --limit 100 --json number,headRefName \
+            --jq '.[] | select(.headRefName | test("^update/(flake|source)/")) | "\(.number)\t\(.headRefName)"')
+          if [ -z "$prs" ]; then
+            echo "No open update PRs."
+            exit 0
+          fi
+
+          while IFS=$'\t' read -r number branch; do
+            rest=${branch#update/}
+            type=${rest%%/*}
+            name=${rest#*/}
+            echo "=== Syncing $branch (PR #$number) ==="
+
+            # update/flake/primary covers every whitelisted input.
+            inputs=$name
+            if [ "$type" = flake ] && [ "$name" = primary ]; then
+              inputs=$(jq -r '.primaryFlakeInputs[]' .github/ci-config.json)
+            fi
+
+            git fetch origin "+$branch:refs/remotes/origin/$branch"
+            old_head=$(git rev-parse "origin/$branch")
+
+            # --- versions at the PR branch's old head ---
+            wt=$(mktemp -d)
+            git worktree add --detach "$wt" "$old_head" > /dev/null 2>&1
+            if [ "$type" = flake ]; then
+              : > /tmp/flake_before.txt
+              for i in $inputs; do
+                echo "$i $(jq -r --arg n "$i" '.nodes[$n].locked.rev // "unknown"' "$wt/flake.lock")" >> /tmp/flake_before.txt
+              done
+            else
+              (
+                cd "$wt"
+                for p in $(nix eval --json ".#updater.x86_64-linux.$name.packages" | jq -r '.[]'); do
+                  v=$(nix eval --raw ".#packages.x86_64-linux.$p.version" 2>/dev/null || echo '?')
+                  echo "$p $v"
+                done
+              ) | sort > /tmp/versions_before.txt
+            fi
+            git worktree remove --force "$wt"
+
+            # --- rebuild on top of main (no rebase) ---
+            git checkout -B "$branch" origin/main
+            ok=true
+            if [ "$type" = flake ]; then
+              for i in $inputs; do
+                nix flake lock --update-input "$i" || ok=false
+              done
+            else
+              nix run ".#updater.x86_64-linux.$name.script" || ok=false
+            fi
+            if [ "$ok" != true ]; then
+              echo "Rebuild failed for $branch; leaving branch untouched."
+              # actions/checkout leaves a detached HEAD, so a local "main"
+              # branch may not exist; reset via the remote-tracking ref.
+              git checkout -f --detach origin/main
+              continue
+            fi
+
+            if git status --porcelain | grep -q .; then
+              git add -A
+              git commit -m "$branch: rebuild on latest main"
+            fi
+            # If the rebuild produced no diff against main the branch now
+            # equals main and the PR closes itself on push.
+            git push -f origin "$branch"
+
+            # --- sync PR title/body if the version range changed ---
+            if [ "$type" = flake ]; then
+              : > /tmp/flake_after.txt
+              for i in $inputs; do
+                echo "$i $(jq -r --arg n "$i" '.nodes[$n].locked.rev // "unknown"' flake.lock)" >> /tmp/flake_after.txt
+              done
+              if ! diff -q /tmp/flake_before.txt /tmp/flake_after.txt > /dev/null; then
+                if [ "$name" = primary ]; then
+                  title="update(flake): primary inputs"
+                else
+                  title="update(flake): $name"
+                fi
+                body=""
+                for i in $inputs; do
+                  base_rev=$(git show origin/main:flake.lock | jq -r --arg n "$i" '.nodes[$n].locked.rev // "unknown"')
+                  after_rev=$(jq -r --arg n "$i" '.nodes[$n].locked.rev // "unknown"' flake.lock)
+                  if [ "$base_rev" != "$after_rev" ]; then
+                    body="$body$(printf '`%s`: `%s` → `%s`\n' "$i" "$base_rev" "$after_rev")"
+                  fi
+                done
+                gh pr edit "$number" --title "$title" --body "$body"
+                echo "PR #$number updated: $title"
+              fi
+            else
+              : > /tmp/versions_after.txt
+              for p in $(nix eval --json ".#updater.x86_64-linux.$name.packages" | jq -r '.[]'); do
+                v=$(nix eval --raw ".#packages.x86_64-linux.$p.version" 2>/dev/null || echo '?')
+                echo "$p $v" >> /tmp/versions_after.txt
+              done
+              sort -o /tmp/versions_after.txt /tmp/versions_after.txt
+              if ! diff -q /tmp/versions_before.txt /tmp/versions_after.txt > /dev/null; then
+                count=$(wc -l < /tmp/versions_after.txt)
+                if [ "$count" -eq 1 ]; then
+                  oldv=$(awk 'NR==1 {print $2}' /tmp/versions_before.txt)
+                  newv=$(awk 'NR==1 {print $2}' /tmp/versions_after.txt)
+                  title="update(source): $name — $oldv → $newv"
+                else
+                  title="update(source): $name"
+                fi
+                body=$(join /tmp/versions_before.txt /tmp/versions_after.txt \
+                  | awk '{printf "- **%s**: %s → %s\n", $1, $2, $3}')
+                gh pr edit "$number" --title "$title" --body "$body"
+                echo "PR #$number updated: $title"
+              fi
+            fi
+          done <<< "$prs"

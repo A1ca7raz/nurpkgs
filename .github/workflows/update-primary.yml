@@ -1,0 +1,119 @@
+name: "Update primary flake inputs"
+
+on:
+  schedule:
+    - cron: '39 20 * * 2'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  nix_conf: |
+    keep-env-derivations = true
+    keep-outputs = true
+
+jobs:
+  # 主输入（primary inputs）：白名单中的 flake inputs，一次性合并更新为
+  # 单个 PR（update/flake/primary）；其更新优先并阻塞其他更新
+  # （update.yml 的 gate 在该 PR 开放期间跳过 phase 2）。
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 0-1. Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 2
+
+      - name: 0-2. Install Nix
+        uses: nixbuild/nix-quick-install-action@v35
+        with:
+          nix_conf: ${{ env.nix_conf }}
+
+      - name: 1-1. Update all primary inputs
+        id: bump
+        run: |
+          set -euo pipefail
+          : > /tmp/revs.txt
+          for name in $(jq -r '.primaryFlakeInputs[]' .github/ci-config.json); do
+            old_rev=$(jq -r --arg n "$name" '.nodes[$n].locked.rev // "unknown"' flake.lock)
+            nix flake lock --update-input "$name"
+            new_rev=$(jq -r --arg n "$name" '.nodes[$n].locked.rev // "unknown"' flake.lock)
+            echo "$name $old_rev $new_rev" >> /tmp/revs.txt
+          done
+          if git diff --quiet flake.lock; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            {
+              echo 'body<<EOF'
+              awk '$2 != $3 {printf "`%s`: `%s` → `%s`\n", $1, $2, $3}' /tmp/revs.txt
+              echo EOF
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 1-2. Create Pull Request
+        if: steps.bump.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GH_PR_PAT }}
+          branch: update/flake/primary
+          base: main
+          title: "update(flake): primary inputs"
+          body: ${{ steps.bump.outputs.body }}
+          commit-message: "update(flake): primary inputs"
+          add-paths: flake.lock
+          delete-branch: true
+
+      - name: 1-3. Record status
+        if: always()
+        run: |
+          mkdir -p status
+          if [ "${{ steps.bump.outcome }}" = "failure" ]; then
+            echo "- ❌ **primary inputs**: update failed" > status/entry.md
+          elif [ "${{ steps.bump.outputs.changed }}" = "true" ]; then
+            echo "- ✅ **primary inputs**: PR created/updated (\`update/flake/primary\`)" > status/entry.md
+            awk '$2 != $3 {printf "- `%s`: `%s` → `%s`\n", $1, $2, $3}' /tmp/revs.txt >> status/entry.md
+          else
+            echo "- ➖ **primary inputs**: already up to date" > status/entry.md
+          fi
+
+      - name: 1-4. Upload status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: status-primary
+          path: status/
+          if-no-files-found: ignore
+
+  summary:
+    needs: update
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1-1. Download statuses
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          pattern: status-primary*
+          path: status
+          merge-multiple: true
+
+      - name: 1-2. Send Telegram summary
+        env:
+          RECEIVER_ID: ${{ secrets.TG_RECEIVER_ID }}
+          BOT_KEY: ${{ secrets.TG_BOT_KEY }}
+        run: |
+          pip install apprise
+          {
+            echo "📦 nurpkgs update — primary flake inputs"
+            echo
+            cat status/*.md 2>/dev/null || echo "(no status recorded)"
+          } > message.txt
+          apprise -vv -b "$(cat message.txt)" "tgram://$BOT_KEY/$RECEIVER_ID/?format=markdown" || true

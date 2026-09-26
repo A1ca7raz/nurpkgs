@@ -39,6 +39,11 @@ on:
         description: "Flake output (packages|legacyPackages|checks)"
         default: "packages"
         type: string
+      ref:
+        description: "Git ref to checkout (empty = event default)"
+        required: false
+        default: ""
+        type: string
       package:
         description: Package to build
         required: false
@@ -75,6 +80,11 @@ jobs:
     steps:
     - name: 0-1. Checkout repository
       uses: actions/checkout@v7
+      with:
+        # Empty string falls back to the event's default ref; bump-check
+        # passes the PR head sha explicitly (pull_request_target would
+        # otherwise build the base branch).
+        ref: ${{ inputs.ref }}
 
     - name: 0-2. Install Nix
       uses: nixbuild/nix-quick-install-action@v35
@@ -84,8 +94,8 @@ jobs:
     - name: 0.3. Setup cache
       uses: nix-community/cache-nix-action@v7
       with:
-        primary-key: nur-${{ runner.os }}-individual-${{ inputs.package }}-${{ hashFiles('flake.lock', 'pkgs/_sources/generated.nix') }}
-        restore-prefixes-first-match: nur-${{ runner.os }}-shared-${{ hashFiles('flake.lock', 'pkgs/_sources/generated.nix') }}
+        primary-key: nur-${{ runner.os }}-individual-${{ inputs.package }}-${{ hashFiles('flake.lock') }}
+        restore-prefixes-first-match: nur-${{ runner.os }}-shared-${{ hashFiles('flake.lock') }}
         gc-max-store-size-linux: 1G
         purge: true
         purge-prefixes: nur-${{ runner.os }}-individual-${{ inputs.package }}-
