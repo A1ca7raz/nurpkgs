@@ -102,12 +102,14 @@ in
 
       # Call a package file (path or function) with pkgs and specialArgs
       # available for argument intersection.  Only declared arguments are
-      # passed, and everything is lazy.
+      # passed, and everything is lazy.  Note: functions passing through the
+      # module system may arrive as functor sets ({ __functor, __functionArgs }),
+      # so use lib.isFunction/lib.functionArgs rather than the builtins.
       callPackage = f:
         let
-          package = if builtins.isFunction f then f else import f;
+          package = if lib.isFunction f then f else import f;
           args = intersectAttrs
-            (builtins.functionArgs package)
+            (lib.functionArgs package)
             (specialArgs // { inherit pkgs; });
         in
           pkgs.callPackage package args;
