@@ -1,0 +1,6 @@
+# Pinned: the patch set tags follow the siyuan version built from nixpkgs,
+# not upstream's latest release (upstream is already ahead).
+[siyuan-patch]
+src.github = "demoshang/siyuan-patch"
+fetch.github = "demoshang/siyuan-patch"
+pinned = true

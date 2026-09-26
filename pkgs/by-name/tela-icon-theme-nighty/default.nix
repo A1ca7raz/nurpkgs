@@ -1,8 +1,4 @@
 {
-  tela-icon-theme,
-  source
-}:
-tela-icon-theme.overrideAttrs (p: {
-  inherit (source) src;
-  version = "${source.date}-unstable";
-})
+  nurpkgs.packages.tela-icon-theme-nighty = ./package.nix;
+  nurpkgs.updater.tela-icon-theme-nighty = { };
+}

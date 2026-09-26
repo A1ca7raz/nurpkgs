@@ -1,7 +1,7 @@
 {
   lib,
   stdenv,
-  sources,
+  callPackage,
   applyPatches,
   makeWrapper,
   nodejs_22,
@@ -12,9 +12,9 @@
 let
   pnpm = pnpm_11;
 
-  # https://github.com/demoshang/siyuan-patch
-  # Upstream tags its patch set after the siyuan version it applies to,
-  # so the tag always follows the siyuan version being built.
+  # Local nvfetcher pin (see ./nvfetcher.toml); the patch set tags follow
+  # the siyuan version being built, so it stays pinned to nixpkgs' siyuan.
+  sources = callPackage ./_sources/generated.nix { };
   patchRepo = sources.siyuan-patch.src;
   patchedSrc = applyPatches {
     name = "siyuan-${siyuan.version}-patched";

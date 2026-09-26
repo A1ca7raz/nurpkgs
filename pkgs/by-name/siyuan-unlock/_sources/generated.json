@@ -1,0 +1,23 @@
+{
+    "siyuan-patch": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "siyuan-patch",
+        "passthru": null,
+        "pinned": true,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "demoshang",
+            "repo": "siyuan-patch",
+            "rev": "v3.8.3",
+            "sha256": "sha256-gWKyQPGjtx/OTGVeHFAbiTzm1tAM8Bfm3wa2pLgV7tk=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v3.8.3"
+    }
+}

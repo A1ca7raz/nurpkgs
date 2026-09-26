@@ -1,18 +1,17 @@
+let
+  # Update scripts run from the repo root (same convention as
+  # nix-update --flake); paths here are repo-relative.
+  dir = "pkgs/by-name/fcitx5-pinyin-zhwiki";
+in
 {
-  source,
-  lib,
-  stdenv
-}:
-stdenv.mkDerivation {
-  inherit (source) pname version src;
-  dontUnpack = true;
-  installPhase = ''
-    install -Dm644 $src $out/share/fcitx5/pinyin/dictionaries/zhwiki.dict
-  '';
-
-  meta = with lib; {
-    description = "zhwiki dictionary for fcitx5-pinyin and rime";
-    homepage = "https://github.com/felixonmars/fcitx5-pinyin-zhwiki";
-    license = licenses.unlicense;
+  nurpkgs.packages.fcitx5-pinyin-zhwiki = ./package.nix;
+  nurpkgs.updater.fcitx5-pinyin-zhwiki = {
+    script = pkgs: pkgs.writeShellApplication {
+      name = "update-fcitx5-pinyin-zhwiki";
+      runtimeInputs = [ pkgs.nvfetcher ];
+      text = ''
+        nvfetcher -c ${dir}/nvfetcher.toml -o ${dir}/_sources
+      '';
+    };
   };
 }

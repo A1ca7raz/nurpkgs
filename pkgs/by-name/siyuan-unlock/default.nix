@@ -1,28 +1,19 @@
-# https://github.com/demoshang/siyuan-patch
-{
-  sources,
-  applyPatches,
-  siyuan,
-}:
 let
-  # Upstream tags its patch set after the siyuan version it applies to,
-  # so the tag always follows the siyuan version being built.
-  patchRepo = sources.siyuan-patch.src;
-  patchedSrc = applyPatches {
-    name = "siyuan-${siyuan.version}-patched";
-    src = siyuan.src;
-    patches = map (f: "${patchRepo}/patches/siyuan/${f}") [
-      "default-config.patch"
-      "disable-update.patch"
-      "mock-vip-user.patch"
-    ];
-  };
+  # Update scripts run from the repo root (same convention as
+  # nix-update --flake); paths here are repo-relative.
+  dir = "pkgs/by-name/siyuan-unlock";
 in
-siyuan.overrideAttrs (p: {
-  version = "${p.version}-unlock";
-  kernel = p.kernel.overrideAttrs (pp: {
-    src = patchedSrc;
-    sourceRoot = "${patchedSrc.name}/kernel";
-  });
-  __intentionallyOverridingVersion = true;
-})
+{
+  nurpkgs.packages.siyuan-unlock = ./siyuan-unlock.nix;
+  nurpkgs.packages.siyuan-headless = ./siyuan-headless.nix;
+  nurpkgs.updater.siyuan-patch = {
+    packages = [ "siyuan-unlock" "siyuan-headless" ];
+    script = pkgs: pkgs.writeShellApplication {
+      name = "update-siyuan-patch";
+      runtimeInputs = [ pkgs.nvfetcher ];
+      text = ''
+        nvfetcher -c ${dir}/nvfetcher.toml -o ${dir}/_sources
+      '';
+    };
+  };
+}

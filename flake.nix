@@ -138,7 +138,7 @@
       ];
 
       imports = [
-        ./flake-modules/custom-packages.nix
+        ./flake-modules/nurpkgs.nix
         ./flake-modules/external-packages.nix
         ./flake-modules/modules.nix
         ./flake-modules/dev.nix

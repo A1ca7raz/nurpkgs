@@ -1,0 +1,3 @@
+# Upstream publishes dictionaries as release assets; check the repo's
+# releases instead of the src URL.
+--url https://github.com/outloudvi/mw2fcitx
