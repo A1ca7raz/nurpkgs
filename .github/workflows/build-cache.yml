@@ -122,11 +122,13 @@ jobs:
           COMMIT_SHA: ${{ github.sha }}
           COMMIT_URL: ${{ github.event.head_commit.url }}
           COMMIT_MSG: ${{ github.event.head_commit.message }}
+          COMMIT_TS: ${{ github.event.head_commit.timestamp }}
         run: |
           short_sha=${COMMIT_SHA:0:7}
+          commit_date="${COMMIT_TS:0:4}${COMMIT_TS:5:2}${COMMIT_TS:8:2}"
           {
             echo 'message<<EOF'
-            echo "🟢 nurpkgs@[$short_sha]($COMMIT_URL) built successfully."
+            echo "🟢 nurpkgs@[$short_sha ($commit_date)]($COMMIT_URL) built successfully."
             echo
             echo "\`\`\`"
             echo "$COMMIT_MSG"

@@ -124,16 +124,21 @@ jobs:
         run: |
           set -euo pipefail
           name='${{ matrix.input }}'
-          old_rev=$(jq -r --arg n "$name" '.nodes[$n].locked.rev // "unknown"' flake.lock)
+          old_rev=$(.github/scripts/lock-rev-info.sh flake.lock "$name")
           nix flake lock --update-input "$name"
           if git diff --quiet flake.lock; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
-            new_rev=$(jq -r --arg n "$name" '.nodes[$n].locked.rev // "unknown"' flake.lock)
+            new_rev=$(.github/scripts/lock-rev-info.sh flake.lock "$name")
             echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "entry=- $name: $old_rev -> $new_rev" >> "$GITHUB_OUTPUT"
+            old_short=${old_rev%% *}; old_date=${old_rev#*\(}; old_date=${old_date%\)}
+            new_short=${new_rev%% *}; new_date=${new_rev#*\(}; new_date=${new_date%\)}
+            echo "title=$name: $old_short-$old_date -> $new_short-$new_date" >> "$GITHUB_OUTPUT"
             {
               echo 'body<<EOF'
-              printf '`%s`: `%s` → `%s`\n' "$name" "$old_rev" "$new_rev"
+              echo '### Changelog of flake inputs'
+              printf -- '- **%s**: %s -> %s\n' "$name" "$old_rev" "$new_rev"
               echo EOF
             } >> "$GITHUB_OUTPUT"
           fi
@@ -145,9 +150,9 @@ jobs:
           token: ${{ secrets.GH_PR_PAT }}
           branch: update/flake/${{ matrix.input }}
           base: main
-          title: "update(flake): ${{ matrix.input }}"
+          title: ${{ steps.bump.outputs.title }}
           body: ${{ steps.bump.outputs.body }}
-          commit-message: "update(flake): ${{ matrix.input }}"
+          commit-message: ${{ steps.bump.outputs.title }}
           add-paths: flake.lock
           delete-branch: true
 
@@ -156,11 +161,11 @@ jobs:
         run: |
           mkdir -p status
           if [ "${{ steps.bump.outcome }}" = "failure" ]; then
-            echo "- ❌ **${{ matrix.input }}**: update failed" > status/entry.md
+            echo "- ${{ matrix.input }}: update failed [X]" > status/entry.md
           elif [ "${{ steps.bump.outputs.changed }}" = "true" ]; then
-            echo "- ✅ **${{ matrix.input }}**: PR created/updated (\`update/flake/${{ matrix.input }}\`)" > status/entry.md
+            echo "${{ steps.bump.outputs.entry }}" > status/entry.md
           else
-            echo "- ➖ **${{ matrix.input }}**: already up to date" > status/entry.md
+            echo "- ${{ matrix.input }}: up to date" > status/entry.md
           fi
 
       - name: 1-4. Upload status
@@ -261,20 +266,24 @@ jobs:
           done < /tmp/versions_before.txt
 
           body=$(join <(sort /tmp/versions_before.txt) <(sort /tmp/versions_after.txt) \
-            | awk '{printf "- **%s**: %s → %s\n", $1, $2, $3}')
+            | awk '{printf "- **%s**: %s -> %s\n", $1, $2, $3}')
           count=$(wc -l < /tmp/versions_after.txt)
           if [ "$count" -eq 1 ]; then
             oldv=$(awk 'NR==1 {print $2}' /tmp/versions_before.txt)
             newv=$(awk 'NR==1 {print $2}' /tmp/versions_after.txt)
-            title="update(source): $name — $oldv → $newv"
+            entry="- $name: $oldv -> $newv"
+            title="$name: $oldv -> $newv"
           else
-            title="update(source): $name"
+            entry="- $name: $count packages updated"
+            title="$name: bump $count packages"
           fi
+          echo "entry=$entry" >> "$GITHUB_OUTPUT"
           {
             echo 'title<<EOF'
             echo "$title"
             echo EOF
             echo 'body<<EOF'
+            echo '### Changelog of packages'
             echo "$body"
             echo EOF
           } >> "$GITHUB_OUTPUT"
@@ -296,11 +305,11 @@ jobs:
         run: |
           mkdir -p status
           if [ "${{ steps.run.outcome }}" = "failure" ] || [ "${{ steps.run.outputs.failed }}" = "true" ]; then
-            echo "- ❌ **${{ matrix.updater }}**: updater script failed" > status/entry.md
+            echo "- ${{ matrix.updater }}: update failed [X]" > status/entry.md
           elif [ "${{ steps.diff.outputs.changed }}" = "true" ]; then
-            echo "- ✅ **${{ matrix.updater }}**: PR created/updated (\`update/source/${{ matrix.updater }}\`)" > status/entry.md
+            echo "${{ steps.text.outputs.entry }}" > status/entry.md
           else
-            echo "- ➖ **${{ matrix.updater }}**: already up to date" > status/entry.md
+            echo "- ${{ matrix.updater }}: up to date" > status/entry.md
           fi
 
       - name: 1-7. Upload status
@@ -329,18 +338,18 @@ jobs:
         env:
           RECEIVER_ID: ${{ secrets.TG_RECEIVER_ID }}
           BOT_KEY: ${{ secrets.TG_BOT_KEY }}
-          REASON: ${{ needs.gate.outputs.reason }}
-          R2A: ${{ needs.phase2a.result }}
-          R2B: ${{ needs.phase2b.result }}
         run: |
-          pip install apprise
-          {
-            echo "📦 nurpkgs update — phase 2 (other flake inputs & packages)"
-            echo
-            echo "gate: $REASON"
-            echo
-            cat status/*/*.md 2>/dev/null || echo "(no status recorded)"
-            echo
-            echo "phase2a result: $R2A / phase2b result: $R2B"
-          } > message.txt
-          apprise -vv -b "$(cat message.txt)" "tgram://$BOT_KEY/$RECEIVER_ID/?format=markdown" || true
+          entries=$(grep -h -v ': up to date$' status/*/*.md 2>/dev/null || true)
+          if [ -n "$entries" ]; then
+            pip install apprise
+            {
+              echo "🔔 nurpkgs update needs review:"
+              echo
+              echo '```'
+              echo "$entries"
+              echo '```'
+            } > message.txt
+            apprise -vv -b "$(cat message.txt)" "tgram://$BOT_KEY/$RECEIVER_ID/?format=markdown" || true
+          else
+            echo "Nothing to review; skipping notification."
+          fi
