@@ -39,9 +39,20 @@ jobs:
           # drv-diff exits 1 when head evaluation fails; that must turn the
           # PR red, so fail this step instead of emitting empty entries.
           set -euo pipefail
-          entries=$(.github/scripts/drv-diff.sh \
-            "${{ github.event.pull_request.base.sha }}" HEAD \
-            | jq -c 'map(split(".") | {output: .[0], package: (.[1:] | join("."))})')
+          if [ "${{ github.event.pull_request.head.ref }}" = "update/flake/primary" ]; then
+            # Primary-inputs PR (nixpkgs & friends): always build everything,
+            # even when individual drvPaths are unchanged.
+            raw=$(
+              for o in packages legacyPackages checks; do
+                nix eval --json ".#$o.x86_64-linux" --apply 'builtins.attrNames' \
+                  | jq --arg o "$o" -r '.[] | "\($o).\(.)"'
+              done | jq -R . | jq -sc .
+            )
+          else
+            raw=$(.github/scripts/drv-diff.sh \
+              "${{ github.event.pull_request.base.sha }}" HEAD)
+          fi
+          entries=$(jq -c 'map(split(".") | {output: .[0], package: (.[1:] | join("."))})' <<< "$raw")
           echo "entries=$entries" >> "$GITHUB_OUTPUT"
           echo "Changed entries: $entries"
 
