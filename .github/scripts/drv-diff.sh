@@ -4,7 +4,8 @@
 # Diffs the derivation paths of all buildable flake outputs
 # (.#packages / .#legacyPackages / .#checks on x86_64-linux) between two
 # revisions of this repository and prints a JSON array of "<output>.<attr>"
-# strings for entries whose drvPath changed, was added, or was removed.
+# strings for entries whose drvPath changed or was added.  Entries removed
+# in <head> are omitted: there is nothing to build for them.
 #
 # <base> and <head> may each be a git ref (checked out into a temporary
 # worktree) or a path to a directory containing a checkout. Directory
@@ -106,4 +107,4 @@ fi
 
 jq -cn --argjson base "$BASE_JSON" --argjson head "$HEAD_JSON" '
   (($base | keys) + ($head | keys) | unique) as $ks |
-  [$ks[] | select(($base[.] // null) != ($head[.] // null))]'
+  [$ks[] | select(($base[.] // null) != ($head[.] // null) and ($head[.] != null))]'
