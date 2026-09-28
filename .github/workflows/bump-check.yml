@@ -36,6 +36,9 @@ jobs:
       - name: 1-1. Diff derivation paths (base vs head)
         id: detect
         run: |
+          # drv-diff exits 1 when head evaluation fails; that must turn the
+          # PR red, so fail this step instead of emitting empty entries.
+          set -euo pipefail
           entries=$(.github/scripts/drv-diff.sh \
             "${{ github.event.pull_request.base.sha }}" HEAD \
             | jq -c 'map(split(".") | {output: .[0], package: (.[1:] | join("."))})')
