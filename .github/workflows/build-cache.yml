@@ -142,5 +142,7 @@ jobs:
           BOT_KEY: ${{ secrets.TG_BOT_KEY }}
           MESSAGE: ${{ steps.notify.outputs.message }}
         run: |
-          pip install apprise
+          # Pin <2: apprise 2.0.0 rewrites Telegram markdown and escapes
+          # the ``` fences and link brackets, so messages arrive unparsed.
+          pip install "apprise<2"
           apprise -vv -b "$MESSAGE" "tgram://$BOT_KEY/$RECEIVER_ID/?format=markdown" || true

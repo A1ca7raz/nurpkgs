@@ -124,7 +124,9 @@ jobs:
         run: |
           msg=$(cat status/*.md 2>/dev/null || true)
           if [ -n "$msg" ]; then
-            pip install apprise
+            # Pin <2: apprise 2.0.0 rewrites Telegram markdown and escapes
+            # the ``` fences and link brackets, so messages arrive unparsed.
+            pip install "apprise<2"
             apprise -vv -b "$msg" "tgram://$BOT_KEY/$RECEIVER_ID/?format=markdown" || true
           else
             echo "Nothing to review; skipping notification."

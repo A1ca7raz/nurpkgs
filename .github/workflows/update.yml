@@ -341,7 +341,9 @@ jobs:
         run: |
           entries=$(grep -h -v ': up to date$' status/*/*.md 2>/dev/null || true)
           if [ -n "$entries" ]; then
-            pip install apprise
+            # Pin <2: apprise 2.0.0 rewrites Telegram markdown and escapes
+            # the ``` fences and link brackets, so messages arrive unparsed.
+            pip install "apprise<2"
             {
               echo "🔔 nurpkgs update needs review:"
               echo
