@@ -51,10 +51,18 @@
         ;
       };
     in {
-      legacyPackages = externalPackages;
-      checks = cachedPackages //
+      packages = externalPackages;
+      legacyPackages = cachedPackages;
+      checks =
         mkBundle "lanzaboote" inputs.lanzaboote.packages.${system} //
-        mkBundle "sops-nix" inputs.sops-nix.packages.${system} //
+        mkBundle "sops-nix" {
+          inherit (inputs.sops-nix.packages.${system})
+            sops-install-secrets
+            sops-init-gpg-key
+            sops-pgp-hook
+            sops-import-keys-hook
+          ;
+        } //
         mkBundle "dms-plugins" inputs.dms-plugin-registry.packages.${system}
       ;
     };

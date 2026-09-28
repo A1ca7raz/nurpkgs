@@ -73,6 +73,5 @@ in {
   flake.lib = inputs.nix-std.lib;
 
   flake.overlays.default = final: prev:
-    self.legacyPackages.x86_64-linux //
     self.packages.x86_64-linux;
 }
