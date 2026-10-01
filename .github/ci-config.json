@@ -1,8 +1,23 @@
 {
   "primaryFlakeInputs": [
     "nixpkgs",
+    "nixpkgs-lib",
     "flake-parts",
     "systems",
-    "treefmt-nix"
+    "nix-std",
+
+    "treefmt-nix",
+    "bun2nix",
+    "uv2nix",
+    "pyproject-build-systems",
+    "crane",
+    "flake-compat",
+    "rust-overlay",
+
+    "nixpak",
+    "preservation",
+    "dns",
+    "impermanence",
+    "quadlet-nix"
   ]
 }
