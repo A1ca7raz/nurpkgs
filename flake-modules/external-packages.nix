@@ -43,7 +43,6 @@
 
       cachedPackages = {
         inherit (pkgs)
-          obsidian
           unrar
           veracrypt
           wpsoffice
