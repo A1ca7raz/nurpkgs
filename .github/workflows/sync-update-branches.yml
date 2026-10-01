@@ -1,4 +1,4 @@
-name: "Sync update branches"
+name: "[Auto] Sync update branches"
 
 on:
   push:
@@ -6,8 +6,10 @@ on:
       - main
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # Shared with update.yml: both create and force-push update/* branches,
+  # so they must never run at the same time.
+  group: update-branch-maintenance
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -107,6 +109,11 @@ jobs:
             if git status --porcelain | grep -q .; then
               git add -A
               git commit -m "$branch: rebuild on latest main"
+            fi
+            if [ "$(git rev-parse "HEAD^{tree}")" = "$(git rev-parse "$old_head^{tree}")" ]; then
+              echo "Rebuild is identical to the current branch head; skipping push."
+              git checkout -f --detach origin/main
+              continue
             fi
             # If the rebuild produced no diff against main the branch now
             # equals main and the PR closes itself on push.

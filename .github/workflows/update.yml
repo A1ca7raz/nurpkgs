@@ -1,4 +1,4 @@
-name: "Update"
+name: "[Update] Inputs & packages"
 
 on:
   workflow_dispatch:
@@ -7,8 +7,10 @@ on:
     branches: [main]
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # Shared with sync-update-branches.yml: both create and force-push
+  # update/* branches, so they must never run at the same time.
+  group: update-branch-maintenance
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -72,9 +74,9 @@ jobs:
           echo "Gate: skip=$skip ($reason)"
 
   # ------------------------------------------------------------------
-  # Phase 2a: non-primary flake inputs, one PR per input, no cap.
+  # Non-primary flake inputs, one PR per input, no cap.
   # ------------------------------------------------------------------
-  phase2a-list:
+  list-flake-inputs:
     needs: gate
     if: ${{ needs.gate.outputs.skip != 'true' }}
     runs-on: ubuntu-latest
@@ -99,14 +101,15 @@ jobs:
           echo "inputs=$others" >> "$GITHUB_OUTPUT"
           echo "Non-primary inputs: $others"
 
-  phase2a:
-    needs: phase2a-list
-    if: ${{ needs.phase2a-list.outputs.inputs != '[]' }}
+  update-flake-input:
+    name: flake/${{ matrix.input }}
+    needs: list-flake-inputs
+    if: ${{ needs.list-flake-inputs.outputs.inputs != '[]' }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        input: ${{ fromJSON(needs.phase2a-list.outputs.inputs) }}
+        input: ${{ fromJSON(needs.list-flake-inputs.outputs.inputs) }}
     steps:
       - name: 0-1. Checkout repository
         uses: actions/checkout@v7
@@ -128,20 +131,41 @@ jobs:
           nix flake lock --update-input "$name"
           if git diff --quiet flake.lock; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            new_rev=$(.github/scripts/lock-rev-info.sh flake.lock "$name")
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "entry=- $name: $old_rev -> $new_rev" >> "$GITHUB_OUTPUT"
-            old_short=${old_rev%% *}; old_date=${old_rev#*\(}; old_date=${old_date%\)}
-            new_short=${new_rev%% *}; new_date=${new_rev#*\(}; new_date=${new_date%\)}
-            echo "title=$name: $old_short-$old_date -> $new_short-$new_date" >> "$GITHUB_OUTPUT"
-            {
-              echo 'body<<EOF'
-              echo '### Changelog of flake inputs'
-              printf -- '- **%s**: %s -> %s\n' "$name" "$old_rev" "$new_rev"
-              echo EOF
-            } >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+          new_rev=$(.github/scripts/lock-rev-info.sh flake.lock "$name")
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+          # Version changes of repo packages caused by this input bump:
+          # evaluate .#packages versions against the old and the new lock.
+          cp flake.lock /tmp/new.lock
+          git checkout -- flake.lock
+          before=$(nix eval --json .#packages.x86_64-linux --apply \
+            'builtins.mapAttrs (n: p: (builtins.tryEval (p.version or "?")).value)')
+          cp /tmp/new.lock flake.lock
+          after=$(nix eval --json .#packages.x86_64-linux --apply \
+            'builtins.mapAttrs (n: p: (builtins.tryEval (p.version or "?")).value)')
+          pkg_changes=$(jq -rn --argjson b "$before" --argjson a "$after" \
+            '$b | to_entries[] | select($a[.key] != .value) | "  - \(.key): \(.value) -> \($a[.key])"')
+
+          {
+            echo 'entry<<EOF'
+            echo "- $name: $old_rev -> $new_rev"
+            if [ -n "$pkg_changes" ]; then
+              echo "$pkg_changes"
+            fi
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+
+          old_short=${old_rev%% *}; old_date=${old_rev#*\(}; old_date=${old_date%\)}
+          new_short=${new_rev%% *}; new_date=${new_rev#*\(}; new_date=${new_date%\)}
+          echo "title=$name: $old_short-$old_date -> $new_short-$new_date" >> "$GITHUB_OUTPUT"
+          {
+            echo 'body<<EOF'
+            echo '### Changelog of flake inputs'
+            printf -- '- **%s**: %s -> %s\n' "$name" "$old_rev" "$new_rev"
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
 
       - name: 1-2. Create Pull Request
         if: steps.bump.outputs.changed == 'true'
@@ -172,14 +196,14 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: status-phase2a-${{ matrix.input }}
+          name: status-flake-${{ matrix.input }}
           path: status/
           if-no-files-found: ignore
 
   # ------------------------------------------------------------------
-  # Phase 2b: packages, dynamic matrix over updater.<system> entries.
+  # Packages, dynamic matrix over updater.<system> entries.
   # ------------------------------------------------------------------
-  phase2b-list:
+  list-updaters:
     needs: gate
     if: ${{ needs.gate.outputs.skip != 'true' }}
     runs-on: ubuntu-latest
@@ -201,14 +225,15 @@ jobs:
           echo "updaters=$updaters" >> "$GITHUB_OUTPUT"
           echo "Updaters: $updaters"
 
-  phase2b:
-    needs: phase2b-list
-    if: ${{ needs.phase2b-list.outputs.updaters != '[]' }}
+  update-packages:
+    name: pkg/${{ matrix.updater }}
+    needs: list-updaters
+    if: ${{ needs.list-updaters.outputs.updaters != '[]' }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        updater: ${{ fromJSON(needs.phase2b-list.outputs.updaters) }}
+        updater: ${{ fromJSON(needs.list-updaters.outputs.updaters) }}
     steps:
       - name: 0-1. Checkout repository
         uses: actions/checkout@v7
@@ -316,20 +341,20 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: status-phase2b-${{ matrix.updater }}
+          name: status-pkg-${{ matrix.updater }}
           path: status/
           if-no-files-found: ignore
 
-  phase2-summary:
-    needs: [gate, phase2a, phase2b]
+  notify:
+    needs: [gate, update-flake-input, update-packages]
     if: ${{ always() && needs.gate.outputs.skip != 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - name: 1-1. Download phase 2 statuses
+      - name: 1-1. Download update statuses
         uses: actions/download-artifact@v4
         continue-on-error: true
         with:
-          pattern: status-phase2*
+          pattern: status-*
           path: status
           # No merge-multiple: every artifact holds status/entry.md and
           # would overwrite each other; keep one dir per artifact.

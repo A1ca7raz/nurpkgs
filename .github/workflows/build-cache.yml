@@ -1,4 +1,4 @@
-name: "[Post PR] Build binary cache"
+name: "[Auto] Build binary cache"
 
 on:
   push:

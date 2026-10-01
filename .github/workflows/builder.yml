@@ -1,4 +1,4 @@
-name: "Package builder"
+name: "[Util] Package builder"
 
 on:
   workflow_dispatch:

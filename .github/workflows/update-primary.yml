@@ -1,4 +1,4 @@
-name: "Update primary flake inputs"
+name: "[Update] Primary inputs"
 
 on:
   schedule:
