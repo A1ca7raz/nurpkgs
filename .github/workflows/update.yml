@@ -194,7 +194,7 @@ jobs:
 
       - name: 1-4. Upload status
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: status-flake-${{ matrix.input }}
           path: status/
@@ -339,7 +339,7 @@ jobs:
 
       - name: 1-7. Upload status
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: status-pkg-${{ matrix.updater }}
           path: status/
