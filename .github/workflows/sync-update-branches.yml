@@ -110,8 +110,13 @@ jobs:
               git add -A
               git commit -m "$branch: rebuild on latest main"
             fi
-            if [ "$(git rev-parse "HEAD^{tree}")" = "$(git rev-parse "$old_head^{tree}")" ]; then
-              echo "Rebuild is identical to the current branch head; skipping push."
+            # Skip the push when only main-side housekeeping (e.g. .github
+            # changes) would be carried in: the update content itself is
+            # unchanged, so a rebuild would just retrigger build checks.
+            # (Pushing workflow changes also requires a PAT with the
+            # workflow scope, so carrying them gratuitously can fail.)
+            if [ -z "$(git diff --name-only "$old_head" HEAD -- ':!.github')" ]; then
+              echo "Rebuild content is unchanged; skipping push."
               git checkout -f --detach origin/main
               continue
             fi
