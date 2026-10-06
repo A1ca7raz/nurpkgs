@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 concurrency:
   # Shared with update.yml: both create and force-push update/* branches,
@@ -41,9 +42,75 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: 1-1. Rebuild open update branches on top of main
+      # Decide which open update branches this main change affects:
+      #   all    - a whitelisted primary flake input moved
+      #   source - some packages' build code changed (derivation diff);
+      #            only the source branches of the updaters owning those
+      #            packages are rebuilt
+      #   none   - irrelevant change (docs, CI, non-primary lock entries):
+      #            exit without touching anything
+      - name: 1-1. Classify main changes
+        id: classify
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          mode=""
+          targets=""
+
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            # Manual dispatch: full sync.
+            mode=all
+          else
+            git show "$BEFORE:flake.lock" > /tmp/base.lock
+            for i in $(jq -r '.primaryFlakeInputs[]' .github/ci-config.json); do
+              if [ "$(.github/scripts/lock-rev-info.sh /tmp/base.lock "$i")" \
+                != "$(.github/scripts/lock-rev-info.sh flake.lock "$i")" ]; then
+                mode=all
+                break
+              fi
+            done
+
+            if [ -z "$mode" ] \
+              && ! git diff --quiet "$BEFORE" HEAD -- ':!flake.lock' ':!.github'; then
+              # A package's build code changed iff its drvPath changed.
+              wt=$(mktemp -d)
+              git worktree add --detach "$wt" "$BEFORE" > /dev/null 2>&1
+              before=$(cd "$wt" && nix eval --json .#packages.x86_64-linux --apply \
+                'builtins.mapAttrs (n: p: (builtins.tryEval p.drvPath).value)')
+              git worktree remove --force "$wt"
+              after=$(nix eval --json .#packages.x86_64-linux --apply \
+                'builtins.mapAttrs (n: p: (builtins.tryEval p.drvPath).value)')
+              changed=$(jq -cn --argjson b "$before" --argjson a "$after" \
+                '(($b | keys) + ($a | keys)) | unique | map(select($b[.] != $a[.]))')
+              if [ "$changed" != "[]" ]; then
+                targets=$(nix eval --json .#updater.x86_64-linux \
+                  --apply 'builtins.mapAttrs (n: u: u.packages)' \
+                  | jq -r --argjson changed "$changed" '
+                    to_entries[]
+                    | select(.value | any(. as $p | ($changed | index($p)) != null))
+                    | .key')
+              fi
+              if [ -n "$targets" ]; then
+                mode=source
+              fi
+            fi
+          fi
+
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          {
+            echo 'targets<<EOF'
+            echo "$targets"
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+          echo "Classification: mode='${mode:-none}' targets: ${targets:-none}"
+
+      - name: 1-2. Rebuild open update branches on top of main
+        if: steps.classify.outputs.mode != ''
         env:
           GH_TOKEN: ${{ secrets.GH_PR_PAT }}
+          MODE: ${{ steps.classify.outputs.mode }}
+          TARGETS: ${{ steps.classify.outputs.targets }}
         run: |
           set -euo pipefail
 
@@ -58,6 +125,12 @@ jobs:
             rest=${branch#update/}
             type=${rest%%/*}
             name=${rest#*/}
+
+            if [ "$MODE" = source ]; then
+              if [ "$type" != source ] || ! grep -qx "$name" <<< "$TARGETS"; then
+                continue
+              fi
+            fi
             echo "=== Syncing $branch (PR #$number) ==="
 
             # update/flake/primary covers every whitelisted input.
@@ -110,13 +183,9 @@ jobs:
               git add -A
               git commit -m "$branch: rebuild on latest main"
             fi
-            # Skip the push when only main-side housekeeping (e.g. .github
-            # changes) would be carried in: the update content itself is
-            # unchanged, so a rebuild would just retrigger build checks.
-            # (Pushing workflow changes also requires a PAT with the
-            # workflow scope, so carrying them gratuitously can fail.)
-            if [ -z "$(git diff --name-only "$old_head" HEAD -- ':!.github')" ]; then
-              echo "Rebuild content is unchanged; skipping push."
+            if [ "$(git rev-parse "HEAD^{tree}")" = "$(git rev-parse "$old_head^{tree}")" ]; then
+              # update.yml already rebuilt this branch on the same main.
+              echo "Rebuild is identical to the current branch head; skipping push."
               git checkout -f --detach origin/main
               continue
             fi
