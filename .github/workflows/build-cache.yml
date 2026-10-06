@@ -19,9 +19,7 @@ jobs:
   detect:
     runs-on: ubuntu-latest
     outputs:
-      pkgs_ext: ${{ steps.detect.outputs.pkgs_ext }}
-      pkgs_cached: ${{ steps.detect.outputs.pkgs_cached }}
-      pkgs_custom: ${{ steps.detect.outputs.pkgs_custom }}
+      entries: ${{ steps.detect.outputs.entries }}
 
     steps:
       - name: 0-1. Checkout
@@ -50,14 +48,13 @@ jobs:
             # Push: build only what actually changed (drvPath diff).
             entries=$(.github/scripts/drv-diff.sh "${{ github.event.before }}" "${{ github.sha }}")
           fi
+          entries=$(jq -c 'map(split(".") | {output: .[0], package: (.[1:] | join("."))})' <<< "$entries")
+          echo "entries=$entries" >> "$GITHUB_OUTPUT"
           echo "Changed entries: $entries"
-          echo "pkgs_custom=$(jq -c --arg p 'packages.' '[.[] | select(startswith($p)) | ltrimstr($p)]' <<< "$entries")" >> "$GITHUB_OUTPUT"
-          echo "pkgs_ext=$(jq -c --arg p 'legacyPackages.' '[.[] | select(startswith($p)) | ltrimstr($p)]' <<< "$entries")" >> "$GITHUB_OUTPUT"
-          echo "pkgs_cached=$(jq -c --arg p 'checks.' '[.[] | select(startswith($p)) | ltrimstr($p)]' <<< "$entries")" >> "$GITHUB_OUTPUT"
 
-  build-external-pkgs:
+  build:
     needs: detect
-    if: ${{ needs.detect.outputs.pkgs_ext != '' && needs.detect.outputs.pkgs_ext != '[]' }}
+    if: ${{ needs.detect.outputs.entries != '' && needs.detect.outputs.entries != '[]' }}
     secrets: inherit
     permissions:
       contents: write
@@ -65,74 +62,92 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        packages: ${{ fromJSON(needs.detect.outputs.pkgs_ext) }}
+        entry: ${{ fromJSON(needs.detect.outputs.entries) }}
     uses: ./.github/workflows/builder.yml
     with:
-      output: legacyPackages
-      package: ${{ matrix.packages }}
-      push_cache: true
-      pre_check: false
-
-  build-cached-pkgs:
-    needs: detect
-    if: ${{ needs.detect.outputs.pkgs_cached != '' && needs.detect.outputs.pkgs_cached != '[]' }}
-    secrets: inherit
-    permissions:
-      contents: write
-      actions: write
-    strategy:
-      fail-fast: false
-      matrix:
-        packages: ${{ fromJSON(needs.detect.outputs.pkgs_cached) }}
-    uses: ./.github/workflows/builder.yml
-    with:
-      output: checks
-      package: ${{ matrix.packages }}
-      push_cache: true
-      pre_check: false
-
-  build-custom-pkgs:
-    needs: detect
-    if: ${{ needs.detect.outputs.pkgs_custom != '' && needs.detect.outputs.pkgs_custom != '[]' }}
-    secrets: inherit
-    permissions:
-      contents: write
-      actions: write
-    strategy:
-      fail-fast: false
-      matrix:
-        packages: ${{ fromJSON(needs.detect.outputs.pkgs_custom) }}
-    uses: ./.github/workflows/builder.yml
-    with:
-      output: packages
-      package: ${{ matrix.packages }}
+      output: ${{ matrix.entry.output }}
+      package: ${{ matrix.entry.package }}
       push_cache: true
       pre_check: false
 
   post-build:
-    needs: [ build-external-pkgs, build-cached-pkgs, build-custom-pkgs ]
-    if: ${{ github.event_name == 'push' && (needs.build-external-pkgs.result == 'success' || needs.build-cached-pkgs.result == 'success' || needs.build-custom-pkgs.result == 'success') }}
+    needs: [ build ]
+    # Notify on a finished build only: empty matrix (skipped) and superseded
+    # runs (cancelled by a newer push) stay silent.
+    if: ${{ always() && github.event_name == 'push' && (needs.build.result == 'success' || needs.build.result == 'failure') }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: read
     steps:
+      - name: 0-1. Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+
+      - name: 0-2. Install Nix
+        uses: nixbuild/nix-quick-install-action@v35
+
       - name: Generate notification message
         id: notify
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_ID: ${{ github.run_id }}
+          REPO: ${{ github.repository }}
+          RESULT: ${{ needs.build.result }}
           COMMIT_SHA: ${{ github.sha }}
           COMMIT_URL: ${{ github.event.head_commit.url }}
-          COMMIT_MSG: ${{ github.event.head_commit.message }}
           COMMIT_TS: ${{ github.event.head_commit.timestamp }}
         run: |
+          set -euo pipefail
           short_sha=${COMMIT_SHA:0:7}
           commit_date="${COMMIT_TS:0:4}${COMMIT_TS:5:2}${COMMIT_TS:8:2}"
+
+          # Per-leg results; matrix legs are named
+          # "build (<output>, <package>) / build".
+          gh api "repos/$REPO/actions/runs/$RUN_ID/jobs?per_page=100" --jq \
+            '.jobs[] | select(.name | startswith("build (")) | [.name, .conclusion, .html_url] | @tsv' \
+            > legs.tsv
+
+          # Package versions at the built commit, per flake output.
+          for out in packages legacyPackages checks; do
+            nix eval --json ".#$out.x86_64-linux" --apply \
+              'builtins.mapAttrs (n: p: (builtins.tryEval (p.version or "")).value)' \
+              > "versions-$out.json"
+          done
+
+          # Telegram legacy markdown parses _, *, `, [ in bare text.
+          # shellcheck disable=SC2016
+          esc() { printf '%s' "$1" | sed -e 's/\\/\\\\/g' -e 's/_/\\_/g' -e 's/\*/\\*/g' -e 's/`/\\`/g' -e 's/\[/\\[/g'; }
+
+          total=0; failed=0
+          : > entries.tsv
+          while IFS=$'\t' read -r leg conclusion url; do
+            spec=${leg#build (}; spec=${spec%) / build}
+            out=${spec%%, *}; pkg=${spec#*, }
+            ver=$(jq -r --arg n "$pkg" '.[$n] // ""' "versions-$out.json")
+            name="*$(esc "$pkg")*"
+            if [ "$conclusion" = success ]; then
+              if [ -n "$ver" ]; then line="🟢 $name: $(esc "$ver")"; else line="🟢 $name"; fi
+            else
+              failed=$((failed + 1))
+              if [ -n "$ver" ]; then line="🔴 $name: [$(esc "$ver")]($url) FAILED"; else line="🔴 $name: [FAILED]($url)"; fi
+            fi
+            total=$((total + 1))
+            printf '%s\t%s\n' "$out.$pkg" "$line" >> entries.tsv
+          done < legs.tsv
+
+          if [ "$failed" -eq 0 ]; then
+            header="nurpkgs@[$short_sha ($commit_date)]($COMMIT_URL): $total built"
+          else
+            header="nurpkgs@[$short_sha ($commit_date)]($COMMIT_URL): $failed/$total FAILED"
+          fi
+
           {
             echo 'message<<EOF'
-            echo "🟢 nurpkgs@[$short_sha ($commit_date)]($COMMIT_URL) built successfully."
+            echo "$header"
             echo
-            echo "\`\`\`"
-            echo "$COMMIT_MSG"
-            echo "\`\`\`"
+            sort -t $'\t' -k1,1 entries.tsv | cut -f2-
             echo 'EOF'
           } >> "$GITHUB_OUTPUT"
 
