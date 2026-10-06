@@ -1,7 +1,7 @@
 name: "[PR] Build check"
 
 on:
-  pull_request_target:
+  pull_request:
     branches:
       - main
 
@@ -23,8 +23,8 @@ jobs:
       - name: 0-1. Checkout
         uses: actions/checkout@v7
         with:
-          # pull_request_target + head checkout: this repo accepts
-          # same-repo PRs only, so checking out head code is acceptable.
+          # Same-repo PRs only: checking out head code under pull_request
+          # is safe (fork PRs would get neither secrets nor this far).
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 

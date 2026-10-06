@@ -82,8 +82,8 @@ jobs:
       uses: actions/checkout@v7
       with:
         # Empty string falls back to the event's default ref; bump-check
-        # passes the PR head sha explicitly (pull_request_target would
-        # otherwise build the base branch).
+        # passes the PR head sha explicitly so the legs build exactly the
+        # PR head, not the ephemeral merge commit.
         ref: ${{ inputs.ref }}
 
     - name: 0-2. Install Nix
