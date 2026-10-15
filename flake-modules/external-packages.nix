@@ -29,8 +29,6 @@
           skills
         ;
 
-        dms-nighty = dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
         inherit (niri-nix.packages.${pkgs.stdenv.hostPlatform.system})
           niri-unstable
           xwayland-satellite-unstable
@@ -59,8 +57,7 @@
             sops-pgp-hook
             sops-import-keys-hook
           ;
-        } //
-        mkBundle "dms-plugins" inputs.dms-plugin-registry.packages.${system}
+        }
       ;
     };
 }

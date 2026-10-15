@@ -21,12 +21,6 @@ in {
   flake.nixosModules = with inputs; {
     colmena = colmena.nixosModules.deploymentOptions;
     disko = disko.nixosModules.disko;
-    dms = { ... }: {
-      imports = [
-        dms.nixosModules.dank-material-shell
-        dms-plugin-registry.nixosModules.default
-      ];
-    };
     # TODO: https://github.com/NousResearch/hermes-agent/blame/main/nix/nixosModules.nix
     # hermes = hermes-agent.nixosModules.default;
     home-manager = home-manager.nixosModules.home-manager;
@@ -52,12 +46,6 @@ in {
   };
 
   flake.homeModules = with inputs; {
-    dms = { ... }: {
-      imports = [
-        dms.homeModules.dank-material-shell
-        dms-plugin-registry.homeModules.default
-      ];
-    };
     niri = { pkgs, ... }: {
       imports = [
         niri-nix.homeModules.default
