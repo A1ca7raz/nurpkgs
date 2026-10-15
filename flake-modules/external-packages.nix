@@ -21,14 +21,12 @@
         inherit (llm-agents.packages.${pkgs.stdenv.hostPlatform.system})
           cli-proxy-api
           codex
-          hermes-agent
+          dsh
           herdr
+          hermes-agent
           kimi-code
-          opencode
-          # omp
           pi
           skills
-          dsh
         ;
 
         dms-nighty = dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
