@@ -43,7 +43,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       # Decide which open update branches this main change affects:
-      #   all    - a whitelisted primary flake input moved
+      #   all    - a whitelisted primary flake input moved, or the base
+      #            commit no longer evaluates (drvPath diff impossible)
       #   source - some packages' build code changed (derivation diff);
       #            only the source branches of the updaters owning those
       #            packages are rebuilt
@@ -76,24 +77,30 @@ jobs:
               # A package's build code changed iff its drvPath changed.
               wt=$(mktemp -d)
               git worktree add --detach "$wt" "$BEFORE" > /dev/null 2>&1
-              before=$(cd "$wt" && nix eval --json .#packages.x86_64-linux --apply \
-                'builtins.mapAttrs (n: p: (builtins.tryEval p.drvPath).value)')
+              if before=$(cd "$wt" && nix eval --json .#packages.x86_64-linux --apply \
+                'builtins.mapAttrs (n: p: (builtins.tryEval p.drvPath).value)'); then
+                after=$(nix eval --json .#packages.x86_64-linux --apply \
+                  'builtins.mapAttrs (n: p: (builtins.tryEval p.drvPath).value)')
+                changed=$(jq -cn --argjson b "$before" --argjson a "$after" \
+                  '(($b | keys) + ($a | keys)) | unique | map(select($b[.] != $a[.]))')
+                if [ "$changed" != "[]" ]; then
+                  targets=$(nix eval --json .#updater.x86_64-linux \
+                    --apply 'builtins.mapAttrs (n: u: u.packages)' \
+                    | jq -r --argjson changed "$changed" '
+                      to_entries[]
+                      | select(.value | any(. as $p | ($changed | index($p)) != null))
+                      | .key')
+                fi
+                if [ -n "$targets" ]; then
+                  mode=source
+                fi
+              else
+                # Base commit does not evaluate (e.g. a broken intermediate
+                # commit); cannot diff drvPaths, so rebuild everything.
+                echo "Base commit $BEFORE failed to evaluate; falling back to full sync."
+                mode=all
+              fi
               git worktree remove --force "$wt"
-              after=$(nix eval --json .#packages.x86_64-linux --apply \
-                'builtins.mapAttrs (n: p: (builtins.tryEval p.drvPath).value)')
-              changed=$(jq -cn --argjson b "$before" --argjson a "$after" \
-                '(($b | keys) + ($a | keys)) | unique | map(select($b[.] != $a[.]))')
-              if [ "$changed" != "[]" ]; then
-                targets=$(nix eval --json .#updater.x86_64-linux \
-                  --apply 'builtins.mapAttrs (n: u: u.packages)' \
-                  | jq -r --argjson changed "$changed" '
-                    to_entries[]
-                    | select(.value | any(. as $p | ($changed | index($p)) != null))
-                    | .key')
-              fi
-              if [ -n "$targets" ]; then
-                mode=source
-              fi
             fi
           fi
 
