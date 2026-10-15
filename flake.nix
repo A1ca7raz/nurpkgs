@@ -65,16 +65,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dms = {
-      # url = "github:A1ca7raz/DankMaterialShell";
-      url = "github:AvengeMedia/DankMaterialShell";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-    };
-    dms-plugin-registry = {
-      url = "github:AvengeMedia/dms-plugin-registry";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     dns = {
       url = "github:nix-community/dns.nix";
       inputs.nixpkgs.follows = "nixpkgs";
