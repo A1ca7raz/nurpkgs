@@ -200,6 +200,15 @@ jobs:
             # equals main and the PR closes itself on push.
             git push -f origin "$branch"
 
+            # Input removed from main: the push above made the branch
+            # identical to main and closed the PR; nothing left to retitle.
+            if [ "$type" = flake ] && [ "$name" != primary ] \
+              && ! jq -e --arg n "$name" '.nodes[$n]' flake.lock > /dev/null; then
+              echo "Input $name no longer exists on main; PR #$number self-closed."
+              git checkout -f --detach origin/main
+              continue
+            fi
+
             # --- sync PR title/body if the version range changed ---
             if [ "$type" = flake ]; then
               : > /tmp/flake_after.txt
